@@ -2,12 +2,13 @@
 import { useUsers } from '@/hooks/apiHooks/useUsers'
 
 export default function Home() {
-  const { data, isLoading, isError, error } = useUsers()
+  // const { data, isLoading, isError, error } = useUsers()
 
-  if (isLoading) return <p>Loading...</p>
-  if (isError) return <p>Error: {(error as Error).message}</p>
+  // if (isLoading) return <p>Loading...</p>
+  // if (isError) return <p>Error: {(error as Error).message}</p>
 
   return (
+    <div></div>
     // <ul>
     //   {data.map((user: any) => (
     //     <li key={user.id}>
