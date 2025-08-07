@@ -4,7 +4,7 @@ import Heading from "@/components/common/Heading";
 import Pera from "@/components/common/Pera";
 import PrimaryBtn from "@/components/common/PrimaryBtn";
 import TextInput from "@/components/common/TextInput";
-import { MailIcon } from "@/components/helper/Icon2";
+import { MailIcon, ShowPassIcon } from "@/components/helper/Icon2";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
@@ -73,6 +73,7 @@ function Login() {
                     className="mt-5"
                     register={register}
                     errors={errors} // ✅ pass full object here
+                    icon={<ShowPassIcon />}
                   />
 
                   <Link
