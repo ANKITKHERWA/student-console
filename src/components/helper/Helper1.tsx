@@ -22,11 +22,11 @@ export const navber = [
 ]
 export const items = [
   {
-    url: '/Dashboard',
+    url: '/dashboard',
     icon: Icon3rdimg,
   },
   {
-    url: '/Planner',
+    url: '/planner',
     icon: Icon4thimg,
   },
   {
