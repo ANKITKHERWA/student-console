@@ -36,9 +36,13 @@ export function AppSidebar() {
                   <Icon2ndimg />
                 </div>
                 {items.map((item, index) => (
-                  <SidebarMenuItem key={index}>
-                    <SidebarMenuButton asChild className="p-0 justify-center ">
-                      <Link href={item.url}>
+                  <SidebarMenuItem key={index} className="w-full h-full">
+                    <SidebarMenuButton
+                      asChild
+                      className="p-0 justify-center w-full h-full flex">
+                      <Link
+                        href={item.url}
+                        className="w-full h-full flex items-center justify-center">
                         <item.icon />
                       </Link>
                     </SidebarMenuButton>

@@ -23,7 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GlobalProvider>
-        <body className={`${manrope.variable}  antialiased`}>{children}</body>
+        <body className={`${manrope.variable}  antialiased`}>
+          <SidebarProvider>
+            {children}
+            <AppSidebar />
+          </SidebarProvider>
+        </body>
       </GlobalProvider>
     </html>
   )
