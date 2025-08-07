@@ -4,7 +4,7 @@ import Heading from "@/components/common/Heading";
 import Pera from "@/components/common/Pera";
 import PrimaryBtn from "@/components/common/PrimaryBtn";
 import TextInput from "@/components/common/TextInput";
-import { MailIcon } from "@/components/helper/Icon2";
+import { MailIcon, ShowPassIcon } from "@/components/helper/Icon2";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 export const loginSchema = z.object({
-  email: z.string().min(1, "Email is required").email("Invalid email"),
+  email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -73,10 +73,11 @@ function Login() {
                     className="mt-5"
                     register={register}
                     errors={errors} // ✅ pass full object here
+                    icon={<ShowPassIcon />}
                   />
 
                   <Link
-                    href={"/"}
+                    href={"/forgot-password"}
                     className="text-[#B751FB] text-sm font-semibold leading-[142.857%] block mt-3 md:mt-5 -tracking-[0.28px]"
                   >
                     Forgot Password
