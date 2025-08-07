@@ -1,4 +1,5 @@
 'use client'
+import Deshbord from '@/components/pages/Deshbord'
 import { useUsers } from '@/hooks/apiHooks/useUsers'
 
 export default function Home() {
@@ -8,7 +9,9 @@ export default function Home() {
   // if (isError) return <p>Error: {(error as Error).message}</p>
 
   return (
-    <div></div>
+    <div>
+      <Deshbord />
+    </div>
     // <ul>
     //   {data.map((user: any) => (
     //     <li key={user.id}>
