@@ -30,35 +30,35 @@ export const items = [
     icon: Icon4thimg,
   },
   {
-    url: '/Insights',
+    url: '/insights',
     icon: Icon5thimg,
   },
   {
-    url: '/Partner',
+    url: '/partner',
     icon: Icon6thimg,
   },
   {
-    url: '/Appointment',
+    url: '/appointment',
     icon: Icon7thimg,
   },
   {
-    url: '/Sales',
+    url: '/sales',
     icon: Icon8thimg,
   },
   {
-    url: '/Team',
+    url: '/team',
     icon: Icon9thimg,
   },
   {
-    url: '/Report',
+    url: '/report',
     icon: Icon10thimg,
   },
   {
-    url: '/Training',
+    url: '/training',
     icon: Icon11thimg,
   },
   {
-    url: '/Settings',
+    url: '/settings',
     icon: Icon12thimg,
   },
 ]

@@ -1,10 +1,7 @@
-'use client'
-import Deshbord from '@/components/pages/Deshbord'
+import React from 'react'
 
-export default function Home() {
-  return (
-    <div>
-      <Deshbord />
-    </div>
-  )
+function page() {
+  return <div></div>
 }
+
+export default page
