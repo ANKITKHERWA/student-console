@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 export const loginSchema = z.object({
-  email: z.string().min(1, "Email is required").email("Invalid email"),
+  email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -77,7 +77,7 @@ function Login() {
                   />
 
                   <Link
-                    href={"/"}
+                    href={"/forgot-password"}
                     className="text-[#B751FB] text-sm font-semibold leading-[142.857%] block mt-3 md:mt-5 -tracking-[0.28px]"
                   >
                     Forgot Password
