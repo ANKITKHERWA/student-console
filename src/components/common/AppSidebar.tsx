@@ -49,7 +49,7 @@ export function AppSidebar() {
       )}
 
       <Sidebar
-        className={`bg-[#F2F2F2] w-[56px] h-screen fixed left-0 top-0 z-40 transition-transform duration-300
+        className={`bg-[#F2F2F2] w-14 h-screen fixed left-0 top-0 z-40 transition-transform duration-300
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
         <SidebarContent className="items-center justify-between gap-10">
           <SidebarGroup className="p-0">

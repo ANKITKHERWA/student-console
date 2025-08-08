@@ -9,6 +9,13 @@ import {
   Icon7thimg,
   Icon8thimg,
   Icon9thimg,
+  Iconactive,
+  Iconapointment,
+  Iconappointment2,
+  Iconneeds,
+  Iconright,
+  Iconsales,
+  Iconvisits,
 } from './Icon1'
 
 export const navber = [
@@ -60,5 +67,55 @@ export const items = [
   {
     url: '/settings',
     icon: Icon12thimg,
+  },
+]
+export const cardsDetail = [
+  {
+    icon: <Iconapointment />,
+    title: 'Registered vs Assigned',
+    heading: '90 / 270',
+    righticon: <Iconright />,
+    para: '+9%',
+    percentage: '+12%',
+  },
+  {
+    icon: <Iconactive />,
+    title: 'Active  vs Registered',
+    heading: '21 / 90',
+    righticon: <Iconright />,
+    para: '+2',
+    percentage: '+8%',
+  },
+  {
+    icon: <Iconvisits />,
+    title: 'Visits this month',
+    heading: '50 / 250',
+    righticon: <Iconright />,
+    para: '+2%',
+    percentage: '+8%',
+  },
+  {
+    icon: <Iconsales />,
+    title: 'Sales',
+    heading: '150 / 100',
+    righticon: <Iconright />,
+    para: '+9%',
+    percentage: '+6%',
+  },
+  {
+    icon: <Iconappointment2 />,
+    title: 'Appointment',
+    heading: '75 / 100',
+    righticon: <Iconright />,
+    para: '+9%',
+    percentage: '+2%',
+  },
+  {
+    icon: <Iconneeds />,
+    title: 'Needs attention',
+    heading: '15 / 21',
+    righticon: <Iconright />,
+    para: '+2%',
+    percentage: '+2%',
   },
 ]
