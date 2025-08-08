@@ -349,7 +349,7 @@
 //   );
 // }
 "use client";
-import { DataTable, Payment } from '@/components/common/DataTable'
+// import { DataTable,  } from '@/components/common/DataTable'
 import TableCommon from '@/components/common/TableCommon'
 import { ColumnDef, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import React from 'react'
@@ -392,7 +392,7 @@ function VerificationCode() {
     });
   return (
     <div className="max-w-[1385px] px-6 mx-auto">
-      <DataTable />
+      {/* <DataTable /> */}
       <TableCommon table={table} columns={columns} />
     </div>
   );
