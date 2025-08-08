@@ -1,3 +1,9 @@
+import React from "react";
+
+interface IconProps {
+  className?: string;
+}
+
 export const ShowPassIcon = () => {
   return (
     <svg
@@ -27,8 +33,8 @@ export const ShowPassIcon = () => {
 
 export const GoogleIcon = () => {
   return (
-    <svg 
-    className="md:max-w-[20px] max-w-[15px]"
+    <svg
+      className="md:max-w-[20px] max-w-[15px]"
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
@@ -62,23 +68,98 @@ export const GoogleIcon = () => {
   );
 };
 
+export const MailIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
+      <path
+        d="M14.6654 4.0013C14.6654 3.26797 14.0654 2.66797 13.332 2.66797H2.66536C1.93203 2.66797 1.33203 3.26797 1.33203 4.0013M14.6654 4.0013V12.0013C14.6654 12.7346 14.0654 13.3346 13.332 13.3346H2.66536C1.93203 13.3346 1.33203 12.7346 1.33203 12.0013V4.0013M14.6654 4.0013L7.9987 8.66797L1.33203 4.0013"
+        stroke="#808188"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
 
-export const MailIcon=()=>{
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-      >
-        <path
-          d="M14.6654 4.0013C14.6654 3.26797 14.0654 2.66797 13.332 2.66797H2.66536C1.93203 2.66797 1.33203 3.26797 1.33203 4.0013M14.6654 4.0013V12.0013C14.6654 12.7346 14.0654 13.3346 13.332 13.3346H2.66536C1.93203 13.3346 1.33203 12.7346 1.33203 12.0013V4.0013M14.6654 4.0013L7.9987 8.66797L1.33203 4.0013"
-          stroke="#808188"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    );
-}
+export const ChangeSecces: React.FC<IconProps> = ({ className }) => {
+  return (
+    <svg
+      className={`${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+      width="120"
+      height="120"
+      viewBox="0 0 120 120"
+      fill="none"
+    >
+      <circle cx="83.4883" cy="103.543" r="5.82813" fill="#43405A" />
+      <circle cx="41.2949" cy="103.543" r="5.82813" fill="#43405A" />
+      <path
+        d="M26.1731 45.6813C25.7773 43.2478 27.6558 41.0391 30.1212 41.0391H95.8538C98.5994 41.0391 100.529 43.7419 99.6368 46.3385L87.2596 82.3712C86.5196 84.5254 84.4933 85.9719 82.2155 85.9719H37.2629C34.6479 85.9719 32.4186 84.0759 31.9987 81.4949L26.1731 45.6813Z"
+        fill="#C9C7D9"
+      />
+      <path
+        d="M88.4701 97.7149H45.5292C40.2574 97.7149 35.7764 93.8638 34.9837 88.652L27.6239 40.2582C26.8313 35.0464 22.3502 31.1953 17.0785 31.1953H14.2891"
+        stroke="#B751FB"
+        stroke-width="5.33333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M39.7578 49.1992H87.1172"
+        stroke="#A9A6C4"
+        stroke-width="2.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M41.293 58.3086L84.4023 58.3086"
+        stroke="#A9A6C4"
+        stroke-width="2.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M42.7324 67.4141H80.8678"
+        stroke="#A9A6C4"
+        stroke-width="2.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M43.9473 76.5234H77.6608"
+        stroke="#A9A6C4"
+        stroke-width="2.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M63.4375 29.113V10.6289"
+        stroke="#C9C7D9"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M72.2461 29.8519L79.1654 19.5703"
+        stroke="#C9C7D9"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M54.627 29.8519L47.7077 19.5703"
+        stroke="#C9C7D9"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};

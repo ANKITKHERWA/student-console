@@ -1,7 +1,10 @@
+import Insights from '@/components/pages/insights/Insights'
 import React from 'react'
 
 function page() {
-  return <div></div>
+  return <div>
+    <Insights/>
+  </div>
 }
 
 export default page

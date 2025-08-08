@@ -4,9 +4,9 @@ import { Manrope } from 'next/font/google'
 import '@/app/globals.css'
 import { GlobalProvider } from '@/provider/GlobalProvider'
 
-const manrope = Manrope({
-  variable: '--font-Manrope',
-})
+// const manrope = Manrope({
+//   variable: '--font-Manrope',
+// })
 
 // export const metadata: Metadata = {
 //   title: 'Create Next App',
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GlobalProvider>
-        <body className={`${manrope.variable}  antialiased`}>{children}</body>
+        <body className={` antialiased`}>{children}</body>
       </GlobalProvider>
     </html>
   )

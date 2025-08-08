@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "../ui/input";
 import {
   FieldErrors,
@@ -30,6 +30,15 @@ const TextInput = <T extends FieldValues>({
   register,
   errors,
 }: IProps<T>) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  const isPasswordType = type === "password";
+  const inputType = isPasswordType && showPassword ? "text" : type;
+
   return (
     <div className={`${className} flex gap-1.5 md:gap-2 flex-col`}>
       <label
@@ -38,16 +47,23 @@ const TextInput = <T extends FieldValues>({
       >
         {label}
       </label>
+
       <div className="md:py-2 py-1 px-1.5 md:px-2.5 border border-[#E4E4E7] gap-2.5 !rounded-[6px] flex justify-between items-center">
         <Input
-          type={type}
+          type={inputType}
           id={id}
           placeholder={placeholder}
           {...register(id)}
           className="border-none md:h-auto h-[25px] shadow-none !ring-0 p-0 bg-[white] text-xs md:text-sm"
         />
-        <span>{icon}</span>
+
+        {isPasswordType && (
+          <span onClick={togglePasswordVisibility} className="cursor-pointer">
+            {icon}
+          </span>
+        )}
       </div>
+
       {errors && errors[id] && (
         <p className="text-red-500 text-xs">
           {(errors[id]?.message as unknown as string) || "Error"}
