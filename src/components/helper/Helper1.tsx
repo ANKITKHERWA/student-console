@@ -1,3 +1,4 @@
+import { Icon } from 'lucide-react'
 import {
   Icon10thimg,
   Icon11thimg,
@@ -13,10 +14,12 @@ import {
   Iconapointment,
   Iconappointment2,
   Iconneeds,
+  Icononbording,
   Iconright,
   Iconsales,
   Iconvisits,
 } from './Icon1'
+import { Value } from '@radix-ui/react-select'
 
 export const navber = [
   { path: '#', pera: 'Home' },
@@ -117,5 +120,77 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+2%',
     percentage: '+2%',
+  },
+]
+export const performDetail = [
+  {
+    Icon: <Icononbording />,
+    para1: 'Onboarding',
+    para2: '+34%',
+    para3: '12/20',
+    Value: 82,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Appointment',
+    para2: '+6%',
+    para3: '14/20',
+    Value: 60,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Sales',
+    para2: '+22%',
+    para3: '16/20',
+    Value: 50,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Campaign Message',
+    para2: '-5%',
+    para3: '8/20',
+    Value: 40,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Promo Code',
+    para2: '+60%',
+    para3: '10/20',
+    Value: 70,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Get Featured',
+    para2: '+12%',
+    para3: '15/20',
+    Value: 30,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Digital Ads',
+    para2: '+6%',
+    para3: '11/20',
+    Value: 80,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Creative Studio',
+    para2: '+12%',
+    para3: '15/20',
+    Value: 90,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Easy Share',
+    para2: '+3%',
+    para3: '9/20',
+    Value: 60,
+  },
+  {
+    Icon: <Icononbording />,
+    para1: 'Review',
+    para2: '+3%',
+    para3: '9/20',
+    Value: 50,
   },
 ]
