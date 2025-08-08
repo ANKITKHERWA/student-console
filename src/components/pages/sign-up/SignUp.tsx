@@ -12,13 +12,21 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-export const loginSchema = z.object({
-  email: z.string().email("Invalid email"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
+// ✅ Updated Zod schema with confirmPassword match
+export const loginSchema = z
+  .object({
+    email: z.string().email("Invalid email"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string().min(6, "Confirm Password is required"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
 type LoginFormData = z.infer<typeof loginSchema>;
 
-function Login() {
+function SignUp() {
   const {
     register,
     handleSubmit,
@@ -28,8 +36,9 @@ function Login() {
   });
 
   const onSubmit = (data: LoginFormData) => {
-    console.log("Login Data:", data);
+    console.log("Signup Data:", data);
   };
+
   return (
     <div className="lg:bg-[url('/assest/png/login-bg-img.png')] lg:bg-[length:50%_100%] bg-no-repeat bg-top md:bg-right min-h-dvh lg:pb-10">
       <div className="max-w-[1440px] mx-auto min-h-dvh">
@@ -62,7 +71,7 @@ function Login() {
                     label="Email"
                     className="md:mt-6 sm:mt-5 mt-3 lg:mt-8"
                     register={register}
-                    errors={errors} // ✅ pass full object here
+                    errors={errors}
                   />
 
                   <TextInput
@@ -73,33 +82,40 @@ function Login() {
                     className="mt-5"
                     register={register}
                     errors={errors}
-                    icon={<ShowPassIcon />} // use state from inside component
+                    icon={<ShowPassIcon />}
                   />
 
-                  <Link
-                    href={"/forgot-password"}
-                    className="text-[#B751FB] text-sm font-semibold leading-[142.857%] block mt-3 md:mt-5 -tracking-[0.28px]"
-                  >
-                    Forgot Password
-                  </Link>
+                  <TextInput
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    label="Confirm Password"
+                    className="mt-5"
+                    register={register}
+                    errors={errors}
+                    icon={<ShowPassIcon />}
+                  />
 
-                  <PrimaryBtn title="Login" className="md:mt-5 mt-4 lg:mt-6" />
+                  <PrimaryBtn
+                    title="Create Account"
+                    className="md:mt-5 mt-4 lg:mt-6"
+                  />
                   <GoogleBtn
                     title="Sign up with Google"
                     className="mt-3 md:mt-4"
                   />
 
                   <p className="text-xs md:text-sm font-medium text-[#808188] justify-center md:mt-6 mt-5 lg:mt-8 leading-[142.857%] flex items-center text-center gap-1 -tracking-[0.28px]">
-                    <span> Not Have an account?</span>
-                    <Link href={"/sign-up"} className="text-[#B751FB]">
-                      Sign Up
+                    <span> Have an account?</span>
+                    <Link href={"/login"} className="text-[#B751FB]">
+                      Login
                     </Link>
                   </p>
                 </form>
               </div>
             </div>
             <div className="text-[#808188] text-xs md:text-sm font-medium leading-[142.857%] -tracking-[0.28px] flex items-center justify-between lg:p-8 md:p-6 sm:p-5 p-4 mt-10 lg:-mb-10">
-              <span className=""> © daSalon {new Date().getFullYear()}</span>
+              <span> © daSalon {new Date().getFullYear()}</span>
               <Link
                 href={"mailto:"}
                 className="flex items-center gap-1 md:gap-2"
@@ -111,6 +127,8 @@ function Login() {
               </Link>
             </div>
           </div>
+
+          {/* Right Section */}
           <div className="text-[#fff] md:w-1/2 lg:mt-10 md:mt-8 xl:mt-[82px] lg:ps-8 xl:ps-10 lg:pr-8 md:px-6 sm:px-5 px-4 lg:flex flex-col justify-center hidden">
             <Link
               href={"/"}
@@ -125,14 +143,13 @@ function Login() {
               />
             </Link>
             <Heading
-              title="Now monitoring all activities is very easy to do"
+              title="Organize all your salon activities properly & correctly!"
               className="!text-[#fff] md:-!text-3xl !text-2xl lg:!text-[36px] -tracking-[0.72px] !leading-[140%] max-w-[640px] md:text-start text-center"
             />
             <Pera
               title="Qorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
               className="!text-[rgba(255,255,255,0.8)] lg:!text-lg md:!text-base !text-sm xl:!text-xl font-medium mt-3 !leading-[140%] !-tracking-[0.4px] md:text-start text-center"
             />
-
             <div>
               <Image
                 src={"/assest/png/dashboard-img.png"}
@@ -149,4 +166,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;
