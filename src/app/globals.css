@@ -121,3 +121,6 @@
   }
 }
 
+#groth-task,#critical-task {
+  border: none !important;
+}
