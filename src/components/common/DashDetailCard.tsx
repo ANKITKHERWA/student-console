@@ -6,7 +6,7 @@ import { cardsDetail } from '../helper/Helper1'
 function DashDetailCard() {
   return (
     <>
-      <div className="w-full flex justify-between flex-wrap mt-6 px-6">
+      <div className="w-full flex justify-between flex-wrap  mt-6 px-6">
         {cardsDetail.map((card, index) => (
           <div
             key={index}

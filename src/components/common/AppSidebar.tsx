@@ -3,7 +3,6 @@ import { items } from '../helper/Helper1'
 import Link from 'next/link'
 import { useSidebar } from '@/components/ui/sidebar'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
 
 import {
   Sidebar,
