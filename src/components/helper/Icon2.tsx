@@ -365,7 +365,8 @@ export const KebabMenuIcon: React.FC<IconProps> = ({ className }) => {
 
 export const ActionIocn: React.FC<IconProps> = ({ className }) => {
   return (
-    <svg className={`${className}`}
+    <svg
+      className={`${className}`}
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
@@ -388,8 +389,7 @@ export const ActionIocn: React.FC<IconProps> = ({ className }) => {
   );
 };
 
-
-export const ClenderIcon:React.FC<IconProps>=({className})=>{
+export const ClenderIcon: React.FC<IconProps> = ({ className }) => {
   return (
     <svg
       className={`${className}`}
@@ -412,4 +412,47 @@ export const ClenderIcon:React.FC<IconProps>=({className})=>{
       </defs>
     </svg>
   );
-}
+};
+
+export const IssueIcon: React.FC<IconProps> = ({ className }) => {
+  return (
+    <svg className={`${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <path
+        d="M1.76907 6.93634C1.6024 6.71801 1.6399 6.43217 1.84073 6.27801C4.40573 4.31467 7.12434 3.33301 9.99657 3.33301C12.8688 3.33301 15.5877 4.31495 18.1532 6.27884C18.3632 6.45551 18.3866 6.74384 18.2241 6.93634L10.3449 16.2472C10.302 16.2977 10.2487 16.3384 10.1885 16.3662C10.1284 16.3941 10.0629 16.4085 9.99657 16.4085C9.93027 16.4085 9.86477 16.3941 9.80462 16.3662C9.74447 16.3384 9.6911 16.2977 9.64823 16.2472L1.76907 6.93634Z"
+        stroke="black"
+        stroke-width="1.5"
+      />
+      <path
+        d="M10 6.66602V8.33268M10 11.6743L10.0083 11.6652"
+        stroke="#B751FB"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const SmallCriticalIcon: React.FC<IconProps> = ({ className }) => {
+  return (
+    <svg
+      className={`${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+    >
+      <path
+        d="M12.6667 12.667H3.33333V5.33366H12.6667M12.6667 2.00033H12V0.666992H10.6667V2.00033H5.33333V0.666992H4V2.00033H3.33333C2.97971 2.00033 2.64057 2.1408 2.39052 2.39085C2.14048 2.6409 2 2.98004 2 3.33366V12.667C2 13.0206 2.14048 13.3598 2.39052 13.6098C2.64057 13.8598 2.97971 14.0003 3.33333 14.0003H12.6667C13.0203 14.0003 13.3594 13.8598 13.6095 13.6098C13.8595 13.3598 14 13.0206 14 12.667V3.33366C14 2.98004 13.8595 2.6409 13.6095 2.39085C13.3594 2.1408 13.0203 2.00033 12.6667 2.00033ZM11.02 7.37366L10.3133 6.66699L7.06 9.92033L5.64667 8.50699L4.94 9.21366L7.06 11.3337L11.02 7.37366Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+};

@@ -146,7 +146,10 @@ export const criticalData = [
                 heaing: "Visit on April 10th, 2024",
                 persone: "by Ajay Singh (FE)",
                 pera: [
-                  { stronText: "Overall Score:", text: " 30/50" },
+                  {
+                    stronText: "Reason: ",
+                    text: " Task from previous visit not completed",
+                  },
                   {
                     stronText: "Remarks: ",
                     text: " Showed keen interest in CRM and membership features. Demo scheduled.",

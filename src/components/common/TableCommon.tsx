@@ -18,11 +18,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import {
   ActionIocn,
   ClenderIcon,
+  GrothTask,
+  IssueIcon,
   KebabMenuIcon,
   PhoneSmallIcon,
+  SmallCriticalIcon,
 } from "../helper/Icon2";
 import SmallHeading from "./SmallHeading";
 import SecondryBtn from "./SecondryBtn";
+import { items } from "../helper/Helper1";
 
 type SaloneName = {
   img: string;
@@ -66,6 +70,19 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
   const [selectedUser, setSelectedUser] = useState<Iprops | null>(null);
   const [open, setOpen] = useState(false);
 
+
+  const data2 = {
+    critical: [
+      { title: "Incomplete Onboarding", days: "30 days" },
+      { title: "Off-Peak hours not set", days: "15 days" },
+      { title: "Missing Bank Account", days: "20 days" },
+      { title: "Subscription overdue", days: "10 days" },
+    ],
+    growth: [
+      { title: "New Service Opportunity", days: "5 days" },
+      { title: "Increase Social Media Reach", days: "12 days" },
+    ],
+  };
   return (
     <>
       <div className="overflow-auto  max-w-[1385px]">
@@ -151,7 +168,10 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
       </div>
 
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="right" className="w-[400px] overflow-auto">
+        <SheetContent
+          side="right"
+          className="w-[400px] overflow-auto !pb-3"
+        >
           <div className="py-5 px-4 border-b border-[#E4E7EB]">
             <StatusBadgeSec status={"registered"} />
           </div>
@@ -162,7 +182,8 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                   <div key={index}>
                     {items.sidebarData?.map((itm, idx) => (
                       <div key={idx}>
-                        <div className=" pt-5 ps-6 pb-[30px] pe-[30px]">
+                        {/* profile */}
+                        <div className="pt-5 ps-6 pb-[30px] pe-[30px]">
                           <div className="flex justify-between gap-2">
                             <div>
                               <div className="flex gap-2.5 items-center text-[#030712]">
@@ -232,6 +253,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
+                        {/* additional details */}
                         <div className="border-t pt-5 pb-3 px-[30px]">
                           <SmallHeading title="Additional details" />
                           <div className="flex justify-between items-center mt-3 text-sm">
@@ -259,6 +281,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
+                        {/* assigned parsnole */}
                         <div className="border-t pt-5 pb-3 px-[30px]">
                           <SmallHeading title="Assigned Personnel" />
                           <div className="flex justify-between items-center mt-3 text-sm">
@@ -298,6 +321,72 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
+                        {/* issuss */}
+                        <div className="border-t pt-5 pb-3 px-[30px]">
+                          <div className="flex gap-2 items-center">
+                            <IssueIcon />
+                            <SmallHeading title="Issues" />
+                          </div>
+                          <div>
+                            <Tabs defaultValue="critical" className="w-80">
+                              {/* Tab Header */}
+                              <TabsList className="flex justify-between w-full bg-transparent mt-3">
+                                <TabsTrigger
+                                  value="critical"
+                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
+                                >
+                                  <SmallCriticalIcon className=" data-[state=active]:fill-[#B751FB]" />
+                                  Critical
+                                </TabsTrigger>
+
+                                <TabsTrigger
+                                  value="growth"
+                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
+                                >
+                                  <GrothTask className="h-[16px] w-[16px]  data-[state=active]:fill-[#B751FB]" />
+                                  Growth
+                                </TabsTrigger>
+                              </TabsList>
+
+                              {/* Critical Content */}
+                              <TabsContent
+                                value="critical"
+                                className="space-y-2 mt-3"
+                              >
+                                {data2.critical.map((item, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] text-sm"
+                                  >
+                                    <span>{item.title}</span>
+                                    <span className="text-[#808188]">
+                                      {item.days}
+                                    </span>
+                                  </div>
+                                ))}
+                              </TabsContent>
+
+                              {/* Growth Content */}
+                              <TabsContent
+                                value="growth"
+                                className="space-y-2 mt-3"
+                              >
+                                {data2.growth.map((item, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] text-sm"
+                                  >
+                                    <span>{item.title}</span>
+                                    <span className="text-[#808188]">
+                                      {item.days}
+                                    </span>
+                                  </div>
+                                ))}
+                              </TabsContent>
+                            </Tabs>
+                          </div>
+                        </div>
+                        {/* action report */}
                         <div className="border-t pt-5 pb-3 px-[30px]">
                           <div className="flex justify-between items-center mb-[5px]">
                             <div className="flex items-center gap-2">
@@ -351,7 +440,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
               </div>
             ))}
             <div className="px-[30px] flex justify-end gap-2">
-              <SecondryBtn title="Cancel" className="w-max"/>
+              <SecondryBtn title="Cancel" className="w-max" />
               <Dialog>
                 <DialogTrigger className="bg-purple-500 text-white px-4 py-2 rounded">
                   Open Modal
