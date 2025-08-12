@@ -349,6 +349,7 @@
 //   );
 // }
 "use client";
+// import { DataTable } from '@/components/common/DataTable';
 // import { DataTable,  } from '@/components/common/DataTable'
 import TableCommon from '@/components/common/TableCommon'
 import { ColumnDef, getCoreRowModel, useReactTable } from '@tanstack/react-table';
