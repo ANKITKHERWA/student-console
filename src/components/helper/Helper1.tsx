@@ -1,5 +1,11 @@
 import { Icon } from 'lucide-react'
 import {
+  Adsnot,
+  Bankaccountnotlinked,
+  Catlog,
+  Config,
+  Creative,
+  Getfeat,
   Icon10thimg,
   Icon11thimg,
   Icon12thimg,
@@ -14,10 +20,31 @@ import {
   Iconapointment,
   Iconappointment2,
   Iconneeds,
+  Icononapoit,
   Icononbording,
+  Icononcamp,
+  Iconondigit,
+  Icononeasy,
+  Icononget,
+  Icononpromo,
+  Icononreview,
+  Icononsals,
+  Icononstuido,
   Iconright,
   Iconsales,
   Iconvisits,
+  Msgnot,
+  Noapoitment,
+  Noeasy,
+  Nomonthlytargetset,
+  Nopromo,
+  Nosale,
+  NotFullyOnboarded,
+  OffPeakhoursnotset,
+  Partnot,
+  Product,
+  Staffnotadded,
+  SubscriptionOverdue,
 } from './Icon1'
 import { Value } from '@radix-ui/react-select'
 
@@ -131,66 +158,175 @@ export const performDetail = [
     Value: 82,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Icononapoit />,
     para1: 'Appointment',
     para2: '+6%',
     para3: '14/20',
     Value: 60,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Icononsals />,
     para1: 'Sales',
     para2: '+22%',
     para3: '16/20',
     Value: 50,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Icononcamp />,
     para1: 'Campaign Message',
     para2: '-5%',
     para3: '8/20',
     Value: 40,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Icononpromo />,
     para1: 'Promo Code',
     para2: '+60%',
     para3: '10/20',
     Value: 70,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Icononget />,
     para1: 'Get Featured',
     para2: '+12%',
     para3: '15/20',
     Value: 30,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Iconondigit />,
     para1: 'Digital Ads',
     para2: '+6%',
     para3: '11/20',
     Value: 80,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Icononstuido />,
     para1: 'Creative Studio',
     para2: '+12%',
     para3: '15/20',
     Value: 90,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Icononeasy />,
     para1: 'Easy Share',
     para2: '+3%',
     para3: '9/20',
     Value: 60,
   },
   {
-    Icon: <Icononbording />,
+    Icon: <Icononreview />,
     para1: 'Review',
     para2: '+3%',
     para3: '9/20',
     Value: 50,
+  },
+]
+// export const options = [
+//   {
+//     value: 'Last 7 days',
+//     label: 'Last 7 days',
+//   },
+//   {
+//     value: 'Last 30 days',
+//     label: 'Last 30 days',
+//   },
+//   {
+//     value: 'Last month',
+//     label: 'Last month',
+//   },
+// ]
+export const TaskDetail = [
+  {
+    Icon: <Nosale />,
+    title: 'No Sale (7days)',
+    pera: '28 salons',
+  },
+  {
+    Icon: <Noeasy />,
+    title: 'No Easy Share (30 days)',
+    pera: '28 salons',
+  },
+  {
+    Icon: <Noapoitment />,
+    title: 'No Appointment(7 days)',
+    pera: '17 salons',
+  },
+  {
+    Icon: <Creative />,
+    title: 'Creative not used (30 d)',
+    pera: '17 salons',
+  },
+  {
+    Icon: <Catlog />,
+    title: 'Catalog Incomplete',
+    pera: '13 salons',
+  },
+  {
+    Icon: <Adsnot />,
+    title: 'Ads not used (60 days)',
+    pera: '13 salons',
+  },
+  {
+    Icon: <Config />,
+    title: 'Configure Offer Incomplete',
+    pera: '21 salons',
+  },
+  {
+    Icon: <Msgnot />,
+    title: 'Msg Center not used (30 d)',
+    pera: '21 salons',
+  },
+  {
+    Icon: <Nopromo />,
+    title: 'No Promo code (60 days )',
+    pera: '21 salons',
+  },
+  {
+    Icon: <Getfeat />,
+    title: 'Get Feat. not used (60 days)',
+    pera: '21 salons',
+  },
+  {
+    Icon: <Product />,
+    title: 'Product not added ',
+    pera: '21 salons',
+  },
+
+  {
+    Icon: <Partnot />,
+    title: 'Partner not visited (30 days)',
+    pera: '21 salons',
+  },
+]
+export const CriticalDetail = [
+  {
+    Icon: <NotFullyOnboarded />,
+    title: 'Not Fully Onboarded',
+    pera: '14 salons',
+  },
+  {
+    Icon: <OffPeakhoursnotset />,
+    title: 'Off-Peak hours not set',
+    pera: '8 salons',
+  },
+  {
+    Icon: <Bankaccountnotlinked />,
+    title: 'Bank account not linked',
+    pera: '10 salons',
+  },
+  {
+    Icon: <Nomonthlytargetset />,
+    title: 'No monthly target set',
+    pera: '11 salons',
+  },
+  {
+    Icon: <Staffnotadded />,
+    title: 'Staff not added / incomplete',
+    pera: '13 salons',
+  },
+  {
+    Icon: <SubscriptionOverdue />,
+    title: 'Subscription Overdue',
+    pera: '5 salons',
   },
 ]

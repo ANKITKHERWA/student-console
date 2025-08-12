@@ -1,6 +1,6 @@
 import React from 'react'
 import Heading from './Heading'
-import { Select1 } from './Select1'
+import Comselect from './Comselect'
 
 function TopBar() {
   return (
@@ -10,8 +10,11 @@ function TopBar() {
           className="text-[ #030712] text-xl  font-semibold leading-[120%] text-spacing-[-0.4px] "
           title="Dashboard"
         />
-
-        <Select1 />
+        <Comselect
+          placeholder="Last 7 Days"
+          label="Last Days"
+          options={['Last 7 Days', 'Last 30 days', 'Last month']}
+        />
       </div>
     </>
   )

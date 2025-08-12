@@ -27,7 +27,7 @@ export function SidebarToggleButton() {
   return (
     <button
       onClick={toggleSidebar}
-      className="md:hidden p-2 fixed top-4 left-4 z-50 bg-white rounded shadow">
+      className=" fixed top-6 left-12 z-50 bg-white p-1 rounded-full border border-gray-300 ">
       {isOpen ? <Iconsidebartogle /> : <Iconsidebartogle2 />}
     </button>
   )
@@ -42,7 +42,7 @@ export function AppSidebar() {
       <SidebarToggleButton />
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/30 z-30 md:hidden"
+          className="fixed inset-0  z-30 md:hidden"
           onClick={toggleSidebar}
         />
       )}
@@ -70,7 +70,7 @@ export function AppSidebar() {
                     <SidebarMenuItem key={index} className="w-full h-full">
                       <SidebarMenuButton
                         asChild
-                        className="justify-center w-full h-full flex">
+                        className="justify-center w-full h-full flex ">
                         <Link
                           href={item.url}
                           className={`w-full h-full flex items-center justify-center p-4 transition-all duration-300
