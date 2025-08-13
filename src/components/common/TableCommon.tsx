@@ -1,20 +1,14 @@
-'use client'
-import React, { useState } from 'react'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+"use client";
+import React, { useState } from "react";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
-import Image from 'next/image'
-import StatusBadge from './StatusBadge'
-import StatusBadgeSec from './StatusBadgeSec'
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '../ui/dialog'
-import { criticalData, mudalData } from '../helper/Helper2' // ✅ changed here
-import Link from 'next/link'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
+import Image from "next/image";
+import StatusBadge from "./StatusBadge";
+import StatusBadgeSec from "./StatusBadgeSec";
+
+import { criticalData } from "../helper/Helper2"; // ✅ changed here
+import Link from "next/link";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import {
   ActionIocn,
   ClenderIcon,
@@ -23,78 +17,77 @@ import {
   KebabMenuIcon,
   PhoneSmallIcon,
   SmallCriticalIcon,
-} from '../helper/Icon2'
-import SmallHeading from './SmallHeading'
-import SecondryBtn from './SecondryBtn'
-import { items } from '../helper/Helper1'
+} from "../helper/Icon2";
+import SmallHeading from "./SmallHeading";
+import SecondryBtn from "./SecondryBtn";
+import VisitReportMudal from "../pages/insights/VisitReportMudal";
 
 type SaloneName = {
-  img: string
-  name: string
-}
+  img: string;
+  name: string;
+};
 
 type Issue = {
-  issu1: string
-  issu2: string
-}
+  issu1: string;
+  issu2: string;
+};
 
 type Iprops = {
-  id: number
-  saloneName: SaloneName[]
-  add: string
-  health: string
-  issue: Issue[]
-  staff: string
-  onboarding: React.ReactNode
-  bankAcc: React.ReactNode
-  monthlyTarget: React.ReactNode
-  subscription: string
-  lastVisit: string
-  nextVisit: string
-  tcName: string
-  rmName: string
-  feName: string
-  action: string
-}
+  id: number;
+  saloneName: SaloneName[];
+  add: string;
+  health: string;
+  issue: Issue[];
+  staff: string;
+  onboarding: React.ReactNode;
+  bankAcc: React.ReactNode;
+  monthlyTarget: React.ReactNode;
+  subscription: string;
+  lastVisit: string;
+  nextVisit: string;
+  tcName: string;
+  rmName: string;
+  feName: string;
+  action: string;
+};
 
 type TableData = {
-  head: { title: string }[]
-  body: Iprops[]
-}
+  head: { title: string }[];
+  body: Iprops[];
+};
 
 type TableCommonProps = {
-  data: TableData[]
-}
+  data: TableData[];
+};
 
 const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
-  const [selectedUser, setSelectedUser] = useState<Iprops | null>(null)
-  const [open, setOpen] = useState(false)
+  const [selectedUser, setSelectedUser] = useState<Iprops | null>(null);
+  const [open, setOpen] = useState(false);
 
   const data2 = {
     critical: [
-      { title: 'Incomplete Onboarding', days: '30 days' },
-      { title: 'Off-Peak hours not set', days: '15 days' },
-      { title: 'Missing Bank Account', days: '20 days' },
-      { title: 'Subscription overdue', days: '10 days' },
+      { title: "Incomplete Onboarding", days: "30 days" },
+      { title: "Off-Peak hours not set", days: "15 days" },
+      { title: "Missing Bank Account", days: "20 days" },
+      { title: "Subscription overdue", days: "10 days" },
     ],
     growth: [
-      { title: 'New Service Opportunity', days: '5 days' },
-      { title: 'Increase Social Media Reach', days: '12 days' },
+      { title: "New Service Opportunity", days: "5 days" },
+      { title: "Increase Social Media Reach", days: "12 days" },
     ],
-  }
+  };
   return (
     <>
-      <div className="overflow-auto  max-w-[1385px]">
+      <div className="overflow-auto border rounded-[6px] border-[#D9DDE3]">
         {data.map((items, index) => (
-          <table
-            key={index}
-            className="min-w-[1650px]    border rounded-[6px] border-[#D9DDE3]">
+          <table key={index} className="text-nowrap w-full">
             <thead>
               <tr className="bg-[#fff] text-sm leading-[142%] tracking-normal text-[#808188] ">
                 {items.head.map((headItem, headIndex) => (
                   <th
                     key={headIndex}
-                    className="font-semibold px-3 py-1.5 text-left">
+                    className="font-semibold px-3 py-1.5 text-left"
+                  >
                     {headItem.title}
                   </th>
                 ))}
@@ -105,16 +98,18 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                 <tr
                   key={bodyitems.id}
                   onClick={() => {
-                    setSelectedUser(bodyitems as Iprops)
-                    setOpen(true)
+                    setSelectedUser(bodyitems as Iprops);
+                    setOpen(true);
                   }}
                   className={`cursor-pointer hover:bg-[#F1DCFF] text-sm text-[#030712] ${
-                    selectedUser?.id === bodyitems.id ? 'bg-[#F1DCFF]' : ''
-                  }`}>
+                    selectedUser?.id === bodyitems.id ? "bg-[#F1DCFF]" : ""
+                  }`}
+                >
                   {bodyitems.saloneName.map((salon, saloneIndex) => (
                     <td
                       key={saloneIndex}
-                      className="px-3 py-1.5 truncate max-w-[200px]">
+                      className="px-3 py-1.5 truncate max-w-[200px]"
+                    >
                       <div className="flex items-center gap-2 ">
                         <Image
                           src={salon.img}
@@ -165,7 +160,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="right" className="w-[400px] overflow-auto !pb-3">
           <div className="py-5 px-4 border-b border-[#E4E7EB]">
-            <StatusBadgeSec status={'registered'} />
+            <StatusBadgeSec status={"registered"} />
           </div>
           <div className="flex flex-col justify-between h-full pb-3">
             {criticalData.map((item, indexs) => (
@@ -195,7 +190,8 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                                     <Link
                                       key={contIndex}
                                       href={contact.path}
-                                      className="flex items-center gap-1 text-xs">
+                                      className="flex items-center gap-1 text-xs"
+                                    >
                                       <span>{contact.icon}</span>
                                       <span>{contact.title}</span>
                                     </Link>
@@ -209,17 +205,18 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                                       key={condIndex}
                                       className={` ${
                                         condIndex === 0
-                                          ? 'text-[#F13737]  '
+                                          ? "text-[#F13737]  "
                                           : condIndex === 2
-                                          ? 'text-[#F58400]'
-                                          : 'text-[#5B14D1] '
+                                          ? "text-[#F58400]"
+                                          : "text-[#5B14D1] "
                                       } ${
                                         condIndex === 1
-                                          ? 'border-l'
+                                          ? "border-l"
                                           : condIndex === 3
-                                          ? 'border-r'
-                                          : ''
-                                      } text-xs leading-[166%] border-[#808188] -tracking-[0.24px]`}>
+                                          ? "border-r"
+                                          : ""
+                                      } text-xs leading-[166%] border-[#808188] -tracking-[0.24px]`}
+                                    >
                                       {condetionItem.count}
                                     </span>
                                   )
@@ -231,7 +228,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                           <div className="flex justify-between gap-2 mt-4 xl:pr-10">
                             <div className="px-1.5 py-[3px] border-[0.5px] w-max  rounded border-[#E4E7EB] flex gap-1 items-center text-[#030712] text-xs font-semibold leading-[166%] -tracking-[0.24px]">
                               <span className="text-[#808188] font-normal">
-                                Next Visit{' '}
+                                Next Visit{" "}
                               </span>
                               {itm.nextVisit}
                             </div>
@@ -248,7 +245,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                           <SmallHeading title="Additional details" />
                           <div className="flex justify-between items-center mt-3 text-sm">
                             <p className="text-[#808188] font-medium leading-[142%] -tracking-[0.28px]">
-                              Owner:{' '}
+                              Owner:{" "}
                               <span className="font-semibold text-[#030712]">
                                 {itm.ownerName}
                               </span>
@@ -276,7 +273,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                           <SmallHeading title="Assigned Personnel" />
                           <div className="flex justify-between items-center mt-3 text-sm">
                             <p className="text-[#808188] font-medium leading-[142%] -tracking-[0.28px]">
-                              FE:{' '}
+                              FE:{" "}
                               <span className="font-semibold text-[#030712]">
                                 {itm.fe}
                               </span>
@@ -323,14 +320,16 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                               <TabsList className="flex justify-between w-full bg-transparent mt-3">
                                 <TabsTrigger
                                   value="critical"
-                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]">
+                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
+                                >
                                   <SmallCriticalIcon className=" data-[state=active]:fill-[#B751FB]" />
                                   Critical
                                 </TabsTrigger>
 
                                 <TabsTrigger
                                   value="growth"
-                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]">
+                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
+                                >
                                   <GrothTask className="h-[16px] w-[16px]  data-[state=active]:fill-[#B751FB]" />
                                   Growth
                                 </TabsTrigger>
@@ -339,11 +338,13 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                               {/* Critical Content */}
                               <TabsContent
                                 value="critical"
-                                className="space-y-2 mt-3">
+                                className="space-y-2 mt-3"
+                              >
                                 {data2.critical.map((item, idx) => (
                                   <div
                                     key={idx}
-                                    className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] text-sm">
+                                    className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] text-sm"
+                                  >
                                     <span>{item.title}</span>
                                     <span className="text-[#808188]">
                                       {item.days}
@@ -355,11 +356,13 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                               {/* Growth Content */}
                               <TabsContent
                                 value="growth"
-                                className="space-y-2 mt-3">
+                                className="space-y-2 mt-3"
+                              >
                                 {data2.growth.map((item, idx) => (
                                   <div
                                     key={idx}
-                                    className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] text-sm">
+                                    className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] text-sm"
+                                  >
                                     <span>{item.title}</span>
                                     <span className="text-[#808188]">
                                       {item.days}
@@ -385,13 +388,14 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                           {itm.actionData.map((action, actionIndex) => (
                             <div
                               key={actionIndex}
-                              className="border rounded-[8px] p-[15px] mt-2.5">
+                              className="border rounded-[8px] p-[15px] mt-2.5"
+                            >
                               <div className="flex gap-[5px] flex-col">
                                 <div className="flex justify-between">
                                   <SmallHeading title={action.heaing} />
                                   <div className="flex gap-2.5 items-center">
                                     <Image
-                                      src={'/assest/svg/prsone-img.svg'}
+                                      src={"/assest/svg/prsone-img.svg"}
                                       width={18}
                                       height={18}
                                       alt="prsone img"
@@ -404,7 +408,8 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                                 {action.pera.map((pera, peraIdx) => (
                                   <p
                                     key={peraIdx}
-                                    className="text-xs font-medium leading-[140%] -tracking-[0.24px]">
+                                    className="text-xs font-medium leading-[140%] -tracking-[0.24px]"
+                                  >
                                     <span>{pera.stronText}</span>
                                     <span className="text-[rgba(3,7,18,0.60)]">
                                       {pera.text}
@@ -423,102 +428,12 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
             ))}
             <div className="px-[30px] flex justify-end gap-2">
               <SecondryBtn title="Cancel" className="w-max" />
-              <Dialog>
-                <DialogTrigger className="bg-purple-500 text-white px-4 py-2 rounded">
-                  Open Modal
-                </DialogTrigger>
-                {mudalData.map((item, index) => (
-                  <DialogContent
-                    key={index}
-                    className="p-0 !max-w-[72%] !w-[72%]">
-                    <DialogHeader className="px-4 py-5">
-                      <DialogTitle>Visit Report</DialogTitle>
-                    </DialogHeader>
-                    <div className="border-t">
-                      <div className="bg-[#F9FAFB] border-r max-w-[300px]">
-                        <div className="pt-5 ps-6 pb-[30px] pe-[30px] ">
-                          <div className="flex gap-2.5 items-center text-[#030712]">
-                            <div>
-                              <Image
-                                src={item.img}
-                                width={70}
-                                height={70}
-                                alt="studio img"
-                              />
-                            </div>
-                            <div className="flex flex-col gap-0.5">
-                              <h3 className="font-semibold leading-[125%] text-sm -tracking-[0.32px]">
-                                {item.name}
-                              </h3>
-                              {item.contacte.map((contact, contIndex) => (
-                                <Link
-                                  key={contIndex}
-                                  href={contact.path}
-                                  className="flex items-center gap-1 text-xs">
-                                  <span>{contact.icon}</span>
-                                  <span>{contact.title}</span>
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="flex justify-between mt-5 ">
-                            {item.condetions.map((condetionItem, condIndex) => (
-                              <span
-                                key={condIndex}
-                                className={` ${
-                                  condIndex === 0
-                                    ? 'text-[#F13737]  '
-                                    : condIndex === 2
-                                    ? 'text-[#31A553]'
-                                    : 'text-[#5B14D1] '
-                                } ${
-                                  condIndex === 1
-                                    ? 'border-l'
-                                    : condIndex === 3
-                                    ? 'border-r'
-                                    : ''
-                                } text-xs leading-[166%] border-[#808188] -tracking-[0.24px] font-semibold`}>
-                                {condetionItem.count}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        <div>
-                          <Tabs
-                            defaultValue={item.tabItems[0].value}
-                            className="w-full !bg-[transparent]">
-                            <TabsList className="flex !items-start !h-max gap-2 !flex-col">
-                              {item.tabItems.map((tab) => (
-                                <TabsTrigger
-                                  key={tab.value}
-                                  value={tab.value}
-                                  className="!justify-start !text-start">
-                                  {tab.label}
-                                </TabsTrigger>
-                              ))}
-                            </TabsList>
-
-                            {item.tabItems.map(
-                              (items: { value: string; label: string }) => (
-                                <TabsContent
-                                  key={items.value}
-                                  value={items.value}>
-                                  <p>{items.label} ka content yaha aayega...</p>
-                                </TabsContent>
-                              )
-                            )}
-                          </Tabs>
-                        </div>
-                      </div>
-                    </div>
-                  </DialogContent>
-                ))}
-              </Dialog>
+              <VisitReportMudal />
             </div>
           </div>
         </SheetContent>
       </Sheet>
     </>
-  )
-}
-export default TableCommon
+  );
+};
+export default TableCommon;
