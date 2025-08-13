@@ -16,7 +16,7 @@ import { criticalData } from "@/components/helper/Helper2";
 function Insights() {
 
   return (
-    <div className="pb-10 max-w-[1385px]">
+    <div className="pb-10">
       <TopBar />
       <div>
         <Tabs defaultValue="critical-task" className="w-full">
@@ -64,9 +64,7 @@ function Insights() {
                 </div>
               </div>
             </form>
-            {/* <div className="overflow-scroll max-h-dvh border rounded-[6px] border-[#D9DDE3]"> */}
             <TableCommon data={criticalData} />
-            {/* </div> */}
           </TabsContent>
           <TabsContent value="groth-task">hellodflksdfkl</TabsContent>
         </Tabs>

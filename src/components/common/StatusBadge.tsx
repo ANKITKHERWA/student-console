@@ -11,7 +11,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full px-2 py-1 text-xs font-medium",
+        "inline-flex items-center rounded-full px-2 text-xs font-medium",
         {
           "bg-[#E3F7E9] text-[#030712] border border-[rgba(49,165,83,1)]":
             status === "active",
@@ -22,7 +22,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
       )}
     >
       <span
-        className={clsx("h-2 w-2 rounded-full mr-1", {
+        className={clsx("h-1.5 w-1.5 rounded-full mr-1", {
           "bg-[#7ACD92] ": status === "active",
           "bg-[#CCC]": status === "expired",
           "bg-[#FFAB47]": status === "due",
