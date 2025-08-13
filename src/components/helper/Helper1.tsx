@@ -221,20 +221,6 @@ export const performDetail = [
     Value: 50,
   },
 ]
-// export const options = [
-//   {
-//     value: 'Last 7 days',
-//     label: 'Last 7 days',
-//   },
-//   {
-//     value: 'Last 30 days',
-//     label: 'Last 30 days',
-//   },
-//   {
-//     value: 'Last month',
-//     label: 'Last month',
-//   },
-// ]
 export const TaskDetail = [
   {
     Icon: <Nosale />,
