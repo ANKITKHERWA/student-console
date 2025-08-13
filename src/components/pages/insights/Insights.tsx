@@ -17,7 +17,7 @@ function Insights() {
 
   return (
     <div className="pb-10">
-      <TopCommon />
+      <TopCommon title='aklsdfjklsdjfksadfk'/>
       <div>
         <Tabs defaultValue="critical-task" className="w-full">
           <div className="border-y border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">

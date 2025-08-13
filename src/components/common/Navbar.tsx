@@ -20,17 +20,10 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Mobile Toggle */}
-      <button
-        className="md:hidden p-2 m-2 z-50 fixed top-0 left-0 bg-white rounded-full shadow-md transition-transform duration-300 hover:scale-105"
-        onClick={() => setIsOpen(!isOpen)}>
-        <Iconsidebartogle /> : <Iconsidebartogle2 />
-      </button>
-
       {/* Sidebar */}
       <div
         className={cn(
-          'fixed top-0 left-0 h-screen w-[170px] md:w-14 overflow-y-auto lg:overflow-visible  bg-accent shadow-lg z-[49] transition-transform duration-300 -translate-x-full lg:translate-x-0 ',
+          'fixed top-0 left-0 h-screen w-[170px] md:w-14 overflow-y-auto lg:overflow-visible bg-accent shadow-lg z-[49] transition-transform duration-300',
           isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         )}>
         <div className="flex flex-col items-center py-3 gap-4">
@@ -54,14 +47,14 @@ export default function Navbar() {
                   <Link
                     href={item.url}
                     className={cn(
-                      'flex flex-col items-center gap-1 w-full p-4 relative transition group',
+                      'flex items-center gap-1 w-full p-4 relative transition group',
                       isActive
                         ? 'bg-white text-purple-600'
                         : 'text-gray-500 hover:bg-gray-100'
                     )}>
-                    {/* Left active border */}
+                    {/* Active left border */}
                     {isActive && (
-                      <span className="absolute left-0 top-0 h-full w-1 bg-purple-600 rounded-r-md"></span>
+                      <span className="absolute left-0 top-0 h-full w-1 bg-purple-600"></span>
                     )}
                     <item.icon
                       className={cn(
@@ -71,6 +64,7 @@ export default function Navbar() {
                           : 'group-hover:text-purple-500'
                       )}
                     />
+                    <span className="md:hidden">{item.title}</span>
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent side="right" className="py-2">
@@ -80,17 +74,29 @@ export default function Navbar() {
             )
           })}
         </nav>
-        <div className="mt-auto mb-4 flex justify-center` items-center w-full">
+
+        <div className="flex justify-center items-center w-full my-3">
           <Link href="/settings">
             <Icon13thimg />
           </Link>
         </div>
       </div>
 
+      {/* Toggle Button */}
+
+      <button
+        className={`md:hidden p-1 m-2 z-50 absolute top-4 -left-2 bg-white rounded-full shadow-md 
+        transition-transform duration-300 hover:scale-105 
+        ${
+          isOpen ? 'translate-x-[171px] rotate-180' : 'translate-x-0 rotate-0'
+        }`}
+        onClick={() => setIsOpen(!isOpen)}>
+        <Iconsidebartogle />
+      </button>
       {/* Overlay for mobile */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/40 md:hidden"
+          className="fixed inset-0 bg-black/40 md:hidden z-40"
           onClick={() => setIsOpen(false)}
         />
       )}
