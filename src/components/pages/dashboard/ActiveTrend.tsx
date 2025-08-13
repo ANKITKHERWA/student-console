@@ -156,9 +156,9 @@ export default function ActiveTrend() {
           <div className="flex justify-between gap-4">
             <Heading
               title="Critical tasks"
-              className="text-xl text-[#030712] font-semibold leading-[120%] tracking-[-0.4px]"
+              className="md:text-xl text-base text-[#030712] font-semibold leading-[120%] tracking-[-0.4px]"
             />
-            <PrimaryBtn className="w-30! " title="view detials" />
+            <PrimaryBtn className="sm:w-30! w-20! " title="view detials" />
           </div>
           <CriticalTask />
         </div>
@@ -167,9 +167,9 @@ export default function ActiveTrend() {
         <div className="flex justify-between gap-4">
           <Heading
             title="Growth Task"
-            className="text-xl text-[#030712] font-semibold leading-[120%] tracking-[-0.4px]"
+            className="md:text-xl text-base text-[#030712] font-semibold leading-[120%] tracking-[-0.4px]"
           />
-          <PrimaryBtn className="w-30! " title="view detials" />
+          <PrimaryBtn className="sm:w-30! w-20! " title="view detials" />
         </div>
         <GrowthTask />
       </div>

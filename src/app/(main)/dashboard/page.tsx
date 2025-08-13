@@ -1,7 +1,6 @@
 import DashDetailCard from '@/components/common/DashDetailCard'
 import TopBar from '@/components/common/TopBar'
 import ActiveTrend from '@/components/pages/dashboard/ActiveTrend'
-import Health from '@/components/pages/dashboard/Health'
 import Perform from '@/components/pages/dashboard/Perform'
 import React from 'react'
 

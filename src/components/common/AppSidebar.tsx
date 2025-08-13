@@ -1,103 +1,101 @@
-'use client'
-import { items } from '../helper/Helper1'
-import Link from 'next/link'
-import { useSidebar } from '@/components/ui/sidebar'
-import { usePathname } from 'next/navigation'
+// 'use client'
+// import Link from 'next/link'
+// import { useSidebar } from '@/components/ui/sidebar'
+// import { usePathname } from 'next/navigation'
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from '@/components/ui/sidebar'
-import {
-  Icon13thimg,
-  Icon1stimg,
-  Icon2ndimg,
-  Iconsidebartogle,
-  Iconsidebartogle2,
-} from '../helper/Icon1'
+// import {
+//   Sidebar,
+//   SidebarContent,
+//   SidebarGroup,
+//   SidebarGroupContent,
+//   SidebarMenu,
+//   SidebarMenuButton,
+//   SidebarMenuItem,
+// } from '@/components/ui/sidebar'
+// import {
+//   Icon13thimg,
+//   Icon1stimg,
+//   Icon2ndimg,
+//   Iconsidebartogle,
+//   Iconsidebartogle2,
+// } from '../helper/Icon1'
 
-export function SidebarToggleButton() {
-  const { isOpen, toggleSidebar } = useSidebar()
+// export function SidebarToggleButton() {
+//   const { isOpen, toggleSidebar } = useSidebar()
 
-  return (
-    <button
-      onClick={toggleSidebar}
-      className=" fixed top-6 left-12 z-50 bg-white p-1 rounded-full border border-gray-300 ">
-      {isOpen ? <Iconsidebartogle /> : <Iconsidebartogle2 />}
-    </button>
-  )
-}
+//   return (
+//     <button
+//       onClick={toggleSidebar}
+//       className=" fixed top-6 left-12 z-50 bg-white p-1 rounded-full border border-gray-300 ">
+//       {isOpen ? <Iconsidebartogle /> : <Iconsidebartogle2 />}
+//     </button>
+//   )
+// }
 
-export function AppSidebar() {
-  const { isOpen, toggleSidebar } = useSidebar()
-  const pathname = usePathname()
+// export function AppSidebar() {
+//   const { isOpen, toggleSidebar } = useSidebar()
+//   const pathname = usePathname()
 
-  return (
-    <>
-      <SidebarToggleButton />
-      {isOpen && (
-        <div
-          className="fixed inset-0  z-30 md:hidden"
-          onClick={toggleSidebar}
-        />
-      )}
+//   return (
+//     <>
+//       <SidebarToggleButton />
+//       {isOpen && (
+//         <div
+//           className="fixed inset-0  z-30 md:hidden"
+//           onClick={toggleSidebar}
+//         />
+//       )}
 
-      <Sidebar
-        className={`bg-[#F2F2F2] w-14 h-screen fixed left-0 top-0 z-40 transition-transform duration-300
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
-        <SidebarContent className="items-center justify-between gap-10">
-          <SidebarGroup className="p-0">
-            <SidebarGroupContent>
-              <SidebarMenu className="items-center justify-center gap-0">
-                <Link
-                  href={'/Dashboard'}
-                  className="border-b border-[#DCE0E5] py-5">
-                  <Icon1stimg />
-                </Link>
-                <div className="border-b border-[#DCE0E5] py-5">
-                  <Icon2ndimg />
-                </div>
+//       <Sidebar
+//         className={`bg-[#F2F2F2] w-14  h-screen fixed left-0 top-0 z-40 transition-transform duration-300
+//         ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+//         <SidebarContent className="items-center justify-between gap-10">
+//           <SidebarGroup className="p-0">
+//             <SidebarGroupContent>
+//               <SidebarMenu className="items-center justify-center gap-0">
+//                 <Link
+//                   href={'/dashboard'}
+//                   className="border-b border-[#DCE0E5] py-5">
+//                   <Icon1stimg />
+//                 </Link>
+//                 <div className="border-b border-[#DCE0E5] py-5">
+//                   <Icon2ndimg />
+//                 </div>
+//                 {items.map((item, index) => {
+//                   const isActive = pathname === item.url
 
-                {items.map((item, index) => {
-                  const isActive = pathname === item.url
+//                   return (
+//                     <SidebarMenuItem key={index} className="w-full h-full">
+//                       <SidebarMenuButton
+//                         asChild
+//                         className="justify-center w-full h-full flex ">
+//                         <Link
+//                           href={item.url}
+//                           className={`w-full h-full flex items-center justify-center p-4 transition-all duration-300
+//                             ${
+//                               isActive
+//                                 ? 'bg-white border-l-4 border-[#B751FB] rounded-none'
+//                                 : ''
+//                             }`}>
+//                           <item.icon
+//                             className={`w-6 h-6 fill-current transition-all duration-300 ${
+//                               isActive ? 'text-[#B751FB]' : 'text-[#9CA3AF]'
+//                             }`}
+//                           />
+//                         </Link>
+//                       </SidebarMenuButton>
+//                     </SidebarMenuItem>
+//                   )
+//                 })}
+//               </SidebarMenu>
+//             </SidebarGroupContent>
+//           </SidebarGroup>
 
-                  return (
-                    <SidebarMenuItem key={index} className="w-full h-full">
-                      <SidebarMenuButton
-                        asChild
-                        className="justify-center w-full h-full flex ">
-                        <Link
-                          href={item.url}
-                          className={`w-full h-full flex items-center justify-center p-4 transition-all duration-300
-                            ${
-                              isActive
-                                ? 'bg-white border-l-4 border-[#B751FB] rounded-none'
-                                : ''
-                            }`}>
-                          <item.icon
-                            className={`w-6 h-6 fill-current transition-all duration-300 ${
-                              isActive ? 'text-[#B751FB]' : 'text-[#9CA3AF]'
-                            }`}
-                          />
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  )
-                })}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-
-          <Link href={'/Settings'} className=" pb-20">
-            <Icon13thimg />
-          </Link>
-        </SidebarContent>
-      </Sidebar>
-    </>
-  )
-}
+//           <Link href={'/Settings'} className=" pb-20">
+//             <Icon13thimg />
+//           </Link>
+//         </SidebarContent>
+//       </Sidebar>
+//     </>
+//   )
+// }

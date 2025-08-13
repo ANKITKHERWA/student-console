@@ -8,12 +8,12 @@ function CriticalTask() {
   console.log(TaskDetail)
 
   return (
-    <div className="w-full grid grid-cols-3  gap-4 pt-5">
+    <div className="w-full md:grid grid-cols-3 gap-4 pt-5">
       {CriticalDetail.map((card, index) => (
         <div
           key={index}
-          className="border border-gray-200 rounded-lg  bg-white shadow-md hover:shadow-lg transition-shadow">
-          <div className="flex  gap-4 py-2 px-3">
+          className="border border-gray-200 rounded-lg  bg-white shadow-md hover:shadow-lg transition-shadow md:mt-0 mt-5 ">
+          <div className="flex gap-4 py-2 px-3">
             <span>{card.Icon}</span>
             <div>
               <Heading

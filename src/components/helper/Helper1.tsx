@@ -1,4 +1,4 @@
-import { Icon } from 'lucide-react'
+import { title } from 'process'
 import {
   Adsnot,
   Bankaccountnotlinked,
@@ -46,57 +46,57 @@ import {
   Staffnotadded,
   SubscriptionOverdue,
 } from './Icon1'
-import { Value } from '@radix-ui/react-select'
 
-export const navber = [
-  { path: '#', pera: 'Home' },
-  { path: '#', pera: 'Presale Benefits' },
-  { path: '#', pera: 'How it works' },
-  { path: '#', pera: 'Tokenomics' },
-  { path: '#', pera: 'Staking Rewards' },
-  { path: '#', pera: 'How to buy' },
-  { path: '#', pera: 'FAQ' },
-]
-export const items = [
+export const navItems = [
   {
     url: '/dashboard',
     icon: Icon3rdimg,
+    title: 'Dashboard',
   },
   {
     url: '/planner',
     icon: Icon4thimg,
+    title: 'Planner',
   },
   {
     url: '/insights',
     icon: Icon5thimg,
+    title: 'Insights',
   },
   {
     url: '/partner',
     icon: Icon6thimg,
+    title: 'Partner',
   },
   {
     url: '/appointment',
     icon: Icon7thimg,
+    title: 'Appointment',
   },
   {
     url: '/sales',
     icon: Icon8thimg,
+    title: 'Sales',
   },
   {
     url: '/team',
     icon: Icon9thimg,
+    title: 'Team',
   },
   {
     url: '/report',
     icon: Icon10thimg,
+    title: 'Report',
   },
   {
     url: '/training',
     icon: Icon11thimg,
+    title: 'Training',
   },
   {
     url: '/settings',
     icon: Icon12thimg,
+    title: 'Settings',
   },
 ]
 export const cardsDetail = [

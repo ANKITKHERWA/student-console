@@ -1,7 +1,6 @@
 'use client'
 
-import { SidebarProvider } from '@/components/ui/sidebar' // ✅ ShadCN se
-import { AppSidebar } from '@/components/common/AppSidebar'
+import Navbar from '@/components/common/Navbar'
 
 export default function RootLayout({
   children,
@@ -9,13 +8,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <SidebarProvider className="w-full">
-      <main className="flex  w-full">
-        <div className="w-14">
-          <AppSidebar />
-        </div>
-        <div className="w-full min-h-screen bg-white"> {children}</div>
-      </main>
-    </SidebarProvider>
+    <div>
+      <Navbar />
+      <main className="md:pl-14">{children}</main>
+    </div>
   )
 }

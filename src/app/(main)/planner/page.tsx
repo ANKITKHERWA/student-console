@@ -1,11 +1,11 @@
-import TopBar from '@/components/common/TopBar'
+import TopCommon from '@/components/common/TopCommon'
 import React from 'react'
 
 function page() {
   return (
-    <div>
-      <TopBar />
-    </div>
+    <>
+      <TopCommon />
+    </>
   )
 }
 
