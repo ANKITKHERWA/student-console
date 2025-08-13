@@ -16,7 +16,6 @@ import {
   FollowUpIcon,
   GrothTask,
   IssueIcon,
-  KebabMenuIcon,
   PartnerIcon,
   PhoneSmallIcon,
   SmallCriticalIcon,

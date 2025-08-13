@@ -1,7 +1,5 @@
-import TableKebabMenu from "../common/TableKebabMenu";
 import TableMeatbalMenu from "../pages/insights/TableMeatbalMenu";
 import {
-  ClenderIcon,
   GreenRightIcon,
   LocationIcon,
   OveralScoreIcon,
@@ -9,7 +7,6 @@ import {
   RedWrongtIcon,
   ShowPassIcon,
   SmallCalenderIcon,
-  TimeOutIcon,
 } from "./Icon2";
 
 export const loginFormData = [

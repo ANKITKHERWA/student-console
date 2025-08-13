@@ -1,23 +1,22 @@
 "use client";
-import DotColor from '@/components/common/DotColor';
-import { CriticalTask, GrothTask, SearchIcon } from '@/components/helper/Icon2';
-import { TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Tabs } from '@radix-ui/react-tabs'
-import React from 'react'
+import DotColor from "@/components/common/DotColor";
+import { CriticalTask, GrothTask, SearchIcon } from "@/components/helper/Icon2";
+import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs } from "@radix-ui/react-tabs";
+import React from "react";
 
-import { Input } from '@/components/ui/input';
-import Filter from './Filter';
-import SelecteStatus from './SelecteStatus';
-import TableCommon from '@/components/common/TableCommon';
+import { Input } from "@/components/ui/input";
+import Filter from "./Filter";
+import SelecteStatus from "./SelecteStatus";
+import TableCommon from "@/components/common/TableCommon";
 import { criticalData } from "@/components/helper/Helper2";
-import TopCommon from '@/components/common/TopCommon';
-
+import TopCommon from "@/components/common/TopCommon";
+import Growth from "./Growth";
 
 function Insights() {
-
   return (
     <div className="pb-10">
-      <TopCommon title='aklsdfjklsdjfksadfk'/>
+      <TopCommon title="aklsdfjklsdjfksadfk" />
       <div>
         <Tabs defaultValue="critical-task" className="w-full">
           <div className="border-y border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
@@ -65,11 +64,13 @@ function Insights() {
             </form>
             <TableCommon data={criticalData} />
           </TabsContent>
-          <TabsContent value="groth-task">hellodflksdfkl</TabsContent>
+          <TabsContent value="groth-task">
+            <Growth />
+          </TabsContent>
         </Tabs>
       </div>
     </div>
   );
 }
 
-export default Insights
+export default Insights;
