@@ -38,13 +38,13 @@ function VisitReportMudal() {
     <div>
       {" "}
       <Dialog>
-        <DialogTrigger className="bg-purple-500 text-white px-4 py-2 rounded">
+        <DialogTrigger className="bg-[#B751FB] sm:px-3 px-2  lg:px-4 md:py-2 py-1 lg:py-2.5 text-center cursor-pointer rounded md:rounded-[6px] shadow-[0_1px_4px_0_rgba(3,7,18,0.08)] border border-[#B751FB] text-[#fff] text-xs sm:text-sm font-semibold leading-[142.857%] -tracking-[0.28px]">
           Open Modal
         </DialogTrigger>
         {mudalData.map((item, index) => (
           <DialogContent
             key={index}
-            className="p-0 !max-w-[72%] h-[90%] !w-[72%] overflow-y-auto pb-10"
+            className="p-0 !max-w-[72%] !w-[72%] pb-10"
           >
             <DialogHeader className="px-4 py-5">
               <DialogTitle>Visit Report</DialogTitle>
@@ -160,7 +160,7 @@ function VisitReportMudal() {
                     </div>
                   </div>
 
-                  <div className="w-[70%]">
+                  <div className="w-[70%] !overflow-hidden">
                     {item.lastVisitCotent.map((visit, visitInde) => (
                       <TabsContent
                         key={visitInde}
@@ -191,7 +191,7 @@ function VisitReportMudal() {
                               </p>
                             ))}
                           </div>
-                          <div className="!overflow-auto mt-5 border border-gray-200 rounded-[6px] mb-10">
+                          <div className="overflow-auto mt-5 border border-gray-200 rounded-[6px] mb-10">
                             <VisitReportTable data={visit.tableData} />
                           </div>
                           <form className="flex justify-between gap-10">
@@ -205,7 +205,6 @@ function VisitReportMudal() {
                                     type="date"
                                     id={dateItem.id}
                                     ref={inputRef}
-                                    
                                     placeholder="Pick a date"
                                     className="outline-none"
                                   />
@@ -727,8 +726,6 @@ function VisitReportMudal() {
                             ))}
 
                             <form action="">
-                              
-
                               <Remark />
                               <div className="flex justify-between gap-10">
                                 {submiItem.date.map((dateItem, dateIndex) => (

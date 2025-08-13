@@ -1,3 +1,5 @@
+import TableKebabMenu from "../common/TableKebabMenu";
+import TableMeatbalMenu from "../pages/insights/TableMeatbalMenu";
 import {
   ClenderIcon,
   GreenRightIcon,
@@ -103,7 +105,7 @@ export const criticalData = [
         tcName: "Ayesha Sharma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
         sidebarData: [
           {
             img: "/assest/png/salone-small-img.png",
@@ -201,7 +203,7 @@ export const criticalData = [
         tcName: "Meera Sharma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 3,
@@ -224,7 +226,7 @@ export const criticalData = [
         tcName: "Ritika Verma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 4,
@@ -247,7 +249,7 @@ export const criticalData = [
         tcName: "Ayesha Sharma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 5,
@@ -270,7 +272,7 @@ export const criticalData = [
         tcName: "Meera Sharma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 6,
@@ -293,7 +295,7 @@ export const criticalData = [
         tcName: "Ritika Verma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 7,
@@ -316,7 +318,7 @@ export const criticalData = [
         tcName: "Ayesha Sharma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 8,
@@ -339,7 +341,7 @@ export const criticalData = [
         tcName: "Meera Sharma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 9,
@@ -362,7 +364,7 @@ export const criticalData = [
         tcName: "Ritika Verma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 10,
@@ -385,7 +387,7 @@ export const criticalData = [
         tcName: "Ayesha Sharma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 11,
@@ -408,7 +410,7 @@ export const criticalData = [
         tcName: "Meera Sharma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
       {
         id: 12,
@@ -431,7 +433,7 @@ export const criticalData = [
         tcName: "Ritika Verma",
         rmName: "Rhea Malhotra",
         feName: "Neha Singh",
-        action: "...",
+        action: <TableMeatbalMenu />,
       },
     ],
   },
