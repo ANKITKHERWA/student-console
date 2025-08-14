@@ -1,9 +1,14 @@
 import TableMeatbalMenu from "../pages/insights/TableMeatbalMenu";
 import {
+  DetailsIcon,
+  EarningIcon,
+  FileIcon,
   GreenRightIcon,
   LocationIcon,
+  MaleIcon,
   OveralScoreIcon,
   PhoneSmallIcon,
+  ProfileIcon,
   RedWrongtIcon,
   ShowPassIcon,
   SmallCalenderIcon,
@@ -1021,11 +1026,95 @@ export const mudalData = [
             titleData: " 35 / 50",
           },
         ],
-        
 
         date: [
           { heading: "Next Follow up date", id: "nextFollow" },
           { heading: "Next Visit Date", id: "nextVisit" },
+        ],
+      },
+    ],
+  },
+];
+
+export const settingCard = [
+  {
+    icon: <FileIcon />,
+    heading: "Territory Details",
+    pera: "View performance Metrics and PIN - wise salon distributions",
+    path: "#",
+  },
+  {
+    icon: <ProfileIcon />,
+    heading: "BA Profiles",
+    pera: "View and manage Business Associate Infirmations",
+    path: "/settings/ba-profile",
+  },
+  {
+    icon: <DetailsIcon />,
+    heading: "Bank details",
+    pera: "Add or update bank account details for payout",
+    path: "#",
+  },
+  {
+    icon: <EarningIcon />,
+    heading: "Earning",
+    pera: "Track revenue generated and view commission breakdowns",
+    path: "#",
+  },
+];
+
+export const baProfileData = [
+  {
+    img: "/assest/svg/wade-warren.svg",
+    name: "Wade Warren",
+    jobTitle: "Manager",
+    trigger: [
+      {
+        title: "Personal Details",
+        value: "personalDetails",
+      },
+      {
+        title: "Contract Details ",
+        value: "contract",
+      },
+      {
+        title: "Incentive ",
+        value: "incentive",
+      },
+    ],
+    content: [
+      {
+        value: "personalDetails",
+        data: [
+          { details: "Name:", detailsData: "Wade Warren" },
+          { details: "Gender: ", detailsData: "Male", icon: <MaleIcon /> },
+          { details: "Phone no.: ", detailsData: "+911233222423" },
+          { details: "Email: ", detailsData: "kuldeep@gmail.com" },
+          {
+            details: "Address: ",
+            detailsData: "4140 Parker Rd. Allentown, New Mexico 31134",
+          },
+        ],
+      },
+      {
+        value: "contract",
+        data: [
+          { details: "License Fee:", detailsData: "Wade Warren" },
+          { details: "License Term: ", detailsData: "1 year" },
+          { details: "Agreement Date: ", detailsData: "12-03-2024" },
+          { details: "Comm. Date:", detailsData: "15-03-2024" },
+          { details: "Expiry Date:", detailsData: "20-03-2025" },
+          { details: "Territory name:", detailsData: "Rohit Mehta" },
+          { details: "Territory PIN Code:", detailsData: "237489" },
+          { details: "Territory Potential:", detailsData: "Medium" },
+        ],
+      },
+      {
+        value: "incentive",
+        data: [
+          { details: "Subscription % :", detailsData: "80%" },
+          { details: "Get Featured % :", detailsData: "86%" },
+          { details: "Ads Manager % :", detailsData: "90%" },
         ],
       },
     ],
