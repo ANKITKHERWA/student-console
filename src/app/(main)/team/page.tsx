@@ -1,7 +1,12 @@
+import Team from '@/components/pages/team/Team'
 import React from 'react'
 
 function page() {
-  return <div></div>
+  return (
+    <div>
+      <Team />
+    </div>
+  )
 }
 
 export default page

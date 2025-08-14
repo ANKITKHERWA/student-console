@@ -75,7 +75,7 @@ export default function Navbar() {
           })}
         </nav>
 
-        <div className="flex justify-center items-center w-full my-3">
+        <div className="flex justify-center items-center w-full my-3 mt-20">
           <Link href="/settings">
             <Icon13thimg />
           </Link>

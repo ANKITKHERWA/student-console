@@ -6,7 +6,7 @@ import {
   SaloonteamCard,
 } from '../helper/Icon1'
 interface Iprops {
-  avatar: string
+  avatar: React.ReactNode
   name: string
   icon: React.ReactNode
   gender: string
@@ -17,6 +17,8 @@ interface Iprops {
   totalSalons?: number
   dotclass?: string
   className?: string
+  ganderclass?: string
+  tagclass?: string
 }
 // Example usage icons (replace with your icon library/icons)
 const TeamCard: React.FC<Iprops> = ({
@@ -31,25 +33,25 @@ const TeamCard: React.FC<Iprops> = ({
   totalSalons,
   dotclass,
   className = '',
+  ganderclass = '',
+  tagclass = '',
 }) => {
   return (
     <div
-      className={`max-w-xs rounded-xl border  border-[#E4E7EB] py-3 hover:bg-[#F1DCFF]  bg-[#fff]  shadow-lg ${className}`}>
+      className={`max-w-xs rounded-xl border  border-[#E4E7EB] py-3 hover:bg-[#F1DCFF]  bg-[#fff]  shadow-lg w-307  ${className}`}>
       <span className={`rounded-full h-3 w-3 ml-2 block ${dotclass}`}> </span>
       <div className="flex items-center gap-4 px-6">
-        <img
-          src={avatar} // replace with your image URL
-          alt={`${name} avatar`}
-          className="w-14 h-14 rounded-full object-cover border-2 border-purple-200"
-        />
+        <span>{avatar}</span>
         <div>
           <h2 className="text-lg font-semibold">{name}</h2>
           <div className="flex gap-2 mt-1">
-            <span className="rounded-full bg-white/80 text-gray-700 px-2.5 py-0.5 text-xs border font-medium flex items-center gap-1">
+            <span
+              className={`rounded-full bg-[#E4E7EB] text-gray-700 px-2.5 py-0.5 text-xs border border-[#808188] font-medium flex items-center gap-1 ${ganderclass}`}>
               {icon}
               {gender}
             </span>
-            <span className="rounded-full bg-orange-100 text-orange-800 px-2.5 py-0.5 text-xs font-medium border">
+            <span
+              className={`rounded-full bg-[#FFAB47] text-orange-800 px-2.5 py-0.5 text-xs font-medium border border-[#FFEFDB] ${tagclass}`}>
               {tag}
             </span>
           </div>
