@@ -12,11 +12,13 @@ import TableCommon from "@/components/common/TableCommon";
 import { criticalData } from "@/components/helper/Helper2";
 import TopCommon from "@/components/common/TopCommon";
 import Growth from "./Growth";
-
+import Tab from "@/components/common/Tab";
 function Insights() {
+
+
   return (
     <div className="pb-10">
-      <TopCommon title="aklsdfjklsdjfksadfk" />
+      <TopCommon title="Insights - Registered Partners" />
       <div>
         <Tabs defaultValue="critical-task" className="w-full">
           <div className="border-y border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
@@ -45,7 +47,6 @@ function Insights() {
               <DotColor title="Growth" className="bg-[#F5640A]" />
             </div>
           </div>
-
           <TabsContent value="critical-task" className="md:px-5 px-4 lg:px-6 ">
             <form className="md:py-5 py-3 sm:py-4 lg:py-6">
               <div className="flex justify-center min-[460px]:justify-between  items-center gap-2 flex-wrap min-[460px]:flex-nowrap">
@@ -64,10 +65,28 @@ function Insights() {
             </form>
             <TableCommon data={criticalData} />
           </TabsContent>
+          Glamour Glow Studio
           <TabsContent value="groth-task">
             <Growth />
           </TabsContent>
         </Tabs>
+
+        <Tab
+          tabs={[
+            {
+              id: "critical-task",
+              value: "critical-task",
+              title: "Critical Task",
+              icon: <CriticalTask />,
+              content: "klsdjfklsd",
+            },
+          ]}
+          rightSection={"lkdskl"}
+        />
+
+        <div>
+         
+        </div>
       </div>
     </div>
   );

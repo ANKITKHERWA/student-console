@@ -44,7 +44,7 @@ function VisitReportMudal() {
         {mudalData.map((item, index) => (
           <DialogContent
             key={index}
-            className="p-0 !max-w-[72%] !w-[72%] pb-10"
+            className="p-0 !w-[90%]"
           >
             <DialogHeader className="px-4 py-5">
               <DialogTitle>Visit Report</DialogTitle>
@@ -54,8 +54,8 @@ function VisitReportMudal() {
                 defaultValue={"listVisit"}
                 className="w-full !bg-[transparent] "
               >
-                <div className="flex">
-                  <div className="bg-[#F9FAFB] border-r max-w-[300px]">
+                <div className="flex w-full">
+                  <div className="bg-[#F9FAFB] border-r min-w-[300px]">
                     <div className="pt-5 ps-6 pb-[30px] pe-[30px] ">
                       <div className="flex gap-2.5 items-center text-[#030712]">
                         <div>
@@ -160,7 +160,7 @@ function VisitReportMudal() {
                     </div>
                   </div>
 
-                  <div className="w-[70%] !overflow-hidden">
+                  <div className="w-full">
                     {item.lastVisitCotent.map((visit, visitInde) => (
                       <TabsContent
                         key={visitInde}

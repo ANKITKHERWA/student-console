@@ -14,10 +14,14 @@ import {
   CalenderBlackSmallIocn,
   ClenderIcon,
   FollowUpIcon,
+  GreenRightIcon,
   GrothTask,
   IssueIcon,
   PartnerIcon,
   PhoneSmallIcon,
+  RedWrongtIcon,
+  RightArrowIcon,
+  RightIcon,
   SmallCriticalIcon,
   SmallEyeIcon,
   ViewReportIcon,
@@ -37,28 +41,29 @@ type Issue = {
   issu1: string;
   issu2: string;
 };
+type Td = {
+  saloneName?: SaloneName[];
+  add?: string;
+  health?: string;
+  issue?: Issue[];
+  staff?: string;
+  onboarding?: string;
+  bankAcc?: string;
+  monthlyTarget?: string;
+  subscription?: string;
+  lastVisit?: string;
+  nextVisit?: string;
+  tcName?: string;
+  rmName?: string;
+  feName?: string;
+  action?: React.ReactNode | React.ReactNode[];
+  data?:string
+};
+
 
 type Iprops = {
   id: number;
-  saloneName: SaloneName[];
-  add: string;
-  health: string;
-  issue: Issue[];
-  staff: string;
-  onboarding: React.ReactNode;
-  bankAcc: React.ReactNode;
-  monthlyTarget: React.ReactNode;
-  subscription: string;
-  lastVisit: string;
-  nextVisit: string;
-  tcName: string;
-  rmName: string;
-  feName: string;
-  action:
-    | React.ReactNode
-    | React.ReactNode
-    | React.ReactNode
-    | React.ReactNode[];
+  td: Td[];
 };
 
 type TableData = {
@@ -96,7 +101,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                 {items.head.map((headItem, headIndex) => (
                   <th
                     key={headIndex}
-                    className="font-semibold md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4 text-left"
+                    className="tdfont-semibold md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4 text-left"
                   >
                     {headItem.title}
                   </th>
@@ -111,113 +116,130 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                     selectedUser?.id === bodyitems.id ? "bg-[#F1DCFF]" : ""
                   }`}
                 >
-                  {bodyitems.saloneName.map((salon, saloneIndex) => (
+                  {bodyitems.td.map((tdItem, tdIndex) => (
                     <td
-                      key={saloneIndex}
+                      key={tdIndex}
                       className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4 truncate max-w-[200px]"
                     >
-                      <div className="flex items-center gap-2 ">
-                        <Image
-                          src={salon.img}
-                          width={20}
-                          height={20}
-                          alt="img"
-                        />
-                        <span>{salon.name}</span>
-                      </div>
+                      {tdItem.saloneName?.map((salon, saloneIndex) => (
+                        <div
+                          key={saloneIndex}
+                          className="flex items-center gap-2"
+                        >
+                          <Image
+                            src={salon.img}
+                            width={20}
+                            height={20}
+                            alt="img"
+                          />
+                          <span>{salon.name}</span>
+                        </div>
+                      ))}
+
+                      {tdItem.add && <span>{tdItem.add}</span>}
+                      {tdItem.data && <span>{tdItem.data}</span>}
+
+                      {tdItem.health && <span>{tdItem.health}</span>}
+
+                      {tdItem.issue?.map((issue, issueIndex) => (
+                        <div
+                          key={issueIndex}
+                          className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4"
+                        >
+                          <div className="flex gap-2 text-[10px] text-[rgba(3,7,18,0.70)]">
+                            <span className="w-[20px] h-[20px] rounded-full border border-[#F00] bg-[rgba(255,136,136,0.34)] flex justify-center items-center">
+                              {issue.issu1}
+                            </span>
+                            <span className="w-[20px] h-[20px] rounded-full border bg-[#F3CED6] border-[#F5640A] flex justify-center items-center">
+                              {issue.issu2}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                      {tdItem.staff && <span> {tdItem.staff}</span>}
+
+                      {tdItem.onboarding && (
+                        <span> 
+                          {tdItem.onboarding === "true" ? (
+                            <GreenRightIcon />
+                          ) : tdItem.onboarding === "false" ? (
+                            <RedWrongtIcon />
+                          ) : null}
+                        </span>
+                      )}
+                      {tdItem.bankAcc && (
+                        <span> 
+                          {tdItem.bankAcc === "true" ? (
+                            <GreenRightIcon />
+                          ) : tdItem.bankAcc === "false" ? (
+                            <RedWrongtIcon />
+                          ) : null}
+                        </span>
+                      )} 
+                      {tdItem.monthlyTarget && (
+                        <span> 
+                          {tdItem.monthlyTarget === "true" ? (
+                            <GreenRightIcon /> 
+                          ) : (
+                            <RedWrongtIcon />
+                          )} 
+                        </span>
+                      )}
+                      {tdItem.subscription && (
+                        <span>
+                          <StatusBadge status={tdItem.subscription} />
+                        </span>
+                      )}
+                      {tdItem.lastVisit && <span> {tdItem.lastVisit}</span>}
+                      {tdItem.nextVisit && <span> {tdItem.nextVisit}</span>}
+                      {tdItem.tcName && <span> {tdItem.tcName}</span>}
+                      {tdItem.rmName && <span> {tdItem.rmName}</span>}
+                      {tdItem.feName && <span> {tdItem.feName}</span>}
+                      {tdItem.action && (
+                        <span>
+                          <TableKebabMenu
+                            items={[
+                              {
+                                label: "View as partner",
+                                extra: <SmallEyeIcon className="w-4 h-4" />,
+                                // onClick: () => console.log("Edit clicked"),
+                              },
+                              {
+                                label: "View Report",
+                                extra: <ViewReportIcon className="w-4 h-4" />,
+                                // onClick: () => console.log("Delete clicked"),
+                              },
+                              {
+                                label: "Add Visit",
+                                extra: (
+                                  <CalenderBlackSmallIocn className="w-4 h-4" />
+                                ),
+                                // onClick: () => console.log("Share clicked"),
+                              },
+                              {
+                                label: "Add Follow Up",
+                                extra: <FollowUpIcon className="w-4 h-4" />,
+                                // onClick: () => console.log("Share clicked"),
+                              },
+                              {
+                                label: "Add Visit Report",
+                                extra: <PlusIcon className="w-4 h-4" />,
+                                onClick: () => {
+                                  setSelectedUser(bodyitems as Iprops);
+                                  setOpen(true);
+                                },
+                              },
+                              {
+                                label: "Assign Partner",
+                                extra: <PartnerIcon className="w-4 h-4" />,
+                                // onClick: () => console.log("Share clicked"),
+                              },
+                            ]}
+                          />
+                        </span>
+                      )}
                     </td>
                   ))}
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4 truncate max-w-[200px]">
-                    <span>{bodyitems.add}</span>
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.health}
-                  </td>
-                  {bodyitems.issue.map((issue, issueIndex) => (
-                    <td
-                      key={issueIndex}
-                      className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4"
-                    >
-                      <div className="flex gap-2 text-[10px] text-[rgba(3,7,18,0.70)]">
-                        <span className="w-[20px] h-[20px] rounded-full border border-[#F00] bg-[rgba(255,136,136,0.34)] flex justify-center items-center">
-                          {issue.issu1}
-                        </span>
-                        <span className="w-[20px] h-[20px] rounded-full border bg-[#F3CED6] border-[#F5640A] flex justify-center items-center">
-                          {issue.issu2}
-                        </span>
-                      </div>
-                    </td>
-                  ))}
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.staff}
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.onboarding}
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.bankAcc}
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.monthlyTarget}
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    <StatusBadge status={bodyitems.subscription} />
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.lastVisit}
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.nextVisit}
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.tcName}
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.rmName}
-                  </td>
-                  <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">
-                    {bodyitems.feName}
-                  </td>
-                  {/* <td className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4">{bodyitems.action}</td> */}
-                  <td>
-                    <TableKebabMenu
-                      items={[
-                        {
-                          label: "View as partner",
-                          extra: <SmallEyeIcon className="w-4 h-4" />,
-                          // onClick: () => console.log("Edit clicked"),
-                        },
-                        {
-                          label: "View Report",
-                          extra: <ViewReportIcon className="w-4 h-4" />,
-                          // onClick: () => console.log("Delete clicked"),
-                        },
-                        {
-                          label: "Add Visit",
-                          extra: <CalenderBlackSmallIocn className="w-4 h-4" />,
-                          // onClick: () => console.log("Share clicked"),
-                        },
-                        {
-                          label: "Add Follow Up",
-                          extra: <FollowUpIcon className="w-4 h-4" />,
-                          // onClick: () => console.log("Share clicked"),
-                        },
-                        {
-                          label: "Add Visit Report",
-                          extra: <PlusIcon className="w-4 h-4" />,
-                          onClick: () => {
-                            setSelectedUser(bodyitems as Iprops);
-                            setOpen(true);
-                          },
-                        },
-                        {
-                          label: "Assign Partner",
-                          extra: <PartnerIcon className="w-4 h-4" />,
-                          // onClick: () => console.log("Share clicked"),
-                        },
-                      ]}
-                    />
-                  </td>
                 </tr>
               ))}
             </tbody>
@@ -225,6 +247,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
         ))}
       </div>
 
+      {/* side bar */}
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
@@ -240,7 +263,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                   <div key={index}>
                     {items.sidebarData?.map((itm, idx) => (
                       <div key={idx}>
-                        {/* profile */}
                         <div className="lg:pt-5 lg:ps-6 lg:pb-[30px] md:py-5 p-4 md:px-6 lg:pe-[30px]">
                           <div className="flex justify-between gap-2">
                             <div>
@@ -295,7 +317,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                               </div>
                             </div>
                             <TableKebabMenu
-                            
                               items={[
                                 {
                                   label: "View as partner",
@@ -347,7 +368,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
-                        {/* additional details */}
+
                         <div className="border-t md:pt-5 md:pb-3 md:px-5 px-4 py-3 lg:px-[30px] text-sm">
                           <SmallHeading title="Additional details" />
                           <div className="flex justify-between items-center mt-2 sm:mt-3">
@@ -375,7 +396,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
-                        {/* assigned parsnole */}
+
                         <div className="border-t md:pt-5 md:pb-3 md:px-5 px-4 py-3 lg:px-[30px] text-sm ">
                           <SmallHeading title="Assigned Personnel" />
                           <div className="flex justify-between items-center mt-2 sm:mt-3">
@@ -415,7 +436,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
-                        {/* issuss */}
+
                         <div className="border-t md:pt-5 md:pb-3 md:px-5 px-4 py-3 lg:px-[30px]">
                           <div className="flex gap-2 items-center">
                             <IssueIcon />
@@ -423,7 +444,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                           </div>
                           <div>
                             <Tabs defaultValue="critical" className="w-full">
-                              {/* Tab Header */}
                               <TabsList className="flex justify-between w-full bg-transparent mt-3">
                                 <TabsTrigger
                                   value="critical"
@@ -442,7 +462,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                                 </TabsTrigger>
                               </TabsList>
 
-                              {/* Critical Content */}
                               <TabsContent
                                 value="critical"
                                 className="space-y-1.5 md:space-y-2 mt-3 !w-full"
@@ -460,7 +479,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                                 ))}
                               </TabsContent>
 
-                              {/* Growth Content */}
                               <TabsContent
                                 value="growth"
                                 className="space-y-2 mt-3"
@@ -480,7 +498,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </Tabs>
                           </div>
                         </div>
-                        {/* action report */}
+
                         <div className="border-t md:pt-5 md:pb-3 md:px-5 px-4 py-3 lg:px-[30px]">
                           <div className="flex justify-between items-center mb-[5px]">
                             <div className="flex items-center gap-2">
@@ -538,7 +556,11 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
               </div>
             ))}
             <div className="px-[30px] flex justify-end gap-2 pb-3">
-              <SecondryBtn title="Cancel" className="w-max" />
+              <SecondryBtn
+                title="Cancel"
+                className="w-max"
+                onClick={() => setOpen(false)}
+              />
               <VisitReportMudal />
             </div>
           </div>
