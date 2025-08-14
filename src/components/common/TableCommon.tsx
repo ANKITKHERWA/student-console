@@ -31,6 +31,8 @@ import SecondryBtn from "./SecondryBtn";
 import VisitReportMudal from "../pages/insights/VisitReportMudal";
 import TableKebabMenu from "./TableKebabMenu";
 import { PlusIcon } from "lucide-react";
+import TableBody from "./TableBody";
+import TableHead from "./TableHead";
 
 type SaloneName = {
   img: string;
@@ -96,7 +98,8 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
       <div className="overflow-auto border rounded-[6px] border-[#D9DDE3]">
         {data.map((items, index) => (
           <table key={index} className="text-nowrap w-full text-xs sm:text-sm">
-            <thead>
+            <TableHead data={criticalData} />
+            {/* <thead>
               <tr className="bg-[#fff]  leading-[142%] tracking-normal text-[#808188] ">
                 {items.head.map((headItem, headIndex) => (
                   <th
@@ -107,8 +110,8 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                   </th>
                 ))}
               </tr>
-            </thead>
-            <tbody>
+            </thead> */}
+            {/* <tbody>
               {items.body.map((bodyitems) => (
                 <tr
                   key={bodyitems.id}
@@ -242,13 +245,20 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                   ))}
                 </tr>
               ))}
-            </tbody>
+            </tbody> */}
+
+            <TableBody
+              body={items.body}
+              selectedUser={selectedUser}
+              setSelectedUser={setSelectedUser}
+              setOpen={setOpen}
+            />
           </table>
         ))}
       </div>
 
       {/* side bar */}
-      <Sheet open={open} onOpenChange={setOpen}>
+      {/* <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
           className="w-full sm:w-[400px] overflow-auto !pb-3"
@@ -565,7 +575,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
             </div>
           </div>
         </SheetContent>
-      </Sheet>
+      </Sheet> */}
     </>
   );
 };
