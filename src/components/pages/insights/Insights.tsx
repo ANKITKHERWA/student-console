@@ -12,6 +12,7 @@ import TableCommon from "@/components/common/TableCommon";
 import { criticalData } from "@/components/helper/Helper2";
 import TopCommon from "@/components/common/TopCommon";
 import Growth from "./Growth";
+import Tab from "@/components/common/Tab";
 function Insights() {
 
 
@@ -70,7 +71,7 @@ function Insights() {
           </TabsContent>
         </Tabs>
 
-        {/* <Tab
+        <Tab
           tabs={[
             {
               id: "critical-task",
@@ -79,23 +80,9 @@ function Insights() {
               icon: <CriticalTask />,
               content: "klsdjfklsd",
             },
-            {
-              id: "groth-task",
-              value: "groth-task",
-              title: "Growth Task",
-              icon: <GrothTask />,
-              content: "growthContent",
-            },
-            {
-              id: "groth-task",
-              value: "groth-task",
-              title: "Growth Task",
-              icon: <GrothTask />,
-              content: "growthContent",
-            },
           ]}
           rightSection={"lkdskl"}
-        /> */}
+        />
 
         <div>
          

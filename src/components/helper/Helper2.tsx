@@ -101,9 +101,9 @@ export const criticalData = [
           { health: "80" },
           { issue: [{ issu1: "2", issu2: "3" }] },
           { staff: "15" },
-          { onboarding: true },
-          { bankAcc: true },
-          { monthlyTarget: true },
+          { onboarding:  "true" },
+          { bankAcc:  "false" },
+          { monthlyTarget:  "false" },
           // {data:"jskdfjlkjflksdjfjkl"},
           { subscription: "active" },
           { lastVisit: "3 days ago" },
@@ -113,82 +113,82 @@ export const criticalData = [
           { feName: "Neha Singh" },
           { action: <TableMeatbalMenu /> },
         ],
+        sidebarData: [
+          {
+            img: "/assest/png/salone-small-img.png",
+            name: "Glamour Glow Studio",
+            nextVisit: ": 23 June ",
+            lastVisit: " 28 June",
+            contacte: [
+              {
+                icon: <LocationIcon />,
+                title: "123 Sparkle Ave, Glam City",
+                path: "#",
+              },
+              {
+                icon: <PhoneSmallIcon />,
+                title: "55523-32324",
+                path: "tel:55523-32324",
+              },
+            ],
+            condetions: [
+              { count: "Critical : 6" },
+              {},
+              { count: "Growth : 4" },
+              {},
+              { count: "Health : 8" },
+            ],
+            ownerName: " John Walley",
+            ownerNo: " 23246-93902",
+            manager: " Esther Howard",
+            managerNo: " 78363-47438",
+            fe: " Aditi Singh",
+            feNo: " 32456-39432",
+            rm: "  23348-32948",
+            rmNo: " 78363-47438",
+            tc: "  Priya Kumari",
+            tcNo: " 84950-34859",
+            actionData: [
+              {
+                heaing: "Visit on April 10th, 2024",
+                persone: "by Ajay Singh (FE)",
+                pera: [
+                  { stronText: "Overall Score:", text: " 30/50" },
+                  {
+                    stronText: "Remarks: ",
+                    text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+                  },
+                ],
+              },
+              {
+                heaing: "Visit on April 10th, 2024",
+                persone: "by Ajay Singh (FE)",
+                pera: [
+                  {
+                    stronText: "Reason: ",
+                    text: " Task from previous visit not completed",
+                  },
+                  {
+                    stronText: "Remarks: ",
+                    text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+                  },
+                ],
+              },
+              {
+                heaing: "Visit on April 10th, 2024",
+                persone: "by Ajay Singh (FE)",
+                pera: [
+                  { stronText: "Overall Score:", text: " 30/50" },
+                  {
+                    stronText: "Remarks: ",
+                    text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
       },
-      // sidebarData: [
-      //   {
-      //     img: "/assest/png/salone-small-img.png",
-      //     name: "Glamour Glow Studio",
-      //     nextVisit: ": 23 June ",
-      //     lastVisit: " 28 June",
-      //     contacte: [
-      //       {
-      //         icon: <LocationIcon />,
-      //         title: "123 Sparkle Ave, Glam City",
-      //         path: "#",
-      //       },
-      //       {
-      //         icon: <PhoneSmallIcon />,
-      //         title: "55523-32324",
-      //         path: "tel:55523-32324",
-      //       },
-      //     ],
-      //     condetions: [
-      //       { count: "Critical : 6" },
-      //       {},
-      //       { count: "Growth : 4" },
-      //       {},
-      //       { count: "Health : 8" },
-      //     ],
-      //     ownerName: " John Walley",
-      //     ownerNo: " 23246-93902",
-      //     manager: " Esther Howard",
-      //     managerNo: " 78363-47438",
-      //     fe: " Aditi Singh",
-      //     feNo: " 32456-39432",
-      //     rm: "  23348-32948",
-      //     rmNo: " 78363-47438",
-      //     tc: "  Priya Kumari",
-      //     tcNo: " 84950-34859",
-      //     actionData: [
-      //       {
-      //         heaing: "Visit on April 10th, 2024",
-      //         persone: "by Ajay Singh (FE)",
-      //         pera: [
-      //           { stronText: "Overall Score:", text: " 30/50" },
-      //           {
-      //             stronText: "Remarks: ",
-      //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
-      //           },
-      //         ],
-      //       },
-      //       {
-      //         heaing: "Visit on April 10th, 2024",
-      //         persone: "by Ajay Singh (FE)",
-      //         pera: [
-      //           {
-      //             stronText: "Reason: ",
-      //             text: " Task from previous visit not completed",
-      //           },
-      //           {
-      //             stronText: "Remarks: ",
-      //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
-      //           },
-      //         ],
-      //       },
-      //       {
-      //         heaing: "Visit on April 10th, 2024",
-      //         persone: "by Ajay Singh (FE)",
-      //         pera: [
-      //           { stronText: "Overall Score:", text: " 30/50" },
-      //           {
-      //             stronText: "Remarks: ",
-      //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
-      //           },
-      //         ],
-      //       },
-      //     ],
-      //   },
-      // ],
       // {
       //   id: 2,
       //   saloneName: [

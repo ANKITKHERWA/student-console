@@ -19,7 +19,7 @@ export default function Tab({ tabs, rightSection }: CommonTabsProps) {
     <Tabs defaultValue={tabs[0]?.value} className="w-full">
       {/* Header */}
       <div className="border-y border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
-        <TabsList className="rounded-none bg-transparent !w-full flex !justify-start ">
+        <TabsList defaultValue={1} className="rounded-none bg-transparent !w-full flex !justify-start ">
           <div className="flex gap-3 items-center">
             {tabs.map((tab) => (
               <TabsTrigger

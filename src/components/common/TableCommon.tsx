@@ -47,9 +47,9 @@ type Td = {
   health?: string;
   issue?: Issue[];
   staff?: string;
-  onboarding?: boolean;
-  bankAcc?: boolean;
-  monthlyTarget?: boolean;
+  onboarding?: string;
+  bankAcc?: string;
+  monthlyTarget?: string;
   subscription?: string;
   lastVisit?: string;
   nextVisit?: string;
@@ -159,30 +159,30 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                       {tdItem.staff && <span> {tdItem.staff}</span>}
 
                       {tdItem.onboarding && (
-                        <span>
-                          {tdItem.onboarding === true ? (
+                        <span> 
+                          {tdItem.onboarding === "true" ? (
                             <GreenRightIcon />
-                          ) : tdItem.onboarding === false ? (
+                          ) : tdItem.onboarding === "false" ? (
                             <RedWrongtIcon />
                           ) : null}
                         </span>
                       )}
                       {tdItem.bankAcc && (
-                        <span>
-                          {tdItem.bankAcc === true ? (
+                        <span> 
+                          {tdItem.bankAcc === "true" ? (
                             <GreenRightIcon />
-                          ) : tdItem.bankAcc === false ? (
+                          ) : tdItem.bankAcc === "false" ? (
                             <RedWrongtIcon />
                           ) : null}
                         </span>
-                      )}
+                      )} 
                       {tdItem.monthlyTarget && (
-                        <span>
-                          {tdItem.monthlyTarget === true ? (
-                            <GreenRightIcon />
-                          ) : tdItem.monthlyTarget === false ? (
+                        <span> 
+                          {tdItem.monthlyTarget === "true" ? (
+                            <GreenRightIcon /> 
+                          ) : (
                             <RedWrongtIcon />
-                          ) : null}
+                          )} 
                         </span>
                       )}
                       {tdItem.subscription && (
@@ -248,7 +248,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
       </div>
 
       {/* side bar */}
-      {/* <Sheet open={open} onOpenChange={setOpen}>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
           className="w-full sm:w-[400px] overflow-auto !pb-3"
@@ -263,7 +263,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                   <div key={index}>
                     {items.sidebarData?.map((itm, idx) => (
                       <div key={idx}>
-                       
                         <div className="lg:pt-5 lg:ps-6 lg:pb-[30px] md:py-5 p-4 md:px-6 lg:pe-[30px]">
                           <div className="flex justify-between gap-2">
                             <div>
@@ -369,7 +368,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="border-t md:pt-5 md:pb-3 md:px-5 px-4 py-3 lg:px-[30px] text-sm">
                           <SmallHeading title="Additional details" />
                           <div className="flex justify-between items-center mt-2 sm:mt-3">
@@ -397,7 +396,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
-                       
+
                         <div className="border-t md:pt-5 md:pb-3 md:px-5 px-4 py-3 lg:px-[30px] text-sm ">
                           <SmallHeading title="Assigned Personnel" />
                           <div className="flex justify-between items-center mt-2 sm:mt-3">
@@ -437,7 +436,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="border-t md:pt-5 md:pb-3 md:px-5 px-4 py-3 lg:px-[30px]">
                           <div className="flex gap-2 items-center">
                             <IssueIcon />
@@ -445,7 +444,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                           </div>
                           <div>
                             <Tabs defaultValue="critical" className="w-full">
-                            
                               <TabsList className="flex justify-between w-full bg-transparent mt-3">
                                 <TabsTrigger
                                   value="critical"
@@ -464,7 +462,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                                 </TabsTrigger>
                               </TabsList>
 
-                            
                               <TabsContent
                                 value="critical"
                                 className="space-y-1.5 md:space-y-2 mt-3 !w-full"
@@ -482,7 +479,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                                 ))}
                               </TabsContent>
 
-                              
                               <TabsContent
                                 value="growth"
                                 className="space-y-2 mt-3"
@@ -502,7 +498,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                             </Tabs>
                           </div>
                         </div>
-                        
+
                         <div className="border-t md:pt-5 md:pb-3 md:px-5 px-4 py-3 lg:px-[30px]">
                           <div className="flex justify-between items-center mb-[5px]">
                             <div className="flex items-center gap-2">
@@ -569,7 +565,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
             </div>
           </div>
         </SheetContent>
-      </Sheet> */}
+      </Sheet>
     </>
   );
 };
