@@ -46,12 +46,13 @@ const TeamCard: React.FC<Iprops> = ({
           <h2 className="text-lg font-semibold">{name}</h2>
           <div className="flex gap-2 mt-1">
             <span
-              className={`rounded-full bg-[#E4E7EB] text-gray-700 px-2.5 py-0.5 text-xs border border-[#808188] font-medium flex items-center gap-1 ${ganderclass}`}>
+              className={`rounded-full  text-black px-2.5 py-0.5 text-xs border  font-medium flex items-center gap-1 ${ganderclass}`}>
               {icon}
               {gender}
             </span>
+            <span className="w-[1px] h-[20px]  bg-[#E4E7EB] hover:bg-white"></span>
             <span
-              className={`rounded-full bg-[#FFAB47] text-orange-800 px-2.5 py-0.5 text-xs font-medium border border-[#FFEFDB] ${tagclass}`}>
+              className={`rounded-full  text-black px-2.5 py-0.5 text-xs font-medium border  ${tagclass}`}>
               {tag}
             </span>
           </div>

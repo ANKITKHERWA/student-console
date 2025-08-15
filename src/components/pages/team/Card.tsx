@@ -44,6 +44,8 @@ function Card() {
               manages={Item.manages}
               totalSalons={Item.totalSalons}
               dotclass={Item.dotclass}
+              tagclass={Item.tagclass}
+              ganderclass={Item.ganderclass}
             />
           ))}
         </div>
@@ -63,6 +65,8 @@ function Card() {
               email={Item.email}
               totalSalons={Item.totalSalons}
               dotclass={Item.dotclass}
+              tagclass={Item.tagclass}
+              ganderclass={Item.ganderclass}
             />
           ))}
         </div>

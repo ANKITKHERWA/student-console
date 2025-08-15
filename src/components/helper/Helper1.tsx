@@ -1321,8 +1321,8 @@ export const some = [
     manages: ' 2 RM & 3 FE',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
-    tagclass: 'bg-[#FFAB47]',
-    ganderclass: 'bg-[#E4E7EB]',
+    tagclass: 'border-[#FFAB47] bg-[#FFEFDB]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Priyasingh />,
@@ -1335,8 +1335,8 @@ export const some = [
     manages: ' 2 RM & 3 FE',
     totalSalons: 1100,
     dotclass: 'bg-red-500',
-    tagclass: 'bg-[#FFAB47]',
-    ganderclass: 'bg-[#E4E7EB]',
+    tagclass: 'border-[#FFAB47] bg-[#FFEFDB]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
 ]
 export const some2 = [
@@ -1351,8 +1351,8 @@ export const some2 = [
     manages: ' 6FE',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
-    tagclass: 'bg-[#FFAB47]',
-    ganderclass: 'bg-[#E4E7EB]',
+    tagclass: 'border-[#8EBAF6] bg-[rgba(207,226,252,0.2)]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Theresawebb />,
@@ -1365,6 +1365,8 @@ export const some2 = [
     manages: '6FE',
     totalSalons: 1100,
     dotclass: 'bg-red-500',
+    tagclass: 'border-[#8EBAF6] bg-[rgba(207,226,252,0.2)]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Darrellsteward />,
@@ -1377,6 +1379,8 @@ export const some2 = [
     manages: '6FE',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
+    tagclass: 'border-[#8EBAF6] bg-[rgba(207,226,252,0.2)]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Kathrynmurphy />,
@@ -1389,6 +1393,8 @@ export const some2 = [
     manages: '6FE',
     totalSalons: 1100,
     dotclass: 'bg-red-500',
+    tagclass: 'border-[#8EBAF6] bg-[rgba(207,226,252,0.2)]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
 ]
 export const some3 = [
@@ -1402,8 +1408,8 @@ export const some3 = [
     email: 'bill.sanders@example.com',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
-    ganderclass: 'bg-blue-500',
-    tagclass: 'bg-blue-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Floydmiles />,
@@ -1415,6 +1421,8 @@ export const some3 = [
     email: 'tanya.hill@example.com',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Arlenemccoy />,
@@ -1426,6 +1434,8 @@ export const some3 = [
     email: 'debbie.baker@example.com',
     totalSalons: 1100,
     dotclass: 'bg-red-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Arlenemccoy />,
@@ -1437,6 +1447,8 @@ export const some3 = [
     email: 'sara.cruz@example.com',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Wadearren />,
@@ -1448,6 +1460,8 @@ export const some3 = [
     email: 'bill.sanders@example.com',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Floydmiles />,
@@ -1459,6 +1473,8 @@ export const some3 = [
     email: 'tanya.hill@example.com',
     totalSalons: 1100,
     dotclass: 'bg-red-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Arlenemccoy />,
@@ -1470,6 +1486,8 @@ export const some3 = [
     email: 'jessica.hanson@example.com',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Arlenemccoy />,
@@ -1481,6 +1499,8 @@ export const some3 = [
     email: 'kenzi.lawson@example.com',
     totalSalons: 1100,
     dotclass: 'bg-red-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Arlenemccoy />,
@@ -1492,6 +1512,8 @@ export const some3 = [
     email: 'michelle.rivera@example..com',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
   {
     avatar: <Arlenemccoy />,
@@ -1503,5 +1525,7 @@ export const some3 = [
     email: 'kenzi.lawson@example.com',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
+    tagclass: 'border-[#31A553] bg-[#E3F7E9]',
+    ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
 ]
