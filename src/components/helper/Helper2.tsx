@@ -1,3 +1,4 @@
+import { toDate } from "date-fns";
 import TableMeatbalMenu from "../pages/insights/TableMeatbalMenu";
 import {
   DetailsIcon,
@@ -101,17 +102,43 @@ export const criticalData = [
           { health: "80" },
           { issue: [{ issu1: "2", issu2: "3" }] },
           { staff: "15" },
-          { onboarding:  "true" },
-          { bankAcc:  "false" },
-          { monthlyTarget:  "false" },
-          // {data:"jskdfjlkjflksdjfjkl"},
+          { onboarding: "true" },
+          { bankAcc: "false" },
+          { monthlyTarget: "true" },
           { subscription: "active" },
           { lastVisit: "3 days ago" },
           { nextVisit: "July 10, 2025" },
           { tcName: "Ayesha Sharma" },
           { rmName: "Rhea Malhotra" },
           { feName: "Neha Singh" },
-          { action: <TableMeatbalMenu /> },
+          { action: "-" },
+        ],
+      },
+      {
+        id: 2,
+        td: [
+          {
+            saloneName: [
+              {
+                img: "/assest/png/salone-small-img.png",
+                name: "Chroma Lounge",
+              },
+            ],
+          },
+          { add: "281 Madison Street, SoHo District, NY" },
+          { health: "80" },
+          { issue: [{ issu1: "2", issu2: "3" }] },
+          { staff: "15" },
+          { onboarding: "true" },
+          { bankAcc: "false" },
+          { monthlyTarget: "true" },
+          { subscription: "due" },
+          { lastVisit: "3 days ago" },
+          { nextVisit: "July 10, 2025" },
+          { tcName: "Ayesha Sharma" },
+          { rmName: "Rhea Malhotra" },
+          { feName: "Neha Singh" },
+          { action: "Neha Singh" },
         ],
         sidebarData: [
           {
