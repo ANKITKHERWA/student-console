@@ -12,9 +12,7 @@ import TableCommon from "@/components/common/TableCommon";
 import { criticalData } from "@/components/helper/Helper2";
 import TopCommon from "@/components/common/TopCommon";
 import Growth from "./Growth";
-import Tab from "@/components/common/Tab";
 function Insights() {
-
 
   return (
     <div className="pb-10">
@@ -33,13 +31,21 @@ function Insights() {
                   Critical Task
                 </TabsTrigger>
                 <TabsTrigger
+                  id="growth-task"
+                  value="growth-task"
+                  className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=inactive]:fill-[#808188] !shadow-none px-2"
+                >
+                  <GrothTask />
+                  Critical Task
+                </TabsTrigger>
+                {/* <TabsTrigger
                   id="groth-task"
                   value="groth-task"
                   className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none  -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent !shadow-none data-[state=inactive]:fill-[#808188]"
                 >
                   <GrothTask className="" />
                   Growth Task
-                </TabsTrigger>
+                </TabsTrigger> */}
               </div>
             </TabsList>
             <div className="sm:flex hidden items-center gap-2 sm:gap-4 md:gap-[30px] ml-auto">
@@ -65,13 +71,30 @@ function Insights() {
             </form>
             <TableCommon data={criticalData} />
           </TabsContent>
-          Glamour Glow Studio
-          <TabsContent value="groth-task">
+          {/* <TabsContent value="growth-task">
+           
+          </TabsContent> */}
+          <TabsContent value="growth-task" className="md:px-5 px-4 lg:px-6 ">
+            <form className="md:py-5 py-3 sm:py-4 lg:py-6">
+              <div className="flex justify-center min-[460px]:justify-between  items-center gap-2 flex-wrap min-[460px]:flex-nowrap">
+                <SelecteStatus />
+                <div className="flex items-center md:gap-5 sm:gap-4 gap-2 lg:gap-[30px]">
+                  <div className="flex items-center gap-1 w-full xl:min-w-[290px] py-1.5 px-3 !border-[#D9DDE3] border rounded md:rounded-[6px]">
+                    <Input
+                      placeholder="Search..."
+                      className="max-w-sm !ring-0 w-full !shadow-none !border-none !rounded-[0px] !h-[20px] !p-0"
+                    />
+                    <SearchIcon />
+                  </div>
+                  <Filter />
+                </div>
+              </div>
+            </form>
             <Growth />
           </TabsContent>
         </Tabs>
 
-        <Tab
+        {/* <Tab
           tabs={[
             {
               id: "critical-task",
@@ -82,11 +105,9 @@ function Insights() {
             },
           ]}
           rightSection={"lkdskl"}
-        />
+        /> */}
 
-        <div>
-         
-        </div>
+        <div></div>
       </div>
     </div>
   );

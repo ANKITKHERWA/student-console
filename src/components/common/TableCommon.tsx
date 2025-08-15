@@ -258,7 +258,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
       </div>
 
       {/* side bar */}
-      {/* <Sheet open={open} onOpenChange={setOpen}>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
           className="w-full sm:w-[400px] overflow-auto !pb-3"
@@ -575,7 +575,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
             </div>
           </div>
         </SheetContent>
-      </Sheet> */}
+      </Sheet>
     </>
   );
 };
