@@ -90,7 +90,7 @@ function Insights() {
                 </div>
               </div>
             </form>
-            <Growth />
+            {/* <Growth /> */}
           </TabsContent>
         </Tabs>
 

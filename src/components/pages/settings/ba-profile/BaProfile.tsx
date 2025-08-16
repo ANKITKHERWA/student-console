@@ -56,8 +56,8 @@ function BaProfile() {
   return (
     <div>
       <TopCommon title="Setting" />
-      <div className="md:px-5 px-4 lg:px-6 flex justify-center mt-10">
-        <div>
+      <div className="md:px-5 px-4 lg:px-6 flex justify-center py-5 h-screen">
+        <div className="w-full  max-w-[545px] my-auto">
           <h3 className="flex items-center gap-1 text-[#030712] text-base font-medium leading-[150%] -tracking-[0.32px]">
             <span className="text-[#808188]">Settings</span>
             <span className="mt-1">
@@ -68,29 +68,35 @@ function BaProfile() {
             </Link>
           </h3>
           {baProfileData.map((item, index) => (
-            <div key={index} className="mt-8">
-              <div className="flex gap-[15px] items-center border p-[15px] rounded-[6px] border-[#E4E7EB]">
+            <div key={index} className="mt-5 md:mt-6 lg:mt-8">
+              <div className="flex gap-2 md:gap-[15px] items-center border md:p-3 p-2 lg:p-[15px] rounded-[6px] border-[#E4E7EB]">
                 <div>
                   <Image
                     src={item.img}
                     width={50}
                     height={50}
                     alt="user Profile"
+                    className="md:w-[50px] w-[40px]"
                   />
                 </div>
                 <div>
-                  <SmallHeading title={item.name} className="!text-base" />
-                  <p className="text-[#808188]">{item.jobTitle}</p>
+                  <SmallHeading
+                    title={item.name}
+                    className="!text-sm lg:!text-base"
+                  />
+                  <p className="text-[#808188] text-xs md:text-[13px]">
+                    {item.jobTitle}
+                  </p>
                 </div>
               </div>
-              <div className="flex mt-6">
+              <div className="flex md:mt-5 mt-4 lg:mt-6">
                 <Tabs defaultValue="personalDetails" className="w-full">
-                  <TabsList className="w-full flex !bg-transparent border-b rounded-none p-0 border-[#E4E7EB]">
+                  <TabsList className="w-full flex !justify-start !bg-transparent h-[30px] lg:h-[36px] border-b overflow-x-auto overflow-y-hidden rounded-none p-0 border-[#E4E7EB]">
                     {item.trigger.map((tab, indextab) => (
                       <TabsTrigger
                         key={indextab}
                         value={tab.value}
-                        className={`flex items-center gap-2 h-[36px] !border-b-[1.5px] md:!border-b-[3px] border-t-0 border-x-0 !rounded-none !px-[23px] !shadow-none  data-[state=active]:border-[#B751FB] data-[state=active]:text-[#B751FB]`}
+                        className={`flex items-center gap-1 text-xs sm:text-sm md:gap-2 text-[#808188] h-[30px] lg:h-[36px] !border-b-[1.5px] md:!border-b-[3px] border-t-0 border-x-0 !rounded-none lg:!px-[23px] md:!px-5 sm:!px-4 !px-3 !shadow-none  data-[state=active]:border-[#B751FB] data-[state=active]:text-[#B751FB]`}
                       >
                         <ParsoneIcon className="data-[state=active]:fill-[#B751FB]" />
                         {tab.title}
@@ -103,7 +109,7 @@ function BaProfile() {
                       value={content.value}
                       className=""
                     >
-                      <div className="flex mt-[18px]">
+                      <div className="flex md:mt-4 lg:mt-[18px]">
                         {/* <span>{data.details}</span>
                           <span>{data.detailsData}</span> */}
                         <table className="w-full">
@@ -111,12 +117,12 @@ function BaProfile() {
                             {content.data.map((data, dataIndex) => (
                               <tr
                                 key={dataIndex}
-                                className="border-b w-full text-sm leading-[142%] -tracking-[0.28px]"
+                                className="border-b w-full text-xs md:text-sm leading-[142%] -tracking-[0.28px]"
                               >
-                                <td className="px-5 py-3 min-w-[130px] overflow-hidden font-medium text-[#808188]">
+                                <td className="lg:px-5 px-2 sm:px-3 md:px-4 md:py-2 py-1.5 lg:py-3 min-w-[130px] overflow-auto w-[150px] truncate font-medium text-[#808188] max">
                                   {data.details}
                                 </td>
-                                <td className="px-5 py-3 flex items-center gap-1 font-semibold">
+                                <td className="lg:px-5 px-2 sm:px-3 md:px-4 md:py-2 py-1.5 lg:py-3 flex items-center gap-1 font-semibold">
                                   <span>{data.icon}</span>
                                   {data.detailsData}
                                 </td>

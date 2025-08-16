@@ -19,14 +19,17 @@ export default function Tab({ tabs, rightSection }: CommonTabsProps) {
     <Tabs defaultValue={tabs[0]?.value} className="w-full">
       {/* Header */}
       <div className="border-y border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
-        <TabsList defaultValue={1} className="rounded-none bg-transparent !w-full flex !justify-start ">
+        <TabsList
+          defaultValue={1}
+          className="rounded-none bg-transparent !w-full flex !justify-start overflow-x-auto overflow-y-hidden"
+        >
           <div className="flex gap-3 items-center">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 id={tab.id}
                 value={tab.value}
-                className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=inactive]:fill-[#808188] !shadow-none px-2"
+                className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=active]:!border-b-[#B751FB] data-[state=inactive]:fill-[#808188] !shadow-none px-2"
               >
                 {tab.icon}
                 {tab.title}
