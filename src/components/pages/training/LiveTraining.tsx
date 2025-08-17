@@ -5,11 +5,11 @@ import { trainingCardData } from "@/components/helper/Helper2";
 import React from "react";
 import Filter from "../insights/Filter";
 
-function Platform() {
+function LiveTraining() {
   return (
-    <div className="">
+    <div>
       <div className="flex justify-between items-center lg:pt-6 lg:pb-[18px] py-3 md:py-4 gap-3 min-[400px]:flex-row flex-col">
-        <SmallHeading title="Platform" className="!text-base" />
+        <SmallHeading title="Live Training" className="!text-base" />
         <form className="flex md:gap-4 gap-3 lg:gap-5">
           <Search />
           <Filter />
@@ -42,4 +42,4 @@ function Platform() {
   );
 }
 
-export default Platform;
+export default LiveTraining;

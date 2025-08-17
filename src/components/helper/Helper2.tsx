@@ -8,6 +8,7 @@ import {
   GreenRightIcon,
   LocationIcon,
   MaleIcon,
+  MemberIcon,
   OveralScoreIcon,
   PhoneSmallIcon,
   ProfileIcon,
@@ -17,6 +18,7 @@ import {
   StarIcon,
   WatchIcon,
 } from "./Icon2";
+import PaymentModal from "../pages/settings/earning/PaymentMudal";
 
 export const loginFormData = [
   {
@@ -1196,7 +1198,7 @@ export const settingCard = [
     icon: <EarningIcon />,
     heading: "Earning",
     pera: "Track revenue generated and view commission breakdowns",
-    path: "#",
+    path: "/settings/earning",
   },
 ];
 
@@ -1467,6 +1469,111 @@ export const trainingCardData = [
     dateTime: [
       { icon: <CardDateIcon />, dateTime: "10-03-2024" },
       { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+];
+
+export const platformEarningTableData = [
+  {
+    head: [
+      { title: "Revenue Type" },
+      { title: "Count" },
+      { title: "Revenue" },
+      { title: "Revenue Growth" },
+    ],
+    body: [
+      {
+        id: 1,
+        td: [
+          { tdData: "Subscription" },
+          { tdData: "18" },
+          { tdData: "₹25,000  " },
+          { tdData: "88 %" },
+        ],
+      },
+      {
+        id: 2,
+        td: [
+          { tdData: "Get Featured" },
+          { tdData: "12" },
+          { tdData: "₹30,000" },
+          { tdData: "90 %" },
+        ],
+      },
+      {
+        id: 3,
+        td: [
+          { tdData: "Ads Manager" },
+          { tdData: "10" },
+          { tdData: "₹35,000  " },
+          { tdData: "96 %" },
+        ],
+      },
+      {
+        id: 4,
+        td: [
+          { tdData: "Total" },
+          { tdData: "40" },
+          { tdData: "₹90,000 " },
+          { tdData: "96 %" },
+        ],
+      },
+    ],
+  },
+];
+
+export const selecteMemberEarning = [
+  {
+    icon: <MemberIcon/>, // or better: JSX for an icon
+    placeholder: "Select Member",
+    options: [
+      { title: "mansih", value: "mansih" },
+      { title: "rahul", value: "rahul" },
+    ],
+  },
+];
+export const monthEarning = [
+  {
+    placeholder: "Select Month",
+    options: [
+      { title: "mansih", value: "mansih" },
+      { title: "rahul", value: "rahul" },
+    ],
+  },
+];
+
+
+export const earningDetailsData = [
+  {
+    head: [
+      { title: "BA Name" },
+      { title: "Territory Name " },
+      { title: "Total Earning" },
+      { title: "Total Amount" },
+      { title: "Transaction ID" },
+      { title: "Remarks" },
+      { title: "File" },
+    ],
+    body: [
+      {
+        id: 1,
+        td: [
+          {
+            saloneName: [
+              {
+                img: "/assest/png/salone-small-img.png",
+                name: "Chroma Lounge",
+              },
+            ],
+          },
+          { tdData: "Western Crest" },
+          { tdData: "₹1,70,500" },
+          { tdData: "₹₹75,500" },
+          { tdData: "TXN8745KLM932" },
+          { tdData: "Earnings have shown consistent month-on-month growth." },
+          // { tdData: <PaymentModal screenshot="/assest/png/login-bg-img.png" /> },
+        ],
+      },
     ],
   },
 ];

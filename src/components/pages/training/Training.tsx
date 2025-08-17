@@ -3,6 +3,8 @@ import TopCommon from '@/components/common/TopCommon';
 import {  LiveVideoIcon, LocationSmallIcon, PlatFormtIcon } from '@/components/helper/Icon2';
 import React from 'react'
 import Platform from './Platform';
+import Marketing from './Marketing';
+import LiveTraining from './LiveTraining';
 
 function Training() {
   return (
@@ -23,14 +25,14 @@ function Training() {
               value: "marketing",
               title: "Marketing",
               icon: <LocationSmallIcon />,
-              content: "manish",
+              content: <Marketing/>,
             },
             {
               id: "liveTraining",
               value: "liveTraining",
               title: "Live Training",
               icon: <LiveVideoIcon />,
-              content: "live",
+              content: <LiveTraining/>,
             },
           ]}
         />

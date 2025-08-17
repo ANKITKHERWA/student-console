@@ -31,7 +31,7 @@ type Td = {
   rmName?: string;
   feName?: string;
   action?: React.ReactNode | React.ReactNode[];
-  tdData?: string;
+  tdData?: string|number;
 };
 
 type Iprops = {
@@ -44,6 +44,7 @@ type TableData = {
   selectedUser?: Iprops | null;
   setSelectedUser?: (user: Iprops) => void;
   setOpen?: (val: boolean) => void;
+  className?:string;
 };
 
 const TableBody: React.FC<TableData> = ({
@@ -51,21 +52,21 @@ const TableBody: React.FC<TableData> = ({
   selectedUser,
   setSelectedUser,
   setOpen,
+  className,
 }) => {
   return (
     <tbody>
       {body.map((bodyitems) => (
         <tr
           key={bodyitems.id}
-          className={`cursor-pointer hover:bg-[#F1DCFF] border-y border-[#D9DDE3] text-[#030712] ${
+          className={`hover:bg-[#F1DCFF] border-y border-[#D9DDE3] text-[#030712] ${
             selectedUser?.id === bodyitems.id ? "bg-[#F1DCFF]" : ""
           }`}
         >
           {bodyitems.td.map((tdItem, tdIndex) => (
             <td
               key={tdIndex}
-              // py-2 sm:py-3 md:py-3 lg:py-4 
-              className="md:px-3 px-1 sm:px-2 truncate max-w-[200px]"
+              className={`md:px-3 px-1 sm:px-2 truncate max-w-[200px] ${className}`}
             >
               {/* Salon name */}
               {tdItem.saloneName?.map((salon, saloneIndex) => (

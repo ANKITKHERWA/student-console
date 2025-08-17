@@ -11,7 +11,6 @@ import SelecteStatus from "./SelecteStatus";
 import TableCommon from "@/components/common/TableCommon";
 import { criticalData } from "@/components/helper/Helper2";
 import TopCommon from "@/components/common/TopCommon";
-import Growth from "./Growth";
 function Insights() {
 
   return (
