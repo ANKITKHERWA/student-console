@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -121,22 +121,23 @@
   }
 }
 
-#groth-task,#critical-task {
+#groth-task,
+#critical-task {
   border: none !important;
 }
 
 [data-radix-sheet-overlay] {
   background-color: transparent !important;
 }
-body{
-    /* overflow-x: hidden !important; */
+body {
+  /* overflow-x: hidden !important; */
 }
 
-#sheet-overlay{
+#sheet-overlay {
   background: transparent !important;
 }
 
-#nextFollow[type="date"]::-webkit-calendar-picker-indicator {
+#nextFollow[type='date']::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
 }

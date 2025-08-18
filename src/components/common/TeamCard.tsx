@@ -38,7 +38,7 @@ const TeamCard: React.FC<Iprops> = ({
 }) => {
   return (
     <div
-      className={`max-w-xs rounded-xl border  border-[#E4E7EB] py-3 hover:bg-[#F1DCFF]  bg-[#fff]  shadow-lg w-307  ${className}`}>
+      className={`max-w-xs rounded-xl border  border-[#E4E7EB] group py-3 hover:bg-[#F1DCFF]  bg-[#fff]  shadow-lg w-307  ${className}`}>
       <span className={`rounded-full h-3 w-3 ml-2 block ${dotclass}`}> </span>
       <div className="flex items-center gap-4 px-6">
         <span>{avatar}</span>
@@ -50,7 +50,7 @@ const TeamCard: React.FC<Iprops> = ({
               {icon}
               {gender}
             </span>
-            <span className="w-[1px] h-[20px]  bg-[#E4E7EB] hover:bg-white"></span>
+            <span className="w-[1px] h-[20px]  bg-[#E4E7EB] group-hover:bg-white"></span>
             <span
               className={`rounded-full  text-black px-2.5 py-0.5 text-xs font-medium border  ${tagclass}`}>
               {tag}
@@ -58,7 +58,7 @@ const TeamCard: React.FC<Iprops> = ({
           </div>
         </div>
       </div>
-      <div className="mt-4 space-y-2 text-sm text-gray-700 border-t border-[#E4E7EB] hover:border-white  pt-4 px-6">
+      <div className="mt-4 space-y-2 text-sm text-gray-700 border-t border-[#E4E7EB] group-hover:border-white  pt-4 px-6">
         {phone && (
           <div className="flex items-center gap-2">
             <PhoneteamCard /> {phone}

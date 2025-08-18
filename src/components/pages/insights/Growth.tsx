@@ -25,7 +25,7 @@ function Growth() {
             </div>
           </div>
         </form>
-        <TableCommon data={criticalData} />
+        {/* <TableCommon data={criticalData} /> */}
       </div>
     </>
   )

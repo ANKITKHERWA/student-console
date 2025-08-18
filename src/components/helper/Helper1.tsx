@@ -1529,3 +1529,81 @@ export const some3 = [
     ganderclass: 'bg-[#E4E7EB] border-[#808188]',
   },
 ]
+export const serviceData = [
+  { name: 'Mon', value: 40000 },
+  { name: 'Tue', value: 28000 },
+  { name: 'Wed', value: 46000 },
+  { name: 'Thu', value: 33000 },
+  { name: 'Fri', value: 19000 },
+  { name: 'Sat', value: 26000 },
+  { name: 'Sun', value: 42000 },
+]
+export const packageData = [
+  { name: 'Mon', value: 340000 },
+  { name: 'Tue', value: 190000 },
+  { name: 'Wed', value: 430000 },
+  { name: 'Thu', value: 260000 },
+  { name: 'Fri', value: 310000 },
+  { name: 'Sat', value: 490000 },
+  { name: 'Sun', value: 120000 },
+]
+export const productData = [
+  { name: 'Mon', value: 31000 },
+  { name: 'Tue', value: 14000 },
+  { name: 'Wed', value: 28000 },
+  { name: 'Thu', value: 48000 },
+  { name: 'Fri', value: 37000 },
+  { name: 'Sat', value: 19000 },
+  { name: 'Sun', value: 42000 },
+]
+export const voucherData = [
+  { name: 'Mon', value: 25000 },
+  { name: 'Tue', value: 34000 },
+  { name: 'Wed', value: 46000 },
+  { name: 'Thu', value: 33000 },
+  { name: 'Fri', value: 19000 },
+  { name: 'Sat', value: 26000 },
+  { name: 'Sun', value: 12000 },
+]
+export const membershipData = [
+  { name: 'Mon', value: 26000 },
+  { name: 'Tue', value: 13000 },
+  { name: 'Wed', value: 30000 },
+  { name: 'Thu', value: 46000 },
+  { name: 'Fri', value: 19500 },
+  { name: 'Sat', value: 36000 },
+  { name: 'Sun', value: 12000 },
+]
+export const giftcardData = [
+  { name: 'Mon', value: 35000 },
+  { name: 'Tue', value: 19000 },
+  { name: 'Wed', value: 42000 },
+  { name: 'Thu', value: 11000 },
+  { name: 'Fri', value: 30500 },
+  { name: 'Sat', value: 48000 },
+  { name: 'Sun', value: 38000 },
+]
+export const top10Services = [
+  { name: 'Hair Spa', value: 8.8 },
+  { name: 'Hair Color', value: 7.0 },
+  { name: 'Cutting', value: 5.0 },
+  { name: 'Face Wash', value: 3.8 },
+  { name: 'Nail art', value: 9.4 },
+  { name: 'Blow out', value: 6.6 },
+  { name: 'Manicure', value: 8.8 },
+  { name: 'Keratin', value: 7.8 },
+  { name: 'Waxing', value: 4.7 },
+  { name: 'Threading', value: 3.0 },
+]
+export const top10SellingProducts = [
+  { name: 'Skin Care', value: 9.4 },
+  { name: 'Makeup', value: 4.4 },
+  { name: 'Masks', value: 7.0 },
+  { name: 'Aloe Vera', value: 6.3 },
+  { name: 'Retional', value: 9.8 },
+  { name: 'Perfumes', value: 3.0 },
+  { name: 'Scrubs', value: 3.9 },
+  { name: 'Lakme', value: 6.0 },
+  { name: 'Clinique', value: 8.8 },
+  { name: 'Fragrances', value: 7.1 },
+]
