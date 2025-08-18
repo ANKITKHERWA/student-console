@@ -9,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { FileText } from "lucide-react"; // PDF icon (can use any)
 import { Button } from "@/components/ui/button";
 import { PdfIcon } from "@/components/helper/Icon2";
 

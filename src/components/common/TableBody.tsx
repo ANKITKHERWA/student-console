@@ -147,7 +147,7 @@ const TableBody: React.FC<TableData> = ({
 
               {/* Actions */}
               {tdItem.action && (
-                <span>
+                <div>
                   <TableKebabMenu
                     items={[
                       {
@@ -180,7 +180,7 @@ const TableBody: React.FC<TableData> = ({
                       },
                     ]}
                   />
-                </span>
+                </div>
               )}
               {tdItem.tdData && <span>{tdItem.tdData}</span>}
             </td>

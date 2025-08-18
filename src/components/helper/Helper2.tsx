@@ -1,7 +1,7 @@
-
 import {
   CardDateIcon,
   DetailsIcon,
+  DollerIcon,
   EarningIcon,
   FileIcon,
   GreenRightIcon,
@@ -18,6 +18,7 @@ import {
   WatchIcon,
 } from "./Icon2";
 import PaymentModal from "../pages/settings/earning/PaymentMudal";
+import { Iconactive, Iconapointment, Iconright } from "./Icon1";
 
 export const loginFormData = [
   {
@@ -596,7 +597,7 @@ export const criticalData = [
       { title: "TC Name" },
       { title: "RM Name" },
       { title: "FE Name" },
-      { title: "Actions" }
+      { title: "Actions" },
     ],
     body: [
       {
@@ -604,7 +605,10 @@ export const criticalData = [
         td: [
           {
             saloneName: [
-              { img: "/assest/png/salone-small-img.png", name: "Glamour Studio" },
+              {
+                img: "/assest/png/salone-small-img.png",
+                name: "Glamour Studio",
+              },
             ],
           },
           { add: "123 Main St, Delhi" },
@@ -628,7 +632,7 @@ export const criticalData = [
         td: [
           {
             saloneName: [
-              { img: "/assets/salon2.png", name: "Elite Cuts" },
+              { img: "/assest/png/salone-small-img.png", name: "Elite Cuts" },
             ],
           },
           { add: "45 Market Road, Mumbai" },
@@ -652,7 +656,7 @@ export const criticalData = [
         td: [
           {
             saloneName: [
-              { img: "/assets/salon3.png", name: "Style Nation" },
+              { img: "/assest/png/salone-small-img.png", name: "Style Nation" },
             ],
           },
           { add: "78 Green Park, Bangalore" },
@@ -1275,7 +1279,7 @@ export const settingCard = [
     icon: <FileIcon />,
     heading: "Territory Details",
     pera: "View performance Metrics and PIN - wise salon distributions",
-    path: "#",
+    path: "settings/territory-details",
   },
   {
     icon: <ProfileIcon />,
@@ -1619,7 +1623,7 @@ export const platformEarningTableData = [
 
 export const selecteMemberEarning = [
   {
-    icon: <MemberIcon/>, // or better: JSX for an icon
+    icon: <MemberIcon />, // or better: JSX for an icon
     placeholder: "Select Member",
     options: [
       { title: "Talwinder", value: "talwinder" },
@@ -1630,7 +1634,7 @@ export const selecteMemberEarning = [
 export const monthEarning = [
   {
     placeholder: "Select Month",
-    options : [
+    options: [
       { title: "January", value: "jan" },
       { title: "February", value: "feb" },
       { title: "March", value: "mar" },
@@ -1643,10 +1647,9 @@ export const monthEarning = [
       { title: "October", value: "oct" },
       { title: "November", value: "nov" },
       { title: "December", value: "dec" },
-    ]
+    ],
   },
 ];
-
 
 export const earningDetailsData = [
   {
@@ -1676,7 +1679,9 @@ export const earningDetailsData = [
           { tdData: "₹₹75,500" },
           { tdData: "TXN8745KLM932" },
           { tdData: "Earnings have shown consistent month-on-month growth." },
-          { tdData: <PaymentModal screenshot="/assest/png/login-bg-img.png" /> },
+          {
+            tdData: <PaymentModal screenshot="/assest/png/login-bg-img.png" />,
+          },
         ],
       },
       {
@@ -1695,7 +1700,9 @@ export const earningDetailsData = [
           { tdData: "₹₹75,500" },
           { tdData: "TXN8745KLM932" },
           { tdData: "Earnings have shown consistent month-on-month growth." },
-          { tdData: <PaymentModal screenshot="/assest/png/login-bg-img.png" /> },
+          {
+            tdData: <PaymentModal screenshot="/assest/png/login-bg-img.png" />,
+          },
         ],
       },
       {
@@ -1714,7 +1721,145 @@ export const earningDetailsData = [
           { tdData: "₹₹75,500" },
           { tdData: "TXN8745KLM932" },
           { tdData: "Earnings have shown consistent month-on-month growth." },
-          { tdData: <PaymentModal screenshot="/assest/png/login-bg-img.png" /> },
+          {
+            tdData: <PaymentModal screenshot="/assest/png/login-bg-img.png" />,
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const territoryCardDetails = [
+  {
+    icon: <Iconapointment />,
+    title: "Registered vs Assigned",
+    heading: "90 / 270",
+    righticon: <Iconright />,
+    para: "+9%",
+    percentage: "+12%",
+  },
+  {
+    icon: <Iconactive />,
+    title: "Active  vs Registered",
+    heading: "921 / 21",
+    righticon: <Iconright />,
+    para: "+9%",
+    percentage: "+12%",
+  },
+  {
+    icon: <DollerIcon />,
+    title: "Territory Sales",
+    heading: "₹1,26,240",
+    righticon: <Iconright />,
+    para: "+9%",
+    percentage: "+12%",
+    month: "VS LAST MONTH",
+  },
+];
+
+export const territoryTableData = [
+  {
+    head: [
+      { title: "PIN Code" },
+      { title: "City / Area" },
+      { title: "Prospect Partner" },
+      { title: "Registered Partner" },
+      { title: "Active Partner" },
+      { title: "Health Score" },
+      { title: "Issues" },
+      { title: "Total Sales" },
+      { title: "Remarks" },
+    ],
+    body: [
+      {
+        id: 1,
+        td: [
+          { tdData: "234567  " },
+          { tdData: "Pune/Maharashtra" },
+          { tdData: "30" },
+          { tdData: "40" },
+          { tdData: "35" },
+          { tdData: "35" },
+          { issue: [{ issu1: "2", issu2: "3" }] },
+          { tdData: "₹24,600" },
+          { tdData: "Pangri" },
+
+        ],
+      },
+      {
+        id: 1,
+        td: [
+          { tdData: "431007" },
+          { tdData: "Aurangabad/Maharashtra" },
+          { tdData: "25" },
+          { tdData: "50" },
+          { tdData: "40" },
+          { tdData: "25" },
+          { issue: [{ issu1: "2", issu2: "3" }] },
+          { tdData: "₹30,600" },
+          { tdData: "Cidco N-6" },
+
+        ],
+      },
+      {
+        id: 1,
+        td: [
+          { tdData: "144205" },
+          { tdData: "Phagwara/Punjab" },
+          { tdData: "15" },
+          { tdData: "39" },
+          { tdData: "30" },
+          { tdData: "32" },
+          { issue: [{ issu1: "2", issu2: "3" }] },
+          { tdData: "₹35,600" },
+          { tdData: "Lakhpur" },
+
+        ],
+      },
+      {
+        id: 1,
+        td: [
+          { tdData: "234567  " },
+          { tdData: "Pune/Maharashtra" },
+          { tdData: "30" },
+          { tdData: "40" },
+          { tdData: "35" },
+          { tdData: "35" },
+          { issue: [{ issu1: "2", issu2: "3" }] },
+          { tdData: "₹24,600" },
+          { tdData: "Pangri" },
+
+        ],
+      },
+      {
+        id: 1,
+        td: [
+          { tdData: "431007" },
+          { tdData: "Aurangabad/Maharashtra" },
+          { tdData: "25" },
+          { tdData: "50" },
+          { tdData: "40" },
+          { tdData: "25" },
+          { issue: [{ issu1: "2", issu2: "3" }] },
+          { tdData: "₹30,600" },
+          { tdData: "Cidco N-6" },
+
+        ],
+      },
+      {
+        id: 1,
+        td: [
+          { tdData: "144205" },
+          { tdData: "Phagwara/Punjab" },
+          { tdData: "15" },
+          { tdData: "39" },
+          { tdData: "30" },
+          { tdData: "32" },
+          { issue: [{ issu1: "2", issu2: "3" }] },
+          { tdData: "₹35,600" },
+          { tdData: "Lakhpur" },
+
         ],
       },
     ],
