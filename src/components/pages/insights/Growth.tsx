@@ -3,8 +3,6 @@ import SelecteStatus from './SelecteStatus'
 import { Input } from '@/components/ui/input'
 import { SearchIcon } from '@/components/helper/Icon2'
 import Filter from './Filter'
-import TableCommon from '@/components/common/TableCommon'
-import { criticalData } from '@/components/helper/Helper1'
 
 function Growth() {
   return (
@@ -25,7 +23,6 @@ function Growth() {
             </div>
           </div>
         </form>
-        {/* <TableCommon data={criticalData} /> */}
       </div>
     </>
   )
