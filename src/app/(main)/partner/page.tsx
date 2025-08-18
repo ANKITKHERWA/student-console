@@ -1,7 +1,12 @@
+import Partner from '@/components/pages/partner/Partner'
 import React from 'react'
 
 function page() {
-  return <div></div>
+  return (
+    <>
+      <Partner />
+    </>
+  )
 }
 
 export default page
