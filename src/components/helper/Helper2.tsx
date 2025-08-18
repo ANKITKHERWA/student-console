@@ -1,19 +1,24 @@
 import { toDate } from "date-fns";
 import TableMeatbalMenu from "../pages/insights/TableMeatbalMenu";
 import {
+  CardDateIcon,
   DetailsIcon,
   EarningIcon,
   FileIcon,
   GreenRightIcon,
   LocationIcon,
   MaleIcon,
+  MemberIcon,
   OveralScoreIcon,
   PhoneSmallIcon,
   ProfileIcon,
   RedWrongtIcon,
   ShowPassIcon,
   SmallCalenderIcon,
+  StarIcon,
+  WatchIcon,
 } from "./Icon2";
+import PaymentModal from "../pages/settings/earning/PaymentMudal";
 
 export const loginFormData = [
   {
@@ -140,81 +145,183 @@ export const criticalData = [
           { feName: "Neha Singh" },
           { action: "Neha Singh" },
         ],
-        sidebarData: [
+        // sidebarData: [
+        //   {
+        //     img: "/assest/png/salone-small-img.png",
+        //     name: "Glamour Glow Studio",
+        //     nextVisit: ": 23 June ",
+        //     lastVisit: " 28 June",
+        //     contacte: [
+        //       {
+        //         icon: <LocationIcon />,
+        //         title: "123 Sparkle Ave, Glam City",
+        //         path: "#",
+        //       },
+        //       {
+        //         icon: <PhoneSmallIcon />,
+        //         title: "55523-32324",
+        //         path: "tel:55523-32324",
+        //       },
+        //     ],
+        //     condetions: [
+        //       { count: "Critical : 6" },
+        //       {},
+        //       { count: "Growth : 4" },
+        //       {},
+        //       { count: "Health : 8" },
+        //     ],
+        //     ownerName: " John Walley",
+        //     ownerNo: " 23246-93902",
+        //     manager: " Esther Howard",
+        //     managerNo: " 78363-47438",
+        //     fe: " Aditi Singh",
+        //     feNo: " 32456-39432",
+        //     rm: "  23348-32948",
+        //     rmNo: " 78363-47438",
+        //     tc: "  Priya Kumari",
+        //     tcNo: " 84950-34859",
+        //     actionData: [
+        //       {
+        //         heaing: "Visit on April 10th, 2024",
+        //         persone: "by Ajay Singh (FE)",
+        //         pera: [
+        //           { stronText: "Overall Score:", text: " 30/50" },
+        //           {
+        //             stronText: "Remarks: ",
+        //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+        //           },
+        //         ],
+        //       },
+        //       {
+        //         heaing: "Visit on April 10th, 2024",
+        //         persone: "by Ajay Singh (FE)",
+        //         pera: [
+        //           {
+        //             stronText: "Reason: ",
+        //             text: " Task from previous visit not completed",
+        //           },
+        //           {
+        //             stronText: "Remarks: ",
+        //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+        //           },
+        //         ],
+        //       },
+        //       {
+        //         heaing: "Visit on April 10th, 2024",
+        //         persone: "by Ajay Singh (FE)",
+        //         pera: [
+        //           { stronText: "Overall Score:", text: " 30/50" },
+        //           {
+        //             stronText: "Remarks: ",
+        //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+        //           },
+        //         ],
+        //       },
+        //     ],
+        //   },
+        // ],
+      },
+      {
+        id: 3,
+        td: [
           {
-            img: "/assest/png/salone-small-img.png",
-            name: "Glamour Glow Studio",
-            nextVisit: ": 23 June ",
-            lastVisit: " 28 June",
-            contacte: [
+            saloneName: [
               {
-                icon: <LocationIcon />,
-                title: "123 Sparkle Ave, Glam City",
-                path: "#",
-              },
-              {
-                icon: <PhoneSmallIcon />,
-                title: "55523-32324",
-                path: "tel:55523-32324",
-              },
-            ],
-            condetions: [
-              { count: "Critical : 6" },
-              {},
-              { count: "Growth : 4" },
-              {},
-              { count: "Health : 8" },
-            ],
-            ownerName: " John Walley",
-            ownerNo: " 23246-93902",
-            manager: " Esther Howard",
-            managerNo: " 78363-47438",
-            fe: " Aditi Singh",
-            feNo: " 32456-39432",
-            rm: "  23348-32948",
-            rmNo: " 78363-47438",
-            tc: "  Priya Kumari",
-            tcNo: " 84950-34859",
-            actionData: [
-              {
-                heaing: "Visit on April 10th, 2024",
-                persone: "by Ajay Singh (FE)",
-                pera: [
-                  { stronText: "Overall Score:", text: " 30/50" },
-                  {
-                    stronText: "Remarks: ",
-                    text: " Showed keen interest in CRM and membership features. Demo scheduled.",
-                  },
-                ],
-              },
-              {
-                heaing: "Visit on April 10th, 2024",
-                persone: "by Ajay Singh (FE)",
-                pera: [
-                  {
-                    stronText: "Reason: ",
-                    text: " Task from previous visit not completed",
-                  },
-                  {
-                    stronText: "Remarks: ",
-                    text: " Showed keen interest in CRM and membership features. Demo scheduled.",
-                  },
-                ],
-              },
-              {
-                heaing: "Visit on April 10th, 2024",
-                persone: "by Ajay Singh (FE)",
-                pera: [
-                  { stronText: "Overall Score:", text: " 30/50" },
-                  {
-                    stronText: "Remarks: ",
-                    text: " Showed keen interest in CRM and membership features. Demo scheduled.",
-                  },
-                ],
+                img: "/assest/png/salone-small-img.png",
+                name: "Chroma Lounge",
               },
             ],
           },
+          { add: "281 Madison Street, SoHo District, NY" },
+          { health: "80" },
+          { issue: [{ issu1: "2", issu2: "3" }] },
+          { staff: "15" },
+          { onboarding: "true" },
+          { bankAcc: "false" },
+          { monthlyTarget: "false" },
+          { subscription: "expired" },
+          { lastVisit: "3 days ago" },
+          { nextVisit: "July 10, 2025" },
+          { tcName: "Ayesha Sharma" },
+          { rmName: "Rhea Malhotra" },
+          { feName: "Neha Singh" },
+          { action: "Neha Singh" },
         ],
+        // sidebarData: [
+        //   {
+        //     img: "/assest/png/salone-small-img.png",
+        //     name: "Glamour Glow Studio",
+        //     nextVisit: ": 23 June ",
+        //     lastVisit: " 28 June",
+        //     contacte: [
+        //       {
+        //         icon: <LocationIcon />,
+        //         title: "123 Sparkle Ave, Glam City",
+        //         path: "#",
+        //       },
+        //       {
+        //         icon: <PhoneSmallIcon />,
+        //         title: "55523-32324",
+        //         path: "tel:55523-32324",
+        //       },
+        //     ],
+        //     condetions: [
+        //       { count: "Critical : 6" },
+        //       {},
+        //       { count: "Growth : 4" },
+        //       {},
+        //       { count: "Health : 8" },
+        //     ],
+        //     ownerName: " John Walley",
+        //     ownerNo: " 23246-93902",
+        //     manager: " Esther Howard",
+        //     managerNo: " 78363-47438",
+        //     fe: " Aditi Singh",
+        //     feNo: " 32456-39432",
+        //     rm: "  23348-32948",
+        //     rmNo: " 78363-47438",
+        //     tc: "  Priya Kumari",
+        //     tcNo: " 84950-34859",
+        //     actionData: [
+        //       {
+        //         heaing: "Visit on April 10th, 2024",
+        //         persone: "by Ajay Singh (FE)",
+        //         pera: [
+        //           { stronText: "Overall Score:", text: " 30/50" },
+        //           {
+        //             stronText: "Remarks: ",
+        //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+        //           },
+        //         ],
+        //       },
+        //       {
+        //         heaing: "Visit on April 10th, 2024",
+        //         persone: "by Ajay Singh (FE)",
+        //         pera: [
+        //           {
+        //             stronText: "Reason: ",
+        //             text: " Task from previous visit not completed",
+        //           },
+        //           {
+        //             stronText: "Remarks: ",
+        //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+        //           },
+        //         ],
+        //       },
+        //       {
+        //         heaing: "Visit on April 10th, 2024",
+        //         persone: "by Ajay Singh (FE)",
+        //         pera: [
+        //           { stronText: "Overall Score:", text: " 30/50" },
+        //           {
+        //             stronText: "Remarks: ",
+        //             text: " Showed keen interest in CRM and membership features. Demo scheduled.",
+        //           },
+        //         ],
+        //       },
+        //     ],
+        //   },
+        // ],
       },
       // {
       //   id: 2,
@@ -1091,7 +1198,7 @@ export const settingCard = [
     icon: <EarningIcon />,
     heading: "Earning",
     pera: "Track revenue generated and view commission breakdowns",
-    path: "#",
+    path: "/settings/earning",
   },
 ];
 
@@ -1147,6 +1254,324 @@ export const baProfileData = [
           { details: "Subscription % :", detailsData: "80%" },
           { details: "Get Featured % :", detailsData: "86%" },
           { details: "Ads Manager % :", detailsData: "90%" },
+        ],
+      },
+    ],
+  },
+];
+
+export const trainingCardData = [
+  {
+    id: 1,
+    img: "/assest/png/salon-partner.png",
+    heading: "Da Salon Partner",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 2,
+    img: "/assest/png/salone-connecte.png",
+    heading: "Da Salon Connect",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 3,
+    img: "/assest/png/salone-associate.png",
+    heading: "Da Salon Market",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 4,
+    img: "/assest/png/business-associates.png",
+    heading: "Business Associates",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 5,
+    img: "/assest/png/business-associates.png",
+    heading: "Business Associates",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 6,
+    img: "/assest/png/salon-partner.png",
+    heading: "Da Salon Partner",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 7,
+    img: "/assest/png/salone-connecte.png",
+    heading: "Da Salon Connect",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 8,
+    img: "/assest/png/salone-associate.png",
+    heading: "Da Salon Market",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 9,
+    img: "/assest/png/business-associates.png",
+    heading: "Business Associates",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 10,
+    img: "/assest/png/business-associates.png",
+    heading: "Business Associates",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 11,
+    img: "/assest/png/salon-partner.png",
+    heading: "Da Salon Partner",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 12,
+    img: "/assest/png/salone-connecte.png",
+    heading: "Da Salon Connect",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 13,
+    img: "/assest/png/salone-associate.png",
+    heading: "Da Salon Market",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 14,
+    img: "/assest/png/business-associates.png",
+    heading: "Business Associates",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+  {
+    id: 15,
+    img: "/assest/png/business-associates.png",
+    heading: "Business Associates",
+    ratting: <StarIcon />,
+    description:
+      "Learn how to onboard a salon partner with ease. A simple video guide for your team.",
+    path: "#",
+    linkTitle: "https/da salon partner.com",
+    dateTime: [
+      { icon: <CardDateIcon />, dateTime: "10-03-2024" },
+      { icon: <WatchIcon />, dateTime: "9:15 AM" },
+    ],
+  },
+];
+
+export const platformEarningTableData = [
+  {
+    head: [
+      { title: "Revenue Type" },
+      { title: "Count" },
+      { title: "Revenue" },
+      { title: "Revenue Growth" },
+    ],
+    body: [
+      {
+        id: 1,
+        td: [
+          { tdData: "Subscription" },
+          { tdData: "18" },
+          { tdData: "₹25,000  " },
+          { tdData: "88 %" },
+        ],
+      },
+      {
+        id: 2,
+        td: [
+          { tdData: "Get Featured" },
+          { tdData: "12" },
+          { tdData: "₹30,000" },
+          { tdData: "90 %" },
+        ],
+      },
+      {
+        id: 3,
+        td: [
+          { tdData: "Ads Manager" },
+          { tdData: "10" },
+          { tdData: "₹35,000  " },
+          { tdData: "96 %" },
+        ],
+      },
+      {
+        id: 4,
+        td: [
+          { tdData: "Total" },
+          { tdData: "40" },
+          { tdData: "₹90,000 " },
+          { tdData: "96 %" },
+        ],
+      },
+    ],
+  },
+];
+
+export const selecteMemberEarning = [
+  {
+    icon: <MemberIcon/>, // or better: JSX for an icon
+    placeholder: "Select Member",
+    options: [
+      { title: "mansih", value: "mansih" },
+      { title: "rahul", value: "rahul" },
+    ],
+  },
+];
+export const monthEarning = [
+  {
+    placeholder: "Select Month",
+    options: [
+      { title: "mansih", value: "mansih" },
+      { title: "rahul", value: "rahul" },
+    ],
+  },
+];
+
+
+export const earningDetailsData = [
+  {
+    head: [
+      { title: "BA Name" },
+      { title: "Territory Name " },
+      { title: "Total Earning" },
+      { title: "Total Amount" },
+      { title: "Transaction ID" },
+      { title: "Remarks" },
+      { title: "File" },
+    ],
+    body: [
+      {
+        id: 1,
+        td: [
+          {
+            saloneName: [
+              {
+                img: "/assest/png/salone-small-img.png",
+                name: "Chroma Lounge",
+              },
+            ],
+          },
+          { tdData: "Western Crest" },
+          { tdData: "₹1,70,500" },
+          { tdData: "₹₹75,500" },
+          { tdData: "TXN8745KLM932" },
+          { tdData: "Earnings have shown consistent month-on-month growth." },
+          // { tdData: <PaymentModal screenshot="/assest/png/login-bg-img.png" /> },
         ],
       },
     ],

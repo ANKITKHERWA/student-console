@@ -59,22 +59,30 @@ type Td = {
   rmName?: string;
   feName?: string;
   action?: React.ReactNode | React.ReactNode[];
-  data?:string
+  data?: string;
 };
-
 
 type Iprops = {
   id: number;
   td: Td[];
 };
 
-type TableData = {
-  head: { title: string }[];
-  body: Iprops[];
-};
+// type TableData = {
+//   data: { head: TableCommonProps[]; body: Iprops[] };
+// };
 
 type TableCommonProps = {
-  data: TableData[];
+  data: {
+    head: {
+      title: string;
+    }[];
+    body: {
+      id: number;
+      td: {
+        tdData: string;
+      }[];
+    }[];
+  }[];
 };
 
 const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
@@ -98,154 +106,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
       <div className="overflow-auto border rounded-[6px] border-[#D9DDE3]">
         {data.map((items, index) => (
           <table key={index} className="text-nowrap w-full text-xs sm:text-sm">
-            <TableHead data={criticalData} />
-            {/* <thead>
-              <tr className="bg-[#fff]  leading-[142%] tracking-normal text-[#808188] ">
-                {items.head.map((headItem, headIndex) => (
-                  <th
-                    key={headIndex}
-                    className="tdfont-semibold md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4 text-left"
-                  >
-                    {headItem.title}
-                  </th>
-                ))}
-              </tr>
-            </thead> */}
-            {/* <tbody>
-              {items.body.map((bodyitems) => (
-                <tr
-                  key={bodyitems.id}
-                  className={`cursor-pointer hover:bg-[#F1DCFF] border-y border-[#D9DDE3] text-[#030712] ${
-                    selectedUser?.id === bodyitems.id ? "bg-[#F1DCFF]" : ""
-                  }`}
-                >
-                  {bodyitems.td.map((tdItem, tdIndex) => (
-                    <td
-                      key={tdIndex}
-                      className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4 truncate max-w-[200px]"
-                    >
-                      {tdItem.saloneName?.map((salon, saloneIndex) => (
-                        <div
-                          key={saloneIndex}
-                          className="flex items-center gap-2"
-                        >
-                          <Image
-                            src={salon.img}
-                            width={20}
-                            height={20}
-                            alt="img"
-                          />
-                          <span>{salon.name}</span>
-                        </div>
-                      ))}
-
-                      {tdItem.add && <span>{tdItem.add}</span>}
-                      {tdItem.data && <span>{tdItem.data}</span>}
-
-                      {tdItem.health && <span>{tdItem.health}</span>}
-
-                      {tdItem.issue?.map((issue, issueIndex) => (
-                        <div
-                          key={issueIndex}
-                          className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4"
-                        >
-                          <div className="flex gap-2 text-[10px] text-[rgba(3,7,18,0.70)]">
-                            <span className="w-[20px] h-[20px] rounded-full border border-[#F00] bg-[rgba(255,136,136,0.34)] flex justify-center items-center">
-                              {issue.issu1}
-                            </span>
-                            <span className="w-[20px] h-[20px] rounded-full border bg-[#F3CED6] border-[#F5640A] flex justify-center items-center">
-                              {issue.issu2}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                      {tdItem.staff && <span> {tdItem.staff}</span>}
-
-                      {tdItem.onboarding && (
-                        <span> 
-                          {tdItem.onboarding === "true" ? (
-                            <GreenRightIcon />
-                          ) : tdItem.onboarding === "false" ? (
-                            <RedWrongtIcon />
-                          ) : null}
-                        </span>
-                      )}
-                      {tdItem.bankAcc && (
-                        <span> 
-                          {tdItem.bankAcc === "true" ? (
-                            <GreenRightIcon />
-                          ) : tdItem.bankAcc === "false" ? (
-                            <RedWrongtIcon />
-                          ) : null}
-                        </span>
-                      )} 
-                      {tdItem.monthlyTarget && (
-                        <span> 
-                          {tdItem.monthlyTarget === "true" ? (
-                            <GreenRightIcon /> 
-                          ) : (
-                            <RedWrongtIcon />
-                          )} 
-                        </span>
-                      )}
-                      {tdItem.subscription && (
-                        <span>
-                          <StatusBadge status={tdItem.subscription} />
-                        </span>
-                      )}
-                      {tdItem.lastVisit && <span> {tdItem.lastVisit}</span>}
-                      {tdItem.nextVisit && <span> {tdItem.nextVisit}</span>}
-                      {tdItem.tcName && <span> {tdItem.tcName}</span>}
-                      {tdItem.rmName && <span> {tdItem.rmName}</span>}
-                      {tdItem.feName && <span> {tdItem.feName}</span>}
-                      {tdItem.action && (
-                        <span>
-                          <TableKebabMenu
-                            items={[
-                              {
-                                label: "View as partner",
-                                extra: <SmallEyeIcon className="w-4 h-4" />,
-                                // onClick: () => console.log("Edit clicked"),
-                              },
-                              {
-                                label: "View Report",
-                                extra: <ViewReportIcon className="w-4 h-4" />,
-                                // onClick: () => console.log("Delete clicked"),
-                              },
-                              {
-                                label: "Add Visit",
-                                extra: (
-                                  <CalenderBlackSmallIocn className="w-4 h-4" />
-                                ),
-                                // onClick: () => console.log("Share clicked"),
-                              },
-                              {
-                                label: "Add Follow Up",
-                                extra: <FollowUpIcon className="w-4 h-4" />,
-                                // onClick: () => console.log("Share clicked"),
-                              },
-                              {
-                                label: "Add Visit Report",
-                                extra: <PlusIcon className="w-4 h-4" />,
-                                onClick: () => {
-                                  setSelectedUser(bodyitems as Iprops);
-                                  setOpen(true);
-                                },
-                              },
-                              {
-                                label: "Assign Partner",
-                                extra: <PartnerIcon className="w-4 h-4" />,
-                                // onClick: () => console.log("Share clicked"),
-                              },
-                            ]}
-                          />
-                        </span>
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody> */}
+            <TableHead data={items.head} />
 
             <TableBody
               body={items.body}
@@ -269,7 +130,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
           <div className="flex flex-col justify-between h-full pb-3">
             {criticalData.map((item, indexs) => (
               <div key={indexs}>
-                {item.body.map((items, index) => (
+                {/* {item.body.map((items, index) => (
                   <div key={index}>
                     {items.sidebarData?.map((itm, idx) => (
                       <div key={idx}>
@@ -562,7 +423,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
                       </div>
                     ))}
                   </div>
-                ))}
+                ))} */}
               </div>
             ))}
             <div className="px-[30px] flex justify-end gap-2 pb-3">
@@ -580,3 +441,155 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
   );
 };
 export default TableCommon;
+
+{
+  /* <thead>
+              <tr className="bg-[#fff]  leading-[142%] tracking-normal text-[#808188] ">
+                {items.head.map((headItem, headIndex) => (
+                  <th
+                    key={headIndex}
+                    className="tdfont-semibold md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4 text-left"
+                  >
+                    {headItem.title}
+                  </th>
+                ))}
+              </tr>
+            </thead> */
+}
+{
+  /* <tbody>
+              {items.body.map((bodyitems) => (
+                <tr
+                  key={bodyitems.id}
+                  className={`cursor-pointer hover:bg-[#F1DCFF] border-y border-[#D9DDE3] text-[#030712] ${
+                    selectedUser?.id === bodyitems.id ? "bg-[#F1DCFF]" : ""
+                  }`}
+                >
+                  {bodyitems.td.map((tdItem, tdIndex) => (
+                    <td
+                      key={tdIndex}
+                      className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4 truncate max-w-[200px]"
+                    >
+                      {tdItem.saloneName?.map((salon, saloneIndex) => (
+                        <div
+                          key={saloneIndex}
+                          className="flex items-center gap-2"
+                        >
+                          <Image
+                            src={salon.img}
+                            width={20}
+                            height={20}
+                            alt="img"
+                          />
+                          <span>{salon.name}</span>
+                        </div>
+                      ))}
+
+                      {tdItem.add && <span>{tdItem.add}</span>}
+                      {tdItem.data && <span>{tdItem.data}</span>}
+
+                      {tdItem.health && <span>{tdItem.health}</span>}
+
+                      {tdItem.issue?.map((issue, issueIndex) => (
+                        <div
+                          key={issueIndex}
+                          className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4"
+                        >
+                          <div className="flex gap-2 text-[10px] text-[rgba(3,7,18,0.70)]">
+                            <span className="w-[20px] h-[20px] rounded-full border border-[#F00] bg-[rgba(255,136,136,0.34)] flex justify-center items-center">
+                              {issue.issu1}
+                            </span>
+                            <span className="w-[20px] h-[20px] rounded-full border bg-[#F3CED6] border-[#F5640A] flex justify-center items-center">
+                              {issue.issu2}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                      {tdItem.staff && <span> {tdItem.staff}</span>}
+
+                      {tdItem.onboarding && (
+                        <span> 
+                          {tdItem.onboarding === "true" ? (
+                            <GreenRightIcon />
+                          ) : tdItem.onboarding === "false" ? (
+                            <RedWrongtIcon />
+                          ) : null}
+                        </span>
+                      )}
+                      {tdItem.bankAcc && (
+                        <span> 
+                          {tdItem.bankAcc === "true" ? (
+                            <GreenRightIcon />
+                          ) : tdItem.bankAcc === "false" ? (
+                            <RedWrongtIcon />
+                          ) : null}
+                        </span>
+                      )} 
+                      {tdItem.monthlyTarget && (
+                        <span> 
+                          {tdItem.monthlyTarget === "true" ? (
+                            <GreenRightIcon /> 
+                          ) : (
+                            <RedWrongtIcon />
+                          )} 
+                        </span>
+                      )}
+                      {tdItem.subscription && (
+                        <span>
+                          <StatusBadge status={tdItem.subscription} />
+                        </span>
+                      )}
+                      {tdItem.lastVisit && <span> {tdItem.lastVisit}</span>}
+                      {tdItem.nextVisit && <span> {tdItem.nextVisit}</span>}
+                      {tdItem.tcName && <span> {tdItem.tcName}</span>}
+                      {tdItem.rmName && <span> {tdItem.rmName}</span>}
+                      {tdItem.feName && <span> {tdItem.feName}</span>}
+                      {tdItem.action && (
+                        <span>
+                          <TableKebabMenu
+                            items={[
+                              {
+                                label: "View as partner",
+                                extra: <SmallEyeIcon className="w-4 h-4" />,
+                                // onClick: () => console.log("Edit clicked"),
+                              },
+                              {
+                                label: "View Report",
+                                extra: <ViewReportIcon className="w-4 h-4" />,
+                                // onClick: () => console.log("Delete clicked"),
+                              },
+                              {
+                                label: "Add Visit",
+                                extra: (
+                                  <CalenderBlackSmallIocn className="w-4 h-4" />
+                                ),
+                                // onClick: () => console.log("Share clicked"),
+                              },
+                              {
+                                label: "Add Follow Up",
+                                extra: <FollowUpIcon className="w-4 h-4" />,
+                                // onClick: () => console.log("Share clicked"),
+                              },
+                              {
+                                label: "Add Visit Report",
+                                extra: <PlusIcon className="w-4 h-4" />,
+                                onClick: () => {
+                                  setSelectedUser(bodyitems as Iprops);
+                                  setOpen(true);
+                                },
+                              },
+                              {
+                                label: "Assign Partner",
+                                extra: <PartnerIcon className="w-4 h-4" />,
+                                // onClick: () => console.log("Share clicked"),
+                              },
+                            ]}
+                          />
+                        </span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody> */
+}
