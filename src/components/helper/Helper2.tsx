@@ -604,7 +604,7 @@ export const criticalData = [
         td: [
           {
             saloneName: [
-              { img: "/assets/salon1.png", name: "Glamour Studio" },
+              { img: "/assest/png/salone-small-img.png", name: "Glamour Studio" },
             ],
           },
           { add: "123 Main St, Delhi" },
