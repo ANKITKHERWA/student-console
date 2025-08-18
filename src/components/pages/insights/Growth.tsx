@@ -3,11 +3,13 @@ import SelecteStatus from './SelecteStatus'
 import { Input } from '@/components/ui/input'
 import { SearchIcon } from '@/components/helper/Icon2'
 import Filter from './Filter'
+import TableCommon from '@/components/common/TableCommon'
+import { GrowthData } from '@/components/helper/Helper1'
 
 function Growth() {
   return (
     <>
-      <div className="md:px-5 px-4 lg:px-6">
+      <div>
         <form className="md:py-5 py-3 sm:py-4 lg:py-6">
           <div className="flex justify-center min-[460px]:justify-between  items-center gap-2 flex-wrap min-[460px]:flex-nowrap">
             <SelecteStatus />
@@ -23,6 +25,7 @@ function Growth() {
             </div>
           </div>
         </form>
+        <TableCommon data={GrowthData} />
       </div>
     </>
   )
