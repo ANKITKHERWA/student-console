@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import Image from "next/image"; // ya jo bhi aap image component use kar rahe ho
 import { CalenderBlackSmallIocn, FollowUpIcon, GreenRightIcon, PartnerIcon, RedWrongtIcon, SmallEyeIcon, ViewReportIcon } from "../helper/Icon2";
 import StatusBadge from "./StatusBadge";
@@ -31,7 +31,7 @@ type Td = {
   rmName?: string;
   feName?: string;
   action?: React.ReactNode | React.ReactNode[];
-  tdData?: string|number;
+  tdData?: string | number | JSX.Element;
 };
 
 type Iprops = {
@@ -103,7 +103,7 @@ const TableBody: React.FC<TableData> = ({
               {tdItem.staff && <span>{tdItem.staff}</span>}
 
               {/* Boolean icons */}
-              {tdItem.onboarding && (
+              {tdItem?.onboarding && (
                 <span>
                   {tdItem.onboarding === "true" ? (
                     <GreenRightIcon />

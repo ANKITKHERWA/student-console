@@ -2,37 +2,38 @@
 import React, { useState } from "react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 
-import Image from "next/image";
-import StatusBadge from "./StatusBadge";
+// import Image from "next/image";
+// import StatusBadge from "./StatusBadge";
 import StatusBadgeSec from "./StatusBadgeSec";
 
 import { criticalData } from "../helper/Helper2"; // ✅ changed here
-import Link from "next/link";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import {
-  ActionIocn,
-  CalenderBlackSmallIocn,
-  ClenderIcon,
-  FollowUpIcon,
-  GreenRightIcon,
-  GrothTask,
-  IssueIcon,
-  PartnerIcon,
-  PhoneSmallIcon,
-  RedWrongtIcon,
-  RightArrowIcon,
-  RightIcon,
-  SmallCriticalIcon,
-  SmallEyeIcon,
-  ViewReportIcon,
-} from "../helper/Icon2";
-import SmallHeading from "./SmallHeading";
+// import Link from "next/link";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+// import {
+//   ActionIocn,
+//   CalenderBlackSmallIocn,
+//   ClenderIcon,
+//   FollowUpIcon,
+//   GreenRightIcon,
+//   GrothTask,
+//   IssueIcon,
+//   PartnerIcon,
+//   PhoneSmallIcon,
+//   RedWrongtIcon,
+//   RightArrowIcon,
+//   RightIcon,
+//   SmallCriticalIcon,
+//   SmallEyeIcon,
+//   ViewReportIcon,
+// } from "../helper/Icon2";
+// import SmallHeading from "./SmallHeading";
 import SecondryBtn from "./SecondryBtn";
 import VisitReportMudal from "../pages/insights/VisitReportMudal";
-import TableKebabMenu from "./TableKebabMenu";
-import { PlusIcon } from "lucide-react";
+// import TableKebabMenu from "./TableKebabMenu";
+// import { PlusIcon } from "lucide-react";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
+import { JSX } from "react/jsx-runtime";
 
 type SaloneName = {
   img: string;
@@ -79,7 +80,22 @@ type TableCommonProps = {
     body: {
       id: number;
       td: {
-        tdData: string;
+        saloneName?: { img: string; name: string }[];
+        add?: string;
+        health?: string;
+        issue?: { issu1: string; issu2: string }[];
+        staff?: string;
+        onboarding?: string;
+        bankAcc?: string;
+        monthlyTarget?: string;
+        subscription?: string;
+        lastVisit?: string;
+        nextVisit?: string;
+        tcName?: string;
+        rmName?: string;
+        feName?: string;
+        action?: React.ReactNode | React.ReactNode[];
+        tdData?: string | number | JSX.Element;
       }[];
     }[];
   }[];
@@ -89,18 +105,18 @@ const TableCommon: React.FC<TableCommonProps> = ({ data }) => {
   const [selectedUser, setSelectedUser] = useState<Iprops | null>(null);
   const [open, setOpen] = useState(false);
 
-  const data2 = {
-    critical: [
-      { title: "Incomplete Onboarding", days: "30 days" },
-      { title: "Off-Peak hours not set", days: "15 days" },
-      { title: "Missing Bank Account", days: "20 days" },
-      { title: "Subscription overdue", days: "10 days" },
-    ],
-    growth: [
-      { title: "New Service Opportunity", days: "5 days" },
-      { title: "Increase Social Media Reach", days: "12 days" },
-    ],
-  };
+  // const data2 = {
+  //   critical: [
+  //     { title: "Incomplete Onboarding", days: "30 days" },
+  //     { title: "Off-Peak hours not set", days: "15 days" },
+  //     { title: "Missing Bank Account", days: "20 days" },
+  //     { title: "Subscription overdue", days: "10 days" },
+  //   ],
+  //   growth: [
+  //     { title: "New Service Opportunity", days: "5 days" },
+  //     { title: "Increase Social Media Reach", days: "12 days" },
+  //   ],
+  // };
   return (
     <>
       <div className="overflow-auto border rounded-[6px] border-[#D9DDE3]">
