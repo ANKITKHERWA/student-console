@@ -12,11 +12,13 @@ type TabItem = {
 type CommonTabsProps = {
   tabs: TabItem[];
   rightSection?: React.ReactNode; // <- right side me jo bhi render karna ho
+  onChange?:(value:string)=>void
+  value?:string
 };
 
-export default function Tab({ tabs, rightSection }: CommonTabsProps) {
+export default function Tab({ tabs, rightSection,onChange,value }: CommonTabsProps) {
   return (
-    <Tabs defaultValue={tabs[0]?.value} className="w-full">
+    <Tabs defaultValue={value} className="w-full" onValueChange={onChange}>
       {/* Header */}
       <div className="overflow-auto ">
         <div className="border-y border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
