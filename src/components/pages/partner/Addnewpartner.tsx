@@ -46,7 +46,6 @@ export default function Addnewpartner() {
               <CardTitle>Add New Partner</CardTitle>
             </CardHeader>
             <CardContent>
-              {/* Profile Image Upload */}
               <div className="mb-6">
                 <Label>Profile Image</Label>
                 <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-300 px-6 py-10 cursor-pointer hover:bg-gray-50">
