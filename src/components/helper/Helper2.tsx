@@ -6,9 +6,11 @@ import {
   FileIcon,
   GreenRightIcon,
   LocationIcon,
+  LockIcon,
   MaleIcon,
   MemberIcon,
   OveralScoreIcon,
+  ParsoneIcon,
   PhoneSmallIcon,
   ProfileIcon,
   RedWrongtIcon,
@@ -1784,7 +1786,6 @@ export const territoryTableData = [
           { issue: [{ issu1: "2", issu2: "3" }] },
           { tdData: "₹24,600" },
           { tdData: "Pangri" },
-
         ],
       },
       {
@@ -1799,7 +1800,6 @@ export const territoryTableData = [
           { issue: [{ issu1: "2", issu2: "3" }] },
           { tdData: "₹30,600" },
           { tdData: "Cidco N-6" },
-
         ],
       },
       {
@@ -1814,7 +1814,6 @@ export const territoryTableData = [
           { issue: [{ issu1: "2", issu2: "3" }] },
           { tdData: "₹35,600" },
           { tdData: "Lakhpur" },
-
         ],
       },
       {
@@ -1829,7 +1828,6 @@ export const territoryTableData = [
           { issue: [{ issu1: "2", issu2: "3" }] },
           { tdData: "₹24,600" },
           { tdData: "Pangri" },
-
         ],
       },
       {
@@ -1844,7 +1842,6 @@ export const territoryTableData = [
           { issue: [{ issu1: "2", issu2: "3" }] },
           { tdData: "₹30,600" },
           { tdData: "Cidco N-6" },
-
         ],
       },
       {
@@ -1859,7 +1856,47 @@ export const territoryTableData = [
           { issue: [{ issu1: "2", issu2: "3" }] },
           { tdData: "₹35,600" },
           { tdData: "Lakhpur" },
+        ],
+      },
+    ],
+  },
+];
 
+export const userProfileData = [
+  {
+    img: "/assest/svg/wade-warren.svg",
+    name: "Wade Warren",
+    jobTitle: "Manager",
+    trigger: [
+      {
+        title: "Personal Details",
+        value: "personalDetails",
+        icon: <ParsoneIcon />,
+      },
+      {
+        title: "Change Password",
+        value: "changePassword",
+        icon: <LockIcon />,
+      },
+    ],
+    content: [
+      {
+        value: "personalDetails",
+        data: [
+         "jobhi"
+        ],
+      },
+      {
+        value: "changePassword",
+        data: [
+          { details: "License Fee:", detailsData: "Wade Warren" },
+          { details: "License Term: ", detailsData: "1 year" },
+          { details: "Agreement Date: ", detailsData: "12-03-2024" },
+          { details: "Comm. Date:", detailsData: "15-03-2024" },
+          { details: "Expiry Date:", detailsData: "20-03-2025" },
+          { details: "Territory name:", detailsData: "Rohit Mehta" },
+          { details: "Territory PIN Code:", detailsData: "237489" },
+          { details: "Territory Potential:", detailsData: "Medium" },
         ],
       },
     ],
