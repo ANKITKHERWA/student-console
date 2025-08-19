@@ -2,7 +2,7 @@ import React from 'react'
 import { Input } from '@/components/ui/input'
 import { SearchIcon } from '@/components/helper/Icon2'
 import TableCommon from '@/components/common/TableCommon'
-import { ProspectiveData, RegisteredData } from '@/components/helper/Helper1'
+import { ProspectiveData } from '@/components/helper/Helper1'
 import SelecteStatus from '../insights/SelecteStatus'
 import Filter from '../insights/Filter'
 function Prospectivetab() {

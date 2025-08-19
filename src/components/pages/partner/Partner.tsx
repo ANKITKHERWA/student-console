@@ -11,8 +11,8 @@ import {
   Iconregisterdtab,
 } from '@/components/helper/Icon1'
 import { useState } from 'react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
+import Addnewpartner from './Addnewpartner'
 function Partner() {
   const [activeTab, setActiveTab] = useState('Registered')
   console.log(activeTab)
@@ -47,7 +47,7 @@ function Partner() {
                 <DotColor title="Growth" className="bg-[#F5640A]" />
               </>
             ) : activeTab === 'Prospective' ? (
-              <button className="btn">Show Button</button>
+              <Addnewpartner />
             ) : null}
           </>
         }
