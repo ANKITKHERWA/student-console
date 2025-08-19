@@ -3,11 +3,12 @@ import Pera from "@/components/common/Pera";
 import PrimaryBtn from "@/components/common/PrimaryBtn";
 import SmallHeading from "@/components/common/SmallHeading";
 import TopCommon from "@/components/common/TopCommon";
-import { baProfileData, userProfileData } from "@/components/helper/Helper2";
+import { userProfileData } from "@/components/helper/Helper2";
 import {
   LockIcon,
   ParsoneIcon,
   RightArrowIcon,
+  ShowPassIcon,
 } from "@/components/helper/Icon2";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,6 +17,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { z } from "zod";
 
+// ✅ Profile schema
 const schema = z.object({
   displayName: z.string().min(1, "Display Name is required"),
   email: z.string().email("Invalid email address"),
@@ -26,9 +28,19 @@ const schema = z.object({
     .regex(/^[0-9]+$/, "Phone must contain only numbers"),
 });
 
+// ✅ Password schema (without confirm password)
+const passwordSchema = z.object({
+  oldPassword: z.string().min(6, "Old password is required"),
+  newPassword: z
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[0-9]/, "Password must contain at least one number"),
+});
+
 function Profile() {
   const [countryCode, setCountryCode] = useState("+91");
-  const [imageSrc, setImageSrc] = useState("/default-profile.png"); // default image
+  const [imageSrc, setImageSrc] = useState("/assest/svg/dashboard-2nd.svg"); // default image
   const [form, setForm] = useState({
     displayName: "",
     email: "",
@@ -40,9 +52,24 @@ function Profile() {
     phone?: string[];
   }>({});
 
+  // ✅ Password form state
+  const [passwordForm, setPasswordForm] = useState({
+    oldPassword: "",
+    newPassword: "",
+  });
+  const [passwordErrors, setPasswordErrors] = useState<{
+    oldPassword?: string[];
+    newPassword?: string[];
+  }>({});
+
+  // ✅ Show/hide password toggles
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+
+  // ✅ File uploader
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0]; // single File (Blob) object
+      const file = e.target.files[0];
       const reader = new FileReader();
       reader.onload = (event) => {
         if (event.target?.result) {
@@ -53,6 +80,7 @@ function Profile() {
     }
   };
 
+  // ✅ profile form change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
       ...form,
@@ -60,41 +88,56 @@ function Profile() {
     });
   };
 
+  // ✅ password form change
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordForm({
+      ...passwordForm,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  // ✅ profile form submit
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = schema.safeParse({
-      displayName: form.displayName,
-      email: form.email,
-      phone: form.phone,
-    });
+    const result = schema.safeParse(form);
     if (!result.success) {
       setErrors(result.error.flatten().fieldErrors);
       return;
     }
-    console.log(result);
-    
+    console.log("Profile Updated ✅", result.data);
     setErrors({});
-    // handle update logic here, e.g. API call
+  };
+
+  // ✅ password form submit
+  const onPasswordSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const result = passwordSchema.safeParse(passwordForm);
+    if (!result.success) {
+      setPasswordErrors(result.error.flatten().fieldErrors);
+      return;
+    }
+    console.log("Password Changed ✅", result.data);
+    setPasswordErrors({});
   };
 
   return (
     <div>
       <TopCommon title="Setting" />
       <div className="md:px-5 px-4 lg:px-6 flex justify-center py-5 h-screen">
-        <div className="w-full  max-w-[545px] my-auto">
+        <div className="w-full max-w-[545px] my-auto">
           <h3 className="flex items-center gap-1 text-[#030712] text-base font-medium leading-[150%] -tracking-[0.32px]">
             <span className="text-[#808188]">Settings</span>
             <span className="mt-1">
               <RightArrowIcon />
             </span>
-            <Link href={""} className="text-[#030712]">
+            <Link href={"/"} className="text-[#030712]">
               User Profiles
             </Link>
           </h3>
           {userProfileData.map((item, index) => (
             <div key={index} className="mt-5 md:mt-6 lg:mt-8">
               <div className="flex gap-2 md:gap-[15px] items-center border md:p-3 p-2 lg:p-[15px] rounded-[6px] border-[#E4E7EB]">
-                <div>
+                <div className="relative">
                   <Image
                     src={imageSrc}
                     width={50}
@@ -102,10 +145,18 @@ function Profile() {
                     alt="User Profile"
                     className="rounded-full"
                   />
+                  <Image
+                    src={"/assest/svg/profile-pic-layer.svg"}
+                    width={50}
+                    height={50}
+                    alt="img"
+                    className="absolute top-0 w-full h-full"
+                  />{" "}
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
+                    className="absolute top-0 w-full h-full"
                   />
                 </div>
                 <div>
@@ -118,6 +169,7 @@ function Profile() {
                   </p>
                 </div>
               </div>
+
               <div className="flex md:mt-5 mt-4 lg:mt-6">
                 <Tabs defaultValue="parsonalDetails" className="w-full">
                   <TabsList className="w-full flex !justify-start !bg-transparent h-[30px] lg:h-[36px] border-b overflow-x-auto overflow-y-hidden rounded-none p-0 border-[#E4E7EB]">
@@ -136,10 +188,11 @@ function Profile() {
                     </TabsTrigger>
                   </TabsList>
 
+                  {/* Personal Details */}
                   <TabsContent value={"parsonalDetails"}>
                     <form onSubmit={onSubmitHandler}>
-                      <div className="w-full pt-[30px] pb-[60px] flex flex-col gap-6">
-                        <div className="grid w-full items-center gap-2 text-[#030712] text-sm font-semibold leading-[142%] -tracking-[0.28px]">
+                      <div className="w-full lg:pt-[30px] md:pt-5 pt-3 lg:pb-[60px] md:pb-12 pb-8 h-full flex flex-col lg:gap-6 md:gap-5 sm:gap-4 gap-3">
+                        <div className="grid w-full items-center md:gap-2 gap-1 text-[#030712] md:text-sm text-xs font-semibold leading-[142%] -tracking-[0.28px]">
                           <label htmlFor="displayName">Display Name</label>
                           <Input
                             type="text"
@@ -147,13 +200,11 @@ function Profile() {
                             value={form.displayName}
                             onChange={handleChange}
                             placeholder="Wade Warren"
-                            className="!ring-0 !rounded-[6px] h-[36px] !w-full"
+                            className="!ring-0 md:!rounded-[6px] !rounded md:h-[36px] h-[30px] !w-full md:text-sm text-xs px-2 md:px-3"
                           />
                           {errors.displayName && (
                             <span className="text-red-500 text-xs">
-                              {Array.isArray(errors.displayName)
-                                ? errors.displayName[0]
-                                : errors.displayName}
+                              {errors.displayName[0]}
                             </span>
                           )}
                           <Pera
@@ -161,7 +212,8 @@ function Profile() {
                             className="!text-xs"
                           />
                         </div>
-                        <div className="grid w-full items-center gap-2 text-[#030712] text-sm font-semibold leading-[142%] -tracking-[0.28px]">
+
+                        <div className="grid w-full items-center gap-1 md:gap-2 text-[#030712]  md:text-sm text-xs font-semibold leading-[142%] -tracking-[0.28px]">
                           <label htmlFor="email">Email</label>
                           <Input
                             type="Email"
@@ -169,13 +221,11 @@ function Profile() {
                             value={form.email}
                             onChange={handleChange}
                             placeholder="wade warren123@gmail.com"
-                            className="!ring-0 !rounded-[6px] h-[36px] !w-full"
+                            className="!ring-0 md:!rounded-[6px] !rounded md:h-[36px] h-[30px] !w-full md:text-sm text-xs px-2 md:px-3"
                           />
                           {errors.email && (
                             <span className="text-red-500 text-xs">
-                              {Array.isArray(errors.email)
-                                ? errors.email[0]
-                                : errors.email}
+                              {errors.email[0]}
                             </span>
                           )}
                           <Pera
@@ -183,14 +233,15 @@ function Profile() {
                             className="!text-xs"
                           />
                         </div>
+
                         <div>
-                          <div className="grid w-full items-center gap-2 text-[#030712] text-sm font-semibold leading-[142%] -tracking-[0.28px]">
+                          <div className="grid w-full items-center gap-1 md:gap-2 text-[#030712]  md:text-sm text-xs font-semibold leading-[142%] -tracking-[0.28px]">
                             <label htmlFor="phone">Phone no.</label>
                             <div className="flex gap-1">
                               <select
                                 value={countryCode}
                                 onChange={(e) => setCountryCode(e.target.value)}
-                                className="w-20 border border-gray-300 rounded-[6px] px-3 py-2 focus:outline-none"
+                                className="w-20 border border-gray-300 md:rounded-[6px] rounded md:px-3 px-2 md:h-[36px] h-[30px] focus:outline-none md:text-sm text-xs"
                               >
                                 <option value="+91">+91</option>
                                 <option value="+1">+1</option>
@@ -202,14 +253,12 @@ function Profile() {
                                 value={form.phone}
                                 onChange={handleChange}
                                 placeholder="Phone no."
-                                className="!ring-0 !rounded-[6px] h-[36px] !w-full"
+                                className="!ring-0 md:!rounded-[6px] !rounded md:h-[36px] h-[30px] !w-full md:text-sm text-xs px-2 md:px-3"
                               />
                             </div>
                             {errors.phone && (
                               <span className="text-red-500 text-xs">
-                                {Array.isArray(errors.phone)
-                                  ? errors.phone[0]
-                                  : errors.phone}
+                                {errors.phone[0]}
                               </span>
                             )}
                             <Pera
@@ -219,12 +268,79 @@ function Profile() {
                           </div>
                         </div>
                       </div>
-                      <div className="border-t border-[#E4E7EB] py-3 px-5 flex justify-end">
+                      <div className="border-t border-[#E4E7EB] py-3 md:px-5 flex justify-end">
                         <PrimaryBtn title="Update" className="w-max" />
                       </div>
                     </form>
                   </TabsContent>
-                  <TabsContent value={"changePassword"}>mansih</TabsContent>
+
+                  {/* Change Password */}
+                  <TabsContent value={"changePassword"}>
+                    <form onSubmit={onPasswordSubmitHandler}>
+                      <div className="w-full lg:pt-[30px] md:pt-5 pt-3 lg:pb-[60px] md:pb-12 pb-8 flex flex-col lg:gap-6 md:gap-5 sm:gap-4 gap-3">
+                        {/* Old Password */}
+                        <div className="grid md:gap-2 gap-1 font-semibold text-[#030712]  md:text-sm text-xs">
+                          <label htmlFor="oldPassword">Old Password</label>
+                          <div className="relative">
+                            <Input
+                              type={showOldPassword ? "text" : "password"}
+                              id="oldPassword"
+                              value={passwordForm.oldPassword}
+                              onChange={handlePasswordChange}
+                              placeholder="Enter old password"
+                              className="!ring-0 md:!rounded-[6px] !rounded md:h-[36px] h-[30px] !w-full md:text-sm text-xs px-2 md:px-3"
+                            />
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setShowOldPassword(!showOldPassword)
+                              }
+                              className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-blue-600"
+                            >
+                              <ShowPassIcon className="h-full" />
+                            </button>
+                          </div>
+                          {passwordErrors.oldPassword && (
+                            <span className="text-red-500 text-xs">
+                              {passwordErrors.oldPassword[0]}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* New Password */}
+                        <div className="grid gap-2 text-sm font-semibold text-[#030712]  md:text-sm text-xs">
+                          <label htmlFor="newPassword">New Password</label>
+                          <div className="relative">
+                            <Input
+                              type={showNewPassword ? "text" : "password"}
+                              id="newPassword"
+                              value={passwordForm.newPassword}
+                              onChange={handlePasswordChange}
+                              placeholder="Enter new password"
+                              className="!ring-0 md:!rounded-[6px] !rounded md:h-[36px] h-[30px] !w-full md:text-sm text-xs px-2 md:px-3"
+                            />
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setShowNewPassword(!showNewPassword)
+                              }
+                              className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-blue-600"
+                            >
+                              <ShowPassIcon />
+                            </button>
+                          </div>
+                          {passwordErrors.newPassword && (
+                            <span className="text-red-500 text-xs">
+                              {passwordErrors.newPassword[0]}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="border-t border-[#E4E7EB] py-3 md:px-5 flex justify-end">
+                        <PrimaryBtn title="Change Password" className="w-max" />
+                      </div>
+                    </form>
+                  </TabsContent>
                 </Tabs>
               </div>
             </div>

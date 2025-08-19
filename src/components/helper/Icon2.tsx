@@ -4,9 +4,10 @@ interface IconProps {
   className?: string;
 }
 
-export const ShowPassIcon = () => {
+export const ShowPassIcon: React.FC<IconProps> = ({ className }) => {
   return (
     <svg
+      className={`${className}`}
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"

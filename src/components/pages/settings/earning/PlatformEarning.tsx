@@ -1,10 +1,13 @@
 "use clinet";
 import TableBody from "@/components/common/TableBody";
 import TableHead from "@/components/common/TableHead";
-import { monthEarning, platformEarningTableData, selecteMemberEarning } from "@/components/helper/Helper2";
+import {
+  monthEarning,
+  platformEarningTableData,
+  selecteMemberEarning,
+} from "@/components/helper/Helper2";
 import React from "react";
 import Selecte from "@/components/common/Selecte";
-
 
 function PlatformEarning() {
   return (
