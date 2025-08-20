@@ -1,48 +1,50 @@
-'use client'
+"use client";
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
-import React from 'react'
-import { useState } from 'react'
+import React from "react";
+import { useState } from "react";
 
 export default function Addnewpartner() {
-  const [open, setOpen] = useState(false)
-  const [image, setImage] = useState<string | null>(null)
+  const [open, setOpen] = useState(false);
+  const [image, setImage] = useState<string | null>(null);
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files) {
-      const file = e.target.files[0] // Access the first file
+      const file = e.target.files[0]; // Access the first file
       if (file) {
-        const reader = new FileReader()
+        const reader = new FileReader();
         reader.onloadend = () => {
-          setImage(reader.result as string)
-        }
-        reader.readAsDataURL(file) // Pass the file to readAsDataURL
+          setImage(reader.result as string);
+        };
+        reader.readAsDataURL(file); // Pass the file to readAsDataURL
       }
     }
-  }
+  };
 
   return (
     <>
       <Button
         className="bg-[#B751FB] cursor-pointer"
-        onClick={() => setOpen(true)}>
+        onClick={() => setOpen(true)}
+      >
         + Add Partner
       </Button>
 
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
-          className="w-full sm:w-[400px] overflow-auto ">
+          className="w-full sm:w-[400px] overflow-auto "
+        >
           <Card className="w-full h-full border-0 ronder-none shadow-none flex justify-between">
             <div>
               <CardHeader className="border-b">
@@ -64,7 +66,8 @@ export default function Addnewpartner() {
                           className="mx-auto h-12 w-12 text-gray-400"
                           fill="none"
                           stroke="currentColor"
-                          viewBox="0 0 48 48">
+                          viewBox="0 0 48 48"
+                        >
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -77,9 +80,10 @@ export default function Addnewpartner() {
                       <div className="flex text-sm text-gray-600 justify-center">
                         <label
                           htmlFor="file-upload"
-                          className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none">
+                          className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none"
+                        >
                           <span>
-                            {image ? 'Change image' : 'Upload an image'}
+                            {image ? "Change image" : "Upload an image"}
                           </span>
                           <Input
                             id="file-upload"
@@ -145,5 +149,5 @@ export default function Addnewpartner() {
         </SheetContent>
       </Sheet>
     </>
-  )
+  );
 }

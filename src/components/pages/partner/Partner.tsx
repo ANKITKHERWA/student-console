@@ -1,21 +1,19 @@
-'use client'
-import DotColor from '@/components/common/DotColor'
-import Tab from '@/components/common/Tab'
-import TopCommon from '@/components/common/TopCommon'
-import React from 'react'
-import Registeredtab from './Registeredtab'
-import Prospectivetab from './Prospectivetab'
+"use client";
+import DotColor from "@/components/common/DotColor";
+import Tab from "@/components/common/Tab";
+import TopCommon from "@/components/common/TopCommon";
+import React from "react";
+import Registeredtab from "./Registeredtab";
+import Prospectivetab from "./Prospectivetab";
 import {
-  Icon10thimg,
   Iconprospectivetab,
   Iconregisterdtab,
-} from '@/components/helper/Icon1'
-import { useState } from 'react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Button } from '@/components/ui/button'
+} from "@/components/helper/Icon1";
+import { useState } from "react";
+import Addnewpartner from "./Addnewpartner";
 function Partner() {
-  const [activeTab, setActiveTab] = useState('Registered')
-  console.log(activeTab)
+  const [activeTab, setActiveTab] = useState("Registered");
+  console.log(activeTab);
 
   return (
     <>
@@ -23,16 +21,16 @@ function Partner() {
       <Tab
         tabs={[
           {
-            id: 'Registered',
-            value: 'Registered',
-            title: 'Registered',
+            id: "Registered",
+            value: "Registered",
+            title: "Registered",
             icon: <Iconregisterdtab />,
             content: <Registeredtab />,
           },
           {
-            id: 'Prospective',
-            value: 'Prospective',
-            title: 'Prospective',
+            id: "Prospective",
+            value: "Prospective",
+            title: "Prospective",
             icon: <Iconprospectivetab />,
             content: <Prospectivetab />,
           },
@@ -41,19 +39,19 @@ function Partner() {
         onChange={setActiveTab}
         rightSection={
           <>
-            {activeTab === 'Registered' ? (
+            {activeTab === "Registered" ? (
               <>
                 <DotColor title="Critical" className="bg-[#FF0000]" />
                 <DotColor title="Growth" className="bg-[#F5640A]" />
               </>
-            ) : activeTab === 'Prospective' ? (
-              <button className="btn">Show Button</button>
+            ) : activeTab === "Prospective" ? (
+              <Addnewpartner />
             ) : null}
           </>
         }
       />
     </>
-  )
+  );
 }
 
-export default Partner
+export default Partner;
