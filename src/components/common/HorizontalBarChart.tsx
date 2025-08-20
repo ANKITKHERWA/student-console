@@ -49,7 +49,7 @@ const HorizontalBarChart: React.FC<Props> = ({
             tick={{ fontSize: 14, fill: '#444' }}
           />
           <Tooltip
-            formatter={(value: any) => value}
+            formatter={(value: 20) => value}
             cursor={{ fill: 'rgba(187,107,217,0.1)' }}
             labelStyle={{ fontWeight: 600, fontSize: 13 }}
           />

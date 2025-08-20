@@ -2120,7 +2120,7 @@ export const RegisteredData = [
         ],
       },
       {
-        id: 9,
+        id: 18,
         td: [
           {
             saloneName: [
@@ -2611,34 +2611,7 @@ export const ProspectiveData = [
           { action: '...' },
         ],
       },
-      {
-        id: 16,
-        td: [
-          {
-            saloneName: [
-              {
-                img: '/assest/png/salone-small-img.png',
-                name: 'Radiance Hair Studio',
-              },
-            ],
-          },
-          { add: 'Brigade Road, Bangalore' },
-          { health: 'John Smith (owner)' },
-          { tdData: '23249-39212' },
-          { tdData: '0-3' },
-          { tdData: '4.5' },
-          { tdData: '3.0' },
-          { tdData: '3.5' },
-          { tdData: '1/5' },
-          { lastVisit: 'July 14 ,2025' },
-          { tdData: 'July 19 ,2025' },
-          { tdData: 'Wants to onboard ASAP. F' },
-          { tcName: 'Ayesha Sharma' },
-          { rmName: 'Rhea Malhotra' },
-          { feName: 'Neha Singh' },
-          { action: '...' },
-        ],
-      },
+
       {
         id: 10,
         td: [
@@ -2781,6 +2754,34 @@ export const ProspectiveData = [
       },
       {
         id: 15,
+        td: [
+          {
+            saloneName: [
+              {
+                img: '/assest/png/salone-small-img.png',
+                name: 'Radiance Hair Studio',
+              },
+            ],
+          },
+          { add: 'Brigade Road, Bangalore' },
+          { health: 'John Smith (owner)' },
+          { tdData: '23249-39212' },
+          { tdData: '0-3' },
+          { tdData: '4.5' },
+          { tdData: '3.0' },
+          { tdData: '3.5' },
+          { tdData: '1/5' },
+          { lastVisit: 'July 14 ,2025' },
+          { tdData: 'July 19 ,2025' },
+          { tdData: 'Wants to onboard ASAP. F' },
+          { tcName: 'Ayesha Sharma' },
+          { rmName: 'Rhea Malhotra' },
+          { feName: 'Neha Singh' },
+          { action: '...' },
+        ],
+      },
+      {
+        id: 16,
         td: [
           {
             saloneName: [
