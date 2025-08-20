@@ -20,7 +20,15 @@ import {
   WatchIcon,
 } from "./Icon2";
 import PaymentModal from "../pages/settings/earning/PaymentMudal";
-import { Iconactive, Iconapointment, Iconright } from "./Icon1";
+import {
+  Aaravsharma,
+  FemaleteamCard,
+  Iconactive,
+  Iconapointment,
+  Iconright,
+  MaleteamCard,
+  Priyasingh,
+} from "./Icon1";
 
 export const loginFormData = [
   {
@@ -1898,6 +1906,47 @@ export const userProfileData = [
           { details: "Territory PIN Code:", detailsData: "237489" },
           { details: "Territory Potential:", detailsData: "Medium" },
         ],
+      },
+    ],
+  },
+];
+
+export const teamCardData = [
+  {
+    heading: "TC List ( 2 )",
+    tcList: [
+      {
+        avatar: <Aaravsharma />,
+        name: "Aarav Sharma",
+        icon: <MaleteamCard />,
+        gender: "Male",
+        tag: "TC",
+        phone: "+919876500101",
+        email: "aarav.sharma@example.com",
+        manages: " 2 RM & 3 FE",
+        totalSalons: 1100,
+        dotclass: "bg-green-500",
+        tagclass: "border-[#FFAB47] bg-[#FFEFDB]",
+        ganderclass: "bg-[#E4E7EB] border-[#808188]",
+      },
+    ],
+  },
+  {
+    heading: "RM List ( 4 )",
+    tcList: [
+    {
+        avatar: <Priyasingh />,
+        name: 'Priya Singh',
+        icon: <FemaleteamCard />,
+        gender: 'Female',
+        tag: 'TC',
+        phone: '+919876500101',
+        email: 'tanya.hill@example.com',
+        manages: ' 2 RM & 3 FE',
+        totalSalons: 1100,
+        dotclass: 'bg-red-500',
+        tagclass: 'border-[#FFAB47] bg-[#FFEFDB]',
+        ganderclass: 'bg-[#E4E7EB] border-[#808188]',
       },
     ],
   },

@@ -4,9 +4,9 @@ import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 // import Image from "next/image";
 // import StatusBadge from "./StatusBadge";
-import StatusBadgeSec from "./StatusBadgeSec";
+// import StatusBadgeSec from "./StatusBadgeSec";
 
-import { criticalData } from "../helper/Helper2"; // ✅ changed here
+// import { criticalData } from "../helper/Helper2"; // ✅ changed here
 // import Link from "next/link";
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 // import {
@@ -27,8 +27,8 @@ import { criticalData } from "../helper/Helper2"; // ✅ changed here
 //   ViewReportIcon,
 // } from "../helper/Icon2";
 // import SmallHeading from "./SmallHeading";
-import SecondryBtn from "./SecondryBtn";
-import VisitReportMudal from "../pages/insights/VisitReportMudal";
+// import SecondryBtn from "./SecondryBtn";
+// import VisitReportMudal from "../pages/insights/VisitReportMudal";
 // import TableKebabMenu from "./TableKebabMenu";
 // import { PlusIcon } from "lucide-react";
 import TableBody from "./TableBody";
