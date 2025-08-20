@@ -61,6 +61,7 @@ const HorizontalBarChart: React.FC<Props> = ({
             isAnimationActive={false}>
             <LabelList
               dataKey="value"
+              offset={50}
               position="right"
               style={{ fill: '#222', fontWeight: 'bold', fontSize: 14 }}
               formatter={(v: number) => v}
