@@ -22,11 +22,13 @@ import {
 import PaymentModal from "../pages/settings/earning/PaymentMudal";
 import {
   Aaravsharma,
+  EmailteamCard,
   FemaleteamCard,
   Iconactive,
   Iconapointment,
   Iconright,
   MaleteamCard,
+  PhoneteamCard,
   Priyasingh,
 } from "./Icon1";
 
@@ -1799,7 +1801,7 @@ export const territoryTableData = [
         ],
       },
       {
-        id: 1,
+        id: 2,
         td: [
           { tdData: "431007" },
           { tdData: "Aurangabad/Maharashtra" },
@@ -1813,7 +1815,7 @@ export const territoryTableData = [
         ],
       },
       {
-        id: 1,
+        id: 3,
         td: [
           { tdData: "144205" },
           { tdData: "Phagwara/Punjab" },
@@ -1827,7 +1829,7 @@ export const territoryTableData = [
         ],
       },
       {
-        id: 1,
+        id: 4,
         td: [
           { tdData: "234567  " },
           { tdData: "Pune/Maharashtra" },
@@ -1841,7 +1843,7 @@ export const territoryTableData = [
         ],
       },
       {
-        id: 1,
+        id: 5,
         td: [
           { tdData: "431007" },
           { tdData: "Aurangabad/Maharashtra" },
@@ -1855,7 +1857,7 @@ export const territoryTableData = [
         ],
       },
       {
-        id: 1,
+        id: 6,
         td: [
           { tdData: "144205" },
           { tdData: "Phagwara/Punjab" },
@@ -1934,19 +1936,75 @@ export const teamCardData = [
   {
     heading: "RM List ( 4 )",
     tcList: [
-    {
+      {
         avatar: <Priyasingh />,
-        name: 'Priya Singh',
+        name: "Priya Singh",
         icon: <FemaleteamCard />,
-        gender: 'Female',
-        tag: 'TC',
-        phone: '+919876500101',
-        email: 'tanya.hill@example.com',
-        manages: ' 2 RM & 3 FE',
+        gender: "Male",
+        tag: "RM",
+        phone: "+919876500101",
+        email: "tanya.hill@example.com",
+        manages: " 2 RM & 3 FE",
         totalSalons: 1100,
-        dotclass: 'bg-red-500',
-        tagclass: 'border-[#FFAB47] bg-[#FFEFDB]',
-        ganderclass: 'bg-[#E4E7EB] border-[#808188]',
+        dotclass: "bg-red-500",
+        tagclass: "border-[#FFAB47] bg-[#F]",
+        ganderclass: "bg-[#E4E7EB] border-[#808188]",
+      },
+    ],
+  },
+];
+
+export const someData = [
+  {
+    heading: "TC List ( 2 )",
+    tcList: [
+      {
+        avatar: <Aaravsharma />,
+        name: "Aarav Sharma",
+        icon: <MaleteamCard />,
+        gender: "Male",
+        tag: "TC",
+        subData: [
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          {
+            phone: "+919876500101",
+            email: "tanya.hill@example.com",
+            manages: " 2 RM & 3 FE",
+            totalSalons: 1100,
+            dotclass: "bg-red-500",
+            tagclass: "border-[#FFAB47] bg-[#F]",
+            ganderclass: "bg-[#E4E7EB] border-[#808188]",
+          },
+        ],
+      },
+      {
+        avatar: <Priyasingh />,
+        name: "Priya Singh",
+        icon: <MaleteamCard />,
+        gender: "FeMale",
+        tag: "RM",
+        subData: [
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          // { icon: <EmailteamCard />, title: "curtis.weaver@example.com" },
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+        ],
+      },
+      {
+        avatar: <Priyasingh />,
+        name: "Priya Singh",
+        icon: <MaleteamCard />,
+        gender: "FeMale",
+        tag: "FE",
+        subData: [
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+          // { icon: <PhoneteamCard />, title: "+919876500101" },
+        ],
       },
     ],
   },
