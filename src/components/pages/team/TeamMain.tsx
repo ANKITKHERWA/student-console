@@ -6,32 +6,34 @@ import React from "react";
 import Card from "./Card";
 import Tab from "@/components/common/Tab";
 import { MembersIcon, PerformanceIcon } from "@/components/helper/Icon2";
-import PlatformEarning from "../settings/earning/PlatformEarning";
 import EarningDetails from "../settings/earning/EarningDetails";
+import Member from "./Member";
 
 function TeamMain() {
   return (
     <div>
       <TopCommon title="Team" />
       <div>
-        <Tab tabs={[
+        <Tab
+          tabs={[
             {
-              id: "platformEarning",
-              value: "platformEarning",
-              title: "Platform Earning",
+              id: "members",
+              value: "members",
+              title: "Members",
               icon: <MembersIcon />,
-              content: <PlatformEarning/>,
+              content: <Member />,
             },
             {
-              id: "earningDetails",
-              value: "earningDetails",
-              title: "Earning Details",
+              id: "performance",
+              value: "performance",
+              title: "Performance",
               icon: <PerformanceIcon />,
-              content: <EarningDetails/>,
+              content: <Member />,
             },
-          ]}/>
+          ]}
+        />
       </div>
-      <div className="flex justify-between items-center px-6 mt-7">
+      {/* <div className="flex justify-between items-center px-6 mt-7">
         <div>
           <Pera className="text-lg font-semibold" title="Total Members:16" />
         </div>
@@ -43,7 +45,7 @@ function TeamMain() {
       </div>
       <div className="px-6 mt-7">
         <Card />
-      </div>
+      </div> */}
     </div>
   );
 }
