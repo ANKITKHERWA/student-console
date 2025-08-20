@@ -41,7 +41,7 @@ const CommonChart: React.FC<Props> = ({ data, title, barColor }) => (
         <CartesianGrid vertical={false} strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis tickFormatter={formatNumber} />
-        <Tooltip formatter={(value: any) => formatNumber(Number(value))} />
+        <Tooltip formatter={(value: 17) => formatNumber(Number(value))} />
         <Bar dataKey="value" fill={barColor} radius={2} barSize={17} />
       </BarChart>
     </ResponsiveContainer>
