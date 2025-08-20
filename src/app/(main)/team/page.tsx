@@ -1,12 +1,12 @@
-import Team from '@/components/pages/team/Team'
-import React from 'react'
+import TeamMain from "@/components/pages/team/TeamMain";
+import React from "react";
 
 function page() {
   return (
     <div>
-      <Team />
+      <TeamMain />
     </div>
-  )
+  );
 }
 
-export default page
+export default page;

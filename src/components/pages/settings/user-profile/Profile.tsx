@@ -308,7 +308,7 @@ function Profile() {
                         </div>
 
                         {/* New Password */}
-                        <div className="grid gap-2 text-sm font-semibold text-[#030712]  md:text-sm text-xs">
+                        <div className="grid gap-2 font-semibold text-[#030712]  md:text-sm text-xs">
                           <label htmlFor="newPassword">New Password</label>
                           <div className="relative">
                             <Input

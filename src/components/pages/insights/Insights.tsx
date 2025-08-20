@@ -1,6 +1,21 @@
 "use client";
 import DotColor from "@/components/common/DotColor";
-import { ActionIocn, CalenderBlackSmallIocn, ClenderIcon, CriticalTask, FollowUpIcon, GrothTask, IssueIcon, PartnerIcon, PhoneSmallIcon, PlusIcon, SearchIcon, SmallCriticalIcon, SmallEyeIcon, ViewReportIcon } from "@/components/helper/Icon2";
+import {
+  ActionIocn,
+  CalenderBlackSmallIocn,
+  ClenderIcon,
+  CriticalTask,
+  FollowUpIcon,
+  GrothTask,
+  IssueIcon,
+  PartnerIcon,
+  PhoneSmallIcon,
+  PlusIcon,
+  SearchIcon,
+  SmallCriticalIcon,
+  SmallEyeIcon,
+  ViewReportIcon,
+} from "@/components/helper/Icon2";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tabs } from "@radix-ui/react-tabs";
 import React, { useState } from "react";
@@ -21,7 +36,7 @@ import VisitReportMudal from "./VisitReportMudal";
 import StatusBadgeSec from "@/components/common/StatusBadgeSec";
 function Insights() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="pb-10">
@@ -42,7 +57,7 @@ function Insights() {
                 <TabsTrigger
                   id="growth-task"
                   value="growth-task"
-                  className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=inactive]:fill-[#808188] !shadow-none px-2"  
+                  className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=inactive]:fill-[#808188] !shadow-none px-2"
                 >
                   <GrothTask />
                   Growth Task
@@ -78,12 +93,15 @@ function Insights() {
                 </div>
               </div>
             </form>
-            <TableCommon data={criticalData} sidebarContent={<>
-              <div className="md:py-5 py-4 ms:px-5 px-4 lg:px-6 border-b border-[#E4E7EB]">
-            <StatusBadgeSec status={"registered"} />
-          </div>
-          <div className="flex flex-col justify-between h-full pb-3">
-            {/* {criticalData.map((item, indexs) => (
+            <TableCommon
+              data={criticalData}
+              sidebarContent={
+                <>
+                  <div className="md:py-5 py-4 ms:px-5 px-4 lg:px-6 border-b border-[#E4E7EB]">
+                    <StatusBadgeSec status={"registered"} />
+                  </div>
+                  <div className="flex flex-col justify-between h-full pb-3">
+                    {/* {criticalData.map((item, indexs) => (
               <div key={indexs}>
                 {item.body.map((items, index) => (
                   <div key={index}>
@@ -92,8 +110,8 @@ function Insights() {
                 ))}
               </div>
             ))} */}
-            
-            {sidebarData?.map((itm, idx) => (
+
+                    {sidebarData?.map((itm, idx) => (
                       <div key={idx}>
                         <div className="lg:pt-5 lg:ps-6 lg:pb-[30px] md:py-5 p-4 md:px-6 lg:pe-[30px]">
                           <div className="flex justify-between gap-2">
@@ -383,16 +401,18 @@ function Insights() {
                         </div>
                       </div>
                     ))}
-            <div className="px-[30px] flex justify-end gap-2 pb-3">
-              <SecondryBtn
-                title="Cancel"
-                className="w-max"
-                onClick={() => setOpen(false)}
-              />
-              <VisitReportMudal />
-            </div>
-          </div> 
-              </>}/>
+                    <div className="px-[30px] flex justify-end gap-2 pb-3">
+                      <SecondryBtn
+                        title="Cancel"
+                        className="w-max"
+                        onClick={() => setOpen(false)}
+                      />
+                      <VisitReportMudal />
+                    </div>
+                  </div>
+                </>
+              }
+            />
           </TabsContent>
           {/* <TabsContent value="growth-task">
            
