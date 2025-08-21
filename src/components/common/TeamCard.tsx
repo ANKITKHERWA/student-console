@@ -39,7 +39,7 @@ const TeamCard: React.FC<Iprops> = ({
   return (
     <div
       className={`max-w-xs rounded-xl border  border-[#E4E7EB] group py-3 hover:bg-[#F1DCFF]  bg-[#fff]  shadow-lg w-307  ${className}`}>
-      <span className={`rounded-full h-3 w-3 ml-2 block ${dotclass}`}> </span>
+      <span className={`rounded-full h-3 w-3 ml-2 block`}> </span>
       <div className="flex items-center gap-4 px-6">
         <span>{avatar}</span>
         <div>
