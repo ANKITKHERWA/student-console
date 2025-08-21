@@ -1,4 +1,3 @@
-import { title } from 'process'
 import {
   Aaravsharma,
   Adsnot,
@@ -58,14 +57,11 @@ import {
   Wadewarren,
 } from './Icon1'
 import {
-  GreenRightIcon,
   LocationIcon,
   OveralScoreIcon,
   PhoneSmallIcon,
-  RedWrongtIcon,
   SmallCalenderIcon,
 } from './Icon2'
-import TableMeatbalMenu from '../pages/insights/TableMeatbalMenu'
 
 export const navItems = [
   {
