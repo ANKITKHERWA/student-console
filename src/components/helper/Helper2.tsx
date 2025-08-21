@@ -31,6 +31,8 @@ import {
   PhoneteamCard,
   Priyasingh,
 } from "./Icon1";
+import { id } from "date-fns/locale";
+import { Value } from "@radix-ui/react-select";
 
 export const loginFormData = [
   {
@@ -2015,6 +2017,124 @@ export const someData = [
           },
         ],
       },
+      {
+        status: "Working",
+        avatar: <Priyasingh />,
+        name: "Priya Singh",
+        icon: <MaleteamCard />,
+        gender: "Female",
+        tag: "FE",
+        subData: [
+          {
+            phone: "+919876500101",
+            email: "priya.hill@example.com",
+            manages: " 2 RM & 3 FE",
+            totalSalons: 1100,
+            dotclass: "bg-red-500",
+            tagclass: "border-[#FFAB47] bg-[#F]",
+            ganderclass: "bg-[#E4E7EB] border-[#808188]",
+          },
+        ],
+      },
+      {
+        status: "Working",
+        avatar: <Priyasingh />,
+        name: "Priya Singh",
+        icon: <MaleteamCard />,
+        gender: "Female",
+        tag: "FE",
+        subData: [
+          {
+            phone: "+919876500101",
+            email: "priya.hill@example.com",
+            manages: " 2 RM & 3 FE",
+            totalSalons: 1100,
+            dotclass: "bg-red-500",
+            tagclass: "border-[#FFAB47] bg-[#F]",
+            ganderclass: "bg-[#E4E7EB] border-[#808188]",
+          },
+        ],
+      },
     ],
+  },
+];
+
+export const targetInputs = [
+  {
+    heading: "Onboarding Salons",
+    type: "number",
+    placeholder: "22",
+    id: "onboardingSalons",
+    msg: "No. of new salons successfully onboarded",
+  },
+  {
+    heading: "Active vs Assigned Salon Ratio",
+    type: "number",
+    placeholder: "90",
+    id: "activeVsAssignedSalonRatio",
+    msg: "% OF ACTIVE SALONS OUT OF TOTAL ASSIGNED",
+  },
+  {
+    heading: "Visit Conducted",
+    type: "number",
+    placeholder: "200",
+    id: "visitConducted",
+    msg: "Total number of partner visits completed. Min. visits >= assigned salons. (Unit: visits)",
+  },
+  {
+    heading: "Appointments Booked",
+    type: "number",
+    placeholder: "94",
+    id: "bookedAppointments",
+    msg: "Total online + offline appointments created by assigned salons. (Unit: appointments)",
+  },
+  {
+    heading: "Sales Count ",
+    type: "number",
+    placeholder: "33",
+    id: "salesCount",
+    msg: "Total number of sales transactions by assigned salons. (Unit: transactions)",
+  },
+  {
+    heading: "Promo Code Generated ",
+    type: "number",
+    placeholder: "43",
+    id: "promoCodeGenerated",
+    msg: "Count of unique promo codes generated in the month. (Unit: codes)",
+  },
+  {
+    heading: "Get Featured ",
+    type: "number",
+    placeholder: "41",
+    id: "getFeatured",
+    msg: "Count of salons actively using the 'Get Featured' service. (Unit: salons)",
+  },
+  {
+    heading: "Digital Ads ",
+    type: "number",
+    placeholder: "41",
+    id: "digitalAds",
+    msg: "Count of salons running digital ad campaigns. (Unit: salons)",
+  },
+  {
+    heading: "Creative Studio ",
+    type: "number",
+    placeholder: "25",
+    id: "creativeStudio",
+    msg: "Count of salons utilizing the Creative Studio. (Unit: salons)",
+  },
+  {
+    heading: "Easy Share ",
+    type: "number",
+    placeholder: "39",
+    id: "easyShare",
+    msg: "Count of salons using the Easy Share feature. (Unit: salons)",
+  },
+  {
+    heading: "Campaign Message Sent ",
+    type: "number",
+    placeholder: "63",
+    id: "messageSent",
+    msg: "Count of campaign messages sent by salons. (Unit: messages)",
   },
 ];

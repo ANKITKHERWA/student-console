@@ -14,12 +14,11 @@ import {
 import React, { useState } from "react";
 import Heading from "@/components/common/Heading";
 import { someData } from "@/components/helper/Helper2";
-import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -31,7 +30,6 @@ import {
   PastPerformanceIcon,
   PhoneSmallIcon,
   ShowPassIcon,
-  ViewReportIcon,
 } from "@/components/helper/Icon2";
 import SmallHeading from "@/components/common/SmallHeading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -44,9 +42,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import PrimaryBtn from "@/components/common/PrimaryBtn";
 import SecondryBtn from "@/components/common/SecondryBtn";
 import { AddTarget } from "./AddTarget";
+import { Button } from "@/components/ui/button";
 
 interface SubDataItem {
   phone?: string;
@@ -77,21 +75,24 @@ function Member() {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <div className="flex justify-between items-center px-6 mt-7">
-        <div>
-          <Pera className="text-lg font-semibold" title="Total Members:16" />
-        </div>
-        <div className="flex gap-2">
+      <div className="flex justify-between sm:items-center lg:mt-7 md:mt-8 sm:mt-5 mt-4 gap-1">
+        <Pera className="text-lg font-semibold" title="Total Members:16" />
+        <div className="flex sm:gap-2 gap-1 sm:flex-row flex-col-reverse justify-end items-end">
           <Search />
-          <Fluentcard />
-          <Tablericon />
+          <div className="flex sm:gap-2 gap-1">
+            <Fluentcard />
+            <Tablericon />
+          </div>
         </div>
       </div>
-      <div className="px-6 mt-7">
+      <div className="lg:mt-7 md:mt-6 sm:mt-5 mt-4">
         {someData.map((item, index) => (
-          <div key={index} className="mt-[30px]">
-            <Heading title={item.heading} className="text-xl!" />
-            <div className="flex flex-wrap gap-5 mt-4 items-center">
+          <div key={index} className="lg:mt-[30px] md:mt-6 sm:mt-5 mt-4">
+            <Heading
+              title={item.heading}
+              className="lg:!text-xl md:!text-lg !text-base"
+            />
+            <div className="flex flex-wrap gap-5 md:mt-4 mt-3 items-center">
               {item.tcList.map((Items, idxs) => (
                 <div
                   key={idxs}
@@ -99,7 +100,7 @@ function Member() {
                     setSelectedMember(Items);
                     setOpen(true);
                   }}
-                  className={`max-w-xs rounded-xl border border-[#E4E7EB] group py-3 hover:bg-[#F1DCFF] bg-[#fff] shadow-lg w-307 `}
+                  className={`sm:rounded-md rounded-sm border border-[#E4E7EB] group md:py-3 py-2 hover:bg-[#F1DCFF] bg-[#fff] shadow-lg min-[1150px]:w-[23%] min-[850px]:w-[31%] min-[550px]:w-[48%] w-full cursor-pointer`}
                 >
                   <span
                     className={`rounded-full h-3 w-3 ml-2 block ${
@@ -110,10 +111,12 @@ function Member() {
                         : ""
                     }`}
                   ></span>
-                  <div className="flex items-center gap-4 px-6">
+                  <div className="flex items-center xl:gap-4 gap-3 xl:px-6 md:px-4 px-3">
                     <span>{Items.avatar}</span>
                     <div>
-                      <h2 className="text-lg font-semibold">{Items.name}</h2>
+                      <h2 className="xl:text-lg md:text-base text-sm font-semibold">
+                        {Items.name}
+                      </h2>
                       <div className="flex gap-2 mt-1">
                         <span
                           className={`rounded-full text-black px-2.5 py-0.5 text-xs border font-medium flex items-center gap-1`}
@@ -148,7 +151,7 @@ function Member() {
                   <div>
                     {Items.subData.map((items, indexs) => (
                       <div key={indexs} className="flex items-center gap-2">
-                        <div className="mt-4 space-y-2 text-sm w-full text-gray-700 border-t border-[#E4E7EB] group-hover:border-white  pt-4 px-6">
+                        <div className="mt-4 space-y-2 sm:text-sm text-xs w-full text-gray-700 border-t border-[#E4E7EB] group-hover:border-white  md:pt-4 sm:pt-3 pt-2 xl:px-6 md:px-4 px-3">
                           {items.phone && (
                             <div className="flex items-center gap-2">
                               <PhoneteamCard /> {items.phone}
@@ -182,7 +185,7 @@ function Member() {
                 side="right"
                 className="w-full sm:w-[400px] overflow-auto !pb-3"
               >
-                <div className="px-4 py-5 border-b border-grayE4">
+                <div className="px-4 sm:py-5 py-4 border-b border-grayE4">
                   <div className="flex gap-2 items-center">
                     <SmallHeading
                       title="Member detail"
@@ -210,13 +213,13 @@ function Member() {
                   </div>
                 </div>
 
-                <div className="border border-grayE4 mt-[30px] mx-5 p-[15px] flex items-center justify-between gap-1 rounded-[6px]">
-                  <div className="flex items-center gap-2">
+                <div className="sm:border border-b border-grayE4 lg:mt-[30px] md:mt-6 sm:mt-5 sm:mx-5 md:p-[15px] p-3 flex items-center justify-between gap-1 sm:rounded-[6px]">
+                  <div className="flex items-center sm:gap-2 gap-1">
                     {selectedMember && <div>{selectedMember.avatar}</div>}
                     <div>
                       <div className="flex">
                         {selectedMember && (
-                          <h3 className="text-[#030712] text-base font-semibold leading-[142%] -tracking-[0.28px] border-r border-grayE4 pr-2.5">
+                          <h3 className="text-[#030712] sm:text-base text-sm font-semibold leading-[142%] -tracking-[0.28px] border-r border-grayE4 pr-2.5">
                             {selectedMember.name}
                           </h3>
                         )}
@@ -240,8 +243,9 @@ function Member() {
                           {selectedMember.subData.map((item, idx) => (
                             <div key={idx} className="mb-3">
                               {item.email && (
-                                <div className="flex items-center gap-2">
-                                  <MailIcon /> <span>{item.email}</span>
+                                <div className="flex items-center sm:gap-2 gap-1">
+                                  <MailIcon />{" "}
+                                  <span className="text-sm">{item.email}</span>
                                 </div>
                               )}
                             </div>
@@ -273,7 +277,7 @@ function Member() {
                     </span>
                   )}
                 </div>
-                <div className="py-[15px] px-5 border-y border-grayE5">
+                <div className="sm:py-[15px] py-3 md:px-5 px-4 border-b border-grayE5">
                   <p className="text-gray text-sm font-medium leading-[142%] -tracking-[0.28px]">
                     <span>Status: </span>
                     <span className="text-black">{selectedMember?.status}</span>
@@ -303,7 +307,7 @@ function Member() {
                     <SmallHeading title="Basic Info" className="px-5" />
                     <div>
                       <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
-                        <span className="w-[150px] inline-block text-[#808188]">
+                        <span className="sm:w-[150px] w-[100px] inline-block text-[#808188]">
                           Name
                         </span>
                         <span className="text-[#030712] font-semibold">
@@ -311,7 +315,7 @@ function Member() {
                         </span>
                       </div>
                       <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4 flex">
-                        <span className="w-[150px] inline-block text-[#808188]">
+                        <span className="sm:w-[150px] w-[100px] inline-block text-[#808188]">
                           Gender
                         </span>
                         <span className="text-[#030712] font-semibold">
@@ -329,7 +333,7 @@ function Member() {
                         </span>
                       </div>
                       <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
-                        <span className="w-[150px] inline-block text-[#808188]">
+                        <span className="sm:sm:w-[150px] w-[100px] w-[100px] inline-block text-[#808188]">
                           Email
                         </span>
                         <span className="text-[#030712] font-semibold">
@@ -345,7 +349,7 @@ function Member() {
                         </span>
                       </div>
                       <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
-                        <span className="w-[150px] inline-block text-[#808188]">
+                        <span className="sm:w-[150px] w-[100px] inline-block text-[#808188]">
                           Role
                         </span>
                         <span className="text-[#030712] font-semibold">
@@ -353,7 +357,7 @@ function Member() {
                         </span>
                       </div>
                       <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
-                        <span className="w-[150px] inline-block text-[#808188]">
+                        <span className="sm:w-[150px] w-[100px] inline-block text-[#808188]">
                           Assigned
                         </span>
                         <span className="text-[#030712] font-semibold">
@@ -361,7 +365,7 @@ function Member() {
                         </span>
                       </div>
                       <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
-                        <span className="w-[150px] inline-block text-[#808188]">
+                        <span className="sm:w-[150px] w-[100px] inline-block text-[#808188]">
                           Facebook
                         </span>
                         <span className="text-[#030712] font-semibold">
@@ -369,16 +373,19 @@ function Member() {
                         </span>
                       </div>
                       <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
-                        <span className="w-[150px] inline-block text-[#808188]">
+                        <span className="sm:w-[150px] w-[100px] inline-block text-[#808188]">
                           Instagram
                         </span>
                         <span className="text-[#030712] font-semibold">
                           https/www.facebook.com
                         </span>
                       </div>
-                      <div className="p-5">
-                        <SmallHeading title="Manage : 2 RM" />
-                        <div className="flex justify-between mt-3 text-sm font-medium leading-[142%] -tracking-[0.28px]">
+                      <div className="md:p-5 p-4">
+                        <SmallHeading
+                          title="Manage : 2 RM"
+                          className="sm:!text-sm !text-xs"
+                        />
+                        <div className="flex justify-between sm:mt-3 mt-2 sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px]">
                           <p className="">
                             <span className="text-[#808188]">RM: </span>
                             <span>Rohit Sharma</span>
@@ -388,7 +395,7 @@ function Member() {
                             <span className="text-[#030712]">23348-32948</span>
                           </div>
                         </div>
-                        <div className="flex justify-between mt-3 text-sm font-medium leading-[142%] -tracking-[0.28px]">
+                        <div className="flex justify-between sm:mt-3 mt-2 sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px]">
                           <p className="">
                             <span className="text-[#808188]">RM: </span>
                             <span>RM: Priya Kumari</span>
@@ -410,7 +417,7 @@ function Member() {
                       defaultValue="item-1"
                     >
                       <AccordionItem value="item-1">
-                        <AccordionTrigger className="px-5 hover:!underline-none text-[#030712] text-sm font-semibold">
+                        <AccordionTrigger className="md:px-5 px-4 md:!py-4 !py-3 hover:!underline-none text-[#030712] sm:text-sm text-xs font-semibold">
                           <div className="flex items-center gap-2">
                             <CurrentPerformanceIcon />
                             Current Performance
@@ -444,7 +451,7 @@ function Member() {
                         </AccordionContent>
                       </AccordionItem>
                       <AccordionItem value="item-2">
-                        <AccordionTrigger className="px-5 hover:!underline-none text-[#030712] text-sm font-semibold">
+                        <AccordionTrigger className="md:px-5 px-4 md:!py-4 !py-3 hover:!underline-none text-[#030712] text-sm font-semibold">
                           <div className="flex items-center gap-2">
                             <PastPerformanceIcon />
                             Past Performance
@@ -481,17 +488,19 @@ function Member() {
                   </TabsContent>
                 </Tabs>
                 <div className="py-3 px-5 border-t border-grayE4 flex justify-end gap-2 bg-white">
-                  <div>
-                    <SecondryBtn
-                      title="Cancel"
-                      className="w-max "
-                      onClick={() => {
-                        setOpen(false);
-                      }}
-                    />
-                  </div>
+                  <Button
+                    variant={"outline"}
+                    className="w-max"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                  {/* <SecondryBtn title="" /> */}
+
                   {/* <PrimaryBtn title="Add Target" className="w-max" /> */}
-                  <AddTarget/>
+                  <AddTarget />
                 </div>
               </SheetContent>
             </Sheet>
