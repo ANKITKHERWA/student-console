@@ -43,7 +43,7 @@ const formSchema = z.object({
   time: z.string().min(1, { message: 'time is required.' }),
   remarks: z.string().min(1, { message: 'remarks is required.' }),
 })
-export default function Addnewvisite() {
+export default function Assignpartner() {
   const [open, setOpen] = useState(false)
   const [image, setImage] = useState<string | null>(null)
   const form = useForm({
@@ -65,17 +65,17 @@ export default function Addnewvisite() {
       <Button
         className="bg-[#B751FB] cursor-pointer"
         onClick={() => setOpen(true)}>
-        Add Visit Report
+        Assign Partner
       </Button>
 
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
           className="w-full sm:w-[400px] overflow-auto ">
-          <SheetTitle className="sr-only">Add New Visit Form</SheetTitle>
+          <SheetTitle className="sr-only">Assign Partner</SheetTitle>
           <div>
             <Heading
-              title="Add New Visit"
+              title="Assign Partner"
               className="py-5 text-base! px-6 border-b"
             />
             {sidebarData?.map((itm, idx) => (
@@ -169,7 +169,7 @@ export default function Addnewvisite() {
             ))}
             <Form {...form}>
               <Pera
-                title="Schedule New Visit"
+                title="Assign Partner"
                 className="text-base text-black px-6 py-5"
               />
               <form
@@ -180,13 +180,15 @@ export default function Addnewvisite() {
                   name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="Assign to FE">Assign to FE</FormLabel>
+                      <FormLabel htmlFor="Territory">
+                        Territory Coordinator (TC )
+                      </FormLabel>
                       <FormControl>
                         <select
-                          id="Assign to FE"
+                          id="Territory"
                           {...field}
                           className="w-full rounded border p-2 text-base ">
-                          <option value="">Select partner type</option>
+                          <option value="">John Smith</option>
                           <option value="supplier">Supplier</option>
                           <option value="distributor">Distributor</option>
                           <option value="retailer">Retailer</option>
@@ -196,68 +198,52 @@ export default function Addnewvisite() {
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
-                  name="date"
+                  name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="partner-date"> Date</FormLabel>
-                      <FormControl>
-                        <input
-                          type="date"
-                          id="partner-date"
-                          placeholder="date"
-                          {...field}
-                          className="w-full rounded border p-2"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="time"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel htmlFor="Pick a Time slot">
-                        Pick a Time slot
+                      <FormLabel htmlFor="Relationship ">
+                        Relationship Manager (RM)
                       </FormLabel>
                       <FormControl>
-                        <Input
-                          id="Pick a Time slot"
-                          type="time"
-                          placeholder="time"
+                        <select
+                          id="Relationship"
                           {...field}
-                          className="w-full rounded border p-2 block"
-                        />
+                          className="w-full rounded border p-2 text-base ">
+                          <option value="">Priya Sharma</option>
+                          <option value="supplier">Supplier</option>
+                          <option value="distributor">Distributor</option>
+                          <option value="retailer">Retailer</option>
+                        </select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
-                  name="remarks"
+                  name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="remarks">Remarks</FormLabel>
+                      <FormLabel htmlFor="Field Executive">
+                        Field Executive (FE)
+                      </FormLabel>
                       <FormControl>
-                        <textarea
-                          id="remarks"
-                          placeholder="Enter any remarks or additional notes"
+                        <select
+                          id="Field Executive"
                           {...field}
-                          className="w-full rounded border p-2 block min-h-[80px] resize-y"
-                        />
+                          className="w-full rounded border p-2 text-base ">
+                          <option value="">Anita Desai</option>
+                          <option value="supplier">Supplier</option>
+                          <option value="distributor">Distributor</option>
+                          <option value="retailer">Retailer</option>
+                        </select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <div className="flex justify-end space-x-2 pt-40">
                   <Button
                     type="button"
