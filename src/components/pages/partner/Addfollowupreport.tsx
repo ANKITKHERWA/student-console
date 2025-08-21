@@ -43,7 +43,7 @@ const formSchema = z.object({
   time: z.string().min(1, { message: 'time is required.' }),
   remarks: z.string().min(1, { message: 'remarks is required.' }),
 })
-export default function Addnewvisite() {
+export default function Addfollowupreport() {
   const [open, setOpen] = useState(false)
   const [image, setImage] = useState<string | null>(null)
   const form = useForm({
@@ -65,17 +65,17 @@ export default function Addnewvisite() {
       <Button
         className="bg-[#B751FB] cursor-pointer"
         onClick={() => setOpen(true)}>
-        Add Visit Report
+        Add Follow Up
       </Button>
 
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
           className="w-full sm:w-[400px] overflow-auto ">
-          <SheetTitle className="sr-only">Add New Visit Form</SheetTitle>
+          <SheetTitle className="sr-only">Add Follow Up</SheetTitle>
           <div>
             <Heading
-              title="Add New Visit"
+              title="Add Follow Up"
               className="py-5 text-base! px-6 border-b"
             />
             {sidebarData?.map((itm, idx) => (
@@ -169,7 +169,7 @@ export default function Addnewvisite() {
             ))}
             <Form {...form}>
               <Pera
-                title="Schedule New Visit"
+                title="Schedule Follow Up"
                 className="text-base text-black px-6 py-5"
               />
               <form
@@ -233,6 +233,32 @@ export default function Addnewvisite() {
                           {...field}
                           className="w-full rounded border p-2 block"
                         />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel htmlFor="Follow up reason">
+                        Follow up reason
+                      </FormLabel>
+                      <FormControl>
+                        <select
+                          id="Follow up reason"
+                          {...field}
+                          className="w-full rounded border p-2 text-base ">
+                          <option value="">
+                            Select a reason for follow up
+                          </option>
+                          <option value="supplier">Supplier</option>
+                          <option value="distributor">Distributor</option>
+                          <option value="retailer">Retailer</option>
+                        </select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

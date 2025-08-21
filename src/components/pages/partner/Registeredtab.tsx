@@ -124,34 +124,29 @@ function Registeredtab() {
                             {
                               label: 'View as partner',
                               extra: <SmallEyeIcon className="w-4 h-4" />,
-                              // onClick: () => console.log("Edit clicked"),
+                              onClick: () => setOpen(true),
                             },
                             {
                               label: 'View Report',
                               extra: <ViewReportIcon className="w-4 h-4" />,
-                              // onClick: () => console.log("Delete clicked"),
                             },
                             {
                               label: 'Add Visit',
                               extra: (
                                 <CalenderBlackSmallIocn className="w-4 h-4" />
                               ),
-                              // onClick: () => console.log("Share clicked"),
                             },
                             {
                               label: 'Add Follow Up',
                               extra: <FollowUpIcon className="w-4 h-4" />,
-                              // onClick: () => console.log("Share clicked"),
                             },
                             {
                               label: 'Add Visit Report',
                               extra: <PlusIcon className="w-4 h-4" />,
-                              // onClick: () => console.log("Share clicked"),
                             },
                             {
                               label: 'Assign Partner',
                               extra: <PartnerIcon className="w-4 h-4" />,
-                              // onClick: () => console.log("Share clicked"),
                             },
                           ]}
                         />
