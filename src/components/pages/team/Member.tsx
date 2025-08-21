@@ -14,7 +14,7 @@ import {
 import React, { useState } from "react";
 import Heading from "@/components/common/Heading";
 import { someData } from "@/components/helper/Helper2";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,9 +22,39 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { KebabMenuIcon, MailIcon } from "@/components/helper/Icon2";
+import {
+  CurrentPerformanceIcon,
+  EditIcon,
+  EnbDisbleIcon,
+  KebabMenuIcon,
+  MailIcon,
+  PastPerformanceIcon,
+  PhoneSmallIcon,
+  ShowPassIcon,
+  ViewReportIcon,
+} from "@/components/helper/Icon2";
 import SmallHeading from "@/components/common/SmallHeading";
-import TeamPageCard from "@/components/common/TeamPageCard";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+import { Progress } from "@/components/ui/progress";
+import { performDetail } from "@/components/helper/Helper1";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import PrimaryBtn from "@/components/common/PrimaryBtn";
+import SecondryBtn from "@/components/common/SecondryBtn";
+import { AddTarget } from "./AddTarget";
+
+interface SubDataItem {
+  phone?: string;
+  email?: string;
+  manages?: string;
+  totalSalons?: number;
+}
+
 interface props {
   avatar: React.ReactNode;
   name: string;
@@ -39,6 +69,8 @@ interface props {
   className?: string;
   ganderclass?: string;
   tagclass?: string;
+  subData?: SubDataItem[];
+  status?: string;
 }
 function Member() {
   const [selectedMember, setSelectedMember] = useState<props | null>(null);
@@ -60,36 +92,24 @@ function Member() {
           <div key={index} className="mt-[30px]">
             <Heading title={item.heading} className="text-xl!" />
             <div className="flex flex-wrap gap-5 mt-4 items-center">
-              {/* {item.tcList.map((Item, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setSelectedMember(Item);
-                    setOpen(true);
-                  }}
-                >
-                  <TeamPageCard
-                    key={idx}
-                    avatar={Item.avatar}
-                    name={Item.name}
-                    icon={Item.icon}
-                    gender={Item.gender}
-                    tag={Item.tag}
-                    subData={Item.subData}
-                  />
-                </div>
-              ))} */}
               {item.tcList.map((Items, idxs) => (
                 <div
                   key={idxs}
                   onClick={() => {
                     setSelectedMember(Items);
-
                     setOpen(true);
                   }}
                   className={`max-w-xs rounded-xl border border-[#E4E7EB] group py-3 hover:bg-[#F1DCFF] bg-[#fff] shadow-lg w-307 `}
                 >
-                  <span className={`rounded-full h-3 w-3 ml-2 block`}> </span>
+                  <span
+                    className={`rounded-full h-3 w-3 ml-2 block ${
+                      Items.status === "Working"
+                        ? "bg-[green]"
+                        : Items.status === "Not Working"
+                        ? "bg-[red]"
+                        : ""
+                    }`}
+                  ></span>
                   <div className="flex items-center gap-4 px-6">
                     <span>{Items.avatar}</span>
                     <div>
@@ -128,7 +148,6 @@ function Member() {
                   <div>
                     {Items.subData.map((items, indexs) => (
                       <div key={indexs} className="flex items-center gap-2">
-                        {/* {items.icon} {items.title} */}
                         <div className="mt-4 space-y-2 text-sm w-full text-gray-700 border-t border-[#E4E7EB] group-hover:border-white  pt-4 px-6">
                           {items.phone && (
                             <div className="flex items-center gap-2">
@@ -163,30 +182,35 @@ function Member() {
                 side="right"
                 className="w-full sm:w-[400px] overflow-auto !pb-3"
               >
-                {/* {item.tcList.map((Item, index) => (
-                  <div key={index}>{Item.avatar}</div>
-                ))} */}
                 <div className="px-4 py-5 border-b border-grayE4">
                   <div className="flex gap-2 items-center">
                     <SmallHeading
                       title="Member detail"
                       className="!text-base"
                     />
-
                     <DropdownMenu>
                       <DropdownMenuTrigger>
                         <KebabMenuIcon className="h-max" />
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent className="h-[100px]">
-                        <DropdownMenuSeparator>
-                          <DropdownMenuItem>kdlfkf</DropdownMenuItem>
-                          <DropdownMenuItem>kdlfkf</DropdownMenuItem>
-                        </DropdownMenuSeparator>
+                      <DropdownMenuContent className="!p-0">
+                        <DropdownMenuItem className="hover:!bg-[#F1DCFF] !runded-0 group">
+                          <ShowPassIcon className="group-hover:fill-primary" />
+                          View
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="group hover:!bg-[#F1DCFF] !runded-0">
+                          <EditIcon className="group-hover:fill-primary" />
+                          Edit
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="group hover:!bg-[#F1DCFF] !runded-0">
+                          <EnbDisbleIcon className="group-hover:fill-primary" />
+                          Enable / Disable
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
                 </div>
-                <div className="border border-grayE4 mt-[30px] mx-5 p-[15px] flex items-center justify-between gap-1">
+
+                <div className="border border-grayE4 mt-[30px] mx-5 p-[15px] flex items-center justify-between gap-1 rounded-[6px]">
                   <div className="flex items-center gap-2">
                     {selectedMember && <div>{selectedMember.avatar}</div>}
                     <div>
@@ -207,20 +231,29 @@ function Member() {
                             ) : (
                               ""
                             )}
-                            {/* {selectedMember.icon} */}
                             {selectedMember.gender}
                           </span>
                         )}
                       </div>
+                      {selectedMember?.subData && (
+                        <div className=" text-gray-700">
+                          {selectedMember.subData.map((item, idx) => (
+                            <div key={idx} className="mb-3">
+                              {item.email && (
+                                <div className="flex items-center gap-2">
+                                  <MailIcon /> <span>{item.email}</span>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
                       <div className="flex items-center gap-[5px]">
-                        <MailIcon />
                         {selectedMember && (
                           <p className="text-[13px] text-grayE4">
                             {selectedMember.email}
                           </p>
                         )}
-
-                        {/* <Pera title="curtis.weaver@example.com" cl/> */}
                       </div>
                     </div>
                   </div>
@@ -234,12 +267,231 @@ function Member() {
                           : selectedMember.tag === "FE"
                           ? "border-[#31A553] bg-[#E3F7E9]"
                           : ""
-                      }
-                     `}
+                      }`}
                     >
                       {selectedMember.tag}
                     </span>
                   )}
+                </div>
+                <div className="py-[15px] px-5 border-y border-grayE5">
+                  <p className="text-gray text-sm font-medium leading-[142%] -tracking-[0.28px]">
+                    <span>Status: </span>
+                    <span className="text-black">{selectedMember?.status}</span>
+                  </p>
+                </div>
+                <Tabs defaultValue="basicInfo" className="w-full">
+                  <TabsList className="flex justify-between w-full bg-transparent mt-3 border-b !p-0">
+                    <TabsTrigger
+                      value="basicInfo"
+                      className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
+                    >
+                      Basic Details
+                    </TabsTrigger>
+
+                    <TabsTrigger
+                      value="performance"
+                      className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
+                    >
+                      Performance
+                    </TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent
+                    value="basicInfo"
+                    className="space-y-1.5 md:space-y-2 mt-3 !w-full"
+                  >
+                    <SmallHeading title="Basic Info" className="px-5" />
+                    <div>
+                      <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
+                        <span className="w-[150px] inline-block text-[#808188]">
+                          Name
+                        </span>
+                        <span className="text-[#030712] font-semibold">
+                          {selectedMember?.name}
+                        </span>
+                      </div>
+                      <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4 flex">
+                        <span className="w-[150px] inline-block text-[#808188]">
+                          Gender
+                        </span>
+                        <span className="text-[#030712] font-semibold">
+                          {selectedMember?.gender == "Male" ? (
+                            <span className="flex items-center gap-1">
+                              <MaleteamCard /> {selectedMember?.gender}
+                            </span>
+                          ) : selectedMember?.gender == "Female" ? (
+                            <span className="flex items-center gap-1">
+                              <FemaleteamCard /> {selectedMember?.gender}
+                            </span>
+                          ) : (
+                            ""
+                          )}
+                        </span>
+                      </div>
+                      <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
+                        <span className="w-[150px] inline-block text-[#808188]">
+                          Email
+                        </span>
+                        <span className="text-[#030712] font-semibold">
+                          {selectedMember?.subData?.length ? (
+                            selectedMember.subData.map((item, idx) => (
+                              <span key={idx}>
+                                {item.email && <span>{item.email}</span>}
+                              </span>
+                            ))
+                          ) : (
+                            <span>No emails found</span>
+                          )}
+                        </span>
+                      </div>
+                      <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
+                        <span className="w-[150px] inline-block text-[#808188]">
+                          Role
+                        </span>
+                        <span className="text-[#030712] font-semibold">
+                          {selectedMember?.tag}
+                        </span>
+                      </div>
+                      <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
+                        <span className="w-[150px] inline-block text-[#808188]">
+                          Assigned
+                        </span>
+                        <span className="text-[#030712] font-semibold">
+                          {selectedMember?.name}
+                        </span>
+                      </div>
+                      <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
+                        <span className="w-[150px] inline-block text-[#808188]">
+                          Facebook
+                        </span>
+                        <span className="text-[#030712] font-semibold">
+                          https/www.instagram.com
+                        </span>
+                      </div>
+                      <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
+                        <span className="w-[150px] inline-block text-[#808188]">
+                          Instagram
+                        </span>
+                        <span className="text-[#030712] font-semibold">
+                          https/www.facebook.com
+                        </span>
+                      </div>
+                      <div className="p-5">
+                        <SmallHeading title="Manage : 2 RM" />
+                        <div className="flex justify-between mt-3 text-sm font-medium leading-[142%] -tracking-[0.28px]">
+                          <p className="">
+                            <span className="text-[#808188]">RM: </span>
+                            <span>Rohit Sharma</span>
+                          </p>
+                          <div className="flex items-center gap-1.5">
+                            <PhoneSmallIcon className="h-max" />
+                            <span className="text-[#030712]">23348-32948</span>
+                          </div>
+                        </div>
+                        <div className="flex justify-between mt-3 text-sm font-medium leading-[142%] -tracking-[0.28px]">
+                          <p className="">
+                            <span className="text-[#808188]">RM: </span>
+                            <span>RM: Priya Kumari</span>
+                          </p>
+                          <div className="flex items-center gap-1.5">
+                            <PhoneSmallIcon className="h-max" />
+                            <span className="text-[#030712]">23348-32948</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="performance">
+                    <Accordion
+                      type="single"
+                      collapsible
+                      className="w-full"
+                      defaultValue="item-1"
+                    >
+                      <AccordionItem value="item-1">
+                        <AccordionTrigger className="px-5 hover:!underline-none text-[#030712] text-sm font-semibold">
+                          <div className="flex items-center gap-2">
+                            <CurrentPerformanceIcon />
+                            Current Performance
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 text-balance px-5">
+                          {performDetail.map((card, index) => (
+                            <div key={index}>
+                              <div className="flex justify-between gap-2 items-center w-full">
+                                <div className="flex items-center gap-2">
+                                  <span>{card.Icon}</span>
+                                  <span className="text-[#030712] text-sm font-medium leading-[142%] later-spacing-[-0.28px]">
+                                    {card.para1}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-[#2EE560] text-xs font-medium leading-[133%] later-spacing-[-0.24px]">
+                                    {card.para2}
+                                  </span>
+                                  <span className="text-[#000] text-xs font-medium leading-[133%] later-spacing-[-0.24px]">
+                                    {card.para3}
+                                  </span>
+                                </div>
+                              </div>
+                              <Progress
+                                value={card.Value}
+                                className="[&>div]:bg-[#F1DCFF] mt-2 bg-[#EAEEF5]"
+                              />
+                            </div>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-2">
+                        <AccordionTrigger className="px-5 hover:!underline-none text-[#030712] text-sm font-semibold">
+                          <div className="flex items-center gap-2">
+                            <PastPerformanceIcon />
+                            Past Performance
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 text-balance px-5">
+                          {performDetail.map((card, index) => (
+                            <div key={index}>
+                              <div className="flex justify-between gap-2 items-center w-full">
+                                <div className="flex items-center gap-2">
+                                  <span>{card.Icon}</span>
+                                  <span className="text-[#030712] text-sm font-medium leading-[142%] later-spacing-[-0.28px]">
+                                    {card.para1}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-[#2EE560] text-xs font-medium leading-[133%] later-spacing-[-0.24px]">
+                                    {card.para2}
+                                  </span>
+                                  <span className="text-[#000] text-xs font-medium leading-[133%] later-spacing-[-0.24px]">
+                                    {card.para3}
+                                  </span>
+                                </div>
+                              </div>
+                              <Progress
+                                value={card.Value}
+                                className="[&>div]:bg-[#F1DCFF] mt-2 bg-[#EAEEF5]"
+                              />
+                            </div>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </TabsContent>
+                </Tabs>
+                <div className="py-3 px-5 border-t border-grayE4 flex justify-end gap-2 bg-white">
+                  <div>
+                    <SecondryBtn
+                      title="Cancel"
+                      className="w-max "
+                      onClick={() => {
+                        setOpen(false);
+                      }}
+                    />
+                  </div>
+                  {/* <PrimaryBtn title="Add Target" className="w-max" /> */}
+                  <AddTarget/>
                 </div>
               </SheetContent>
             </Sheet>
