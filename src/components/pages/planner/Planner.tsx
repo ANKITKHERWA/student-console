@@ -20,8 +20,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import React, { useState } from 'react'
 import SelecteStatus from '../insights/SelecteStatus'
-import { Input } from '@/components/ui/input'
-import Filter from '../insights/Filter'
 import TableCommon from '@/components/common/TableCommon'
 import { criticalData, sidebarData } from '@/components/helper/Helper2'
 import StatusBadgeSec from '@/components/common/StatusBadgeSec'
