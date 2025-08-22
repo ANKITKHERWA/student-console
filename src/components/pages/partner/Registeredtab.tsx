@@ -30,7 +30,6 @@ import StatusBadgeSec from '@/components/common/StatusBadgeSec'
 import Addnewvisite from './Addnewvisite'
 
 function Registeredtab() {
-  const [selectedUser, setSelectedUser] = useState<null>(null)
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -129,6 +128,7 @@ function Registeredtab() {
                             {
                               label: 'View Report',
                               extra: <ViewReportIcon className="w-4 h-4" />,
+                              onClick: () => setOpen(true),
                             },
                             {
                               label: 'Add Visit',
