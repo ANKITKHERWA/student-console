@@ -33,6 +33,7 @@ import {
 } from "./Icon1";
 import { id } from "date-fns/locale";
 import { Value } from "@radix-ui/react-select";
+import { cn } from "@/lib/utils";
 
 export const loginFormData = [
   {
@@ -2137,4 +2138,54 @@ export const targetInputs = [
     id: "messageSent",
     msg: "Count of campaign messages sent by salons. (Unit: messages)",
   },
+];
+
+export const overallPerformance = [
+  {
+    icon: <Iconapointment />,
+    title: "Team Onboarding Achievement",
+    heading: "89 %",
+    info: "Against total team target",
+  },
+  {
+    icon: <Iconapointment />,
+    title: "Avg. Active Salon Ratio",
+    heading: "53.3 %",
+    info: "Average across all FEs",
+  },
+  {
+    icon: <Iconapointment />,
+    title: "Team Visits Achievement",
+    heading: "83 %",
+    info: "Against total team target",
+  },
+  {
+    icon: <Iconapointment />,
+    title: "Sales Count",
+    heading: "81 %",
+    info: "Against total team target",
+  },
+];
+
+export const tcTeamChartData = [
+  { name: "Mon", value: 40000 },
+  { name: "Tue", value: 28000 },
+];
+export const rmTeamChartData = [
+  { name: "Mon", value: 40000 },
+  { name: "Tue", value: 30000 },
+  { name: "Tue", value: 30000 },
+  { name: "Tue", value: 20000 },
+];
+export const feTeamChartData = [
+  { name: "Mon", value: 40000 },
+  { name: "Tue", value: 30000 },
+  { name: "Tue", value: 30000 },
+  { name: "Tue", value: 20000 },
+  { name: "Mon", value: 40000 },
+  { name: "Tue", value: 30000 },
+  { name: "Tue", value: 30000 },
+  { name: "Tue", value: 20000 },
+  { name: "Tue", value: 20000 },
+  { name: "Mon", value: 40000 },
 ];

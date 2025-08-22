@@ -1,6 +1,14 @@
 import React, { JSX } from "react";
 import Image from "next/image"; // ya jo bhi aap image component use kar rahe ho
-import { CalenderBlackSmallIocn, FollowUpIcon, GreenRightIcon, PartnerIcon, RedWrongtIcon, SmallEyeIcon, ViewReportIcon } from "../helper/Icon2";
+import {
+  CalenderBlackSmallIocn,
+  FollowUpIcon,
+  GreenRightIcon,
+  PartnerIcon,
+  RedWrongtIcon,
+  SmallEyeIcon,
+  ViewReportIcon,
+} from "../helper/Icon2";
 import StatusBadge from "./StatusBadge";
 import TableKebabMenu from "./TableKebabMenu";
 import { PlusIcon } from "lucide-react";
@@ -44,7 +52,7 @@ type TableData = {
   selectedUser?: Iprops | null;
   setSelectedUser?: (user: Iprops) => void;
   setOpen?: (val: boolean) => void;
-  className?:string;
+  className?: string;
 };
 
 const TableBody: React.FC<TableData> = ({
@@ -65,6 +73,10 @@ const TableBody: React.FC<TableData> = ({
         >
           {bodyitems.td.map((tdItem, tdIndex) => (
             <td
+              onClick={() => {
+                setSelectedUser?.(bodyitems);
+                setOpen?.(true);
+              }}
               key={tdIndex}
               className={`md:px-3 px-1 sm:px-2 truncate max-w-[200px] ${className}`}
             >

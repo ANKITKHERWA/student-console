@@ -12,11 +12,16 @@ type TabItem = {
 type CommonTabsProps = {
   tabs: TabItem[];
   rightSection?: React.ReactNode; // <- right side me jo bhi render karna ho
-  onChange?:(value:string)=>void
-  value?:string
+  onChange?: (value: string) => void;
+  value?: string;
 };
 
-export default function Tab({ tabs, rightSection,onChange,value }: CommonTabsProps) {
+export default function Tab({
+  tabs,
+  rightSection,
+  onChange,
+  value,
+}: CommonTabsProps) {
   return (
     <Tabs defaultValue={value} className="w-full" onValueChange={onChange}>
       {/* Header */}
@@ -41,21 +46,9 @@ export default function Tab({ tabs, rightSection,onChange,value }: CommonTabsPro
             </div>
           </TabsList>
 
-          {/* Example right side dots */}
-          {/* <div className="sm:flex hidden items-center gap-2 sm:gap-4 md:gap-[30px] ml-auto">
-          <div className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#F00]" />
-            <span className="text-xs">Critical</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#F5640A]" />
-            <span className="text-xs">Growth</span>
-          </div>
-        </div> */}
-
           {/* Right Section (Custom) */}
           {rightSection && (
-            <div className="sm:flex hidden items-center gap-2 sm:gap-4 md:gap-[30px] ml-auto">
+            <div className="flex  items-center gap-2 sm:gap-4 md:gap-[30px] ml-auto">
               {rightSection}
             </div>
           )}
