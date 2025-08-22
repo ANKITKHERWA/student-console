@@ -1,8 +1,8 @@
-'use client'
-import React, { useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
+"use client";
+import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 import {
   Form,
@@ -11,68 +11,70 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
-import Heading from '@/components/common/Heading'
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+import Heading from "@/components/common/Heading";
 
 const formSchema = z.object({
   username: z
     .string()
-    .min(2, { message: 'Username must be at least 2 characters.' }),
-  address: z.string().min(1, { message: 'Address is required.' }),
-  pincode: z.string().min(1, { message: 'Pincode is required.' }),
-  contactNumber: z.string().min(1, { message: 'Contact Number is required.' }),
+    .min(2, { message: "Username must be at least 2 characters." }),
+  address: z.string().min(1, { message: "Address is required." }),
+  pincode: z.string().min(1, { message: "Pincode is required." }),
+  contactNumber: z.string().min(1, { message: "Contact Number is required." }),
   image: z
     .any()
-    .refine((file) => file?.length === 1, 'Image is required')
+    .refine((file) => file?.length === 1, "Image is required")
     .refine(
-      (file) => file?.[0]?.type.startsWith('image/'),
-      'File must be an image'
+      (file) => file?.[0]?.type.startsWith("image/"),
+      "File must be an image"
     ),
-})
+});
 
 export default function Addnewpartner() {
-  const [open, setOpen] = useState(false)
-  const [imagePreview, setImagePreview] = useState<string | null>(null)
+  const [open, setOpen] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: '',
-      address: '',
-      pincode: '',
-      contactNumber: '',
+      username: "",
+      address: "",
+      pincode: "",
+      contactNumber: "",
       image: null,
     },
-  })
+  });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log('Submitted ', data)
-    setOpen(false)
+    console.log("Submitted ", data);
+    setOpen(false);
   }
 
   // To preview selected image
   const handleImageChange = (fileList: FileList | null) => {
     if (fileList && fileList.length > 0) {
-      const file = fileList[0]
-      setImagePreview(URL.createObjectURL(file))
+      const file = fileList[0];
+      setImagePreview(URL.createObjectURL(file));
     }
-  }
+  };
 
   return (
     <>
       <Button
         className="bg-[#B751FB] cursor-pointer"
-        onClick={() => setOpen(true)}>
+        onClick={() => setOpen(true)}
+      >
         + Add Partner
       </Button>
 
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
-          className="w-full sm:w-[400px] overflow-auto">
+          className="w-full sm:w-[400px] overflow-auto"
+        >
           <Heading
             className="text-xl! py-5 border-b px-6"
             title="Add New Partner"
@@ -80,7 +82,8 @@ export default function Addnewpartner() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-8 px-6">
+              className="space-y-8 px-6"
+            >
               {/* Image Upload using Controller */}
               <FormField
                 control={form.control}
@@ -94,8 +97,8 @@ export default function Addnewpartner() {
                         type="file"
                         accept="image/*"
                         onChange={(e) => {
-                          field.onChange(e.target.files)
-                          handleImageChange(e.target.files)
+                          field.onChange(e.target.files);
+                          handleImageChange(e.target.files);
                         }}
                       />
                     </FormControl>
@@ -106,9 +109,9 @@ export default function Addnewpartner() {
                           src={imagePreview}
                           alt="Preview"
                           style={{
-                            width: '100%',
+                            width: "100%",
                             maxHeight: 200,
-                            objectFit: 'contain',
+                            objectFit: "contain",
                           }}
                         />
                       </div>
@@ -200,7 +203,8 @@ export default function Addnewpartner() {
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={() => setOpen(false)}>
+                  onClick={() => setOpen(false)}
+                >
                   Cancel
                 </Button>
                 <Button type="submit" className="bg-[#B751FB]">
@@ -212,5 +216,5 @@ export default function Addnewpartner() {
         </SheetContent>
       </Sheet>
     </>
-  )
+  );
 }

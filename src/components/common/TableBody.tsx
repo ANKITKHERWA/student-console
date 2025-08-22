@@ -72,6 +72,10 @@ const TableBody: React.FC<TableData> = ({
           }`}>
           {bodyitems.td.map((tdItem, tdIndex) => (
             <td
+              onClick={() => {
+                setSelectedUser?.(bodyitems)
+                setOpen?.(true)
+              }}
               key={tdIndex}
               className={`md:px-3 px-1 sm:px-2 truncate max-w-[200px] ${className}`}>
               {/* Salon name */}

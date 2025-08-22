@@ -20,16 +20,17 @@ type TableData = {
 
 type CommonTableProps = {
   data: TableData[];
-  className?:string;
+  className?: string;
 };
 
-
-export default function VisitReportTable({ data, className }: CommonTableProps) {
-  
+export default function VisitReportTable({
+  data,
+  className,
+}: CommonTableProps) {
   return (
     <>
       {data.map((itm, idx) => (
-        <table key={idx} className="w-full border-collapse text-sm">
+        <table key={idx} className="w-full border-collapse text-sm min-[500px]">
           <thead className="bg-[#F9FAFB] text-[#808188] text-sm  leading-[142%] -tracking-[0.28px]">
             <tr>
               {itm.th.map((thItm, thIndex) => (

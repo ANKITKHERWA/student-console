@@ -1,15 +1,22 @@
+"use client";
 import Pera from "@/components/common/Pera";
 import Search from "@/components/common/Search";
 import TopCommon from "@/components/common/TopCommon";
 import { Fluentcard, Tablericon } from "@/components/helper/Icon1";
-import React from "react";
+import React, { useState } from "react";
 import Card from "./Card";
 import Tab from "@/components/common/Tab";
 import { MembersIcon, PerformanceIcon } from "@/components/helper/Icon2";
 import EarningDetails from "../settings/earning/EarningDetails";
 import Member from "./Member";
+import Performance from "./Performance";
+import Addmember from "./Addmember";
+import DotColor from "@/components/common/DotColor";
+import Addnewpartner from "../partner/Addnewpartner";
 
 function TeamMain() {
+  const [activeTab, setActiveTab] = useState("Registered");
+
   return (
     <div>
       <TopCommon title="Team" />
@@ -28,9 +35,26 @@ function TeamMain() {
               value: "performance",
               title: "Performance",
               icon: <PerformanceIcon />,
-              content: <Member />,
+              content: <Performance />,
             },
           ]}
+          value={activeTab}
+          onChange={setActiveTab}
+          rightSection={
+            <>
+              {activeTab === "members" ? (
+                <>
+                  <DotColor title="Critical" className="bg-[#FF0000]" />
+                  <DotColor title="Growth" className="bg-[#F5640A]" />
+                  <Addmember />
+                </>
+              ) : activeTab === "performance" ? (
+                <>
+                  <Addmember />
+                </>
+              ) : null}
+            </>
+          }
         />
       </div>
       {/* <div className="flex justify-between items-center px-6 mt-7">

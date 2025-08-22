@@ -497,9 +497,6 @@ function Member() {
                   >
                     Cancel
                   </Button>
-                  {/* <SecondryBtn title="" /> */}
-
-                  {/* <PrimaryBtn title="Add Target" className="w-max" /> */}
                   <AddTarget />
                 </div>
               </SheetContent>

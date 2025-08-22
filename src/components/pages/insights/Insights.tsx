@@ -34,6 +34,7 @@ import SmallHeading from "@/components/common/SmallHeading";
 import SecondryBtn from "@/components/common/SecondryBtn";
 import VisitReportMudal from "./VisitReportMudal";
 import StatusBadgeSec from "@/components/common/StatusBadgeSec";
+import KebabMenucommon from "@/components/common/KebabMenuCommon";
 function Insights() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
   const [open, setOpen] = useState(false);
@@ -450,7 +451,9 @@ function Insights() {
           rightSection={"lkdskl"}
         /> */}
 
-        <div></div>
+        <div>
+          <KebabMenucommon align="start" />
+        </div>
       </div>
     </div>
   );
