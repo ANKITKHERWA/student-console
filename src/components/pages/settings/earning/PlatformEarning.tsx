@@ -22,7 +22,6 @@ function PlatformEarning() {
             className="sm:w-[174px] w-[130px]"
           />
         ))}
-
         <div>
           {monthEarning.map((item, index) => (
             <Selecte

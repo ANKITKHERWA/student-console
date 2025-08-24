@@ -35,16 +35,29 @@ import SecondryBtn from "@/components/common/SecondryBtn";
 import VisitReportMudal from "./VisitReportMudal";
 import StatusBadgeSec from "@/components/common/StatusBadgeSec";
 import KebabMenucommon from "@/components/common/KebabMenuCommon";
+import { Button } from "@/components/ui/button";
 function Insights() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
   const [open, setOpen] = useState(false);
 
+  const data2 = {
+    critical: [
+      { title: "Incomplete Onboarding", days: "30 days" },
+      { title: "Off-Peak hours not set", days: "15 days" },
+      { title: "Missing Bank Account", days: "20 days" },
+      { title: "Subscription overdue", days: "10 days" },
+    ],
+    growth: [
+      { title: "New Service Opportunity", days: "5 days" },
+      { title: "Increase Social Media Reach", days: "12 days" },
+    ],
+  };
   return (
     <div className="pb-10">
       <TopCommon title="Insights - Registered Partners" />
       <div>
         <Tabs defaultValue="critical-task" className="w-full">
-          <div className="border-y border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
+          <div className="border-b border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
             <TabsList className="rounded-none bg-transparent !w-full flex !justify-start ">
               <div className="flex gap-3 items-center">
                 <TabsTrigger
@@ -63,14 +76,6 @@ function Insights() {
                   <GrothTask />
                   Growth Task
                 </TabsTrigger>
-                {/* <TabsTrigger
-                  id="groth-task"
-                  value="groth-task"
-                  className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none  -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent !shadow-none data-[state=inactive]:fill-[#808188]"
-                >
-                  <GrothTask className="" />
-                  Growth Task
-                </TabsTrigger> */}
               </div>
             </TabsList>
             <div className="sm:flex hidden items-center gap-2 sm:gap-4 md:gap-[30px] ml-auto">
@@ -206,16 +211,40 @@ function Insights() {
                           </div>
                           <div className="flex justify-between gap-2 mt-4 xl:pr-10">
                             <div className="px-1.5 py-[3px] border-[0.5px] w-max  rounded border-[#E4E7EB] flex gap-1 items-center text-[#030712] text-xs font-semibold leading-[166%] -tracking-[0.24px]">
-                              <span className="text-[#808188] font-normal">
-                                Next Visit
-                              </span>
-                              {itm.nextVisit}
+                              {itm.nextVisit ? (
+                                <button className="flex gap-2 items-center">
+                                  <span className="text-[#808188] font-normal">
+                                    Next Visit
+                                  </span>
+                                  {itm.nextVisit}
+                                </button>
+                              ) : (
+                                itm.addvisit && (
+                                  <button className="flex gap-2 items-center">
+                                    <span className="text-[#808188] font-normal">
+                                      Next Visit
+                                    </span>
+                                    {itm.addvisit}
+                                  </button>
+                                )
+                              )}
                             </div>
                             <div className="px-1.5 py-[3px] border-[0.5px] w-max  rounded border-[#E4E7EB] flex gap-1 items-center text-[#030712] text-xs font-semibold leading-[166%] -tracking-[0.24px]">
-                              <span className="text-[#808188] font-normal">
-                                Next Follow Up:
-                              </span>
-                              {itm.lastVisit}
+                              {itm.nextFollowUp ? (
+                                <button className="flex gap-2 items-center">
+                                  <span className="text-[#808188] font-normal">
+                                    Next Follow Up:
+                                  </span>
+                                  {itm.nextFollowUp}
+                                </button>
+                              ) : (
+                                <button className="flex gap-2 items-center">
+                                  <span className="text-[#808188] font-normal">
+                                    Next Follow Up:
+                                  </span>
+                                  {itm.addFollowUp}
+                                </button>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -317,7 +346,7 @@ function Insights() {
                                 value="critical"
                                 className="space-y-1.5 md:space-y-2 mt-3 !w-full"
                               >
-                                {/* {data2.critical.map((item, idx) => (
+                                {data2.critical.map((item, idx) => (
                                   <div
                                     key={idx}
                                     className="flex justify-between text-sm w-full items-center rounded sm:rounded-[6px] border border-[#E4E7EB] sm:py-1.5 px-2 py-1 sm:px-2.5 font-semibold leading-[142%] -tracking-[0.28px] "
@@ -327,14 +356,14 @@ function Insights() {
                                       {item.days}
                                     </span>
                                   </div>
-                                ))} */}
+                                ))}
                               </TabsContent>
 
                               <TabsContent
                                 value="growth"
                                 className="space-y-2 mt-3"
                               >
-                                {/* {data2.growth.map((item, idx) => (
+                                {data2.growth.map((item, idx) => (
                                   <div
                                     key={idx}
                                     className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] "
@@ -344,7 +373,7 @@ function Insights() {
                                       {item.days}
                                     </span>
                                   </div>
-                                ))} */}
+                                ))}
                               </TabsContent>
                             </Tabs>
                           </div>
@@ -415,41 +444,12 @@ function Insights() {
               }
             />
           </TabsContent>
-          {/* <TabsContent value="growth-task">
-           
-          </TabsContent> */}
+          
           <TabsContent value="growth-task" className="md:px-5 px-4 lg:px-6 ">
-            {/* <form className="md:py-5 py-3 sm:py-4 lg:py-6">
-              <div className="flex justify-center min-[460px]:justify-between  items-center gap-2 flex-wrap min-[460px]:flex-nowrap">
-                <SelecteStatus />
-                <div className="flex items-center md:gap-5 sm:gap-4 gap-2 lg:gap-[30px]">
-                  <div className="flex items-center gap-1 w-full xl:min-w-[290px] py-1.5 px-3 !border-[#D9DDE3] border rounded md:rounded-[6px]">
-                    <Input
-                      placeholder="Search..."
-                      className="max-w-sm !ring-0 w-full !shadow-none !border-none !rounded-[0px] !h-[20px] !p-0"
-                    />
-                    <SearchIcon />
-                  </div>
-                  <Filter />
-                </div>
-              </div>
-            </form> */}
+
             <Growth />
           </TabsContent>
         </Tabs>
-
-        {/* <Tab
-          tabs={[
-            {
-              id: "critical-task",
-              value: "critical-task",
-              title: "Critical Task",
-              icon: <CriticalTask />,
-              content: "klsdjfklsd",
-            },
-          ]}
-          rightSection={"lkdskl"}
-        /> */}
 
         <div>
           <KebabMenucommon align="start" />

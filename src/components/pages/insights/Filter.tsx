@@ -1,17 +1,17 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Calendar } from "@/components/ui/calendar";
-import { FilterIcon, SelectRightIcon } from '@/components/helper/Icon2';
-import { criticalFiltersData } from '@/components/helper/Helper2';
-import PrimaryBtn from '@/components/common/PrimaryBtn';
+import { FilterIcon, SelectRightIcon } from "@/components/helper/Icon2";
+import { criticalFiltersData } from "@/components/helper/Helper2";
+import { Button } from "@/components/ui/button";
 function Filter() {
-     const [selectedFilter, setSelectedFilter] = React.useState("All");
-     const [date, setDate] = React.useState<Date | undefined>(new Date()); // ← ye add karo
+  const [selectedFilter, setSelectedFilter] = React.useState("All");
+  const [date, setDate] = React.useState<Date | undefined>(new Date()); // ← ye add karo
   return (
     <div>
       <DropdownMenu>
@@ -23,7 +23,7 @@ function Filter() {
         </DropdownMenuTrigger>
 
         <DropdownMenuContent
-        //   side=""
+          //   side=""
           align="start"
           className="p-4 !ps-0 !right-6 border border-[#E4E7EB] rounded-[6px] shadow-[-5px_0_49.6px_0_rgba(3,7,18,0.08),5px_6px_36.1px_0_rgba(3,7,18,0.08)] !left-10"
         >
@@ -31,13 +31,13 @@ function Filter() {
           <div className="flex">
             {/* Left: Filter List */}
             <div className="text-[#030712] text-xs font-semibold leading-[166%] -tracking-[0.24px] min-w-[116px]">
-              {criticalFiltersData.map((filter, index) => (
+              {criticalFiltersData.map((filter) => (
                 <div
-                  key={index}
-                  onClick={() => setSelectedFilter(filter.title)}
+                  key={filter.id}
+                  onClick={() => setSelectedFilter(filter.id)}
                   className={`flex items-center gap-1 ps-4  p-[5.5px] hover:bg-[#F1DCFF] transition-all duration-200`}
                 >
-                  {selectedFilter === filter.title && <SelectRightIcon />}
+                  {selectedFilter === filter.id && <SelectRightIcon />}
                   <span>{filter.title}</span>
                 </div>
               ))}
@@ -55,14 +55,15 @@ function Filter() {
                [&_.rdp-button]:text-[11px]"
               />
               <div className="flex justify-end mt-[5px] gap-1.5">
-                <PrimaryBtn
-                  title="cancel"
-                  className="w-max border-[#E4E7EB] border bg-transparent !rounded-[2px] !py-1 !px-1.5 !text-[#030712] !text-[6px]"
-                />
-                <PrimaryBtn
-                  title="Apply"
-                  className="!py-1 !px-1.5 !text-[6px] !rounded-[2px] w-max"
-                />
+                <Button variant={"outline"}>Cancel</Button>
+                <Button
+                  onClick={() => {
+                    console.log("Selected Filter:", selectedFilter);
+                    console.log("Selected Date:", date);
+                  }}
+                >
+                  Apply
+                </Button>
               </div>
             </div>
           </div>
@@ -72,4 +73,4 @@ function Filter() {
   );
 }
 
-export default Filter
+export default Filter;

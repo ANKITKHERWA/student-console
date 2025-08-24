@@ -19,7 +19,7 @@ function EarningDetails() {
       </div>
 
       <div>
-        {earningDetailsData.map((items, index) => (
+        {earningDetailsData?.map((items, index) => (
           <div
             key={index}
             className="overflow-auto border rounded-[6px] border-[#D9DDE3]"

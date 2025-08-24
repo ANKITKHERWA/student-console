@@ -2,38 +2,10 @@
 import React, { useState } from "react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 
-// import Image from "next/image";
-// import StatusBadge from "./StatusBadge";
-// import StatusBadgeSec from "./StatusBadgeSec";
-
-// import { criticalData } from "../helper/Helper2"; // ✅ changed here
-// import Link from "next/link";
-// import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-// import {
-//   ActionIocn,
-//   CalenderBlackSmallIocn,
-//   ClenderIcon,
-//   FollowUpIcon,
-//   GreenRightIcon,
-//   GrothTask,
-//   IssueIcon,
-//   PartnerIcon,
-//   PhoneSmallIcon,
-//   RedWrongtIcon,
-//   RightArrowIcon,
-//   RightIcon,
-//   SmallCriticalIcon,
-//   SmallEyeIcon,
-//   ViewReportIcon,
-// } from "../helper/Icon2";
-// import SmallHeading from "./SmallHeading";
-// import SecondryBtn from "./SecondryBtn";
-// import VisitReportMudal from "../pages/insights/VisitReportMudal";
-// import TableKebabMenu from "./TableKebabMenu";
-// import { PlusIcon } from "lucide-react";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import { JSX } from "react/jsx-runtime";
+import SidebarContent from "./Side";
 
 type SaloneName = {
   img: string;
@@ -99,36 +71,30 @@ type TableCommonProps = {
       }[];
     }[];
   }[];
-  sidebarContent?: React.ReactNode; 
+  sidebarContent?: React.ReactNode;
 };
 
-const TableCommon: React.FC<TableCommonProps> = ({ data,sidebarContent }) => {
+const TableCommon: React.FC<TableCommonProps> = ({ data, sidebarContent }) => {
   const [selectedUser, setSelectedUser] = useState<Iprops | null>(null);
   const [open, setOpen] = useState(false);
 
-  // const data2 = {
-  //   critical: [
-  //     { title: "Incomplete Onboarding", days: "30 days" },
-  //     { title: "Off-Peak hours not set", days: "15 days" },
-  //     { title: "Missing Bank Account", days: "20 days" },
-  //     { title: "Subscription overdue", days: "10 days" },
-  //   ],
-  //   growth: [
-  //     { title: "New Service Opportunity", days: "5 days" },
-  //     { title: "Increase Social Media Reach", days: "12 days" },
-  //   ],
-  // };
   return (
     <>
       <div className="overflow-auto border rounded-[6px] border-[#D9DDE3]">
         {data.map((items, index) => (
-          <table key={index} className="text-nowrap w-full text-xs sm:text-sm">
+          <table
+            key={index}
+            className="text-nowrap w-full text-xs sm:text-sm  "
+          >
             <TableHead data={items.head} />
 
             <TableBody
               body={items.body}
               selectedUser={selectedUser}
-              setSelectedUser={setSelectedUser}
+              setSelectedUser={(user) => {
+                setSelectedUser(user);
+                setOpen(true);
+              }}
               setOpen={setOpen}
             />
           </table>
@@ -136,11 +102,18 @@ const TableCommon: React.FC<TableCommonProps> = ({ data,sidebarContent }) => {
       </div>
 
       {/* side bar */}
-     
+
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="right" className="w-full sm:w-[400px] overflow-auto !pb-3">
-          {/* Render sidebar content here */}
-          {sidebarContent}
+        <SheetContent
+          side="right"
+          className="w-full sm:w-[400px] overflow-auto !pb-3 !max-w-none"
+        >
+          {selectedUser && (
+            <SidebarContent
+              user={selectedUser}
+              onClose={() => setOpen(false)}
+            />
+          )}
         </SheetContent>
       </Sheet>
     </>
@@ -299,9 +272,6 @@ export default TableCommon;
               ))}
             </tbody> */
 }
-
-
-
 
 //  <div className="md:py-5 py-4 ms:px-5 px-4 lg:px-6 border-b border-[#E4E7EB]">
 //             <StatusBadgeSec status={"registered"} />
@@ -613,4 +583,4 @@ export default TableCommon;
 //               />
 //               <VisitReportMudal />
 //             </div>
-//           </div> 
+//           </div>

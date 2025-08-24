@@ -17,20 +17,21 @@ import {
 } from "../helper/Icon2";
 import Addnewvisite from "../pages/partner/Addnewvisite";
 
-type MenuItem = {
-  label?: string;
-  extra?: React.ReactNode;
-  onClick?: () => void;
-  align?: "start" | "center" | "end";
-};
-const KebabMenucommon: React.FC<MenuItem> = ({ align }) => {
-  const [selectedUser, setSelectedUser] = useState<null>(null);
-  const [open, setOpen] = useState(false);
+// Main menu component
+interface KebabMenuCommonProps {
+  align?: "start" | "end" | "center" | undefined;
+}
+
+const KebabMenucommon: React.FC<KebabMenuCommonProps> = ({ align }) => {
+  const [activeSidebar, setActiveSidebar] = useState(null);
+
+  // Function to close active sidebar
+  const closeSidebar = () => setActiveSidebar(null);
 
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild className={`!ring-0 h-max`}>
+        <DropdownMenuTrigger asChild className="!ring-0 h-max">
           <button className={`p-2 rounded`}>
             <KebabMenuIcon />
           </button>
@@ -39,33 +40,44 @@ const KebabMenucommon: React.FC<MenuItem> = ({ align }) => {
           align={align}
           className="sm:w-[258px] !p-0 flex flex-col gap-[5px]"
         >
-          <DropdownMenuItem
-            onClick={() => {
-              // setOpen?.(true);
-            }}
-            className="hover:!bg-[#F1DCFF] font-semibold !flex !px-3 !py-1 !gap-2  leading-[142%] -tracking-[0.28px] text-xs md:text-sm !text-[#030712] !rounded-[0px]"
-          >
-            <SmallEyeIcon /> <Addnewvisite />
+          <DropdownMenuItem onClick={() => setActiveSidebar("addnewvisite")}>
+            <SmallEyeIcon /> Add New Visit
           </DropdownMenuItem>
-          <DropdownMenuItem className="hover:!bg-[#F1DCFF] font-semibold !flex !px-3 !py-1 !gap-2  leading-[142%] -tracking-[0.28px] text-xs md:text-sm !text-[#030712] !rounded-[0px]">
+          {/* <DropdownMenuItem onClick={() => setActiveSidebar("viewReport")}>
             <ViewReportIcon /> View Report
           </DropdownMenuItem>
-          <DropdownMenuItem className="hover:!bg-[#F1DCFF] font-semibold !flex !px-3 !py-1 !gap-2  leading-[142%] -tracking-[0.28px] text-xs md:text-sm !text-[#030712] !rounded-[0px]">
+          <DropdownMenuItem onClick={() => setActiveSidebar("addVisit")}>
             <CalenderBlackSmallIocn /> Add Visit
           </DropdownMenuItem>
-          <DropdownMenuItem className="hover:!bg-[#F1DCFF] font-semibold !flex !px-3 !py-1 !gap-2  leading-[142%] -tracking-[0.28px] text-xs md:text-sm !text-[#030712] !rounded-[0px]">
-            <FollowUpIcon />
-            Add Visit Report
+          <DropdownMenuItem onClick={() => setActiveSidebar("addVisitReport")}>
+            <FollowUpIcon /> Add Visit Report
           </DropdownMenuItem>
-          <DropdownMenuItem className="hover:!bg-[#F1DCFF] font-semibold !flex !px-3 !py-1 !gap-2  leading-[142%] -tracking-[0.28px] text-xs md:text-sm !text-[#030712] !rounded-[0px]">
-            <PlusIcon />
-            Add Visit Report
+          <DropdownMenuItem onClick={() => setActiveSidebar("plusVisitReport")}>
+            <PlusIcon /> Add Visit Report
           </DropdownMenuItem>
-          <DropdownMenuItem className="hover:!bg-[#F1DCFF] font-semibold !flex !px-3 !py-1 !gap-2  leading-[142%] -tracking-[0.28px] text-xs md:text-sm !text-[#030712] !rounded-[0px]">
+          <DropdownMenuItem onClick={() => setActiveSidebar("assignPartner")}>
             <PartnerIcon /> Assign Partner
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
+
+      {/* Sidebar components */}
+      {activeSidebar === "addnewvisite" && (
+        <Addnewvisite onClose={closeSidebar} />
+      )}
+      {activeSidebar === "viewReport" && <ViewReport onClose={closeSidebar} />}
+      {activeSidebar === "addVisit" && (
+        <AddVisitSidebar onClose={closeSidebar} />
+      )}
+      {activeSidebar === "addVisitReport" && (
+        <AddVisitReportSidebar onClose={closeSidebar} />
+      )}
+      {activeSidebar === "plusVisitReport" && (
+        <AddVisitReportSidebar onClose={closeSidebar} />
+      )}
+      {activeSidebar === "assignPartner" && (
+        <AssignPartnerSidebar onClose={closeSidebar} />
+      )}
     </>
   );
 };

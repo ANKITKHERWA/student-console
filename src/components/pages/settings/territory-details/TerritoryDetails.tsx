@@ -1,3 +1,4 @@
+"use client";
 import Heading from "@/components/common/Heading";
 import Pera from "@/components/common/Pera";
 import PrimaryBtn from "@/components/common/PrimaryBtn";
@@ -85,7 +86,7 @@ function TerritoryDetails() {
             <Search />
           </div>
         </div>
-          <TableCommon data={territoryTableData}/>
+        <TableCommon data={territoryTableData} />
       </div>
     </div>
   );
