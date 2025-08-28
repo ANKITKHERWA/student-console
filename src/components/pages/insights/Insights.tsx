@@ -35,7 +35,6 @@ import SecondryBtn from "@/components/common/SecondryBtn";
 import VisitReportMudal from "./VisitReportMudal";
 import StatusBadgeSec from "@/components/common/StatusBadgeSec";
 import KebabMenucommon from "@/components/common/KebabMenuCommon";
-import { Button } from "@/components/ui/button";
 import NewStatusbadge from "@/components/common/NewStatusbadge";
 function Insights() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
@@ -444,11 +443,6 @@ function Insights() {
                 </>
               }
             />
-            <NewStatusbadge status="New" />
-            <NewStatusbadge status="Not Show" />
-            <NewStatusbadge status="Expired" />
-            <NewStatusbadge status="Confirmed" />
-            <NewStatusbadge status="Canceled" />
           </TabsContent>
 
           <TabsContent value="growth-task" className="md:px-5 px-4 lg:px-6 ">

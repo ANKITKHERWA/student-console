@@ -11,7 +11,7 @@ const NewStatusbadge: React.FC<StatusBadgeProps> = ({ status }) => {
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full px-2 text-xs font-medium w-max",
+        "inline-flex items-center rounded-full px-2 py-[3px] text-xs font-medium w-max",
         {
           "bg-[#FFEFDB] text-[#030712] border border-[#F58400]":
             status === "New",
@@ -23,6 +23,8 @@ const NewStatusbadge: React.FC<StatusBadgeProps> = ({ status }) => {
             status === "Confirmed",
           "bg-[rgba(255,136,136,0.34)] text-[#030712] border border-[#FF0000]":
             status === "Canceled",
+          "bg-[#E3F7E9] text-[#030712] border border-[#7ACD92]":
+            status === "Completed",
         }
       )}
     >
@@ -33,6 +35,7 @@ const NewStatusbadge: React.FC<StatusBadgeProps> = ({ status }) => {
           "bg-[#4710A3]": status === "Expired",
           "bg-[#8EBAF6]": status === "Confirmed",
           "bg-[#FF0000]": status === "Canceled",
+          "bg-[#7ACD92]": status === "Completed",
         })}
       />
 

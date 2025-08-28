@@ -1,10 +1,12 @@
 import {
+  AppointmentBlueIcon,
   AppointmentGreenIcon,
   CardDateIcon,
   ClenderIcon,
   DetailsIcon,
   DollerIcon,
   EarningIcon,
+  FePrsone,
   FileIcon,
   GreenRightIcon,
   LocationIcon,
@@ -16,6 +18,7 @@ import {
   PhoneSmallIcon,
   ProfileIcon,
   RedWrongtIcon,
+  RmPrsone,
   ShowPassIcon,
   SmallCalenderIcon,
   StarIcon,
@@ -24,20 +27,14 @@ import {
 import PaymentModal from "../pages/settings/earning/PaymentMudal";
 import {
   Aaravsharma,
-  EmailteamCard,
   FemaleteamCard,
   Iconactive,
   Iconapointment,
   Iconright,
   MaleteamCard,
-  PhoneteamCard,
   Priyasingh,
 } from "./Icon1";
-import { id } from "date-fns/locale";
-import { Value } from "@radix-ui/react-select";
-import { cn } from "@/lib/utils";
-import Addnewvisite from "../pages/partner/Addnewvisite";
-import { date } from "zod";
+ 
 
 export const loginFormData = [
   {
@@ -549,43 +546,6 @@ export const criticalData = [
         id: 1,
         td: [
           {
-            appointmentId: [
-              { icon: <AppointmentGreenIcon />, id: "#A-BJBG4F" },
-            ],
-          },
-
-          {
-            saloneName: [
-              {
-                img: "/assest/png/salone-small-img.png",
-                name: "Glamour Studio",
-                subtext: "+91 896 6372 6386",
-              },
-            ],
-          },
-          { add: "123 Main St, Delhi" },
-          { dateTime: [{ date: "18/08/2003", time: "11:11am-11:11pm" }] },
-          { work: [{ work: "Hair Styling", workCount: "+3" }] },
-          { health: "Good" },
-          { venue: "Decadence Hair & Beauty" },
-          { issue: [{ issu1: "1", issu2: "2" }] },
-          { staff: "10" },
-          { onboarding: "true" },
-          { bankAcc: "false" },
-          { monthlyTarget: "true" },
-          { subscription: "Active" },
-          { lastVisit: "12 Aug 2025" },
-          { nextVisit: "20 Aug 2025" },
-          { tcName: "Ramesh" },
-          { rmName: "Priya" },
-          { feName: "Kunal" },
-          { action: "..." }, // TableKebabMenu renders for this
-        ],
-      },
-      {
-        id: 2,
-        td: [
-          {
             saloneName: [
               { img: "/assest/png/salone-small-img.png", name: "Elite Cuts" },
             ],
@@ -607,6 +567,30 @@ export const criticalData = [
         ],
       },
       {
+        id: 2,
+        td: [
+          {
+            saloneName: [
+              { img: "/assest/png/salone-small-img.png", name: "Style Nation" },
+            ],
+          },
+          { add: "78 Green Park, Bangalore" },
+          { health: "Excellent" },
+          { issue: [{ issu1: "0", issu2: "0" }] },
+          { staff: "15" },
+          { onboarding: "true" },
+          { bankAcc: "true" },
+          { monthlyTarget: "true" },
+          { subscription: "Active" },
+          { lastVisit: "14 Aug 2025" },
+          { nextVisit: "21 Aug 2025" },
+          { tcName: "Meera" },
+          { rmName: "Rahul" },
+          { feName: "Arjun" },
+          { action: "..." },
+        ],
+      },
+      {
         id: 3,
         td: [
           {
@@ -621,7 +605,7 @@ export const criticalData = [
           { onboarding: "true" },
           { bankAcc: "true" },
           { monthlyTarget: "true" },
-          { status: "Expired" },
+          { subscription: "Active" },
           { lastVisit: "14 Aug 2025" },
           { nextVisit: "21 Aug 2025" },
           { tcName: "Meera" },
@@ -1325,7 +1309,7 @@ export const settingCard = [
     icon: <DetailsIcon />,
     heading: "Bank details",
     pera: "Add or update bank account details for payout",
-    path: "#",
+    path: "/settings/bank-details",
   },
   {
     icon: <EarningIcon />,
@@ -2205,4 +2189,138 @@ export const feTeamChartData = [
   { name: "Tue", value: 20000 },
   { name: "Tue", value: 20000 },
   { name: "Mon", value: 40000 },
+];
+
+export const appointment = [
+  {
+    head: [
+      { title: "" },
+      { title: "Appointment ID" },
+      { title: "Customer Name" },
+      { title: "Date & Time" },
+      { title: "Status" },
+      { title: "Amount" },
+      { title: "Staff" },
+      { title: "Service/Packages" },
+      { title: "Venue" },
+      { title: "Actions" },
+    ],
+    body: [
+      {
+        id: 1,
+        td: [
+          { idIcon: <AppointmentGreenIcon /> },
+          { appointmentId: "#A-BJBG4F" },
+
+          {
+            saloneName: [
+              {
+                img: "/assest/png/salone-small-img.png",
+                name: "Glamour Studio",
+                subtext: "+91 896 6372 6386",
+              },
+            ],
+          },
+          { dateTime: [{ date: "18/08/2003", time: "11:11am-11:11pm" }] },
+          { status: "New" },
+          { tdData: "₹1,990.00" },
+          { staff: "Priya Sharma" },
+          { work: [{ work: "Hair Styling", workCount: "+3" }] },
+          { venue: "Decadence Hair & Beauty" },
+          { action: "..." }, // TableKebabMenu renders for this
+        ],
+      },
+      {
+        id: 2,
+        td: [
+          { idIcon: <AppointmentGreenIcon /> },
+          { appointmentId: "#A-BJBG4F" },
+          {
+            saloneName: [
+              {
+                img: "/assest/png/salone-small-img.png",
+                name: "Esther Howard",
+                subtext: "+91 896 6372 6386",
+              },
+            ],
+          },
+          { dateTime: [{ date: "13/07/2024 ", time: "11:11am-11:11pm" }] },
+          { status: "Not Show" },
+          { tdData: "₹3,300.00" },
+          { staff: "Rohit Mehta" },
+          { work: [{ work: "Hair Cut", workCount: "+1" }] },
+          { venue: "Decadence Hair & Beauty" },
+          { action: "..." }, // TableKebabMenu renders for this
+        ],
+      },
+      {
+        id: 3,
+        td: [
+          { idIcon: <AppointmentBlueIcon /> },
+          { appointmentId: "#A-BJBG4F" },
+
+          {
+            saloneName: [
+              {
+                img: "/assest/png/salone-small-img.png",
+                name: "Esther Howard",
+                subtext: "+91 896 6372 6386",
+              },
+            ],
+          },
+          { dateTime: [{ date: "12/07/2024 ", time: "11:11am-11:11pm" }] },
+          { status: "Completed" },
+          { tdData: "₹1,650.00" },
+          { staff: "Neha Gupta" },
+          { work: [{ work: "Jumbo Package" }] },
+          { venue: "Decadence Hair & Beauty" },
+          { action: "..." }, // TableKebabMenu renders for this
+        ],
+      },
+    ],
+  },
+];
+
+export const appointmentTc = [
+  {
+    icon: <MemberIcon />, // or better: JSX for an icon
+    placeholder: "Select TC",
+    options: [
+      { title: "Talwinder", value: "talwinder" },
+      { title: "Virendar", value: "virender" },
+    ],
+  },
+  {
+    icon: <RmPrsone />, // or better: JSX for an icon
+    placeholder: "Select RM",
+    options: [
+      { title: "Talwinder", value: "talwinder" },
+      { title: "Arjun", value: "arjun" },
+    ],
+  },
+  {
+    icon: <FePrsone />, // or better: JSX for an icon
+    placeholder: "Select FE",
+    options: [
+      { title: "Talwinder", value: "talwinder" },
+      { title: "Arjun", value: "arjun" },
+    ],
+  },
+  {
+    placeholder: "Select Status",
+    options: [
+      { title: "Talwinder", value: "talwinder" },
+      { title: "Arjun", value: "arjun" },
+    ],
+  },
+];
+
+export const appointmentBooking = [
+  {
+    placeholder: "Select Booking",
+    options: [
+      { title: "Talwinder", value: "talwinder" },
+      { title: "Arjun", value: "arjun" },
+    ],
+  },
 ];

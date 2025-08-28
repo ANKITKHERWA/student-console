@@ -34,10 +34,6 @@ type work = {
   work?: string;
   workCount?: string;
 };
-type appointmentId = {
-  icon?: React.ReactNode;
-  id?: string;
-};
 
 type Td = {
   saloneName?: SaloneName[];
@@ -59,8 +55,10 @@ type Td = {
   tdData?: string | number | JSX.Element;
   dateTime?: dateTime[];
   work?: work[];
-  appointmentId?: appointmentId[];
   venue?: string;
+  dot?: string;
+  idIcon?: React.ReactNode;
+  appointmentId?: string;
 };
 
 type Iprops = {
@@ -99,22 +97,24 @@ const TableBody: React.FC<TableData> = ({
                 setOpen?.(true);
               }}
               key={tdIndex}
-              className={`md:px-3 font-semibold px-1 sm:px-2 py-2 min-h-[45px] md:min-h-[52px] truncate max-w-[200px] text-sm ${className}`}
+              className={`md:px-3 font-semibold px-1 sm:px-2 py-2 min-h-[45px] md:min-h-[52px] truncate max-w-[200px] sm:text-sm text-xs ${className}`}
             >
               {/* appointnment id */}
-              {tdItem.appointmentId?.map((appoint, dtIndex) => (
-                <div key={dtIndex} className="flex items-center gap-6">
-                  <span>{appoint.icon}</span>
-                  <span>{appoint.id}</span>
-                </div>
-              ))}
+              {tdItem.idIcon && <span>{tdItem.idIcon}</span>}
+
+              {tdItem.appointmentId && <span>{tdItem.appointmentId}</span>}
+
               {/* work */}
               {tdItem.work?.map((work, dtIndex) => (
                 <div key={dtIndex} className="flex items-center gap-1.5">
-                  <span className="bg-[#F3F4F6] border-[0.5px] border-[#EBECF0] rounded-[100px] px-2 py-[3px]">
+                  <span className="bg-[#F3F4F6] border-[0.5px] border-[#EBECF0] rounded-[100px] px-2 py-[5px]">
                     {work.work}
                   </span>
-                  <span className="bg-[#F3F4F6] border-[0.5px] border-[#EBECF0] rounded-[100px] px-2 py-[3px]">
+                  <span
+                    className={`bg-[#F3F4F6] border-[0.5px] border-[#EBECF0] rounded-[100px]  ${
+                      work.workCount ? "px-2 py-[5px]" : "p-0"
+                    }`}
+                  >
                     {work.workCount}
                   </span>
                 </div>
@@ -143,6 +143,7 @@ const TableBody: React.FC<TableData> = ({
               ))}
               {/* Address */}
               {tdItem.add && <span>{tdItem.add}</span>}
+
               {tdItem.venue && (
                 <div className="flex items-center gap-1">
                   <VenueIcon />
@@ -259,7 +260,18 @@ const TableBody: React.FC<TableData> = ({
                   />
                 </div>
               )}
+
               {tdItem.tdData && <span>{tdItem.tdData}</span>}
+
+              {tdItem.dot && (
+                <span
+                  className={` block h-4 w-4 rounded-full ${
+                    tdItem.dot === "Registered"
+                      ? "bg-[#31A553]"
+                      : "bg-[#8EBAF6]"
+                  }`}
+                ></span>
+              )}
             </td>
           ))}
         </tr>

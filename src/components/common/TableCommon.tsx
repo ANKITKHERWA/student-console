@@ -102,7 +102,6 @@ const TableCommon: React.FC<TableCommonProps> = ({ data, sidebarContent }) => {
       </div>
 
       {/* side bar */}
-
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
