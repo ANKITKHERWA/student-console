@@ -1341,3 +1341,60 @@ export const EnbDisbleIcon: React.FC<IconProps> = ({ className }) => {
     </svg>
   );
 };
+export const VenueIcon: React.FC<IconProps> = ({ className }) => {
+  return (
+    <svg
+      className={`${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
+      <path
+        d="M8.00098 1.10156C9.45499 1.10181 10.6336 2.28133 10.6338 3.73535C10.6336 5.01842 9.71589 6.08566 8.50098 6.31934V14.4014C8.50098 14.6775 8.27712 14.9014 8.00098 14.9014C7.72483 14.9014 7.50098 14.6775 7.50098 14.4014V6.31934C6.28617 6.0855 5.3674 5.01827 5.36719 3.73535C5.3674 2.28133 6.54697 1.10181 8.00098 1.10156Z"
+        fill="#09090B"
+      />
+    </svg>
+  );
+};
+export const AppointmentGreenIcon: React.FC<IconProps> = ({ className }) => {
+  return (
+    <svg
+      className={`${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
+      <path
+        d="M14 6.33464V4.0013C14 3.26492 13.403 2.66797 12.6667 2.66797H3.33333C2.59695 2.66797 2 3.26492 2 4.0013V12.0013C2 12.7377 2.59695 13.3346 3.33333 13.3346H5.66667"
+        stroke="#31A553"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M2.33594 5.33203H14.0026"
+        stroke="#31A553"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8.35306 7.64648L13.2841 9.07378C13.7643 9.27709 13.7681 9.95665 13.2901 10.1564L12.1844 10.6185L12.0241 10.6871L13.7136 12.3511C14.0966 12.7284 14.0966 13.3401 13.7136 13.7174C13.3305 14.0946 12.7095 14.0946 12.3264 13.7174L10.6636 12.0795L10.6175 12.1876L10.1564 13.2946C9.95703 13.7731 9.27811 13.7696 9.07478 13.289L7.33431 8.66667C7.0604 8.01921 7.70609 7.37261 8.35306 7.64648Z"
+        stroke="#31A553"
+        stroke-width="1.2"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M5.33594 2.66797V5.33464"
+        stroke="#31A553"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};

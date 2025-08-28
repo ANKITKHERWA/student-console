@@ -1,4 +1,5 @@
 import {
+  AppointmentGreenIcon,
   CardDateIcon,
   ClenderIcon,
   DetailsIcon,
@@ -36,6 +37,7 @@ import { id } from "date-fns/locale";
 import { Value } from "@radix-ui/react-select";
 import { cn } from "@/lib/utils";
 import Addnewvisite from "../pages/partner/Addnewvisite";
+import { date } from "zod";
 
 export const loginFormData = [
   {
@@ -547,15 +549,25 @@ export const criticalData = [
         id: 1,
         td: [
           {
+            appointmentId: [
+              { icon: <AppointmentGreenIcon />, id: "#A-BJBG4F" },
+            ],
+          },
+
+          {
             saloneName: [
               {
                 img: "/assest/png/salone-small-img.png",
                 name: "Glamour Studio",
+                subtext: "+91 896 6372 6386",
               },
             ],
           },
           { add: "123 Main St, Delhi" },
+          { dateTime: [{ date: "18/08/2003", time: "11:11am-11:11pm" }] },
+          { work: [{ work: "Hair Styling", workCount: "+3" }] },
           { health: "Good" },
+          { venue: "Decadence Hair & Beauty" },
           { issue: [{ issu1: "1", issu2: "2" }] },
           { staff: "10" },
           { onboarding: "true" },
@@ -609,7 +621,7 @@ export const criticalData = [
           { onboarding: "true" },
           { bankAcc: "true" },
           { monthlyTarget: "true" },
-          { subscription: "Trial" },
+          { status: "Expired" },
           { lastVisit: "14 Aug 2025" },
           { nextVisit: "21 Aug 2025" },
           { tcName: "Meera" },
@@ -730,11 +742,13 @@ export const mudalData = [
         heading: "Last Visit Summary",
         data: [
           {
+            id: "1",
             icon: <SmallCalenderIcon />,
             title: "Visit Date: ",
             titleData: " 11 April 2025",
           },
           {
+            id: "2",
             icon: <OveralScoreIcon />,
             title: "Overall Score : ",
             titleData: " 35 / 50",
@@ -783,11 +797,10 @@ export const mudalData = [
             ],
           },
         ],
-
-        date: [
-          { heading: "Next Follow up date", id: "nextFollow" },
-          { heading: "Next Visit Date", id: "nextVisit" },
-        ],
+        nextFollow: "Next Follow up date",
+        nexFollowtId: "nextFollow",
+        nextVisit: "Next Visit Date",
+        nextVisitId: "nextVisit",
       },
     ],
     catalogStaff: [

@@ -131,9 +131,7 @@
 [data-radix-sheet-overlay] {
   background-color: transparent !important;
 }
-body {
-  /* overflow-x: hidden !important; */
-}
+
 
 #sheet-overlay {
   background: transparent !important;

@@ -17,6 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import SmallHeading from "@/components/common/SmallHeading";
 import Selecte from "@/components/common/Selecte";
+import Image from "next/image";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -45,12 +46,14 @@ const formSchema = z.object({
   city: z.string(),
   staeprovinceRegion: z.string(),
   country: z.string(),
+  profileImage: z.string(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 function Addmember() {
   const [open, setOpen] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -68,6 +71,7 @@ function Addmember() {
       city: "",
       staeprovinceRegion: "",
       country: "",
+      profileImage: "",
     },
   });
 
@@ -94,6 +98,43 @@ function Addmember() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 ">
               <div className="py-5 border-t border-grayE4 lg:px-5 px-4 flex flex-col sm:gap-3 gap-2.5 lg:gap-4">
+                <FormField
+                  control={form.control}
+                  name="profileImage"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col gap-1">
+                      <FormLabel className="sm:text-sm text-xs mb-1">
+                        Profile Image
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              setImagePreview(URL.createObjectURL(file));
+                              field.onChange(file);
+                            }
+                          }}
+                          className="sm:px-3 px-2 sm:py-2 py-1.5 border border-grayE4 sm:!rounded-sm !rounded !ring-0 sm:text-sm text-xs"
+                        />
+                      </FormControl>
+                      {/* Show preview below input */}
+                      {imagePreview && (
+                        <Image
+                          width={340}
+                          height={140}
+                          src={imagePreview}
+                          alt="Preview"
+                          className="mt-2 w-16 h-16 object-cover rounded-full border"
+                        />
+                      )}
+                      <FormMessage className="text-[10px]" />
+                    </FormItem>
+                  )}
+                />
+
                 <FormField
                   control={form.control}
                   name="username"

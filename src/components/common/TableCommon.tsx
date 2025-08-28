@@ -5,7 +5,7 @@ import { Sheet, SheetContent } from "@/components/ui/sheet";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import { JSX } from "react/jsx-runtime";
-import SidebarContent from "./Side";
+import SidebarContent from "../pages/insights/Side";
 
 type SaloneName = {
   img: string;

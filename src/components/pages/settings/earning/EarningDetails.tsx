@@ -14,6 +14,9 @@ function EarningDetails() {
             placeholder={item.placeholder}
             options={item.options}
             className="sm:w-[135px] w-[100px]"
+            onChange={(selectedMonth) => {
+              console.log("Selected month:", selectedMonth);
+            }}
           />
         ))}
       </div>

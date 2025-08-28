@@ -20,6 +20,9 @@ function PlatformEarning() {
             icon={item.icon}
             options={item.options}
             className="sm:w-[174px] w-[130px]"
+            onChange={(selecteMemberEarning) => {
+              console.log("Selected member earning:", selecteMemberEarning);
+            }}
           />
         ))}
         <div>
@@ -29,6 +32,9 @@ function PlatformEarning() {
               placeholder={item.placeholder}
               options={item.options}
               className="sm:w-[135px] w-[100px]"
+              onChange={(selectedMonth) => {
+                console.log("Selected month:", selectedMonth);
+              }}
             />
           ))}
         </div>

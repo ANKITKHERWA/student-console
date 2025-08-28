@@ -15,7 +15,7 @@ import DotColor from "@/components/common/DotColor";
 import Addnewpartner from "../partner/Addnewpartner";
 
 function TeamMain() {
-  const [activeTab, setActiveTab] = useState("Registered");
+  const [activeTab, setActiveTab] = useState("members");
 
   return (
     <div>

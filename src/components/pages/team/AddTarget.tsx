@@ -1,6 +1,8 @@
+"use client";
 import Pera from "@/components/common/Pera";
+import Selecte from "@/components/common/Selecte";
 import SmallHeading from "@/components/common/SmallHeading";
-import { targetInputs } from "@/components/helper/Helper2";
+import { monthEarning, targetInputs } from "@/components/helper/Helper2";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -32,8 +34,21 @@ export function AddTarget() {
         <Button className="rounded-[6px]">Add Target</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] !rounded-0 !p-0 h-[90%] overflow-y-auto">
-        <DialogHeader className="px-4 py-5 border-b border-grayE4">
+        <DialogHeader className="px-4 py-5 border-b border-grayE4 flex justify-between items-center !flex-row pe-10">
           <SmallHeading title="Add Targets" />
+          <div>
+            {monthEarning.map((item, index) => (
+              <Selecte
+                key={index}
+                placeholder={item.placeholder}
+                options={item.options}
+                className="sm:w-[135px] w-[100px]"
+                onChange={(selectedMonth) => {
+                  console.log("Selected month:", selectedMonth);
+                }}
+              />
+            ))}
+          </div>
         </DialogHeader>
         <div className="px-4 py-3.5">
           <SmallHeading title="Set Targets for Wade Warren ( FE)" />
