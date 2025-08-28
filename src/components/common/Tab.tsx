@@ -26,7 +26,7 @@ export default function Tab({
     <Tabs defaultValue={value} className="w-full" onValueChange={onChange}>
       {/* Header */}
       <div className="overflow-auto ">
-        <div className="border-y border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
+        <div className="border-b border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
           <TabsList
             defaultValue={1}
             className="rounded-none bg-transparent !w-full flex !justify-start"
