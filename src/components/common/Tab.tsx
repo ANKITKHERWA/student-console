@@ -6,7 +6,7 @@ type TabItem = {
   value: string;
   title: string;
   icon?: React.ReactNode;
-  content: React.ReactNode;
+  content?: React.ReactNode;
 };
 
 type CommonTabsProps = {
