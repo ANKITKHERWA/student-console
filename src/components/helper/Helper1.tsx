@@ -3110,3 +3110,36 @@ export const ActiveData = [
   { month: 'Nov', desktop: 950, active: 500 },
   { month: 'Dec', desktop: 900, active: 900 },
 ]
+export const Aaravdata = {
+  id: '1',
+  avatar: '/assest/png/aarav.png',
+  name: 'Aarav Sharma',
+  gender: 'Male' as const,
+  bank: 'HDFC Bank',
+  accountNo: 'XXXX XXXX 5423',
+  ifscCode: 'HDFC0001234',
+  addedDate: '02 June 2025',
+  status: 'Verified' as const,
+}
+export const Rameshdata = {
+  id: '1',
+  avatar: '/assest/png/ramesh.png',
+  name: 'Ramesh Patel',
+  gender: 'Male' as const,
+  bank: 'ICICI Bank',
+  accountNo: 'XXXX XXXX 5423',
+  ifscCode: 'ICIC0004567',
+  addedDate: '02 June 2025',
+  status: 'Pending' as const,
+}
+export const priyadata = {
+  id: '1',
+  avatar: '/assest/png/priya.png',
+  name: 'Priya Sharma',
+  gender: 'Female' as const,
+  bank: 'ICICI Bank',
+  accountNo: 'XXXX XXXX 5423',
+  ifscCode: 'AXIS0000945',
+  addedDate: '02 June 2025',
+  status: 'Rejected' as const,
+}

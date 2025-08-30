@@ -53,7 +53,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary:#B751FB;
+  --primary: #b751fb;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: #030712;
   --secondary-foreground: oklch(0.205 0 0);
@@ -132,7 +132,6 @@
   background-color: transparent !important;
 }
 
-
 #sheet-overlay {
   background: transparent !important;
 }
@@ -142,7 +141,6 @@
   -webkit-appearance: none;
 }
 
-
-input[type="file"] {
+input[type='file'] {
   color: transparent;
 }

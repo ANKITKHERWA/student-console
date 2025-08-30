@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Select,
   SelectTrigger,
@@ -7,9 +8,11 @@ import {
   SelectLabel,
   SelectItem,
 } from '@/components/ui/select'
+
 interface Iprops {
   placeholder?: string
   label?: string
+  placeholderIcon?: React.ReactNode
   options: string[]
   className?: string
 }
@@ -17,13 +20,17 @@ interface Iprops {
 const Comselect: React.FC<Iprops> = ({
   placeholder = 'Select...',
   label,
+  placeholderIcon,
   options,
   className,
 }) => {
   return (
     <Select>
       <SelectTrigger className={className ?? 'w-[130px]'}>
-        <SelectValue placeholder={placeholder} />
+        <div className="flex items-center gap-2">
+          {placeholderIcon && <span>{placeholderIcon}</span>}
+          <SelectValue placeholder={placeholder} />
+        </div>
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>

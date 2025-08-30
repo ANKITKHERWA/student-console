@@ -77,7 +77,7 @@ export default function Navbar() {
             </nav>
           </div>
           <div className="flex justify-center items-center pb-10">
-            <Link href="/settings">
+            <Link href="/settings/user-profile">
               <Icon13thimg />
             </Link>
           </div>
