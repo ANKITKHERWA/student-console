@@ -1,7 +1,7 @@
-import Heading from '@/components/common/Heading'
-import TeamCard from '@/components/common/TeamCard'
-import { some, some2, some3 } from '@/components/helper/Helper1'
-import React from 'react'
+import Heading from "@/components/common/Heading";
+import TeamCard from "@/components/common/TeamCard";
+import { some, some2, some3 } from "@/components/helper/Helper1";
+import React from "react";
 
 function Card() {
   return (
@@ -72,7 +72,7 @@ function Card() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Card
+export default Card;

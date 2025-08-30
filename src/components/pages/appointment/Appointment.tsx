@@ -14,7 +14,7 @@ import React from "react";
 function Appointment() {
   return (
     <div>
-      <Tabs className="!block">
+      <Tabs className="!block" defaultValue="all">
         <TopCommon title="Appointment" />
         <div className="py-3 md:px-5 px-4 lg:px-6 border-b">
           <div className="flex justify-between md:items-center md:flex-row flex-col gap-3">
@@ -73,7 +73,9 @@ function Appointment() {
           <div className="md:p-5 p-4 lg:p-6 justify-between sm:items-start items-center gap-4 sm:flex-row flex-col flex ">
             <div className="flex flex-wrap gap-3 sm:flex-row flex-col items-center">
               <div>
-                <TabsList className="md:!rounded-sm !rounded-xs">
+                <TabsList
+                  className="md:!rounded-sm !rounded-xs"
+                >
                   <TabsTrigger value="all">All</TabsTrigger>
                   <TabsTrigger value="today">Today</TabsTrigger>
                   <TabsTrigger value="upComing">Up Coming</TabsTrigger>

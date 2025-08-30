@@ -34,6 +34,10 @@ type work = {
   work?: string;
   workCount?: string;
 };
+type data = {
+  up?: string;
+  down?: string;
+};
 
 type Td = {
   saloneName?: SaloneName[];
@@ -55,6 +59,7 @@ type Td = {
   tdData?: string | number | JSX.Element;
   dateTime?: dateTime[];
   work?: work[];
+  datas?: data[];
   venue?: string;
   dot?: string;
   idIcon?: React.ReactNode;
@@ -125,6 +130,15 @@ const TableBody: React.FC<TableData> = ({
                   <span>{dt.date}</span>
                   <span className="text-[#808188] font-medium text-xs">
                     {dt.time}
+                  </span>
+                </div>
+              ))}
+
+              {tdItem.datas?.map((dt, dtIndex) => (
+                <div key={dtIndex} className="flex flex-col gap-0.5">
+                  <span className="truncate">{dt.up}</span>
+                  <span className="text-[#808188] font-medium text-xs">
+                    {dt.down}
                   </span>
                 </div>
               ))}
