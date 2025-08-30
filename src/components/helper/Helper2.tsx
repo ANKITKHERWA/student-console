@@ -34,7 +34,7 @@ import {
   MaleteamCard,
   Priyasingh,
 } from "./Icon1";
- 
+import { toDate } from "date-fns";
 
 export const loginFormData = [
   {
@@ -2321,6 +2321,160 @@ export const appointmentBooking = [
     options: [
       { title: "Talwinder", value: "talwinder" },
       { title: "Arjun", value: "arjun" },
+    ],
+  },
+];
+
+export const followUpPlans = [
+  {
+    head: [
+      { title: "Partner" },
+      { title: "Visit Id" },
+      { title: "Customer Name" },
+      { title: "Address & Contact" },
+      { title: "Date & Time" },
+      { title: "Status" },
+      { title: "TC Name" },
+      { title: "RM Name" },
+      { title: "FE Name" },
+      { title: "Action" },
+    ],
+    body: [
+      {
+        id: 1,
+        td: [
+          { dot: "Prospective" },
+          { tdData: "CL-V001" },
+          { tdData: "Mirror & Mane" },
+          {
+            datas: [
+              {
+                up: "3517 W. Gray St. Utica, Pennsylvania 57867",
+                down: "89555-01296",
+              },
+            ],
+          },
+          { dateTime: [{ date: "18/08/2003", time: "11:11am-11:11pm" }] },
+          { status: "New" },
+          { tdData: "Aditi Singh" },
+          { tdData: "Bessie Cooper" },
+          { tdData: "Leslie Alexander" },
+          { action: "..." }, // TableKebabMenu renders for this
+        ],
+      },
+      {
+        id: 2,
+        td: [
+          { dot: "Registered" },
+          { tdData: "CL-V001" },
+          { tdData: "Mirror & Mane" },
+          {
+            datas: [
+              {
+                up: "3517 W. Gray St. Utica, Pennsylvania 57867",
+                down: "89555-01296",
+              },
+            ],
+          },
+          { dateTime: [{ date: "18/08/2003", time: "11:11am-11:11pm" }] },
+          { status: "Expired" },
+          { tdData: "Aditi Singh" },
+          { tdData: "Bessie Cooper" },
+          { tdData: "Leslie Alexander" },
+          { action: "..." }, // TableKebabMenu renders for this
+        ],
+      },
+    ],
+  },
+];
+
+export const followUp = [
+  {
+    placeholder: "Select Status",
+    options: [
+      { title: "Talwinder", value: "talwinder" },
+      { title: "Arjun", value: "arjun" },
+    ],
+  },
+];
+
+export const optionsList = [
+  {
+    placeholder: "Select TC",
+    id: "1",
+    item: [
+      {
+        value: "1",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Aarav Sharma",
+      },
+      {
+        value: "2",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Priya Patel",
+      },
+      {
+        value: "3",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Ananya Iyer",
+      },
+      {
+        value: "4",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Rohan Gupta",
+      },
+    ],
+  },
+  {
+    placeholder: "Select FE",
+    id: "2",
+    item: [
+      {
+        value: "1",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Aarav Sharma",
+      },
+      {
+        value: "2",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Priya Patel",
+      },
+      {
+        value: "3",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Ananya Iyer",
+      },
+      {
+        value: "4",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Rohan Gupta",
+      },
+    ],
+  },
+  {
+    placeholder: "Select RM",
+    id: "3",
+    item: [
+      {
+        value: "1",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Aarav Sharma",
+      },
+      {
+        value: "2",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Priya Patel",
+      },
+      {
+        value: "3",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Ananya Iyer",
+      },
+      {
+        value: "4",
+        img: "/assest/svg/dashboard-1st.svg",
+        title: "Rohan Gupta",
+      },
     ],
   },
 ];

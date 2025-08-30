@@ -42,7 +42,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import SecondryBtn from "@/components/common/SecondryBtn";
 import { AddTarget } from "./AddTarget";
 import { Button } from "@/components/ui/button";
 

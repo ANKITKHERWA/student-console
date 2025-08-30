@@ -38,6 +38,13 @@ const formSchema = z.object({
   assigned: z.string().min(1, {
     message: "Please select role",
   }),
+  image: z
+    .any()
+    .refine((file) => file?.length === 1, "Image is required")
+    .refine(
+      (file) => file?.[0]?.type.startsWith("image/"),
+      "File must be an image"
+    ),
   facebookLink: z.string(),
   instagramLink: z.string(),
   lineAddress: z.string(),
@@ -53,7 +60,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 function Addmember() {
   const [open, setOpen] = useState(false);
-  const [imagePreview, setImagePreview] = useState("");
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -81,6 +88,13 @@ function Addmember() {
     // setOpen(false);
   }
 
+  const handleImageChange = (fileList: FileList | null) => {
+    if (fileList && fileList.length > 0) {
+      const file = fileList[0];
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
   return (
     <div>
       <Button
@@ -100,37 +114,93 @@ function Addmember() {
               <div className="py-5 border-t border-grayE4 lg:px-5 px-4 flex flex-col sm:gap-3 gap-2.5 lg:gap-4">
                 <FormField
                   control={form.control}
-                  name="profileImage"
+                  name="image"
                   render={({ field }) => (
-                    <FormItem className="flex flex-col gap-1">
-                      <FormLabel className="sm:text-sm text-xs mb-1">
+                    <FormItem>
+                      <FormLabel
+                        htmlFor="partner-image"
+                        className="mb-2 font-semibold"
+                      >
                         Profile Image
                       </FormLabel>
                       <FormControl>
-                        <Input
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) {
-                              setImagePreview(URL.createObjectURL(file));
-                              field.onChange(file);
+                        {!imagePreview ? (
+                          <div
+                            className="relative border-dashed border-2 rounded-lg border-gray-300 flex flex-col items-center justify-center cursor-pointer h-44 w-full bg-[#fafafd] hover:border-[#B751FB] transition-all"
+                            onClick={() =>
+                              document.getElementById("partner-image")?.click()
                             }
-                          }}
-                          className="sm:px-3 px-2 sm:py-2 py-1.5 border border-grayE4 sm:!rounded-sm !rounded !ring-0 sm:text-sm text-xs"
-                        />
+                            onDrop={(e) => {
+                              e.preventDefault();
+                              field.onChange(e.dataTransfer.files);
+                              handleImageChange(e.dataTransfer.files);
+                            }}
+                            onDragOver={(e) => e.preventDefault()}
+                          >
+                            {/* Use your SVG, Lucide, or Heroicons upload icon here */}
+                            <svg
+                              className="h-10 w-10 text-[#B751FB]"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 9l5-5 5 5M12 4v12"
+                              />
+                            </svg>
+                            <p className="mt-2 text-gray-600">
+                              Drag and drop image or{" "}
+                              <span
+                                className="text-[#B751FB] underline cursor-pointer"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  document
+                                    .getElementById("partner-image")
+                                    ?.click();
+                                }}
+                              >
+                                browse
+                              </span>
+                            </p>
+                            <input
+                              id="partner-image"
+                              type="file"
+                              accept="image/*"
+                              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                              onChange={(e) => {
+                                field.onChange(e.target.files);
+                                handleImageChange(e.target.files);
+                              }}
+                              tabIndex={-1}
+                              style={{ display: "none" }}
+                            />
+                          </div>
+                        ) : (
+                          <div className="mt-2">
+                            <img
+                              src={imagePreview}
+                              alt="Preview"
+                              className="w-full max-h-[200px] object-contain rounded-lg border"
+                            />
+                            {/* Optional: Add remove button */}
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setImagePreview(null);
+                                field.onChange(null);
+                              }}
+                              className="mt-2 text-sm text-red-500 underline"
+                            >
+                              Remove Image
+                            </button>
+                          </div>
+                        )}
                       </FormControl>
-                      {/* Show preview below input */}
-                      {imagePreview && (
-                        <Image
-                          width={340}
-                          height={140}
-                          src={imagePreview}
-                          alt="Preview"
-                          className="mt-2 w-16 h-16 object-cover rounded-full border"
-                        />
-                      )}
-                      <FormMessage className="text-[10px]" />
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
