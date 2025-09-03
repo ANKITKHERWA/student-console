@@ -24,7 +24,13 @@ import { Input } from "@/components/ui/input";
 import Filter from "./Filter";
 import SelecteStatus from "./SelecteStatus";
 import TableCommon from "@/components/common/TableCommon";
-import { criticalData, sidebarData } from "@/components/helper/Helper2";
+import {
+  criticalData,
+  data2,
+  optionsList,
+  optionsList2,
+  sidebarData,
+} from "@/components/helper/Helper2";
 import TopCommon from "@/components/common/TopCommon";
 import Growth from "./Growth";
 import Image from "next/image";
@@ -36,21 +42,53 @@ import VisitReportMudal from "./VisitReportMudal";
 import StatusBadgeSec from "@/components/common/StatusBadgeSec";
 import KebabMenucommon from "@/components/common/KebabMenuCommon";
 import NewStatusbadge from "@/components/common/NewStatusbadge";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 function Insights() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
   const [open, setOpen] = useState(false);
 
-  const data2 = {
-    critical: [
-      { title: "Incomplete Onboarding", days: "30 days" },
-      { title: "Off-Peak hours not set", days: "15 days" },
-      { title: "Missing Bank Account", days: "20 days" },
-      { title: "Subscription overdue", days: "10 days" },
-    ],
-    growth: [
-      { title: "New Service Opportunity", days: "5 days" },
-      { title: "Increase Social Media Reach", days: "12 days" },
-    ],
+  // Changed to handle multiple selections per option
+  const [selectedValues, setSelectedValues] = useState<
+    Record<string, string[]>
+  >({});
+
+  const handleValueChange = (optionId: string, value: string) => {
+    setSelectedValues((prev) => {
+      const currentValues = prev[optionId] || [];
+      const isSelected = currentValues.includes(value);
+
+      if (isSelected) {
+        // Deselect - remove from array
+        return {
+          ...prev,
+          [optionId]: currentValues.filter((v) => v !== value),
+        };
+      } else {
+        // Select - add to array
+        return {
+          ...prev,
+          [optionId]: [...currentValues, value],
+        };
+      }
+    });
+  };
+
+  const getDisplayText = (optionId: string, placeholder: string) => {
+    const selected = selectedValues[optionId] || [];
+    if (selected.length === 0) return placeholder;
+    if (selected.length === 1) {
+      const option = optionsList.find((opt) => opt.id === optionId);
+      const item = option?.item.find((item) => item.value === selected[0]);
+      return item?.title || selected[0];
+    }
+    return `${selected.length} selected`;
   };
   return (
     <div className="pb-10">
@@ -85,9 +123,9 @@ function Insights() {
           </div>
           <TabsContent value="critical-task" className="md:px-5 px-4 lg:px-6 ">
             <form className="md:py-5 py-3 sm:py-4 lg:py-6">
-              <div className="flex justify-center min-[460px]:justify-between items-center gap-2 flex-wrap min-[460px]:flex-nowrap">
+              <div className="flex justify-between items-center gap-2 flex-wrap-reverse sm:flex-nowrap">
                 <SelecteStatus />
-                <div className="flex items-center md:gap-5 sm:gap-4 gap-2 lg:gap-[30px]">
+                <div className="flex items-center md:gap-5 sm:gap-4 gap-2 lg:gap-[30px] min-[450px]:flex-nowrap flex-wrap">
                   <div className="flex items-center gap-1 w-full xl:min-w-[290px] py-1.5 px-3 !border-[#D9DDE3] border rounded md:rounded-[6px]">
                     <Input
                       placeholder="Search..."
@@ -96,6 +134,51 @@ function Insights() {
                     <SearchIcon />
                   </div>
                   <Filter />
+                  {optionsList2.map((option) => (
+                    <Select
+                      key={option.id}
+                      value="" // Always empty to prevent closing
+                      onValueChange={(value) =>
+                        handleValueChange(option.id, value)
+                      }
+                    >
+                      <SelectTrigger className="text-[#030712] !font-semibold !border-[#E4E7EB] rounded md:!rounded-[6px] md:py-2 py-1 px-1.5 md:px-3 flex !gap-0">
+                        <SelectValue
+                          placeholder={getDisplayText(
+                            option.id,
+                            option.placeholder
+                          )}
+                          className="placeholder:!text-[#030712] !font-semibold placeholder:!text-xs md:!text-sm"
+                        />
+                      </SelectTrigger>
+                      <SelectContent className="!p-0 !m-0">
+                        <SelectGroup className="!p-0 !m-0">
+                          {option.item.map((opt) => (
+                            <SelectItem
+                              key={opt.value}
+                              value={opt.value}
+                              className="flex items-center gap-2 !p-0 !m-0 rounded-none w-full !py-2 sm:!py-[7px] text-sm !px-1 sm:!px-3 !justify-start data-[state=checked]:bg-[#F1DCFF]"
+                              onSelect={(e) => {
+                                e.preventDefault(); // Prevent default selection behavior
+                                handleValueChange(option.id, opt.value);
+                              }}
+                            >
+                              {/* Checkbox for multiple selection */}
+                              <input
+                                type="checkbox"
+                                checked={(
+                                  selectedValues[option.id] || []
+                                ).includes(opt.value)}
+                                readOnly
+                                className="accent-[#A259FF]"
+                              />
+                              <span>{opt.title}</span>
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  ))}
                 </div>
               </div>
             </form>
@@ -107,16 +190,6 @@ function Insights() {
                     <StatusBadgeSec status={"registered"} />
                   </div>
                   <div className="flex flex-col justify-between h-full pb-3">
-                    {/* {criticalData.map((item, indexs) => (
-              <div key={indexs}>
-                {item.body.map((items, index) => (
-                  <div key={index}>
-                    
-                  </div>
-                ))}
-              </div>
-            ))} */}
-
                     {sidebarData?.map((itm, idx) => (
                       <div key={idx}>
                         <div className="lg:pt-5 lg:ps-6 lg:pb-[30px] md:py-5 p-4 md:px-6 lg:pe-[30px]">
@@ -431,6 +504,7 @@ function Insights() {
                         </div>
                       </div>
                     ))}
+
                     <div className="px-[30px] flex justify-end gap-2 pb-3">
                       <SecondryBtn
                         title="Cancel"

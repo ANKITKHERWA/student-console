@@ -44,7 +44,7 @@ function SignUp() {
       <div className="lg:bg-[url('/assest/png/login-bg-img.png')] lg:bg-[length:50%_100%] bg-no-repeat bg-top md:bg-right h-full lg:pb-10 overflow-y-auto">
         <div className="max-w-[1440px] mx-auto h-full">
           <div className="flex md:flex-row flex-col-reverse justify-between h-full">
-            <div className="xl:pr-10 lg:w-1/2 w-full flex flex-col justify-between">
+            <div className="xl:pr-10 lg:w-1/2 w-full flex flex-col justify-between h-full">
               <div className="lg:p-8 md:p-6 sm:p-5 p-4">
                 <Link
                   href={"/"}
@@ -61,8 +61,8 @@ function SignUp() {
               <div className="lg:px-8 md:px-6 sm:px-5 px-4  mt-10 w-full">
                 <div className="mx-auto w-full max-w-[360px]">
                   <div className="flex flex-col gap-1.5 sm:gap-2 md:gap-3">
-                    <Heading title="Log in" />
-                    <Pera title="Welcome back! Please enter your account" />
+                    <Heading title="Welcome to daSalon" />
+                    <Pera title="We need to finish setup your account" />
                   </div>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <TextInput
@@ -130,7 +130,7 @@ function SignUp() {
             </div>
 
             {/* Right Section */}
-            <div className="text-[#fff] md:w-1/2 lg:mt-10 md:mt-8 xl:mt-[82px] lg:ps-8 xl:ps-10 lg:pr-8 md:px-6 sm:px-5 px-4 lg:flex flex-col justify-center hidden mt-auto">
+            <div className="text-[#fff] md:w-1/2 lg:mt-10 md:mt-8 xl:mt-[82px] lg:ps-8 xl:ps-10 lg:pr-8 md:px-6 sm:px-5 px-4 lg:flex flex-col justify-center hidden mt-auto min-h-fit">
               <Link
                 href={"/"}
                 className="md:py-6 sm:py-5 py-4 md:hidden block max-w-[120px] "

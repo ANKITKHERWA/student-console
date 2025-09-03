@@ -342,7 +342,7 @@ export default function VerificationEmail() {
           </div>
 
           {step !== 4 && (
-            <div className="text-[#808188] text-xs md:text-sm font-medium leading-[142.857%] -tracking-[0.28px] flex items-center lg:p-8 md:p-6 sm:p-5 p-4 mt-10 lg:-mb-10 w-full justify-between">
+            <div className="text-[#808188] text-xs md:text-sm font-medium leading-[142.857%] -tracking-[0.28px] flex items-center lg:p-8 md:p-6 sm:p-5 p-4 mt-10  w-full justify-between">
               <span className=""> © daSalon {new Date().getFullYear()}</span>
               <Link
                 href={"mailto:"}

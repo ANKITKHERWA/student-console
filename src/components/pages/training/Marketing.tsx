@@ -9,13 +9,13 @@ function Marketing() {
   return (
     <div className="">
       <div className="flex justify-between items-center lg:pt-6 lg:pb-[18px] py-3 md:py-4 gap-3 min-[400px]:flex-row flex-col">
-        <SmallHeading title="Live Training" className="!text-base" />
+        <SmallHeading title="Marketing" className="!text-base" />
         <form className="flex md:gap-4 gap-3 lg:gap-5">
           <Search />
           <Filter />
         </form>
       </div>
-      <div className="overflow-y-auto h-screen md:pb-8 pb-6 lg:pb-10 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-blue-600 scrollbar-track-blue-200 hover:scrollbar-thumb-blue-800">
+      <div className="overflow-y-auto h-screen md:pb-8 pb-6 lg:pb-10 scrollbarNone ">
         <div
           className="grid  grid-cols-1
     min-[500px]:grid-cols-2

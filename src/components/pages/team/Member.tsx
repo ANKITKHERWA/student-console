@@ -84,9 +84,9 @@ function Member() {
           </div>
         </div>
       </div>
-      <div className="lg:mt-7 md:mt-6 sm:mt-5 mt-4">
+      <div className="lg:mt-7 md:mt-6 sm:mt-5 mt-4 overflow-y-auto h-screen scrollbarNone">
         {someData.map((item, index) => (
-          <div key={index} className="lg:mt-[30px] md:mt-6 sm:mt-5 mt-4">
+          <div key={index} className="lg:mt-[30px] md:mt-6 sm:mt-5 my-4">
             <Heading
               title={item.heading}
               className="lg:!text-xl md:!text-lg !text-base"
@@ -118,7 +118,7 @@ function Member() {
                       </h2>
                       <div className="flex gap-2 mt-1">
                         <span
-                          className={`rounded-full text-black px-2.5 py-0.5 text-xs border font-medium flex items-center gap-1`}
+                          className={`rounded-full text-black px-2.5 py-0.5 text-xs border font-medium flex items-center gap-1 bg-[#E4E7EB] border-[#808188]`}
                         >
                           {Items.gender == "Male" ? (
                             <MaleteamCard />
@@ -136,7 +136,7 @@ function Member() {
                             Items.tag === "TC"
                               ? "border-[#FFAB47] bg-[#FFEFDB]"
                               : Items.tag === "RM"
-                              ? "border-[#8EBAF6] bg-[rgba(207,226,252,0.20]"
+                              ? "border-[#8EBAF6] bg-[rgba(207,226,252,0.20] bg-[rgba(207,226,252,0.20)]"
                               : Items.tag === "FE"
                               ? "border-[#31A553] bg-[#E3F7E9]"
                               : ""
@@ -332,7 +332,7 @@ function Member() {
                         </span>
                       </div>
                       <div className="sm:text-sm text-xs font-medium leading-[142%] -tracking-[0.28px] lg:px-5 px-4 md:py-3 py-2 border-b border-grayE4">
-                        <span className="sm:sm:w-[150px] w-[100px] w-[100px] inline-block text-[#808188]">
+                        <span className="sm:sm:w-[150px] w-[100px] inline-block text-[#808188]">
                           Email
                         </span>
                         <span className="text-[#030712] font-semibold">

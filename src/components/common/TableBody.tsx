@@ -97,10 +97,10 @@ const TableBody: React.FC<TableData> = ({
         >
           {bodyitems.td.map((tdItem, tdIndex) => (
             <td
-              onClick={() => {
-                setSelectedUser?.(bodyitems);
-                setOpen?.(true);
-              }}
+              // onClick={() => {
+              //   setSelectedUser?.(bodyitems);
+              //   setOpen?.(true);
+              // }}
               key={tdIndex}
               className={`md:px-3 font-semibold px-1 sm:px-2 py-2 min-h-[45px] md:min-h-[52px] truncate max-w-[200px] sm:text-sm text-xs ${className}`}
             >
@@ -170,10 +170,7 @@ const TableBody: React.FC<TableData> = ({
 
               {/* Issues */}
               {tdItem.issue?.map((issue, issueIndex) => (
-                <div
-                  key={issueIndex}
-                  className="md:px-3 px-1 sm:px-2 py-2 sm:py-3 md:py-3 lg:py-4"
-                >
+                <div key={issueIndex} className="">
                   <div className="flex gap-2 text-[10px] text-[rgba(3,7,18,0.70)]">
                     <span className="w-[20px] h-[20px] rounded-full border border-[#F00] bg-[rgba(255,136,136,0.34)] flex justify-center items-center">
                       {issue.issu1}
