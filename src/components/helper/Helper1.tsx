@@ -3143,3 +3143,600 @@ export const priyadata = {
   addedDate: '02 June 2025',
   status: 'Rejected' as const,
 }
+export const modalData = [
+  {
+    img: '/assest/png/glamour-glow-studio.png',
+    name: 'Glamour Glow Studio',
+    nextVisit: ': 23 June ',
+    lastVisit: ' 28 June',
+    contacte: [
+      {
+        icon: <LocationIcon />,
+        title: '123 Sparkle Ave, Glam City',
+        path: '#',
+      },
+      {
+        icon: <PhoneSmallIcon />,
+        title: '55523-32324',
+        path: 'tel:55523-32324',
+      },
+    ],
+    condetions: [
+      { count: 'Manage : 3' },
+      {},
+      { count: 'Grow : 2' },
+      {},
+      { count: 'Promote : 4' },
+      {},
+      { count: 'Overall : 2' },
+    ],
+    lastVisitCotent: [
+      {
+        heading: 'profile',
+        data: [
+          {
+            id: '1',
+            icon: <SmallCalenderIcon />,
+            title: 'Visit Date: ',
+            titleData: ' 11 April 2025',
+          },
+          {
+            id: '2',
+            icon: <OveralScoreIcon />,
+            title: 'Overall Score : ',
+            titleData: ' 35 / 50',
+          },
+        ],
+        tableData: [
+          {
+            th: [{ th: 'Category' }, { th: 'Score' }, { th: 'Remarks' }],
+            tdRow: [
+              {
+                td: [
+                  { td: 'Venue Setup' },
+                  { td: '9 / 10' },
+                  {
+                    td: 'All complete, missing cancellation policy. Could add more amenities.',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Catalog & Staff' },
+                  { td: '8 / 10' },
+                  {
+                    td: 'Services added, 1 inactive staff still listed. Staff profiles need updating.',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Offers' },
+                  { td: '6 / 10' },
+                  {
+                    td: 'Gift card & promo active, no membership setup yet. Explore loyalty programs..',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Promote Usage' },
+                  { td: '5 / 10' },
+                  {
+                    td: 'Not yet using Get Featured or Campaign Msg. Easy Share links created but low clicks.',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        nextFollow: 'Next Follow up date',
+        nexFollowtId: 'nextFollow',
+        nextVisit: 'Next Visit Date',
+        nextVisitId: 'nextVisit',
+      },
+    ],
+    catalogStaff: [
+      {
+        heading: 'Last Visit Summar',
+        data: [
+          {
+            icon: <SmallCalenderIcon />,
+            title: 'Visit Date: ',
+            titleData: ' 11 April 2025',
+          },
+          {
+            icon: <OveralScoreIcon />,
+            title: 'Overall Score : ',
+            titleData: ' 35 / 50',
+          },
+        ],
+        tableData: [
+          {
+            th: [
+              { th: 'Metric' },
+              { th: 'Last visit' },
+              { th: 'Current visit' },
+            ],
+            tdRow: [
+              {
+                td: [
+                  { td: 'Services (Count)' },
+                  { td: '50 services' },
+                  {
+                    td: '40 services',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Package (Count)' },
+                  { td: '10 Packages' },
+                  {
+                    td: '14 Packages',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Book-a-Look (Count)' },
+                  { td: '5 look' },
+                  {
+                    td: '8 block',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Product (Count)' },
+                  { td: '5 look' },
+                  {
+                    td: '22 Products',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Staff (Count)' },
+                  { td: '5 staff' },
+                  {
+                    td: '3 staff',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+
+        date: [
+          { heading: 'Next Follow up date', id: 'nextFollow' },
+          { heading: 'Next Visit Date', id: 'nextVisit' },
+        ],
+      },
+    ],
+    offers: [
+      {
+        heading: 'Offers',
+        data: [
+          {
+            icon: <SmallCalenderIcon />,
+            title: 'Visit Date: ',
+            titleData: ' 11 April 2025',
+          },
+          {
+            icon: <OveralScoreIcon />,
+            title: 'Overall Score : ',
+            titleData: ' 35 / 50',
+          },
+        ],
+        tableData: [
+          {
+            th: [
+              { th: 'Metric' },
+              { th: 'Last visit' },
+              { th: 'Current visit' },
+            ],
+            tdRow: [
+              {
+                td: [
+                  { td: 'Voucher (Count)' },
+                  { td: '100 vouchers' },
+                  {
+                    td: '90 Vouchers',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Membership (Count)' },
+                  { td: '2 Plans' },
+                  {
+                    td: '4 Plans',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Promo code (Count)' },
+                  { td: '500 Codes' },
+                  {
+                    td: '70 Codes',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Gift Card (Count)' },
+                  { td: '10 Cards' },
+                  {
+                    td: '12 Cards',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Staff (Count)' },
+                  { td: '5 staff' },
+                  {
+                    td: '3 staff',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+
+        date: [
+          { heading: 'Next Follow up date', id: 'nextFollow' },
+          { heading: 'Next Visit Date', id: 'nextVisit' },
+        ],
+      },
+    ],
+    promoteUse: [
+      {
+        heading: 'Offers',
+        data: [
+          {
+            icon: <SmallCalenderIcon />,
+            title: 'Visit Date: ',
+            titleData: ' 11 April 2025',
+          },
+          {
+            icon: <OveralScoreIcon />,
+            title: 'Overall Score : ',
+            titleData: ' 35 / 50',
+          },
+        ],
+        tableData: [
+          {
+            th: [
+              { th: 'Metric' },
+              { th: 'Last visit' },
+              { th: 'Current visit' },
+            ],
+            tdRow: [
+              {
+                td: [
+                  { td: 'promoteUse' },
+                  { td: '7 days' },
+                  {
+                    td: '7 days',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Easy Share (No. of Links)' },
+                  { td: '7 days' },
+                  {
+                    td: '6 days',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Promo code (Count)' },
+                  { td: '500 Codes' },
+                  {
+                    td: '70 Codes',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Easy Share (Clicks)' },
+                  { td: '500 clicks' },
+                  {
+                    td: '510 clicks',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Creative St. (No. of Temp.)' },
+                  { td: '10 templates' },
+                  {
+                    td: '12 templates',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Ad Manager (No. of Days)' },
+                  { td: '10 templates' },
+                  {
+                    td: '9 templates',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Campaign Msg Sent (Count)' },
+                  { td: '1000 msgs' },
+                  {
+                    td: '1002 msgs',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+
+        date: [
+          { heading: 'Next Follow up date', id: 'nextFollow' },
+          { heading: 'Next Visit Date', id: 'nextVisit' },
+        ],
+      },
+    ],
+    clientEnagagement: [
+      {
+        heading: 'Client Engagement',
+        data: [
+          {
+            icon: <SmallCalenderIcon />,
+            title: 'Visit Date: ',
+            titleData: ' 11 April 2025',
+          },
+          {
+            icon: <OveralScoreIcon />,
+            title: 'Overall Score : ',
+            titleData: ' 35 / 50',
+          },
+        ],
+        tableData: [
+          {
+            th: [
+              { th: 'Metric' },
+              { th: 'Last visit' },
+              { th: 'Current visit' },
+            ],
+            tdRow: [
+              {
+                td: [
+                  { td: 'Appointment  Received ' },
+                  { td: '150' },
+                  {
+                    td: '140',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Membership (Count)' },
+                  { td: '2 Plans' },
+                  {
+                    td: '4 Plans',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Appointment  Complete ' },
+                  { td: '140' },
+                  {
+                    td: '146',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Repeat Clients Visit ' },
+                  { td: '80' },
+                  {
+                    td: '510',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'New Client Add ' },
+                  { td: '60' },
+                  {
+                    td: '62',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Total Client ' },
+                  { td: '500' },
+                  {
+                    td: '400',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Review Received  ' },
+                  { td: '20' },
+                  {
+                    td: '30',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Review Received ' },
+                  { td: '30' },
+                  {
+                    td: '40',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Sales  ' },
+                  { td: '₹50,000' },
+                  {
+                    td: '₹45,000',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+
+        date: [
+          { heading: 'Next Follow up date', id: 'nextFollow' },
+          { heading: 'Next Visit Date', id: 'nextVisit' },
+        ],
+      },
+    ],
+    setUp: [
+      {
+        heading: 'Set UP',
+        data: [
+          {
+            icon: <SmallCalenderIcon />,
+            title: 'Visit Date: ',
+            titleData: ' 11 April 2025',
+          },
+          {
+            icon: <OveralScoreIcon />,
+            title: 'Overall Score : ',
+            titleData: ' 35 / 50',
+          },
+        ],
+        tableData: [
+          {
+            th: [
+              { th: 'Metric' },
+              { th: 'Last visit' },
+              { th: 'Current visit' },
+            ],
+            tdRow: [
+              {
+                td: [
+                  { td: 'Appointment  Received ' },
+                  { td: '150' },
+                  {
+                    td: '140',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Membership (Count)' },
+                  { td: '2 Plans' },
+                  {
+                    td: '4 Plans',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Appointment  Complete ' },
+                  { td: '140' },
+                  {
+                    td: '146',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Repeat Clients Visit ' },
+                  { td: '80' },
+                  {
+                    td: '510',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'New Client Add ' },
+                  { td: '60' },
+                  {
+                    td: '62',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Total Client ' },
+                  { td: '500' },
+                  {
+                    td: '400',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Review Received  ' },
+                  { td: '20' },
+                  {
+                    td: '30',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Review Received ' },
+                  { td: '30' },
+                  {
+                    td: '40',
+                  },
+                ],
+              },
+              {
+                td: [
+                  { td: 'Sales  ' },
+                  { td: '₹50,000' },
+                  {
+                    td: '₹45,000',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+
+        date: [
+          { heading: 'Next Follow up date', id: 'nextFollow' },
+          { heading: 'Next Visit Date', id: 'nextVisit' },
+        ],
+      },
+    ],
+    submit: [
+      {
+        heading: 'Set UP',
+        data: [
+          {
+            icon: <SmallCalenderIcon />,
+            title: 'Visit Date: ',
+            titleData: ' 11 April 2025',
+          },
+          {
+            icon: <OveralScoreIcon />,
+            title: 'Overall Score : ',
+            titleData: ' 35 / 50',
+          },
+        ],
+
+        date: [
+          { heading: 'Next Follow up date', id: 'nextFollow' },
+          { heading: 'Next Visit Date', id: 'nextVisit' },
+        ],
+      },
+    ],
+  },
+]

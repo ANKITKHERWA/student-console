@@ -162,7 +162,7 @@ function Registeredtab() {
                           <span className="text-[#808188] font-normal">
                             Next Follow Up:
                           </span>
-                          {itm.lastVisit}
+                          {itm.nextFollowUp}
                         </div>
                       </div>
                     </div>
