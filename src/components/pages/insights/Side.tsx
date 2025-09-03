@@ -235,7 +235,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, onClose }) => {
       </div>
 
       {/* Salon Info Section */}
-      <div className="lg:p-5 p-4 border-b border-[#E4E7EB]">
+      <div className="lg:p-5 p-4 border-b border-[#E4E7EB] text-sm">
         <div className="flex justify-between gap-2">
           <div>
             <div className="flex gap-2 md:gap-2.5 items-center text-[#030712]">
@@ -300,14 +300,14 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, onClose }) => {
       </div>
 
       {/* Additional Details */}
-      <div className="border-t lg:p-5 p-4">
+      <div className="border-t lg:p-5 p-4 sm:!text-sm text-xs">
         <SmallHeading title="Additional details" />
         <PersonnelRow label="Owner" info={contactInfo.owner} />
         <PersonnelRow label="Manager" info={contactInfo.manager} />
       </div>
 
       {/* Assigned Personnel */}
-      <div className="border-t lg:p-5 p-4">
+      <div className="border-t lg:p-5 p-4 sm:!text-sm text-xs">
         <SmallHeading title="Assigned Personnel" />
         <PersonnelRow label="FE" info={contactInfo.fe} />
         <PersonnelRow label="RM" info={contactInfo.rm} />
