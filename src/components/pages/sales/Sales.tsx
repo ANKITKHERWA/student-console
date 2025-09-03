@@ -92,7 +92,7 @@ function Sales() {
             barColor="#BB6BD9"
           />
         </div>
-        <div className="grid items-center justify-between gap-9 grid-cols-1 md:grid-cols-2  px-6 mt-10">
+        <div className="grid items-center justify-between gap-9 grid-cols-1 md:grid-cols-2  px-6 my-10">
           <HorizontalBarChart title="Top 10 Services" data={top10Services} />
           <HorizontalBarChart
             title="Top 10 Selling Products"

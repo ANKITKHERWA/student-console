@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetFooter } from '@/components/ui/sheet'
 import Heading from '@/components/common/Heading'
 import { UploadCloud } from 'lucide-react'
 
@@ -246,19 +246,21 @@ export default function Addnewpartner() {
                   </FormItem>
                 )}
               />
-              <div className="flex justify-end space-x-2">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setOpen(false)}>
-                  Cancel
-                </Button>
-                <Button type="submit" className="bg-[#B751FB]">
-                  Save
-                </Button>
-              </div>
             </form>
           </Form>
+          <SheetFooter className="sticky bottom-0 bg-white border-t px-6 py-4  justify-end gap-3">
+            <div className="flex justify-end space-x-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" className="bg-[#B751FB]">
+                Save
+              </Button>
+            </div>
+          </SheetFooter>
         </SheetContent>
       </Sheet>
     </>

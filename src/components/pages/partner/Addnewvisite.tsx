@@ -31,6 +31,7 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetTitle,
 } from '@/components/ui/sheet'
 import Pera from '@/components/common/Pera'
@@ -257,25 +258,22 @@ export default function Addnewvisite() {
                     </FormItem>
                   )}
                 />
-
-                <div className="flex justify-end space-x-2 pt-40">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => setOpen(false)}>
-                    Cancel
-                  </Button>
-                  <Button type="submit" className="bg-[#B751FB]">
-                    Submit
-                  </Button>
-                </div>
               </form>
             </Form>
           </div>
-          <SheetDescription className="px-6 pt-4">
-            Please ensure all details are filled out correctly before submitting
-            the visit report
-          </SheetDescription>
+          <SheetFooter className="sticky bottom-0 bg-white border-t px-6 py-4  justify-end gap-3">
+            <div className="flex justify-end space-x-2 pt-40">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" className="bg-[#B751FB]">
+                Submit
+              </Button>
+            </div>
+          </SheetFooter>
         </SheetContent>
       </Sheet>
     </>
