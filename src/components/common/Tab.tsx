@@ -25,7 +25,7 @@ export default function Tab({
   return (
     <Tabs defaultValue={value} className="w-full" onValueChange={onChange}>
       {/* Header */}
-      <div className="overflow-auto ">
+      <div className="overflow-auto">
         <div className="border-b border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
           <TabsList
             defaultValue={1}
@@ -48,7 +48,7 @@ export default function Tab({
 
           {/* Right Section (Custom) */}
           {rightSection && (
-            <div className="flex  items-center gap-2 sm:gap-4 md:gap-[30px] ml-auto">
+            <div className="flex items-center gap-2 sm:gap-4 md:gap-[30px] ml-auto">
               {rightSection}
             </div>
           )}

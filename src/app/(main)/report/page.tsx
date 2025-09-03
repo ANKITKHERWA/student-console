@@ -1,7 +1,12 @@
-import React from 'react'
+import Report from "@/components/pages/report/Report";
+import React from "react";
 
 function page() {
-  return <div></div>
+  return (
+    <div>
+      <Report />
+    </div>
+  );
 }
 
-export default page
+export default page;
