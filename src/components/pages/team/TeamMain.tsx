@@ -1,18 +1,12 @@
 "use client";
-import Pera from "@/components/common/Pera";
-import Search from "@/components/common/Search";
 import TopCommon from "@/components/common/TopCommon";
-import { Fluentcard, Tablericon } from "@/components/helper/Icon1";
 import React, { useState } from "react";
-import Card from "./Card";
 import Tab from "@/components/common/Tab";
 import { MembersIcon, PerformanceIcon } from "@/components/helper/Icon2";
-import EarningDetails from "../settings/earning/EarningDetails";
 import Member from "./Member";
 import Performance from "./Performance";
 import Addmember from "./Addmember";
 import DotColor from "@/components/common/DotColor";
-import Addnewpartner from "../partner/Addnewpartner";
 
 function TeamMain() {
   const [activeTab, setActiveTab] = useState("members");

@@ -21,7 +21,7 @@ import FollowUpPlans from "./FollowUpPlans";
 function PlannerMain() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
   const [open, setOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("followup");
+  const [activeTab, setActiveTab] = useState("visitPlans");
   console.log(activeTab);
 
   return (

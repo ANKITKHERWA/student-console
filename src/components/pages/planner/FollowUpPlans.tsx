@@ -25,13 +25,43 @@ function FollowUpPlans() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
   const [open, setOpen] = useState(false);
 
+  // Changed to handle multiple selections per option
   const [selectedValues, setSelectedValues] = useState<
-    Record<string, string | null>
+    Record<string, string[]>
   >({});
 
-  const handleValueChange = (id: string, value: string) => {
-    setSelectedValues((prev) => ({ ...prev, [id]: value }));
+  const handleValueChange = (optionId: string, value: string) => {
+    setSelectedValues((prev) => {
+      const currentValues = prev[optionId] || [];
+      const isSelected = currentValues.includes(value);
+
+      if (isSelected) {
+        // Deselect - remove from array
+        return {
+          ...prev,
+          [optionId]: currentValues.filter((v) => v !== value),
+        };
+      } else {
+        // Select - add to array
+        return {
+          ...prev,
+          [optionId]: [...currentValues, value],
+        };
+      }
+    });
   };
+
+  const getDisplayText = (optionId: string, placeholder: string) => {
+    const selected = selectedValues[optionId] || [];
+    if (selected.length === 0) return placeholder;
+    if (selected.length === 1) {
+      const option = optionsList.find((opt) => opt.id === optionId);
+      const item = option?.item.find((item) => item.value === selected[0]);
+      return item?.title || selected[0];
+    }
+    return `${selected.length} selected`;
+  };
+
   return (
     <Tabs defaultValue={"all"}>
       <div className="pt-4">
@@ -42,14 +72,17 @@ function FollowUpPlans() {
                 {optionsList.map((option) => (
                   <Select
                     key={option.id}
-                    value={selectedValues[option.id] ?? ""}
+                    value="" // Always empty to prevent closing
                     onValueChange={(value) =>
                       handleValueChange(option.id, value)
                     }
                   >
                     <SelectTrigger className="text-[#030712] !font-semibold !border-[#E4E7EB] rounded md:!rounded-[6px] md:py-2 py-1 px-1.5 md:px-3 flex !gap-0">
                       <SelectValue
-                        placeholder={option.placeholder}
+                        placeholder={getDisplayText(
+                          option.id,
+                          option.placeholder
+                        )}
                         className="placeholder:!text-[#030712] !font-semibold placeholder:!text-xs md:!text-sm"
                       />
                     </SelectTrigger>
@@ -61,11 +94,17 @@ function FollowUpPlans() {
                             key={opt.value}
                             value={opt.value}
                             className="flex items-center gap-2 !p-0 !m-0 rounded-none w-full !py-2 sm:!py-[7px] text-sm !px-1 sm:!px-3 !justify-start data-[state=checked]:bg-[#F1DCFF]"
+                            onSelect={(e) => {
+                              e.preventDefault(); // Prevent default selection behavior
+                              handleValueChange(option.id, opt.value);
+                            }}
                           >
-                            {/* Faux checkbox */}
+                            {/* Checkbox for multiple selection */}
                             <input
                               type="checkbox"
-                              checked={selectedValues[option.id] === opt.value}
+                              checked={(
+                                selectedValues[option.id] || []
+                              ).includes(opt.value)}
                               readOnly
                               className="accent-[#A259FF]"
                             />

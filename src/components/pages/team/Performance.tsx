@@ -75,7 +75,7 @@ function Performance() {
           width={39}
         />
       </div>
-      <div className="mt-6">
+      <div className="mt-6 pb-4">
         <Teamcharts
           data={feTeamChartData}
           title="FE Visits Achievement % (Last Month)"

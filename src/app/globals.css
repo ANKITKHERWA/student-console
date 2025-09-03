@@ -144,3 +144,6 @@
 input[type='file'] {
   color: transparent;
 }
+.scrollbarNone{
+  scrollbar-width: none;
+}
