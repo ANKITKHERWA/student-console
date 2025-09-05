@@ -11,7 +11,6 @@ import {
   Icon1stimg,
   Icon2ndimg,
   Iconsidebartogle,
-  Iconsidebartogle2,
 } from '../helper/Icon1'
 
 export default function Navbar() {
@@ -23,7 +22,7 @@ export default function Navbar() {
       {/* Sidebar */}
       <div
         className={cn(
-          'fixed top-0 left-0 h-screen w-[170px] md:w-14 overflow-y-auto  bg-accent shadow-lg z-[49] transition-transform duration-300',
+          'fixed top-0 left-0 h-screen w-[170px] md:w-17 overflow-y-auto  bg-accent shadow-lg z-[49] transition-transform duration-300',
           isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         )}>
         <div className="flex flex-col justify-between gap-5 h-screen">

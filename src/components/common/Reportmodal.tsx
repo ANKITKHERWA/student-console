@@ -50,6 +50,7 @@ import {
   modalData,
   Promotequestions,
   PromoteratingLabels,
+  tabOrder,
 } from '../helper/Helper1'
 import Heading from './Heading'
 import { Slider } from '../ui/slider'
@@ -73,6 +74,15 @@ function Reportmodal() {
     client: 5,
     staff: 2,
   })
+  const [tabValue, setTabValue] = useState<string>('Profile')
+
+  // Move to next tab on Next button click
+  const handleNext = () => {
+    const currentIndex = tabOrder.indexOf(tabValue)
+    if (currentIndex < tabOrder.length - 1) {
+      setTabValue(tabOrder[currentIndex + 1])
+    }
+  }
 
   return (
     <>
@@ -81,14 +91,15 @@ function Reportmodal() {
           Add Visit Report
         </DialogTrigger>
 
-        <DialogContent className="p-0 w-[50%] h-[90%] max-w-none! ">
+        <DialogContent className="p-0 lg:w-[50%] sm:w-[70%] w-full h-[90%] max-w-none! lg:overflow-hidden overflow-auto  rounded-lg ">
           {modalData.map((item, index) => (
             <div key={index}>
-              <DialogHeader className="px-4 py-5 w-full border-b-1 border-gray ">
+              <DialogHeader className="px-4 py-5 w-full border-b-1 border-gray text-start">
                 <DialogTitle>Visit Report</DialogTitle>
               </DialogHeader>
               <Tabs
-                defaultValue={'VisitReport'}
+                value={tabValue}
+                onValueChange={setTabValue}
                 className="w-full !bg-[transparent] ">
                 <div>
                   <div className="flex w-full overflow-auto lg:flex-row flex-col">
@@ -143,32 +154,47 @@ function Reportmodal() {
                       <div>
                         <TabsList className="flex !items-start !h-max  !flex-col !bg-transparent w-full !p-0">
                           <TabsTrigger
-                            value={'Profile'}
-                            className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
+                            value="Profile"
+                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                              tabValue === 'Profile' ? '' : ''
+                            }`}
+                            onClick={() => setTabValue('Profile')}>
                             <IconProfile />
                             Profile
                           </TabsTrigger>
                           <TabsTrigger
-                            value={'Manage'}
-                            className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
+                            value="Manage"
+                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                              tabValue === 'Manage' ? '' : ''
+                            }`}
+                            onClick={() => setTabValue('Manage')}>
                             <IconManage />
                             Manage
                           </TabsTrigger>
                           <TabsTrigger
-                            value={'Grow'}
-                            className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
+                            value="Grow"
+                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                              tabValue === 'Grow' ? '' : ''
+                            }`}
+                            onClick={() => setTabValue('Grow')}>
                             <IconGrow />
                             Grow
                           </TabsTrigger>
                           <TabsTrigger
-                            value={'Promote'}
-                            className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
+                            value="Promote"
+                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                              tabValue === 'Promote' ? '' : ''
+                            }`}
+                            onClick={() => setTabValue('Promote')}>
                             <IconPromote />
                             Promote
                           </TabsTrigger>
                           <TabsTrigger
-                            value={'Outcome'}
-                            className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
+                            value="Outcome"
+                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                              tabValue === 'Outcome' ? '' : ''
+                            }`}
+                            onClick={() => setTabValue('Outcome')}>
                             <Iconoutcome />
                             Outcome
                           </TabsTrigger>
@@ -176,8 +202,10 @@ function Reportmodal() {
                       </div>
                     </div>
 
-                    <div className="w-full  overflow-auto pb-20">
-                      <TabsContent value={'Profile'} className="px-6 pt-2 ">
+                    <div className="w-full ">
+                      <TabsContent
+                        value={'Profile'}
+                        className="px-6 pt-2 w-full pb-21">
                         <Heading title="Porfile" className=" text-xl! py-2" />
                         <Form {...form}>
                           <form
@@ -369,7 +397,9 @@ function Reportmodal() {
                           </form>
                         </Form>
                       </TabsContent>
-                      <TabsContent value={'Manage'} className="p-6">
+                      <TabsContent
+                        value={'Manage'}
+                        className="px-6 pt-2 w-full lg:pb-61 pb-10">
                         <div className="max-w-xl ">
                           <Heading
                             title="Management Needs Assessment"
@@ -409,7 +439,9 @@ function Reportmodal() {
                           ))}
                         </div>
                       </TabsContent>
-                      <TabsContent value={'Grow'} className="p-6">
+                      <TabsContent
+                        value={'Grow'}
+                        className="p-6 w-full lg:pb-61 pb-10">
                         <div className="max-w-xl ">
                           <Heading
                             title="Growth Needs Assessment"
@@ -449,7 +481,9 @@ function Reportmodal() {
                           ))}
                         </div>
                       </TabsContent>
-                      <TabsContent value={'Promote'} className="p-6">
+                      <TabsContent
+                        value={'Promote'}
+                        className="p-6 w-full lg:pb-61 pb-10">
                         <div className="max-w-xl ">
                           <Heading
                             title="Management Needs Assessment"
@@ -491,7 +525,9 @@ function Reportmodal() {
                           ))}
                         </div>
                       </TabsContent>
-                      <TabsContent value={'Outcome'} className="px-6 pt-2 ">
+                      <TabsContent
+                        value={'Outcome'}
+                        className="px-6 pt-2 w-full lg:pb-20 pb-10">
                         <Heading title="Outcome" className=" text-xl! py-2" />
                         <Form {...form}>
                           <form
@@ -517,22 +553,46 @@ function Reportmodal() {
                                       </SelectTrigger>
                                       <SelectContent>
                                         <SelectItem value="Not interested - don’t see a fit">
+                                          <Checkbox
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                          />
                                           Not interested - don’t see a fit
                                         </SelectItem>
                                         <SelectItem value="Neutral / Undecided">
+                                          <Checkbox
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                          />
                                           Neutral / Undecided
                                         </SelectItem>
                                         <SelectItem value="Mildly interested - come bak later">
+                                          <Checkbox
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                          />
                                           Mildly interested - come bak later
                                         </SelectItem>
                                         <SelectItem value="Interested - requests detailed demo">
+                                          <Checkbox
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                          />
                                           Interested - requests detailed demo
                                         </SelectItem>
                                         <SelectItem value="Very interested - wants immediate onboarding">
+                                          <Checkbox
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                          />
                                           Very interested - wants immediate
                                           onboarding
                                         </SelectItem>
                                         <SelectItem value="Registered">
+                                          <Checkbox
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                          />
                                           Registered
                                         </SelectItem>
                                       </SelectContent>
@@ -544,7 +604,7 @@ function Reportmodal() {
                             />
                             <FormField
                               control={form.control}
-                              name="Overall Interest"
+                              name="Outcomes of visit"
                               render={({ field }) => (
                                 <FormItem>
                                   <FormLabel className="text-sm font-semibold">
@@ -589,7 +649,7 @@ function Reportmodal() {
                             />
                             <FormField
                               control={form.control}
-                              name="Overall Interest"
+                              name="Reason for Not onboarding"
                               render={({ field }) => (
                                 <FormItem>
                                   <FormLabel className="text-sm font-semibold">
@@ -601,7 +661,7 @@ function Reportmodal() {
                                       onValueChange={field.onChange}>
                                       <SelectTrigger className="w-full">
                                         <SelectValue
-                                          className="text-sm font-semibold "
+                                          className="text-sm font-semibold"
                                           placeholder="Select a reason"
                                         />
                                       </SelectTrigger>
@@ -612,7 +672,7 @@ function Reportmodal() {
                                         <SelectItem value="Not Onboarded">
                                           Not Onboarded
                                         </SelectItem>
-                                        {/* <SelectItem
+                                        <SelectItem
                                           className="text-black font-extrabold"
                                           value="Decision Pending">
                                           Decision Pending
@@ -640,7 +700,7 @@ function Reportmodal() {
                                         </SelectItem>
                                         <SelectItem value="Prefers free tools">
                                           Prefers free tools
-                                        </SelectItem> */}
+                                        </SelectItem>
                                       </SelectContent>
                                     </Select>
                                   </FormControl>
@@ -660,7 +720,7 @@ function Reportmodal() {
                                   <FormControl>
                                     <Input
                                       type="date"
-                                      className="text-sm font-semibold"
+                                      className="text-sm font-semibold block"
                                       placeholder="Pic a date"
                                       {...field}
                                     />
@@ -736,11 +796,18 @@ function Reportmodal() {
               </Tabs>
             </div>
           ))}
-          <DialogFooter className="flex fixed bottom-0  gap-3  right-0 py-4 px-6 border-t border-grayE4 bg-white rounded-b-lg w-full">
+          <DialogFooter className="flex gap-3 py-4 px-6 border-t border-grayE4 bg-white sticky bottom-0 z-10">
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit">Next</Button>
+            {tabValue !== 'Outcome' && (
+              <Button onClick={handleNext}>Next</Button>
+            )}
+            {tabValue === 'Outcome' && (
+              <Button type="submit" onClick={form.handleSubmit(console.log)}>
+                Submit
+              </Button>
+            )}
           </DialogFooter>
         </DialogContent>
       </Dialog>
