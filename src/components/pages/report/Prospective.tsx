@@ -33,7 +33,7 @@ import StatusBadgeSec from '@/components/common/StatusBadgeSec'
 import Link from 'next/link'
 import TableKebabMenu from '@/components/common/TableKebabMenu'
 import { PlusIcon } from 'lucide-react'
-import Reportmodal from '@/components/common/Reportmodal'
+import Rpt from './Rpt'
 
 function Prospective() {
   const [open, setOpen] = useState(false)
@@ -369,7 +369,12 @@ function Prospective() {
                 ))}
 
                 <div className="px-[30px] flex justify-end gap-2 pb-3">
-                  <Reportmodal />
+                  <SecondryBtn
+                    title="Cancel"
+                    className="w-max"
+                    onClick={() => setOpen(false)}
+                  />
+                  <Rpt />
                 </div>
               </div>
             </>

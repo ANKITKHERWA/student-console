@@ -32,7 +32,7 @@ function Filter() {
           align="start"
           className="p-4 !ps-0 !right-6 border border-[#E4E7EB] rounded-[6px] shadow-[-5px_0_49.6px_0_rgba(3,7,18,0.08),5px_6px_36.1px_0_rgba(3,7,18,0.08)] !left-10"
         >
-          <div className="flex">
+          <div className="flex sm:flex-row flex-col">
             {/* Left: Filter List */}
             <div className="text-[#030712] text-xs font-semibold leading-[166%] -tracking-[0.24px] min-w-[116px]">
               {criticalFiltersData.map((filter) => (
