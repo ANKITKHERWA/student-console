@@ -34,6 +34,7 @@ import {
   MaleteamCard,
   Priyasingh,
 } from "./Icon1";
+import ScheduleFollowUp from "../pages/insights/ScheduleFollowUp";
 
 export const loginFormData = [
   {
@@ -188,9 +189,9 @@ export const sidebarData = [
     img: "/assest/png/salone-small-img.png",
     name: "Glamour Glow Studio",
     nextVisit: "",
-    addvisit: <ClenderIcon className="w-4 h-4" />,
+    addvisit: <ScheduleFollowUp />,
     nextFollowUp: "",
-    addFollowUp: <ClenderIcon className="w-4 h-4" />,
+    addFollowUp: <ScheduleFollowUp />,
     contacte: [
       {
         icon: <LocationIcon />,
@@ -2266,4 +2267,14 @@ export const ReportProspective = [
       },
     ],
   },
+];
+
+export const tabOrder = [
+  "lastVisit",
+  "catalogStaff",
+  "offers",
+  "promoteUse",
+  "clientEngagement",
+  "setUp",
+  "submit",
 ];

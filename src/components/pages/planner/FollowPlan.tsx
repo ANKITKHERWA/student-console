@@ -1,47 +1,31 @@
 "use client";
-import DotColor from "@/components/common/DotColor";
+import Selecte from "@/components/common/Selecte";
+import TableCommon from "@/components/common/TableCommon";
+import {
+  data2,
+  followUp,
+  followUpPlans,
+  optionsList,
+  sidebarData,
+} from "@/components/helper/Helper2";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import React, { useState } from "react";
+import Filter from "../insights/Filter";
 import {
   ActionIocn,
   CalenderBlackSmallIocn,
   ClenderIcon,
-  CriticalTask,
+  Fluentcard,
   FollowUpIcon,
   GrothTask,
   IssueIcon,
   PartnerIcon,
   PhoneSmallIcon,
-  PlusIcon,
-  SearchIcon,
   SmallCriticalIcon,
   SmallEyeIcon,
+  Tablericon,
   ViewReportIcon,
 } from "@/components/helper/Icon2";
-import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Tabs } from "@radix-ui/react-tabs";
-import React, { useState } from "react";
-
-import { Input } from "@/components/ui/input";
-import Filter from "./Filter";
-import SelecteStatus from "./SelecteStatus";
-import TableCommon from "@/components/common/TableCommon";
-import {
-  criticalData,
-  data2,
-  optionsList,
-  optionsList2,
-  sidebarData,
-} from "@/components/helper/Helper2";
-import TopCommon from "@/components/common/TopCommon";
-import Growth from "./Growth";
-import Image from "next/image";
-import Link from "next/link";
-import TableKebabMenu from "@/components/common/TableKebabMenu";
-import SmallHeading from "@/components/common/SmallHeading";
-import SecondryBtn from "@/components/common/SecondryBtn";
-import VisitReportMudal from "./VisitReportMudal";
-import StatusBadgeSec from "@/components/common/StatusBadgeSec";
-import KebabMenucommon from "@/components/common/KebabMenuCommon";
-import NewStatusbadge from "@/components/common/NewStatusbadge";
 import {
   Select,
   SelectContent,
@@ -50,141 +34,142 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SheetClose } from "@/components/ui/sheet";
-function Insights() {
+import Image from "next/image";
+import SelecteStatus from "./SelecteStatus";
+import StatusBadgeSec from "@/components/common/StatusBadgeSec";
+import Link from "next/link";
+import TableKebabMenu from "@/components/common/TableKebabMenu";
+import { PlusIcon } from "lucide-react";
+import SmallHeading from "@/components/common/SmallHeading";
+import SecondryBtn from "@/components/common/SecondryBtn";
+import VisitReportMudal from "../insights/VisitReportMudal";
+
+function FollowPlan() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
   const [open, setOpen] = useState(false);
 
-  // Changed to handle multiple selections per option
   const [selectedValues, setSelectedValues] = useState<
-    Record<string, string[]>
+    Record<string, string | null>
   >({});
 
-  const handleValueChange = (optionId: string, value: string) => {
+  // Select open states track karne ke liye
+  const [selectOpenStates, setSelectOpenStates] = useState<
+    Record<string, boolean>
+  >({});
+
+  const handleValueChange = (id: string, value: string) => {
     setSelectedValues((prev) => {
-      const currentValues = prev[optionId] || [];
-      const isSelected = currentValues.includes(value);
+      const newValues = { ...prev };
 
-      if (isSelected) {
-        // Deselect - remove from array
-        return {
-          ...prev,
-          [optionId]: currentValues.filter((v) => v !== value),
-        };
+      if (newValues[id] === value) {
+        // Agar already selected hai to deselect kar do
+        delete newValues[id];
       } else {
-        // Select - add to array
-        return {
-          ...prev,
-          [optionId]: [...currentValues, value],
-        };
+        // Nahi to set kar do
+        newValues[id] = value;
       }
+
+      return newValues;
     });
+    // Select open rakho after selection
+    // setSelectOpenStates(prev => ({ ...prev, [id]: true }))
   };
 
-  const getDisplayText = (optionId: string, placeholder: string) => {
-    const selected = selectedValues[optionId] || [];
-    if (selected.length === 0) return placeholder;
-    if (selected.length === 1) {
-      const option = optionsList.find((opt) => opt.id === optionId);
-      const item = option?.item.find((item) => item.value === selected[0]);
-      return item?.title || selected[0];
-    }
-    return `${selected.length} selected`;
+  const handleSelectOpenChange = (id: string, isOpen: boolean) => {
+    setSelectOpenStates((prev) => ({ ...prev, [id]: isOpen }));
   };
+
   return (
-    <div className="pb-10">
-      <TopCommon title="Insights - Registered Partners" />
-      <div>
-        <Tabs defaultValue="critical-task" className="w-full">
-          <div className="border-b border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
-            <TabsList className="rounded-none bg-transparent !w-full flex !justify-start ">
-              <div className="flex gap-3 items-center">
-                <TabsTrigger
-                  id="critical-task"
-                  value="critical-task"
-                  className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=inactive]:fill-[#808188] !shadow-none px-2"
-                >
-                  <CriticalTask />
-                  Critical Task
-                </TabsTrigger>
-                <TabsTrigger
-                  id="growth-task"
-                  value="growth-task"
-                  className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] !border data-[state=inactive]:!border-b-transparent data-[state=inactive]:fill-[#808188] !shadow-none px-2"
-                >
-                  <GrothTask />
-                  Growth Task
-                </TabsTrigger>
+    <Tabs defaultValue={"all"}>
+      <div className="pt-4">
+        <div className="justify-between sm:items-start items-center gap-4 sm:flex-row flex-col flex flex-wrap">
+          <div className="flex flex-wrap gap-3 sm:flex-row flex-col items-center">
+            <div className="flex flex-wrap gap-2 sm:justify-normal justify-center">
+              <div className="flex flex-wrap gap-2 items-center sm:justify-normal justify-center ">
+                {optionsList.map((option) => (
+                  <Select
+                    key={option.id}
+                    value={selectedValues[option.id] || undefined}
+                    onValueChange={(value) =>
+                      handleValueChange(option.id, value)
+                    }
+                    open={selectOpenStates[option.id]}
+                    onOpenChange={(isOpen) =>
+                      handleSelectOpenChange(option.id, isOpen)
+                    }
+                  >
+                    <SelectTrigger className="text-[#030712] !font-semibold !border-[#E4E7EB] rounded md:!rounded-[6px] md:py-2 py-1 px-1.5 md:px-3 flex !gap-0">
+                      <SelectValue
+                        placeholder={option.placeholder}
+                        className="placeholder:!text-[#030712] !font-semibold placeholder:!text-xs md:!text-sm"
+                      />
+                    </SelectTrigger>
+
+                    <SelectContent className="!p-0 !m-0">
+                      <SelectGroup className="!p-0 !m-0">
+                        {option.item.map((opt) => (
+                          <SelectItem
+                            key={opt.value}
+                            value={opt.value}
+                            className="flex items-center gap-2 !p-0 !m-0 rounded-none w-full !py-2 sm:!py-[7px] text-sm !px-1 sm:!px-3 !justify-start data-[state=checked]:bg-[#F1DCFF]"
+                            onSelect={(e) => {
+                              e.preventDefault(); // Select close hone se prevent kar do
+                            }}
+                            onClick={(e) => {
+                              e.preventDefault(); // Click se close hone se prevent kar do
+                              handleValueChange(option.id, opt.value);
+                            }}
+                          >
+                            {/* Faux checkbox */}
+                            <input
+                              type="checkbox"
+                              checked={selectedValues[option.id] === opt.value}
+                              readOnly
+                              className="accent-[#A259FF]"
+                            />
+                            <Image
+                              height={20}
+                              width={20}
+                              src={opt.img}
+                              alt={opt.title}
+                              className="w-7 h-7 rounded-full object-cover"
+                            />
+                            <span>{opt.title}</span>
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                ))}
               </div>
-            </TabsList>
-            <div className="sm:flex hidden items-center gap-2 sm:gap-4 md:gap-[30px] ml-auto">
-              <DotColor title="Critical" className="bg-[#F00]" />
-              <DotColor title="Growth" className="bg-[#F5640A]" />
+              <SelecteStatus />
             </div>
           </div>
-          <TabsContent value="critical-task" className="md:px-5 px-4 lg:px-6 ">
-            <form className="md:py-5 py-3 sm:py-4 lg:py-6">
-              <div className="flex justify-between items-center gap-2 flex-wrap-reverse sm:flex-nowrap">
-                <SelecteStatus />
-                <div className="flex items-center md:gap-5 sm:gap-4 gap-2 lg:gap-[30px] min-[450px]:flex-nowrap flex-wrap">
-                  <div className="flex items-center gap-1 w-full xl:min-w-[290px] py-1.5 px-3 !border-[#D9DDE3] border rounded md:rounded-[6px]">
-                    <Input
-                      placeholder="Search..."
-                      className="max-w-sm !ring-0 w-full !shadow-none !border-none !rounded-[0px] !h-[20px] !p-0"
-                    />
-                    <SearchIcon />
-                  </div>
-                  <Filter />
-                  {optionsList2.map((option) => (
-                    <Select
-                      key={option.id}
-                      value="" // Always empty to prevent closing
-                      onValueChange={(value) =>
-                        handleValueChange(option.id, value)
-                      }
-                    >
-                      <SelectTrigger className="text-[#030712] !font-semibold !border-[#E4E7EB] rounded md:!rounded-[6px] md:py-2 py-1 px-1.5 md:px-3 flex !gap-0">
-                        <SelectValue
-                          placeholder={getDisplayText(
-                            option.id,
-                            option.placeholder
-                          )}
-                          className="placeholder:!text-[#030712] !font-semibold placeholder:!text-xs md:!text-sm"
-                        />
-                      </SelectTrigger>
-                      <SelectContent className="!p-0 !m-0">
-                        <SelectGroup className="!p-0 !m-0">
-                          {option.item.map((opt) => (
-                            <SelectItem
-                              key={opt.value}
-                              value={opt.value}
-                              className="flex items-center gap-2 !p-0 !m-0 rounded-none w-full !py-2 sm:!py-[7px] text-sm !px-1 sm:!px-3 !justify-start data-[state=checked]:bg-[#F1DCFF]"
-                              onSelect={(e) => {
-                                e.preventDefault(); // Prevent default selection behavior
-                                handleValueChange(option.id, opt.value);
-                              }}
-                            >
-                              {/* Checkbox for multiple selection */}
-                              <input
-                                type="checkbox"
-                                checked={(
-                                  selectedValues[option.id] || []
-                                ).includes(opt.value)}
-                                readOnly
-                                className="accent-[#A259FF]"
-                              />
-                              <span>{opt.title}</span>
-                            </SelectItem>
-                          ))}
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
-                  ))}
-                </div>
+          <div className="flex gap-4 flex-wrap items-center sm:justify-normal justify-center">
+            <TabsList className="md:!rounded-sm !rounded-xs">
+              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="today">Today</TabsTrigger>
+              <TabsTrigger value="upComing">Up Coming</TabsTrigger>
+              <TabsTrigger value="new">New</TabsTrigger>
+              <TabsTrigger value="past">Past</TabsTrigger>
+            </TabsList>
+            <div className="flex gap-3">
+              <Filter />
+              <div className="flex gap-2 items-center">
+                <button type="button" onClick={() => setOpen(!open)}>
+                  <Fluentcard className="" />
+                </button>
+                <button type="button" onClick={() => setOpen(!open)}>
+                  <Tablericon />
+                </button>
               </div>
-            </form>
+            </div>
+          </div>
+        </div>
+        {open && (
+          <TabsContent value="all" className="mt-6">
             <TableCommon
-              data={criticalData}
+              data={followUpPlans}
               sidebarContent={
                 <>
                   <div className="md:py-5 py-4 ms:px-5 px-4 lg:px-6 border-b border-[#E4E7EB]">
@@ -506,10 +491,12 @@ function Insights() {
                       </div>
                     ))}
 
-                    <div className="px-[30px] flex justify-end gap-2 py-3 sticky -bottom-3 bg-white">
-                      <SheetClose>
-                        <SecondryBtn title="Cancel" className="w-max" />
-                      </SheetClose>
+                    <div className="px-[30px] flex justify-end gap-2 pb-3">
+                      <SecondryBtn
+                        title="Cancel"
+                        className="w-max"
+                        onClick={() => setOpen(false)}
+                      />
                       <VisitReportMudal />
                     </div>
                   </div>
@@ -517,14 +504,10 @@ function Insights() {
               }
             />
           </TabsContent>
-
-          <TabsContent value="growth-task" className="md:px-5 px-4 lg:px-6 ">
-            <Growth />
-          </TabsContent>
-        </Tabs>
+        )}
       </div>
-    </div>
+    </Tabs>
   );
 }
 
-export default Insights;
+export default FollowPlan;
