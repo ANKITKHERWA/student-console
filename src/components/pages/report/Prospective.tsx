@@ -33,6 +33,7 @@ import StatusBadgeSec from "@/components/common/StatusBadgeSec";
 import Link from "next/link";
 import TableKebabMenu from "@/components/common/TableKebabMenu";
 import { PlusIcon } from "lucide-react";
+import Rpt from "./Rpt";
 
 function Prospective() {
   const [open, setOpen] = useState(false);
@@ -383,7 +384,7 @@ function Prospective() {
                     className="w-max"
                     onClick={() => setOpen(false)}
                   />
-                  <VisitReportMudal />
+                  <Rpt />
                 </div>
               </div>
             </>

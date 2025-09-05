@@ -23,7 +23,6 @@ import SelecteStatus from "../insights/SelecteStatus";
 import { Input } from "@/components/ui/input";
 import Filter from "../insights/Filter";
 import {
- 
   data2,
   ReportRegisterd,
   sidebarData,
@@ -378,7 +377,7 @@ function Registered() {
                   </div>
                 ))}
 
-                <div className="px-[30px] flex justify-end gap-2 pb-3">
+                <div className="px-[30px] flex justify-end gap-2 py-3 sticky -bottom-3 bg-white">
                   <SecondryBtn
                     title="Cancel"
                     className="w-max"

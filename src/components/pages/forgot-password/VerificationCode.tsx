@@ -394,7 +394,7 @@ function VerificationCode() {
   return (
     <div className="max-w-[1385px] px-6 mx-auto">
       {/* <DataTable /> */}
-      <TableCommon table={table} columns={columns} />
+      {/* <TableCommon table={table} columns={columns} /> */}
     </div>
   );
 }
