@@ -1,6 +1,6 @@
 // import { Dialog } from '';
 'use client'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import {
   Form,
@@ -42,7 +42,17 @@ import {
   IconProfile,
   IconPromote,
 } from '../helper/Icon1'
-import { modalData } from '../helper/Helper1'
+import {
+  Growquestions,
+  GrowratingLabels,
+  Managequestions,
+  ManageratingLabels,
+  modalData,
+  Promotequestions,
+  PromoteratingLabels,
+} from '../helper/Helper1'
+import Heading from './Heading'
+import { Slider } from '../ui/slider'
 
 function Reportmodal() {
   const form = useForm()
@@ -51,18 +61,30 @@ function Reportmodal() {
   const handleOpenDate = () => {
     inputRef.current?.showPicker()
   }
+  type ValueKeys = 'appointment' | 'catalog' | 'client' | 'staff'
+  type Question = {
+    key: string
+    label: string
+  }
+
+  const [values, setValues] = useState<Record<string, number>>({
+    appointment: 2,
+    catalog: 3,
+    client: 5,
+    staff: 2,
+  })
 
   return (
     <>
       <Dialog>
-        <DialogTrigger className="bg-[#B751FB] sm:px-3 px-2  lg:px-4 md:py-2 py-1 lg:py-2.5 text-center cursor-pointer rounded md:rounded-[6px] shadow-[0_1px_4px_0_rgba(3,7,18,0.08)] border border-[#B751FB] text-[#fff] text-xs sm:text-sm font-semibold leading-[142.857%] -tracking-[0.28px]">
+        <DialogTrigger className="bg-[#B751FB] sm:px-3 px-2  lg:px-4 md:py-2 py-1 lg:py-2.5 text-center cursor-pointer rounded md:rounded-[6px] shadow-[0_1px_4px_0_rgba(3,7,18,0.08)] border  border-[#B751FB] text-[#fff] text-xs sm:text-sm font-semibold leading-[142.857%] -tracking-[0.28px]">
           Add Visit Report
         </DialogTrigger>
 
-        <DialogContent className="p-0  max-w- w-full  sm:mx-4  lg:my-8  lg:mx-auto  h-[90vh] overflow-hidden">
+        <DialogContent className="p-0 w-[50%] h-[90%] max-w-none! ">
           {modalData.map((item, index) => (
             <div key={index}>
-              <DialogHeader className="px-4 py-5">
+              <DialogHeader className="px-4 py-5 w-full border-b-1 border-gray ">
                 <DialogTitle>Visit Report</DialogTitle>
               </DialogHeader>
               <Tabs
@@ -70,7 +92,7 @@ function Reportmodal() {
                 className="w-full !bg-[transparent] ">
                 <div>
                   <div className="flex w-full overflow-auto lg:flex-row flex-col">
-                    <div className="bg-[#F9FAFB] border-r border-grayE4 lg:w-[300px] w-full flex-shrink-0">
+                    <div className="bg-[#F9FAFB] border-r border-grayE4 lg:w-[320px] w-full  flex-shrink-0">
                       <div className="pt-5 ps-6 pb-[30px] pe-[30px] ">
                         <div className="flex gap-2.5 items-center text-[#030712]">
                           <div>
@@ -121,31 +143,31 @@ function Reportmodal() {
                       <div>
                         <TabsList className="flex !items-start !h-max  !flex-col !bg-transparent w-full !p-0">
                           <TabsTrigger
-                            value={'lastVisit'}
+                            value={'Profile'}
                             className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
                             <IconProfile />
                             Profile
                           </TabsTrigger>
                           <TabsTrigger
-                            value={'catalogStaff'}
+                            value={'Manage'}
                             className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
                             <IconManage />
                             Manage
                           </TabsTrigger>
                           <TabsTrigger
-                            value={'offers'}
+                            value={'Grow'}
                             className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
                             <IconGrow />
                             Grow
                           </TabsTrigger>
                           <TabsTrigger
-                            value={'promoteUse'}
+                            value={'Promote'}
                             className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
                             <IconPromote />
                             Promote
                           </TabsTrigger>
                           <TabsTrigger
-                            value={'clientEngagement'}
+                            value={'Outcome'}
                             className="flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start">
                             <Iconoutcome />
                             Outcome
@@ -154,24 +176,27 @@ function Reportmodal() {
                       </div>
                     </div>
 
-                    <div className="w-full overflow-auto ">
-                      <TabsContent
-                        value={'lastVisit'}
-                        className="px-6 pt-[30px]">
+                    <div className="w-full  overflow-auto pb-20">
+                      <TabsContent value={'Profile'} className="px-6 pt-2 ">
+                        <Heading title="Porfile" className=" text-xl! py-2" />
                         <Form {...form}>
                           <form
                             className="space-y-6"
                             onSubmit={form.handleSubmit(console.log)}>
                             {/* Business Name */}
+
                             <FormField
                               control={form.control}
                               name="businessName"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Person in contact name</FormLabel>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Person in contact name
+                                  </FormLabel>
                                   <FormControl>
                                     <Input
                                       placeholder="Enter Business Name"
+                                      className="text-sm font-semibold"
                                       {...field}
                                     />
                                   </FormControl>
@@ -192,7 +217,9 @@ function Reportmodal() {
                                       onCheckedChange={field.onChange}
                                     />
                                   </FormControl>
-                                  <FormLabel>Decision maker</FormLabel>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Decision maker
+                                  </FormLabel>
                                   <FormMessage />
                                 </FormItem>
                               )}
@@ -201,12 +228,34 @@ function Reportmodal() {
                             {/* Contact Person Role */}
                             <FormField
                               control={form.control}
-                              name="contactRole"
+                              name="software"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Contact Person Role</FormLabel>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Contact Person Role
+                                  </FormLabel>
                                   <FormControl>
-                                    <Input placeholder="" {...field} />
+                                    <Select
+                                      value={field.value}
+                                      onValueChange={field.onChange}>
+                                      <SelectTrigger className="w-full">
+                                        <SelectValue
+                                          className="text-sm font-semibold "
+                                          placeholder="Select Contact Person Role"
+                                        />
+                                      </SelectTrigger>
+                                      <SelectContent>
+                                        <SelectItem value="none">
+                                          None
+                                        </SelectItem>
+                                        <SelectItem value="xyz">
+                                          ankit
+                                        </SelectItem>
+                                        <SelectItem value="other">
+                                          Other
+                                        </SelectItem>
+                                      </SelectContent>
+                                    </Select>
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
@@ -219,9 +268,12 @@ function Reportmodal() {
                               name="phone"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Contact Person Phone</FormLabel>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Contact Person Phone
+                                  </FormLabel>
                                   <FormControl>
                                     <Input
+                                      className="text-sm font-semibold"
                                       placeholder="Enter phone no."
                                       {...field}
                                     />
@@ -237,13 +289,18 @@ function Reportmodal() {
                               name="software"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Software Currently Used</FormLabel>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Software Currently Used
+                                  </FormLabel>
                                   <FormControl>
                                     <Select
                                       value={field.value}
                                       onValueChange={field.onChange}>
-                                      <SelectTrigger>
-                                        <SelectValue placeholder="Select software or usage status" />
+                                      <SelectTrigger className="w-full">
+                                        <SelectValue
+                                          className="text-sm font-semibold "
+                                          placeholder="Select software or usage status"
+                                        />
                                       </SelectTrigger>
                                       <SelectContent>
                                         <SelectItem value="none">
@@ -274,25 +331,35 @@ function Reportmodal() {
                                     <RadioGroup
                                       value={field.value}
                                       onValueChange={field.onChange}>
-                                      <RadioGroupItem value="0-3" id="0-3" /> 0
-                                      - 3 seats <br />
-                                      <RadioGroupItem value="4-7" id="4-7" /> 4
-                                      - 7 seats <br />
-                                      <RadioGroupItem
-                                        value="8-12"
-                                        id="8-12"
-                                      />{' '}
-                                      8 - 12 seats <br />
-                                      <RadioGroupItem
-                                        value="13-15"
-                                        id="13-15"
-                                      />{' '}
-                                      13 - 15 seats <br />
-                                      <RadioGroupItem
-                                        value="16-above"
-                                        id="16-above"
-                                      />{' '}
-                                      16 & above
+                                      <div className="flex gap-4 items-center">
+                                        <RadioGroupItem value="0-3" id="0-3" />{' '}
+                                        0 - 3 seats{' '}
+                                      </div>
+                                      <div className="flex gap-4 items-center">
+                                        <RadioGroupItem value="4-7" id="4-7" />{' '}
+                                        4 - 7 seats{' '}
+                                      </div>
+                                      <div className="flex gap-4 items-center">
+                                        <RadioGroupItem
+                                          value="8-12"
+                                          id="8-12"
+                                        />
+                                        8 - 12 seats{' '}
+                                      </div>
+                                      <div className="flex gap-4 items-center">
+                                        <RadioGroupItem
+                                          value="13-15"
+                                          id="13-15"
+                                        />
+                                        13 - 15 seats{' '}
+                                      </div>
+                                      <div className="flex gap-4 items-center">
+                                        <RadioGroupItem
+                                          value="16-above"
+                                          id="16-above"
+                                        />
+                                        16 & above{' '}
+                                      </div>
                                     </RadioGroup>
                                   </FormControl>
                                   <FormMessage />
@@ -302,536 +369,374 @@ function Reportmodal() {
                           </form>
                         </Form>
                       </TabsContent>
-
-                      {/* {item.catalogStaff.map((staffItem, staffIndex) => (
-                        <TabsContent
-                          key={staffIndex}
-                          value={'catalogStaff'}
-                          className="px-6 pt-[30px]">
+                      <TabsContent value={'Manage'} className="p-6">
+                        <div className="max-w-xl ">
+                          <Heading
+                            title="Management Needs Assessment"
+                            className=" text-base! font-semibold py-2"
+                          />
                           <div>
-                            <SmallHeading
-                              title={staffItem.heading}
-                              className="!text-base"
-                            />
-                            <div className="flex gap-2 mt-2.5 flex-col">
-                              {staffItem.data.map((dataItem, dataIndex) => (
-                                <p
-                                  key={dataIndex}
-                                  className="flex items-center gap-2 text-xs  leading-[166%] -tracking-[0.24px]">
-                                  {dataItem.icon}
-                                  <span>
-                                    <span className="text-[#030712] font-medium">
-                                      {dataItem.title}
-                                    </span>
-                                     
-                                    <span className="text-[rgba(3,7,18,0.70)]">
-                                      {dataItem.titleData}
-                                    </span>
-                                  </span>
-                                </p>
-                              ))}
-                              <div className="!overflow-auto mt-5 border border-gray-200 rounded-[6px] mb-10">
-                                {staffItem.tableData.map((itm, idx) => (
-                                  <table
-                                    key={idx}
-                                    className="w-full border-collapse text-sm">
-                                    <thead className="bg-[#F9FAFB] text-[#808188] text-sm  leading-[142%] -tracking-[0.28px]">
-                                      <tr>
-                                        {itm.th.map((thItm, thIndex) => (
-                                          <th
-                                            key={thIndex}
-                                            className="px-6 py-2 text-left !font-semibold">
-                                            {thItm.th}
-                                          </th>
-                                        ))}
-                                      </tr>
-                                    </thead>
-                                    <tbody className="text-[#030712] text-sm leading-[142%] -tracking-[0.28px]">
-                                      {(() => {
-                                        const lastRowIndex =
-                                          itm.tdRow.length - 1 // 👈 yaha define karein
-
-                                        return itm.tdRow.map(
-                                          (tdItm, tdRowIndex) => (
-                                            <tr
-                                              key={tdRowIndex}
-                                              className="border-y border-[#E4E7EB]">
-                                              {tdItm.td.map(
-                                                (tdItem, tdindex) => (
-                                                  <td
-                                                    key={tdindex}
-                                                    className={`px-6 py-4 text-nowrap ${
-                                                      tdindex === 2
-                                                        ? tdRowIndex === 0 ||
-                                                          tdRowIndex ===
-                                                            lastRowIndex
-                                                          ? 'text-[#f00]' // red for first & last row in column 2
-                                                          : 'text-[#31A553]' // green for other rows in column 2
-                                                        : 'text-black' // black for all other columns
-                                                    }`}>
-                                                    {tdItem.td}
-                                                  </td>
-                                                )
-                                              )}
-                                            </tr>
-                                          )
-                                        )
-                                      })()}
-                                    </tbody>
-                                  </table>
+                            {ManageratingLabels.map((text) => (
+                              <div key={text} className=" text-[10px]">
+                                {text}
+                              </div>
+                            ))}
+                          </div>
+                          {Managequestions.map((q) => (
+                            <div key={q.key} className="space-y-2 py-2">
+                              <div className="text-sm font-semibold">
+                                {q.label}
+                              </div>
+                              <Slider
+                                min={1}
+                                max={5}
+                                step={1}
+                                value={[values[q.key]]}
+                                onValueChange={([val]) =>
+                                  setValues((vals) => ({
+                                    ...vals,
+                                    [q.key]: val,
+                                  }))
+                                }
+                                className="w-full"
+                              />
+                              <div className="flex justify-between text-xs text-muted-foreground">
+                                {[1, 2, 3, 4, 5].map((n) => (
+                                  <span key={n}>{n}</span>
                                 ))}
                               </div>
-                              <form action="">
-                                <SmallHeading
-                                  title="Rate salon on catalog & staff performance"
-                                  className="!text-xl"
-                                />
-                                <CustomSlider />
-                                <Remark />
-                              </form>
                             </div>
-                          </div>
-                        </TabsContent>
-                      ))}
-                      {item.offers.map((offerItem, offerIndex) => (
-                        <TabsContent
-                          key={offerIndex}
-                          value={'offers'}
-                          className="px-6 pt-[30px]">
+                          ))}
+                        </div>
+                      </TabsContent>
+                      <TabsContent value={'Grow'} className="p-6">
+                        <div className="max-w-xl ">
+                          <Heading
+                            title="Growth Needs Assessment"
+                            className=" text-base! font-semibold py-2"
+                          />
                           <div>
-                            <SmallHeading
-                              title={offerItem.heading}
-                              className="!text-base"
-                            />
-                            <div className="flex gap-2 mt-2.5 flex-col">
-                              {offerItem.data.map((dataItem, dataIndex) => (
-                                <p
-                                  key={dataIndex}
-                                  className="flex items-center gap-2 text-xs  leading-[166%] -tracking-[0.24px]">
-                                  {dataItem.icon}
-                                  <span>
-                                    <span className="text-[#030712] font-medium">
-                                      {dataItem.title}
-                                    </span>
-                                     
-                                    <span className="text-[rgba(3,7,18,0.70)]">
-                                      {dataItem.titleData}
-                                    </span>
-                                  </span>
-                                </p>
-                              ))}
-                              <div className="!overflow-auto mt-5 border border-gray-200 rounded-[6px] mb-10">
-                                {offerItem.tableData.map((itm, idx) => (
-                                  <table
-                                    key={idx}
-                                    className="w-full border-collapse text-sm">
-                                    <thead className="bg-[#F9FAFB] text-[#808188] text-sm  leading-[142%] -tracking-[0.28px]">
-                                      <tr>
-                                        {itm.th.map((thItm, thIndex) => (
-                                          <th
-                                            key={thIndex}
-                                            className="px-6 py-2 text-left !font-semibold">
-                                            {thItm.th}
-                                          </th>
-                                        ))}
-                                      </tr>
-                                    </thead>
-                                    <tbody className="text-[#030712] text-sm leading-[142%] -tracking-[0.28px]">
-                                      {(() => {
-                                        return itm.tdRow.map(
-                                          (tdItm, tdRowIndex) => (
-                                            <tr
-                                              key={tdRowIndex}
-                                              className="border-y border-[#E4E7EB]">
-                                              {tdItm.td.map(
-                                                (tdItem, tdindex) => (
-                                                  <td
-                                                    key={tdindex}
-                                                    className={`px-6 py-4 text-nowrap ${
-                                                      tdindex === 2
-                                                        ? tdRowIndex === 0
-                                                          ? 'text-[#f00]' // red for first & last row in column 2
-                                                          : 'text-[#31A553]' // green for other rows in column 2
-                                                        : 'text-black' // black for all other columns
-                                                    }`}>
-                                                    {tdItem.td}
-                                                  </td>
-                                                )
-                                              )}
-                                            </tr>
-                                          )
-                                        )
-                                      })()}
-                                    </tbody>
-                                  </table>
+                            {GrowratingLabels.map((text) => (
+                              <div key={text} className=" text-[10px]">
+                                {text}
+                              </div>
+                            ))}
+                          </div>
+                          {Growquestions.map((q) => (
+                            <div key={q.key} className="space-y-2 py-2">
+                              <div className="text-sm font-semibold">
+                                {q.label}
+                              </div>
+                              <Slider
+                                min={1}
+                                max={5}
+                                step={1}
+                                value={[values[q.key]]}
+                                onValueChange={([val]) =>
+                                  setValues((vals) => ({
+                                    ...vals,
+                                    [q.key]: val,
+                                  }))
+                                }
+                                className="w-full"
+                              />
+                              <div className="flex justify-between text-xs text-muted-foreground">
+                                {[1, 2, 3, 4, 5].map((n) => (
+                                  <span key={n}>{n}</span>
                                 ))}
                               </div>
-                              <form action="">
-                                <SmallHeading
-                                  title="Rate salon on catalog & staff performance"
-                                  className="!text-xl"
-                                />
-                                <CustomSlider />
-                                <Remark />
-                              </form>
                             </div>
-                          </div>
-                        </TabsContent>
-                      ))}
-                      {item.promoteUse.map((promoteItems, promoteIndex) => (
-                        <TabsContent
-                          key={promoteIndex}
-                          value={'promoteUse'}
-                          className="px-6 pt-[30px]">
+                          ))}
+                        </div>
+                      </TabsContent>
+                      <TabsContent value={'Promote'} className="p-6">
+                        <div className="max-w-xl ">
+                          <Heading
+                            title="Management Needs Assessment"
+                            className=" text-base! font-semibold py-2"
+                          />
                           <div>
-                            <SmallHeading
-                              title={promoteItems.heading}
-                              className="!text-base"
-                            />
-                            <div className="flex gap-2 mt-2.5 flex-col">
-                              {promoteItems.data.map((dataItem, dataIndex) => (
-                                <p
-                                  key={dataIndex}
-                                  className="flex items-center gap-2 text-xs  leading-[166%] -tracking-[0.24px]">
-                                  {dataItem.icon}
-                                  <span>
-                                    <span className="text-[#030712] font-medium">
-                                      {dataItem.title}
-                                    </span>
-                                     
-                                    <span className="text-[rgba(3,7,18,0.70)]">
-                                      {dataItem.titleData}
-                                    </span>
-                                  </span>
-                                </p>
-                              ))}
-                              <div className="!overflow-auto mt-5 border border-gray-200 rounded-[6px] mb-10">
-                                {promoteItems.tableData.map((itm, idx) => (
-                                  <table
-                                    key={idx}
-                                    className="w-full border-collapse text-sm">
-                                    <thead className="bg-[#F9FAFB] text-[#808188] text-sm  leading-[142%] -tracking-[0.28px]">
-                                      <tr>
-                                        {itm.th.map((thItm, thIndex) => (
-                                          <th
-                                            key={thIndex}
-                                            className="px-6 py-2 text-left !font-semibold">
-                                            {thItm.th}
-                                          </th>
-                                        ))}
-                                      </tr>
-                                    </thead>
-                                    <tbody className="text-[#030712] text-sm leading-[142%] -tracking-[0.28px]">
-                                      {(() => {
-                                        const lastRowIndex =
-                                          itm.tdRow.length - 2 // 👈 yaha define karein
-
-                                        return itm.tdRow.map(
-                                          (tdItm, tdRowIndex) => (
-                                            <tr
-                                              key={tdRowIndex}
-                                              className="border-y border-[#E4E7EB]">
-                                              {tdItm.td.map(
-                                                (tdItem, tdindex) => (
-                                                  <td
-                                                    key={tdindex}
-                                                    className={`px-6 py-4 text-nowrap ${
-                                                      tdindex === 2
-                                                        ? tdRowIndex === 0 ||
-                                                          tdRowIndex ===
-                                                            lastRowIndex
-                                                          ? 'text-[#f00]' // red for first & last row in column 2
-                                                          : 'text-[#31A553]' // green for other rows in column 2
-                                                        : 'text-black' // black for all other columns
-                                                    }`}>
-                                                    {tdItem.td}
-                                                  </td>
-                                                )
-                                              )}
-                                            </tr>
-                                          )
-                                        )
-                                      })()}
-                                    </tbody>
-                                  </table>
+                            {PromoteratingLabels.map((text) => (
+                              <div
+                                key={text}
+                                className="text-muted-foreground text-[10px]">
+                                {text}
+                              </div>
+                            ))}
+                          </div>
+                          {Promotequestions.map((q) => (
+                            <div key={q.key} className="space-y-2 py-2">
+                              <div className="text-sm font-semibold">
+                                {q.label}
+                              </div>
+                              <Slider
+                                min={1}
+                                max={5}
+                                step={1}
+                                value={[values[q.key]]}
+                                onValueChange={([val]) =>
+                                  setValues((vals) => ({
+                                    ...vals,
+                                    [q.key]: val,
+                                  }))
+                                }
+                                className="w-full"
+                              />
+                              <div className="flex justify-between text-xs text-muted-foreground">
+                                {[1, 2, 3, 4, 5].map((n) => (
+                                  <span key={n}>{n}</span>
                                 ))}
                               </div>
-                              <form action="">
-                                <SmallHeading
-                                  title="Rate salon on catalog & staff performance"
-                                  className="!text-xl"
-                                />
-                                <CustomSlider />
-                                <Remark />
-                              </form>
                             </div>
-                          </div>
-                        </TabsContent>
-                      ))}
-                      {item.clientEnagagement.map((cleintItem, clientIndex) => (
-                        <TabsContent
-                          key={clientIndex}
-                          value={'clientEngagement'}
-                          className="px-6 pt-[30px]">
-                          <div>
-                            <SmallHeading
-                              title={cleintItem.heading}
-                              className="!text-base"
-                            />
-                            <div className="flex gap-2 mt-2.5 flex-col">
-                              {cleintItem.data.map((dataItem, dataIndex) => (
-                                <p
-                                  key={dataIndex}
-                                  className="flex items-center gap-2 text-xs  leading-[166%] -tracking-[0.24px]">
-                                  {dataItem.icon}
-                                  <span>
-                                    <span className="text-[#030712] font-medium">
-                                      {dataItem.title}
-                                    </span>
-                                     
-                                    <span className="text-[rgba(3,7,18,0.70)]">
-                                      {dataItem.titleData}
-                                    </span>
-                                  </span>
-                                </p>
-                              ))}
-                              <div className="!overflow-auto mt-5 border border-gray-200 rounded-[6px] mb-10">
-                                {cleintItem.tableData.map((itm, idx) => (
-                                  <table
-                                    key={idx}
-                                    className="w-full border-collapse text-sm">
-                                    <thead className="bg-[#F9FAFB] text-[#808188] text-sm  leading-[142%] -tracking-[0.28px]">
-                                      <tr>
-                                        {itm.th.map((thItm, thIndex) => (
-                                          <th
-                                            key={thIndex}
-                                            className="px-6 py-2 text-left !font-semibold">
-                                            {thItm.th}
-                                          </th>
-                                        ))}
-                                      </tr>
-                                    </thead>
-                                    <tbody className="text-[#030712] text-sm leading-[142%] -tracking-[0.28px]">
-                                      {(() => {
-                                        const lastRowIndex =
-                                          itm.tdRow.length - 1 // 👈 yaha define karein
-                                        const lastFourth = itm.tdRow.length - 4 // 👈 yaha define karein
-
-                                        return itm.tdRow.map(
-                                          (tdItm, tdRowIndex) => (
-                                            <tr
-                                              key={tdRowIndex}
-                                              className="border-y border-[#E4E7EB]">
-                                              {tdItm.td.map(
-                                                (tdItem, tdindex) => (
-                                                  <td
-                                                    key={tdindex}
-                                                    className={`px-6 py-4 text-nowrap ${
-                                                      tdindex === 2
-                                                        ? tdRowIndex === 0 ||
-                                                          tdRowIndex ===
-                                                            lastRowIndex
-                                                          ? 'text-[#f00]' // red for first & last row in column 2
-                                                          : 'text-[#31A553]' // green for other rows in column 2
-                                                        : 'text-black' // black for all other columns
-                                                    } ${
-                                                      tdindex === 2
-                                                        ? tdRowIndex === 0 ||
-                                                          tdRowIndex ===
-                                                            lastFourth
-                                                          ? 'text-[#f00]' // red for first & last row in column 2
-                                                          : 'text-[#31A553]' // green for other rows in column 2
-                                                        : 'text-black'
-                                                    }`}>
-                                                    {tdItem.td}
-                                                  </td>
-                                                )
-                                              )}
-                                            </tr>
-                                          )
-                                        )
-                                      })()}
-                                    </tbody>
-                                  </table>
-                                ))}
-                              </div>
-                              <form action="">
-                                <SmallHeading
-                                  title="Rate salon on catalog & staff performance"
-                                  className="!text-xl"
-                                />
-                                <CustomSlider />
-                                <Remark />
-                              </form>
-                            </div>
-                          </div>
-                        </TabsContent>
-                      ))}
-                      {item.setUp.map((setIPItem, setUpIndex) => (
-                        <TabsContent
-                          key={setUpIndex}
-                          value={'setUp'}
-                          className="px-6 pt-[30px]">
-                          <div>
-                            <SmallHeading
-                              title={setIPItem.heading}
-                              className="!text-base"
-                            />
-                            <div className="flex gap-2 mt-2.5 flex-col">
-                              {setIPItem.data.map((dataItem, dataIndex) => (
-                                <p
-                                  key={dataIndex}
-                                  className="flex items-center gap-2 text-xs  leading-[166%] -tracking-[0.24px]">
-                                  {dataItem.icon}
-                                  <span>
-                                    <span className="text-[#030712] font-medium">
-                                      {dataItem.title}
-                                    </span>
-                                     
-                                    <span className="text-[rgba(3,7,18,0.70)]">
-                                      {dataItem.titleData}
-                                    </span>
-                                  </span>
-                                </p>
-                              ))}
-                              <div className="!overflow-auto mt-5 border border-gray-200 rounded-[6px] mb-10">
-                                {setIPItem.tableData.map((itm, idx) => (
-                                  <table
-                                    key={idx}
-                                    className="w-full border-collapse text-sm">
-                                    <thead className="bg-[#F9FAFB] text-[#808188] text-sm  leading-[142%] -tracking-[0.28px]">
-                                      <tr>
-                                        {itm.th.map((thItm, thIndex) => (
-                                          <th
-                                            key={thIndex}
-                                            className="px-6 py-2 text-left !font-semibold">
-                                            {thItm.th}
-                                          </th>
-                                        ))}
-                                      </tr>
-                                    </thead>
-                                    <tbody className="text-[#030712] text-sm leading-[142%] -tracking-[0.28px]">
-                                      {(() => {
-                                        const lastRowIndex =
-                                          itm.tdRow.length - 1 // 👈 yaha define karein
-                                        const lastFourth = itm.tdRow.length - 4 // 👈 yaha define karein
-
-                                        return itm.tdRow.map(
-                                          (tdItm, tdRowIndex) => (
-                                            <tr
-                                              key={tdRowIndex}
-                                              className="border-y border-[#E4E7EB]">
-                                              {tdItm.td.map(
-                                                (tdItem, tdindex) => (
-                                                  <td
-                                                    key={tdindex}
-                                                    className={`px-6 py-4 text-nowrap ${
-                                                      tdindex === 2
-                                                        ? tdRowIndex === 0 ||
-                                                          tdRowIndex ===
-                                                            lastRowIndex
-                                                          ? 'text-[#f00]' // red for first & last row in column 2
-                                                          : 'text-[#31A553]' // green for other rows in column 2
-                                                        : 'text-black' // black for all other columns
-                                                    } ${
-                                                      tdindex === 2
-                                                        ? tdRowIndex === 0 ||
-                                                          tdRowIndex ===
-                                                            lastFourth
-                                                          ? 'text-[#f00]' // red for first & last row in column 2
-                                                          : 'text-[#31A553]' // green for other rows in column 2
-                                                        : 'text-black'
-                                                    }`}>
-                                                    {tdItem.td}
-                                                  </td>
-                                                )
-                                              )}
-                                            </tr>
-                                          )
-                                        )
-                                      })()}
-                                    </tbody>
-                                  </table>
-                                ))}
-                              </div>
-                              <form action="">
-                                <SmallHeading
-                                  title="Rate salon on catalog & staff performance"
-                                  className="!text-xl"
-                                />
-                                <CustomSlider />
-                                <Remark />
-                              </form>
-                            </div>
-                          </div>
-                        </TabsContent>
-                      ))}
-                      {item.submit.map((submiItem, sumitIndex) => (
-                        <TabsContent
-                          key={sumitIndex}
-                          value={'submit'}
-                          className="px-6 pt-[30px]">
-                          <div>
-                            <SmallHeading
-                              title={submiItem.heading}
-                              className="!text-base"
-                            />
-                            <div className="flex gap-2 mt-2.5 flex-col">
-                              {submiItem.data.map((dataItem, dataIndex) => (
-                                <p
-                                  key={dataIndex}
-                                  className="flex items-center gap-2 text-xs  leading-[166%] -tracking-[0.24px]">
-                                  {dataItem.icon}
-                                  <span>
-                                    <span className="text-[#030712] font-medium">
-                                      {dataItem.title}
-                                    </span>
-                                     
-                                    <span className="text-[rgba(3,7,18,0.70)]">
-                                      {dataItem.titleData}
-                                    </span>
-                                  </span>
-                                </p>
-                              ))}
-
-                              <form action="">
-                                <Remark />
-                                <div className="flex justify-between gap-10">
-                                  {submiItem.date.map((dateItem, dateIndex) => (
-                                    <div key={dateIndex} className="w-full">
-                                      <label htmlFor={dateItem.id}>
-                                        <SmallHeading
-                                          title={dateItem.heading}
+                          ))}
+                        </div>
+                      </TabsContent>
+                      <TabsContent value={'Outcome'} className="px-6 pt-2 ">
+                        <Heading title="Outcome" className=" text-xl! py-2" />
+                        <Form {...form}>
+                          <form
+                            className="space-y-6"
+                            onSubmit={form.handleSubmit(console.log)}>
+                            <FormField
+                              control={form.control}
+                              name="Overall Interest"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Overall Interest
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Select
+                                      value={field.value}
+                                      onValueChange={field.onChange}>
+                                      <SelectTrigger className="w-full">
+                                        <SelectValue
+                                          className="text-sm font-semibold "
+                                          placeholder="Select Overall Interest"
                                         />
-                                      </label>
-                                      <div className="py-2 px-3 w-full flex gap-5 mt-2 items-center justify-between border rounded-[6px]">
-                                        <input
-                                          type="date"
-                                          id={dateItem.id}
-                                          ref={inputRef}
-                                          value={'Pick a date'}
-                                          placeholder="Pick a date"
-                                          className="outline-none"
+                                      </SelectTrigger>
+                                      <SelectContent>
+                                        <SelectItem value="Not interested - don’t see a fit">
+                                          Not interested - don’t see a fit
+                                        </SelectItem>
+                                        <SelectItem value="Neutral / Undecided">
+                                          Neutral / Undecided
+                                        </SelectItem>
+                                        <SelectItem value="Mildly interested - come bak later">
+                                          Mildly interested - come bak later
+                                        </SelectItem>
+                                        <SelectItem value="Interested - requests detailed demo">
+                                          Interested - requests detailed demo
+                                        </SelectItem>
+                                        <SelectItem value="Very interested - wants immediate onboarding">
+                                          Very interested - wants immediate
+                                          onboarding
+                                        </SelectItem>
+                                        <SelectItem value="Registered">
+                                          Registered
+                                        </SelectItem>
+                                      </SelectContent>
+                                    </Select>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="Overall Interest"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Outcomes of visit
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Select
+                                      value={field.value}
+                                      onValueChange={field.onChange}>
+                                      <SelectTrigger className="w-full">
+                                        <SelectValue
+                                          className="text-sm font-semibold "
+                                          placeholder="Select visit outcome"
                                         />
-                                        <div onClick={handleOpenDate}>
-                                          <ClenderIcon />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </TabsContent>
-                      ))} */}
+                                      </SelectTrigger>
+                                      <SelectContent>
+                                        <SelectItem value="Not interested - don’t see a fit">
+                                          Not interested - don’t see a fit
+                                        </SelectItem>
+                                        <SelectItem value="Neutral / Undecided">
+                                          Neutral / Undecided
+                                        </SelectItem>
+                                        <SelectItem value="Mildly interested - come bak later">
+                                          Mildly interested - come bak later
+                                        </SelectItem>
+                                        <SelectItem value="Interested - requests detailed demo">
+                                          Interested - requests detailed demo
+                                        </SelectItem>
+                                        <SelectItem value="Very interested - wants immediate onboarding">
+                                          Very interested - wants immediate
+                                          onboarding
+                                        </SelectItem>
+                                        <SelectItem value="Registered">
+                                          Registered
+                                        </SelectItem>
+                                      </SelectContent>
+                                    </Select>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="Overall Interest"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Reason for Not onboarding
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Select
+                                      value={field.value}
+                                      onValueChange={field.onChange}>
+                                      <SelectTrigger className="w-full">
+                                        <SelectValue
+                                          className="text-sm font-semibold "
+                                          placeholder="Select a reason"
+                                        />
+                                      </SelectTrigger>
+                                      <SelectContent>
+                                        <SelectItem value="Onboarded">
+                                          Onboarded
+                                        </SelectItem>
+                                        <SelectItem value="Not Onboarded">
+                                          Not Onboarded
+                                        </SelectItem>
+                                        {/* <SelectItem
+                                          className="text-black font-extrabold"
+                                          value="Decision Pending">
+                                          Decision Pending
+                                        </SelectItem>
+                                        <SelectItem value="Owner not available">
+                                          Owner not available
+                                        </SelectItem>
+                                        <SelectItem value="Need more time to decide">
+                                          Need more time to decide
+                                        </SelectItem>
+                                        <SelectItem value="Internal discussion required">
+                                          Internal discussion required
+                                        </SelectItem>
+                                        <SelectItem value="Waiting for partner/ family / decision">
+                                          Waiting for partner/ family / decision
+                                          onboarding
+                                        </SelectItem>
+                                        <SelectItem
+                                          className="text-black font-extrabold"
+                                          value="Budget Constraints">
+                                          Budget Constraints
+                                        </SelectItem>
+                                        <SelectItem value="Subscription cost too high">
+                                          Subscription cost too high
+                                        </SelectItem>
+                                        <SelectItem value="Prefers free tools">
+                                          Prefers free tools
+                                        </SelectItem> */}
+                                      </SelectContent>
+                                    </Select>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            {/* Contact Phone */}
+                            <FormField
+                              control={form.control}
+                              name="date"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Follow up Date
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      type="date"
+                                      className="text-sm font-semibold"
+                                      placeholder="Pic a date"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+
+                            <FormField
+                              control={form.control}
+                              name="Follow up reason"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Follow up reason
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Select
+                                      value={field.value}
+                                      onValueChange={field.onChange}>
+                                      <SelectTrigger className="w-full">
+                                        <SelectValue
+                                          className="text-sm font-semibold "
+                                          placeholder="Select a reason for follow up"
+                                        />
+                                      </SelectTrigger>
+                                      <SelectContent>
+                                        <SelectItem value="price">
+                                          price
+                                        </SelectItem>
+                                        <SelectItem value="staff">
+                                          staff
+                                        </SelectItem>
+                                        <SelectItem value="other">
+                                          Other
+                                        </SelectItem>
+                                      </SelectContent>
+                                    </Select>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+
+                            <FormField
+                              control={form.control}
+                              name="Remarks"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-sm font-semibold">
+                                    Remarks
+                                  </FormLabel>
+                                  <FormControl>
+                                    <textarea
+                                      {...field} // bind React Hook Form field props here
+                                      id="Remarks"
+                                      className="w-full rounded border p-2 text-sm font-semibold resize-none"
+                                      rows={3} // set height by rows or CSS
+                                      placeholder="Enter remarks"
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </form>
+                        </Form>
+                      </TabsContent>
                     </div>
                   </div>
                 </div>
               </Tabs>
             </div>
           ))}
-          <DialogFooter className="flex fixed bottom-0  gap-3  right-0 p-6 border-t border-grayE4 w-full bg-white">
+          <DialogFooter className="flex fixed bottom-0  gap-3  right-0 py-4 px-6 border-t border-grayE4 bg-white rounded-b-lg w-full">
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>

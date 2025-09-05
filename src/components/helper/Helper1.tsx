@@ -3740,3 +3740,48 @@ export const modalData = [
     ],
   },
 ]
+ export const Managequestions = [
+  { label: "Appointment management", key: "appointment" },
+  { label: "Catalog management", key: "catalog" },
+  { label: "Client management", key: "client" },
+  { label: "Staff management", key: "staff" },
+];
+
+export const ManageratingLabels = [
+  "Rate the following from 1 - 5 ",
+  "1 - not needed",
+  "2 - not sure",
+  "3 - needed but not immediately",
+  "4 - needed",
+  "5 - strongly needed"
+];
+export const Growquestions = [
+  { label: "Voucher system", key: "Voucher " },
+  { label: "Memberships Programs", key: "Memberships" },
+  { label: "Gift Cards", key: "Gift" },
+  { label: "Promo Codes", key: "Promo" },
+];
+
+export const GrowratingLabels = [
+  "Rate the following from 1 - 5 ",
+  "1 - not needed",
+  "2 - not sure",
+  "3 - needed but not immediately",
+  "4 - needed",
+  "5 - strongly needed"
+];
+export const Promotequestions = [
+  { label: "Social Media Ads", key: "Social Media" },
+  { label: "Creatives (Design Support)", key: "Creatives" },
+  { label: "WhatsApp Marketing", key: "WhatsApp Marketing" },
+  { label: "Automated Messaging", key: "Automated" },
+];
+
+export const PromoteratingLabels = [
+  "Rate the following from 1 - 5 ",
+  "1 - not needed",
+  "2 - not sure",
+  "3 - needed but not immediately",
+  "4 - needed",
+  "5 - strongly needed"
+];

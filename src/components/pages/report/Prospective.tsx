@@ -1,9 +1,9 @@
-"use client";
-import SecondryBtn from "@/components/common/SecondryBtn";
-import React, { useState } from "react";
-import VisitReportMudal from "../insights/VisitReportMudal";
-import Image from "next/image";
-import SmallHeading from "@/components/common/SmallHeading";
+'use client'
+import SecondryBtn from '@/components/common/SecondryBtn'
+import React, { useState } from 'react'
+import VisitReportMudal from '../insights/VisitReportMudal'
+import Image from 'next/image'
+import SmallHeading from '@/components/common/SmallHeading'
 import {
   ActionIocn,
   CalenderBlackSmallIocn,
@@ -17,29 +17,30 @@ import {
   SmallCriticalIcon,
   SmallEyeIcon,
   ViewReportIcon,
-} from "@/components/helper/Icon2";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SelecteStatus from "../insights/SelecteStatus";
-import { Input } from "@/components/ui/input";
-import Filter from "../insights/Filter";
+} from '@/components/helper/Icon2'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import SelecteStatus from '../insights/SelecteStatus'
+import { Input } from '@/components/ui/input'
+import Filter from '../insights/Filter'
 import {
   data2,
   ReportProspective,
   sidebarData,
-} from "@/components/helper/Helper2";
+} from '@/components/helper/Helper2'
 
-import TableCommon from "@/components/common/TableCommon";
-import StatusBadgeSec from "@/components/common/StatusBadgeSec";
-import Link from "next/link";
-import TableKebabMenu from "@/components/common/TableKebabMenu";
-import { PlusIcon } from "lucide-react";
+import TableCommon from '@/components/common/TableCommon'
+import StatusBadgeSec from '@/components/common/StatusBadgeSec'
+import Link from 'next/link'
+import TableKebabMenu from '@/components/common/TableKebabMenu'
+import { PlusIcon } from 'lucide-react'
+import Reportmodal from '@/components/common/Reportmodal'
 
 function Prospective() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
     <div>
-      {" "}
+      {' '}
       <TabsContent value="prospective">
         <form className="md:py-5 py-3 sm:py-4 lg:py-6">
           <div className="flex justify-between items-center gap-2 flex-wrap-reverse sm:flex-nowrap">
@@ -61,7 +62,7 @@ function Prospective() {
           sidebarContent={
             <>
               <div className="md:py-5 py-4 ms:px-5 px-4 lg:px-6 border-b border-[#E4E7EB]">
-                <StatusBadgeSec status={"Prospective"} />
+                <StatusBadgeSec status={'Prospective'} />
               </div>
               <div className="flex flex-col justify-between h-full pb-3">
                 {sidebarData?.map((itm, idx) => (
@@ -86,8 +87,7 @@ function Prospective() {
                                 <Link
                                   key={contIndex}
                                   href={contact.path}
-                                  className="flex items-center gap-1 text-xs"
-                                >
+                                  className="flex items-center gap-1 text-xs">
                                   <span>{contact.icon}</span>
                                   <span>{contact.title}</span>
                                 </Link>
@@ -100,18 +100,17 @@ function Prospective() {
                                 key={condIndex}
                                 className={` ${
                                   condIndex === 0
-                                    ? "text-[#F13737]  "
+                                    ? 'text-[#F13737]  '
                                     : condIndex === 2
-                                    ? "text-[#F58400]"
-                                    : "text-[#5B14D1] "
+                                    ? 'text-[#F58400]'
+                                    : 'text-[#5B14D1] '
                                 } ${
                                   condIndex === 1
-                                    ? "border-l"
+                                    ? 'border-l'
                                     : condIndex === 3
-                                    ? "border-r"
-                                    : ""
-                                } text-xs leading-[166%] border-[#808188] -tracking-[0.24px]`}
-                              >
+                                    ? 'border-r'
+                                    : ''
+                                } text-xs leading-[166%] border-[#808188] -tracking-[0.24px]`}>
                                 {condetionItem.count}
                               </span>
                             ))}
@@ -120,34 +119,34 @@ function Prospective() {
                         <TableKebabMenu
                           items={[
                             {
-                              label: "View as partner",
+                              label: 'View as partner',
                               extra: <SmallEyeIcon className="w-4 h-4" />,
                               // onClick: () => console.log("Edit clicked"),
                             },
                             {
-                              label: "View Report",
+                              label: 'View Report',
                               extra: <ViewReportIcon className="w-4 h-4" />,
                               // onClick: () => console.log("Delete clicked"),
                             },
                             {
-                              label: "Add Visit",
+                              label: 'Add Visit',
                               extra: (
                                 <CalenderBlackSmallIocn className="w-4 h-4" />
                               ),
                               // onClick: () => console.log("Share clicked"),
                             },
                             {
-                              label: "Add Follow Up",
+                              label: 'Add Follow Up',
                               extra: <FollowUpIcon className="w-4 h-4" />,
                               // onClick: () => console.log("Share clicked"),
                             },
                             {
-                              label: "Add Visit Report",
+                              label: 'Add Visit Report',
                               extra: <PlusIcon className="w-4 h-4" />,
                               // onClick: () => console.log("Share clicked"),
                             },
                             {
-                              label: "Assign Partner",
+                              label: 'Assign Partner',
                               extra: <PartnerIcon className="w-4 h-4" />,
                               // onClick: () => console.log("Share clicked"),
                             },
@@ -226,7 +225,7 @@ function Prospective() {
                       <SmallHeading title="Assigned Personnel" />
                       <div className="flex justify-between items-center mt-2 sm:mt-3">
                         <p className="text-[#808188] font-medium leading-[142%] -tracking-[0.28px]">
-                          FE:{" "}
+                          FE:{' '}
                           <span className="font-semibold text-[#030712]">
                             {itm.fe}
                           </span>
@@ -272,16 +271,14 @@ function Prospective() {
                           <TabsList className="flex justify-between w-full bg-transparent mt-3">
                             <TabsTrigger
                               value="critical"
-                              className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
-                            >
+                              className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]">
                               <SmallCriticalIcon className=" data-[state=active]:fill-[#B751FB]" />
                               Critical
                             </TabsTrigger>
 
                             <TabsTrigger
                               value="growth"
-                              className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
-                            >
+                              className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]">
                               <GrothTask className="h-[16px] w-[16px]  data-[state=active]:fill-[#B751FB]" />
                               Growth
                             </TabsTrigger>
@@ -289,13 +286,11 @@ function Prospective() {
 
                           <TabsContent
                             value="critical"
-                            className="space-y-1.5 md:space-y-2 mt-3 !w-full"
-                          >
+                            className="space-y-1.5 md:space-y-2 mt-3 !w-full">
                             {data2.critical.map((item, idx) => (
                               <div
                                 key={idx}
-                                className="flex justify-between text-sm w-full items-center rounded sm:rounded-[6px] border border-[#E4E7EB] sm:py-1.5 px-2 py-1 sm:px-2.5 font-semibold leading-[142%] -tracking-[0.28px] "
-                              >
+                                className="flex justify-between text-sm w-full items-center rounded sm:rounded-[6px] border border-[#E4E7EB] sm:py-1.5 px-2 py-1 sm:px-2.5 font-semibold leading-[142%] -tracking-[0.28px] ">
                                 <span>{item.title}</span>
                                 <span className="text-[#808188]">
                                   {item.days}
@@ -306,13 +301,11 @@ function Prospective() {
 
                           <TabsContent
                             value="growth"
-                            className="space-y-2 mt-3"
-                          >
+                            className="space-y-2 mt-3">
                             {data2.growth.map((item, idx) => (
                               <div
                                 key={idx}
-                                className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] "
-                              >
+                                className="flex justify-between items-center rounded-[6px] border border-[#E4E7EB] py-1.5 px-2.5 font-semibold leading-[142%] -tracking-[0.28px] ">
                                 <span>{item.title}</span>
                                 <span className="text-[#808188]">
                                   {item.days}
@@ -338,8 +331,7 @@ function Prospective() {
                       {itm.actionData.map((action, actionIndex) => (
                         <div
                           key={actionIndex}
-                          className="border rounded-[6px] md:rounded-[8px] md:p-2.5 p-2 lg:p-[15px] mt-2.5"
-                        >
+                          className="border rounded-[6px] md:rounded-[8px] md:p-2.5 p-2 lg:p-[15px] mt-2.5">
                           <div className="flex gap-[5px] flex-col">
                             <div className="flex justify-between gap-1">
                               <SmallHeading
@@ -348,7 +340,7 @@ function Prospective() {
                               />
                               <div className="flex gap-0.5 md:gap-2.5 items-center">
                                 <Image
-                                  src={"/assest/svg/prsone-img.svg"}
+                                  src={'/assest/svg/prsone-img.svg'}
                                   width={18}
                                   height={18}
                                   alt="prsone img"
@@ -362,8 +354,7 @@ function Prospective() {
                             {action.pera.map((pera, peraIdx) => (
                               <p
                                 key={peraIdx}
-                                className="text-xs font-medium leading-[140%] -tracking-[0.24px]"
-                              >
+                                className="text-xs font-medium leading-[140%] -tracking-[0.24px]">
                                 <span>{pera.stronText}</span>
                                 <span className="text-[rgba(3,7,18,0.60)]">
                                   {pera.text}
@@ -378,12 +369,7 @@ function Prospective() {
                 ))}
 
                 <div className="px-[30px] flex justify-end gap-2 pb-3">
-                  <SecondryBtn
-                    title="Cancel"
-                    className="w-max"
-                    onClick={() => setOpen(false)}
-                  />
-                  <VisitReportMudal />
+                  <Reportmodal />
                 </div>
               </div>
             </>
@@ -391,7 +377,7 @@ function Prospective() {
         />
       </TabsContent>
     </div>
-  );
+  )
 }
 
-export default Prospective;
+export default Prospective
