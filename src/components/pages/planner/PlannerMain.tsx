@@ -18,6 +18,7 @@ import Registeredtab from "../partner/Registeredtab";
 import Prospectivetab from "../partner/Prospectivetab";
 import FollowUpPlans from "./FollowUpPlans";
 import Followankit from "./Followankit";
+import FollowPlan from "./FollowPlan";
 
 function PlannerMain() {
   const [selectedUser, setSelectedUser] = useState<null>(null);
@@ -37,14 +38,14 @@ function PlannerMain() {
                 value: "visitPlans",
                 title: "Visit Plans",
                 icon: <Iconregisterdtab />,
-                content: <Followankit />,
+                content: <FollowPlan />,
               },
               {
                 id: "followup",
                 value: "followup",
                 title: "Follow up Plans",
                 icon: <Iconprospectivetab />,
-                content: <Followankit />,
+                content: <FollowPlan />,
               },
             ]}
             value={activeTab}

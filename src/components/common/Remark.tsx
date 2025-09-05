@@ -31,7 +31,7 @@ export default function Remark() {
   return (
     <div
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full  mt-6 space-y-2.5"
+      className="w-full md:mt-6 sm:mt-5 mt-4 space-y-2.5"
     >
       <label className="block text-base font-semibold leading-[125%] -tracking-[0.32px] text-[#030712]">
         Remarks

@@ -10,7 +10,7 @@ export default function CustomSlider() {
   const percentage = ((value - min) / (max - min)) * 100;
 
   return (
-    <div className="w-full  mx-auto flex items-center gap-6 mt-[30px] ">
+    <div className="w-full  mx-auto flex items-center gap-6 lg:mt-[30px] md:mt-8 sm:mt-5 mt-4 ">
       {/* Top Labels */}
 
       {/* Slider Wrapper */}
@@ -40,7 +40,7 @@ export default function CustomSlider() {
           className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
         />
       </div>
-      <div className="flex text-nowrap mb-2 text-xl font-semibold leading-[100%] -tracking-[0.4px] text-[#B751FB]">
+      <div className="flex text-nowrap mb-2 lg:text-xl md:text-lg sm:text-base textsm font-semibold leading-[100%] -tracking-[0.4px] text-[#B751FB]">
         {/* <span>{min}</span> */}
         <span>{value.toFixed(2)}</span>
         <span> / 10</span>
