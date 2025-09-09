@@ -14,7 +14,7 @@ import { PlusIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -26,11 +26,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetTitle,
 } from "@/components/ui/sheet";
@@ -46,7 +44,7 @@ const formSchema = z.object({
 });
 export default function AssgnPartner() {
   const [open, setOpen] = useState(false);
-  const [image, setImage] = useState<string | null>(null);
+  // const [image, setImage] = useState<string | null>(null);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {

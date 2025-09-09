@@ -1,7 +1,6 @@
 "use client";
 import SecondryBtn from "@/components/common/SecondryBtn";
 import React, { useState } from "react";
-import VisitReportMudal from "../insights/VisitReportMudal";
 import Image from "next/image";
 import SmallHeading from "@/components/common/SmallHeading";
 import {
@@ -16,7 +15,6 @@ import {
   PromoteIcon,
   PromoteIcon2,
   SearchIcon,
-  SmallCriticalIcon,
   SmallEyeIcon,
   ViewReportIcon,
 } from "@/components/helper/Icon2";

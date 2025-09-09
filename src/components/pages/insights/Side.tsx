@@ -25,7 +25,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ScheduleVisit from "./ScheduleVisit";
 import ScheduleFollowUp from "./ScheduleFollowUp";
 import { SheetFooter } from "@/components/ui/sheet";
-import Assignpartner from "../partner/Assignpartner";
 import AssgnPartner from "./AssgnPartner";
 
 interface Issue {
