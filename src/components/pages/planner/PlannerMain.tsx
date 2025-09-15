@@ -2,27 +2,19 @@
 import DotColor from "@/components/common/DotColor";
 import TopCommon from "@/components/common/TopCommon";
 import React, { useState } from "react";
-import SelecteStatus from "../insights/SelecteStatus";
-import { Button } from "@/components/ui/button";
+import {} from "@/components/ui/button";
 import Addnewpartner from "../partner/Addnewpartner";
 import {
-  Fluentcard,
-  IconChevronleft,
-  IconChevronright,
   Iconprospectivetab,
   Iconregisterdtab,
-  Tablericon,
 } from "@/components/helper/Icon1";
 import Tab from "@/components/common/Tab";
-import Registeredtab from "../partner/Registeredtab";
-import Prospectivetab from "../partner/Prospectivetab";
-import FollowUpPlans from "./FollowUpPlans";
-import Followankit from "./Followankit";
+
 import FollowPlan from "./FollowPlan";
 
 function PlannerMain() {
-  const [selectedUser, setSelectedUser] = useState<null>(null);
-  const [open, setOpen] = useState(false);
+  // const [selectedUser, setSelectedUser] = useState<null>(null);
+  // const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("visitPlans");
   console.log(activeTab);
 

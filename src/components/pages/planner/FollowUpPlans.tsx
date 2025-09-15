@@ -1,11 +1,6 @@
 "use client";
-import Selecte from "@/components/common/Selecte";
 import TableCommon from "@/components/common/TableCommon";
-import {
-  followUp,
-  followUpPlans,
-  optionsList,
-} from "@/components/helper/Helper2";
+import { followUpPlans, optionsList } from "@/components/helper/Helper2";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React, { useState } from "react";
 import Filter from "../insights/Filter";
@@ -22,7 +17,7 @@ import Image from "next/image";
 import SelecteStatus from "./SelecteStatus";
 
 function FollowUpPlans() {
-  const [selectedUser, setSelectedUser] = useState<null>(null);
+  // const [selectedUser, setSelectedUser] = useState<null>(null);
   const [open, setOpen] = useState(false);
 
   // Changed to handle multiple selections per option
@@ -138,7 +133,7 @@ function FollowUpPlans() {
               <Filter />
               <div className="flex gap-2 items-center">
                 <button onClick={() => setOpen(true)}>
-                  <Fluentcard className="" />
+                  <Fluentcard />
                 </button>
                 <button onClick={() => setOpen(true)}>
                   <Tablericon />

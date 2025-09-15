@@ -15,7 +15,7 @@ import { PlusIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { check, z } from "zod";
 import {
@@ -31,7 +31,6 @@ import { Input } from "@/components/ui/input";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetTitle,
 } from "@/components/ui/sheet";
@@ -47,7 +46,7 @@ const formSchema = z.object({
 });
 export default function ScheduleVisit() {
   const [open, setOpen] = useState(false);
-  const [image, setImage] = useState<string | null>(null);
+  // const [image, setImage] = useState<string | null>(null);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -206,7 +205,7 @@ export default function ScheduleVisit() {
                 <FormField
                   control={form.control}
                   name="withRm"
-                  render={({ ...field }) => (
+                  render={({}) => (
                     <FormItem className="flex">
                       <FormControl>
                         <Checkbox id="joinVisitRm" />

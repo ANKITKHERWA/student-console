@@ -2,7 +2,6 @@ import {
   AppointmentBlueIcon,
   AppointmentGreenIcon,
   CardDateIcon,
-  ClenderIcon,
   DetailsIcon,
   DollerIcon,
   EarningIcon,

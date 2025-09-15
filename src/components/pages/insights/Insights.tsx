@@ -40,8 +40,6 @@ import SmallHeading from "@/components/common/SmallHeading";
 import SecondryBtn from "@/components/common/SecondryBtn";
 import VisitReportMudal from "./VisitReportMudal";
 import StatusBadgeSec from "@/components/common/StatusBadgeSec";
-import KebabMenucommon from "@/components/common/KebabMenuCommon";
-import NewStatusbadge from "@/components/common/NewStatusbadge";
 import {
   Select,
   SelectContent,
@@ -52,8 +50,8 @@ import {
 } from "@/components/ui/select";
 import { SheetClose } from "@/components/ui/sheet";
 function Insights() {
-  const [selectedUser, setSelectedUser] = useState<null>(null);
-  const [open, setOpen] = useState(false);
+  // const [selectedUser, setSelectedUser] = useState<null>(null);
+  // const [open, setOpen] = useState(false);
 
   // Changed to handle multiple selections per option
   const [selectedValues, setSelectedValues] = useState<

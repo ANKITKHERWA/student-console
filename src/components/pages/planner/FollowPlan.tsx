@@ -1,9 +1,7 @@
 "use client";
-import Selecte from "@/components/common/Selecte";
 import TableCommon from "@/components/common/TableCommon";
 import {
   data2,
-  followUp,
   followUpPlans,
   optionsList,
   sidebarData,
@@ -45,7 +43,7 @@ import SecondryBtn from "@/components/common/SecondryBtn";
 import VisitReportMudal from "../insights/VisitReportMudal";
 
 function FollowPlan() {
-  const [selectedUser, setSelectedUser] = useState<null>(null);
+  // const [selectedUser, setSelectedUser] = useState<null>(null);
   const [open, setOpen] = useState(false);
 
   const [selectedValues, setSelectedValues] = useState<
