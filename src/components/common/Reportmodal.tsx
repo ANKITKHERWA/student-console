@@ -91,10 +91,10 @@ function Reportmodal() {
           Add Visit Report
         </DialogTrigger>
 
-        <DialogContent className="p-0 lg:w-[50%] sm:w-[70%] w-full h-[90%] max-w-none! lg:overflow-hidden overflow-auto  rounded-lg ">
+        <DialogContent className="p-0 lg:w-[50%] sm:w-[70%] w-full h-[90%] max-w-none! lg:overflow-hidden overflow-auto  rounded-lg gap-0">
           {modalData.map((item, index) => (
             <div key={index}>
-              <DialogHeader className="px-4 py-5 w-full border-b-1 border-gray text-start">
+              <DialogHeader className="px-4 py-5 w-full border-b border-gray text-start">
                 <DialogTitle>Visit Report</DialogTitle>
               </DialogHeader>
               <Tabs
@@ -155,7 +155,7 @@ function Reportmodal() {
                         <TabsList className="flex !items-start !h-max  !flex-col !bg-transparent w-full !p-0">
                           <TabsTrigger
                             value="Profile"
-                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                            className={`flex items-center gap-3 py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
                               tabValue === 'Profile' ? '' : ''
                             }`}
                             onClick={() => setTabValue('Profile')}>
@@ -164,7 +164,7 @@ function Reportmodal() {
                           </TabsTrigger>
                           <TabsTrigger
                             value="Manage"
-                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                            className={`flex items-center gap-3 py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
                               tabValue === 'Manage' ? '' : ''
                             }`}
                             onClick={() => setTabValue('Manage')}>
@@ -173,7 +173,7 @@ function Reportmodal() {
                           </TabsTrigger>
                           <TabsTrigger
                             value="Grow"
-                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                            className={`flex items-center gap-3 py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
                               tabValue === 'Grow' ? '' : ''
                             }`}
                             onClick={() => setTabValue('Grow')}>
@@ -182,7 +182,7 @@ function Reportmodal() {
                           </TabsTrigger>
                           <TabsTrigger
                             value="Promote"
-                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                            className={`flex items-center gap-3 py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
                               tabValue === 'Promote' ? '' : ''
                             }`}
                             onClick={() => setTabValue('Promote')}>
@@ -191,7 +191,7 @@ function Reportmodal() {
                           </TabsTrigger>
                           <TabsTrigger
                             value="Outcome"
-                            className={`flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
+                            className={`flex items-center gap-3 py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start${
                               tabValue === 'Outcome' ? '' : ''
                             }`}
                             onClick={() => setTabValue('Outcome')}>
@@ -202,11 +202,14 @@ function Reportmodal() {
                       </div>
                     </div>
 
-                    <div className="w-full ">
+                    <div className="w-full">
                       <TabsContent
                         value={'Profile'}
-                        className="px-6 pt-2 w-full pb-21">
-                        <Heading title="Porfile" className=" text-xl! py-2" />
+                        className="px-6 w-full pb-17">
+                        <Heading
+                          title="Porfile"
+                          className=" !text-base font-semibold pt-7.5 pb-5"
+                        />
                         <Form {...form}>
                           <form
                             className="space-y-6"
@@ -238,7 +241,7 @@ function Reportmodal() {
                               control={form.control}
                               name="decisionMaker"
                               render={({ field }) => (
-                                <FormItem>
+                                <FormItem className="flex items-center gap-2 mb-5">
                                   <FormControl>
                                     <Checkbox
                                       checked={field.value}
@@ -256,17 +259,17 @@ function Reportmodal() {
                             {/* Contact Person Role */}
                             <FormField
                               control={form.control}
-                              name="software"
+                              name="Contact Person Role"
                               render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-sm font-semibold">
+                                <FormItem className="mb-4">
+                                  <FormLabel className="text-sm font-semibold ">
                                     Contact Person Role
                                   </FormLabel>
                                   <FormControl>
                                     <Select
                                       value={field.value}
                                       onValueChange={field.onChange}>
-                                      <SelectTrigger className="w-full">
+                                      <SelectTrigger className="w-full ">
                                         <SelectValue
                                           className="text-sm font-semibold "
                                           placeholder="Select Contact Person Role"
@@ -295,7 +298,7 @@ function Reportmodal() {
                               control={form.control}
                               name="phone"
                               render={({ field }) => (
-                                <FormItem>
+                                <FormItem className="mb-4">
                                   <FormLabel className="text-sm font-semibold">
                                     Contact Person Phone
                                   </FormLabel>
@@ -316,7 +319,7 @@ function Reportmodal() {
                               control={form.control}
                               name="software"
                               render={({ field }) => (
-                                <FormItem>
+                                <FormItem className="mb-7.5">
                                   <FormLabel className="text-sm font-semibold">
                                     Software Currently Used
                                   </FormLabel>
@@ -353,10 +356,11 @@ function Reportmodal() {
                               control={form.control}
                               name="seats"
                               render={({ field }) => (
-                                <FormItem>
+                                <FormItem className="gap-5">
                                   <FormLabel>Size of salon</FormLabel>
                                   <FormControl>
                                     <RadioGroup
+                                      className="gap-3.5"
                                       value={field.value}
                                       onValueChange={field.onChange}>
                                       <div className="flex gap-4 items-center">
@@ -399,11 +403,11 @@ function Reportmodal() {
                       </TabsContent>
                       <TabsContent
                         value={'Manage'}
-                        className="px-6 pt-2 w-full lg:pb-61 pb-10">
-                        <div className="max-w-xl ">
+                        className="px-6 w-full lg:pb-76 pb-10">
+                        <div className="max-w-xl">
                           <Heading
                             title="Management Needs Assessment"
-                            className=" text-base! font-semibold py-2"
+                            className="!text-base font-semibold pt-7.5 pb-5"
                           />
                           <div>
                             {ManageratingLabels.map((text) => (
@@ -413,7 +417,7 @@ function Reportmodal() {
                             ))}
                           </div>
                           {Managequestions.map((q) => (
-                            <div key={q.key} className="space-y-2 py-2">
+                            <div key={q.key} className="space-y-3 py-3.5">
                               <div className="text-sm font-semibold">
                                 {q.label}
                               </div>
@@ -421,7 +425,7 @@ function Reportmodal() {
                                 min={1}
                                 max={5}
                                 step={1}
-                                value={[values[q.key]]}
+                                value={[values[q.key] ?? 1]}
                                 onValueChange={([val]) =>
                                   setValues((vals) => ({
                                     ...vals,
@@ -441,11 +445,11 @@ function Reportmodal() {
                       </TabsContent>
                       <TabsContent
                         value={'Grow'}
-                        className="p-6 w-full lg:pb-61 pb-10">
-                        <div className="max-w-xl ">
+                        className="px-6 w-full lg:pb-72 pb-10">
+                        <div className="max-w-xl">
                           <Heading
                             title="Growth Needs Assessment"
-                            className=" text-base! font-semibold py-2"
+                            className=" text-base! font-semibold pt-7.5 pb-5"
                           />
                           <div>
                             {GrowratingLabels.map((text) => (
@@ -455,7 +459,7 @@ function Reportmodal() {
                             ))}
                           </div>
                           {Growquestions.map((q) => (
-                            <div key={q.key} className="space-y-2 py-2">
+                            <div key={q.key} className="space-y-3 py-3.5">
                               <div className="text-sm font-semibold">
                                 {q.label}
                               </div>
@@ -463,7 +467,7 @@ function Reportmodal() {
                                 min={1}
                                 max={5}
                                 step={1}
-                                value={[values[q.key]]}
+                                value={[values[q.key] ?? 2]}
                                 onValueChange={([val]) =>
                                   setValues((vals) => ({
                                     ...vals,
@@ -483,23 +487,21 @@ function Reportmodal() {
                       </TabsContent>
                       <TabsContent
                         value={'Promote'}
-                        className="p-6 w-full lg:pb-61 pb-10">
+                        className="px-6 w-full lg:pb-72 pb-10">
                         <div className="max-w-xl ">
                           <Heading
-                            title="Management Needs Assessment"
-                            className=" text-base! font-semibold py-2"
+                            title="Promotion needs assessment"
+                            className=" !text-base font-semibold pt-7.5 pb-5"
                           />
                           <div>
                             {PromoteratingLabels.map((text) => (
-                              <div
-                                key={text}
-                                className="text-muted-foreground text-[10px]">
+                              <div key={text} className=" text-[10px]">
                                 {text}
                               </div>
                             ))}
                           </div>
                           {Promotequestions.map((q) => (
-                            <div key={q.key} className="space-y-2 py-2">
+                            <div key={q.key} className="space-y-3 py-3.5">
                               <div className="text-sm font-semibold">
                                 {q.label}
                               </div>
@@ -507,7 +509,7 @@ function Reportmodal() {
                                 min={1}
                                 max={5}
                                 step={1}
-                                value={[values[q.key]]}
+                                value={[values[q.key] ?? 3]}
                                 onValueChange={([val]) =>
                                   setValues((vals) => ({
                                     ...vals,
@@ -527,8 +529,11 @@ function Reportmodal() {
                       </TabsContent>
                       <TabsContent
                         value={'Outcome'}
-                        className="px-6 pt-2 w-full lg:pb-20 pb-10">
-                        <Heading title="Outcome" className=" text-xl! py-2" />
+                        className="px-6  w-full lg:pb-34 pb-10">
+                        <Heading
+                          title="Outcome"
+                          className=" !text-base pt-7.5 pb-5"
+                        />
                         <Form {...form}>
                           <form
                             className="space-y-6"
@@ -804,9 +809,7 @@ function Reportmodal() {
               <Button onClick={handleNext}>Next</Button>
             )}
             {tabValue === 'Outcome' && (
-              <Button type="submit" onClick={form.handleSubmit(console.log)}>
-                Submit
-              </Button>
+              <Button onClick={form.handleSubmit(console.log)}>Submit</Button>
             )}
           </DialogFooter>
         </DialogContent>

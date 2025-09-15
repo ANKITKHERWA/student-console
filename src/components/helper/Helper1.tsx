@@ -1566,13 +1566,13 @@ export const mudalData = [
         data: [
           {
             icon: <SmallCalenderIcon />,
-            title: 'Visit Date: ',
-            titleData: ' 11 April 2025',
+            title: 'Visit Date: ',
+            titleData: ' 11 April 2025',
           },
           {
             icon: <OveralScoreIcon />,
-            title: 'Overall Score : ',
-            titleData: ' 35 / 50',
+            title: 'Overall Score : ',
+            titleData: ' 35 / 50',
           },
         ],
 
@@ -1594,7 +1594,7 @@ export const some = [
     tag: 'TC',
     phone: '+919876500101',
     email: 'aarav.sharma@example.com',
-    manages: ' 2 RM & 3 FE',
+    manages: ' 2 RM & 3 FE',
     totalSalons: 1100,
     dotclass: 'bg-green-500',
     tagclass: 'border-[#FFAB47] bg-[#FFEFDB]',
@@ -1608,7 +1608,7 @@ export const some = [
     tag: 'TC',
     phone: '+919876500101',
     email: 'tanya.hill@example.com',
-    manages: ' 2 RM & 3 FE',
+    manages: ' 2 RM & 3 FE',
     totalSalons: 1100,
     dotclass: 'bg-red-500',
     tagclass: 'border-[#FFAB47] bg-[#FFEFDB]',
@@ -3755,6 +3755,7 @@ export const ManageratingLabels = [
   '4 - needed',
   '5 - strongly needed',
 ]
+
 export const Growquestions = [
   { label: 'Voucher system', key: 'Voucher ' },
   { label: 'Memberships Programs', key: 'Memberships' },
@@ -3770,6 +3771,7 @@ export const GrowratingLabels = [
   '4 - needed',
   '5 - strongly needed',
 ]
+
 export const Promotequestions = [
   { label: 'Social Media Ads', key: 'Social Media' },
   { label: 'Creatives (Design Support)', key: 'Creatives' },
