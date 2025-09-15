@@ -6,6 +6,7 @@ import PrimaryBtn from "@/components/common/PrimaryBtn";
 import TextInput from "@/components/common/TextInput";
 import { MailIcon, ShowPassIcon } from "@/components/helper/Icon2";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -30,6 +31,18 @@ function Login() {
   const onSubmit = (data: LoginFormData) => {
     console.log("Login Data:", data);
   };
+  const { data: session, status } = useSession();
+
+  if (status === "loading") return <p>Loading...</p>;
+
+  if (session) {
+    return (
+      <>
+        <p>Signed in as {session.user?.email}</p>
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    );
+  }
   return (
     <div className="h-screen">
       <div className="lg:bg-[url('/assest/png/login-bg-img.png')] lg:bg-[length:50%_100%] bg-no-repeat bg-top md:bg-right h-full lg:pb-10 overflow-y-auto">
@@ -91,6 +104,7 @@ function Login() {
                     <GoogleBtn
                       title="Sign up with Google"
                       className="mt-3 md:mt-4"
+                      onClick={() => signIn("google")}
                     />
 
                     <p className="text-xs md:text-sm font-medium text-[#808188] justify-center md:mt-6 mt-5 lg:mt-8 leading-[142.857%] flex items-center text-center gap-1 -tracking-[0.28px]">
@@ -143,7 +157,7 @@ function Login() {
                   width={559}
                   height={572}
                   alt="dashboard img"
-                  className="mx-auto mt-6 md:mt-8 xl:mt-10"
+                  className="mx-auto mt-6 md:mt-8 xl:mt-10 h-[60vh]"
                 />
               </div>
             </div>
