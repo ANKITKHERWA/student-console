@@ -16,6 +16,7 @@ import PrimaryBtn from '@/components/common/PrimaryBtn'
 import GrowthTask from '@/components/common/GrowthTask'
 import CriticalTask from '@/components/common/CriticalTask'
 import { ActiveData } from '@/components/helper/Helper1'
+import Link from 'next/link'
 
 type Row = { month: string; desktop: number; active: number }
 
@@ -149,7 +150,12 @@ export default function ActiveTrend() {
               title="Critical tasks"
               className="sm:text-xl! text-base! text-[#030712] font-semibold leading-[120%] tracking-[-0.4px]"
             />
-            <PrimaryBtn className="sm:w-30! w-22! " title="view detials" />
+
+            <Link
+              className="sm:w-30! w-22! bg-[#B751FB] text-white rounded-[4px] text-center text-sm font-medium py-2.5 px-4 hover:opacity-90 transition"
+              href="/insights">
+              view detials
+            </Link>
           </div>
           <CriticalTask />
         </div>
@@ -160,7 +166,11 @@ export default function ActiveTrend() {
             title="Growth Task"
             className="sm:text-xl! text-base! text-[#030712] font-semibold leading-[120%] tracking-[-0.4px]"
           />
-          <PrimaryBtn className="sm:w-30! w-22! " title="view detials" />
+          <Link
+            className="sm:w-30! w-22! bg-[#B751FB] text-white rounded-[4px] text-center text-sm font-medium py-2.5 px-4 hover:opacity-90 transition"
+            href="/insights">
+            view detials
+          </Link>
         </div>
         <GrowthTask />
       </div>

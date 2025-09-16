@@ -1,3 +1,4 @@
+import { Route } from 'lucide-react'
 import DotColor from '../common/DotColor'
 import {
   Aaravsharma,
@@ -124,6 +125,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+9%',
     percentage: '+12%',
+    Route: '/insights',
   },
   {
     icon: <Iconactive />,
@@ -132,6 +134,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+2',
     percentage: '+8%',
+    Route: '/insights',
   },
   {
     icon: <Iconvisits />,
@@ -140,6 +143,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+2%',
     percentage: '+8%',
+    Route: '/planner',
   },
   {
     icon: <Iconsales />,
@@ -148,6 +152,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+9%',
     percentage: '+6%',
+    Route: '/sales',
   },
   {
     icon: <Iconappointment2 />,
@@ -156,6 +161,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+9%',
     percentage: '+2%',
+    Route: '/appointment',
   },
   {
     icon: <Iconneeds />,
@@ -164,6 +170,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+2%',
     percentage: '+2%',
+    Route: '/insights',
   },
 ]
 export const performDetail = [
@@ -243,62 +250,74 @@ export const TaskDetail = [
     Icon: <Nosale />,
     title: 'No Sale (7days)',
     pera: '28 salons',
+    Route: '/insights',
   },
   {
     Icon: <Noeasy />,
     title: 'No Easy Share (30 days)',
     pera: '28 salons',
+    Route: '/insights',
   },
   {
     Icon: <Noapoitment />,
     title: 'No Appointment(7 days)',
     pera: '17 salons',
+    Route: '/insights',
   },
   {
     Icon: <Creative />,
     title: 'Creative not used (30 d)',
     pera: '17 salons',
+    Route: '/insights',
   },
   {
     Icon: <Catlog />,
     title: 'Catalog Incomplete',
     pera: '13 salons',
+    Route: '/insights',
   },
   {
     Icon: <Adsnot />,
     title: 'Ads not used (60 days)',
     pera: '13 salons',
+    Route: '/insights',
   },
   {
     Icon: <Config />,
     title: 'Configure Offer Incomplete',
     pera: '21 salons',
+    Route: '/insights',
   },
   {
     Icon: <Msgnot />,
     title: 'Msg Center not used (30 d)',
     pera: '21 salons',
+    Route: '/insights',
   },
   {
     Icon: <Nopromo />,
     title: 'No Promo code (60 days )',
     pera: '21 salons',
+    Route: '/insights',
   },
   {
     Icon: <Getfeat />,
     title: 'Get Feat. not used (60 days)',
     pera: '21 salons',
+    Route: '/insights',
   },
   {
     Icon: <Product />,
     title: 'Product not added ',
     pera: '21 salons',
+    Route: '/insights',
   },
 
   {
     Icon: <Partnot />,
     title: 'Partner not visited (30 days)',
     pera: '21 salons',
+    Route: '/insights',
   },
 ]
 export const CriticalDetail = [
@@ -306,31 +325,37 @@ export const CriticalDetail = [
     Icon: <NotFullyOnboarded />,
     title: 'Not Fully Onboarded',
     pera: '14 salons',
+    Route: '/insights',
   },
   {
     Icon: <OffPeakhoursnotset />,
     title: 'Off-Peak hours not set',
     pera: '8 salons',
+    Route: '/insights',
   },
   {
     Icon: <Bankaccountnotlinked />,
     title: 'Bank account not linked',
     pera: '10 salons',
+    Route: '/insights',
   },
   {
     Icon: <Nomonthlytargetset />,
     title: 'No monthly target set',
     pera: '11 salons',
+    Route: '/insights',
   },
   {
     Icon: <Staffnotadded />,
     title: 'Staff not added / incomplete',
     pera: '13 salons',
+    Route: '/insights',
   },
   {
     Icon: <SubscriptionOverdue />,
     title: 'Subscription Overdue',
     pera: '5 salons',
+    Route: '/insights',
   },
 ]
 export const GrowthData = [

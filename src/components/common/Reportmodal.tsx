@@ -809,7 +809,11 @@ function Reportmodal() {
               <Button onClick={handleNext}>Next</Button>
             )}
             {tabValue === 'Outcome' && (
-              <Button onClick={form.handleSubmit(console.log)}>Submit</Button>
+              <Button
+                onClick={form.handleSubmit(console.log)}
+                className="cursor-pointer">
+                Submit
+              </Button>
             )}
           </DialogFooter>
         </DialogContent>
