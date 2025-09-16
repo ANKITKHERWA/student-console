@@ -7,7 +7,6 @@ import Selecte from "@/components/common/Selecte";
 import TableCommon from "@/components/common/TableCommon";
 import TopCommon from "@/components/common/TopCommon";
 import {
-  monthEarning,
   selecteMemberEarning,
   territoryCardDetails,
   territoryTableData,

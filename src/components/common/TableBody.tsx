@@ -97,10 +97,6 @@ const TableBody: React.FC<TableData> = ({
         >
           {bodyitems.td.map((tdItem, tdIndex) => (
             <td
-              // onClick={() => {
-              //   setSelectedUser?.(bodyitems);
-              //   setOpen?.(true);
-              // }}
               key={tdIndex}
               className={`md:px-3 font-semibold px-1 sm:px-2 py-2 min-h-[45px] md:min-h-[52px] truncate max-w-[200px] sm:text-sm text-xs ${className}`}
             >
@@ -145,7 +141,14 @@ const TableBody: React.FC<TableData> = ({
 
               {/* Salon name */}
               {tdItem.saloneName?.map((salon, saloneIndex) => (
-                <div key={saloneIndex} className="flex items-center gap-2">
+                <div
+                  key={saloneIndex}
+                  className="flex items-center gap-2 cursor-pointer"
+                  onClick={() => {
+                    setSelectedUser?.(bodyitems);
+                    setOpen?.(true);
+                  }}
+                >
                   <Image src={salon.img} width={20} height={20} alt="img" />
                   <div className="flex flex-col gap-0.5">
                     <span>{salon.name}</span>

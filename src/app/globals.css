@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -136,14 +136,18 @@
   background: transparent !important;
 }
 
-#nextFollow[type='date']::-webkit-calendar-picker-indicator {
+#nextFollow[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
 }
 
-input[type='file'] {
+input[type="file"] {
   color: transparent;
 }
-.scrollbarNone{
+.scrollbarNone {
   scrollbar-width: none;
+}
+
+.underline-none {
+  text-decoration: none;
 }

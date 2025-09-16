@@ -1525,7 +1525,7 @@ export const teamCardData = [
 
 export const someData = [
   {
-    heading: "TC List ( 2 )",
+    heading: "TC List ( 1 )",
     tcList: [
       {
         status: "Working",
@@ -1538,82 +1538,6 @@ export const someData = [
           {
             phone: "+919876500101",
             email: "tanya.hill@example.com",
-            manages: " 2 RM & 3 FE",
-            totalSalons: 1100,
-            dotclass: "bg-red-500",
-            tagclass: "border-[#FFAB47] bg-[#F]",
-            ganderclass: "bg-[#E4E7EB] border-[#808188]",
-          },
-        ],
-      },
-      {
-        status: "Not Working",
-        avatar: <Priyasingh />,
-        name: "Priya Singh",
-        icon: <MaleteamCard />,
-        gender: "Female",
-        tag: "RM",
-        subData: [
-          {
-            phone: "+919876500101",
-            email: "tanya.hill@example.com",
-            manages: " 2 RM & 3 FE",
-            totalSalons: 1100,
-            dotclass: "bg-red-500",
-            tagclass: "border-[#FFAB47] bg-[#F]",
-            ganderclass: "bg-[#E4E7EB] border-[#808188]",
-          },
-        ],
-      },
-      {
-        status: "Working",
-        avatar: <Priyasingh />,
-        name: "Priya Singh",
-        icon: <MaleteamCard />,
-        gender: "Female",
-        tag: "FE",
-        subData: [
-          {
-            phone: "+919876500101",
-            email: "priya.hill@example.com",
-            manages: " 2 RM & 3 FE",
-            totalSalons: 1100,
-            dotclass: "bg-red-500",
-            tagclass: "border-[#FFAB47] bg-[#F]",
-            ganderclass: "bg-[#E4E7EB] border-[#808188]",
-          },
-        ],
-      },
-      {
-        status: "Working",
-        avatar: <Priyasingh />,
-        name: "Priya Singh",
-        icon: <MaleteamCard />,
-        gender: "Female",
-        tag: "FE",
-        subData: [
-          {
-            phone: "+919876500101",
-            email: "priya.hill@example.com",
-            manages: " 2 RM & 3 FE",
-            totalSalons: 1100,
-            dotclass: "bg-red-500",
-            tagclass: "border-[#FFAB47] bg-[#F]",
-            ganderclass: "bg-[#E4E7EB] border-[#808188]",
-          },
-        ],
-      },
-      {
-        status: "Working",
-        avatar: <Priyasingh />,
-        name: "Priya Singh",
-        icon: <MaleteamCard />,
-        gender: "Female",
-        tag: "FE",
-        subData: [
-          {
-            phone: "+919876500101",
-            email: "priya.hill@example.com",
             manages: " 2 RM & 3 FE",
             totalSalons: 1100,
             dotclass: "bg-red-500",
@@ -1625,15 +1549,39 @@ export const someData = [
     ],
   },
   {
-    heading: "TC List ( 2 )",
+    heading: "RM List ( 1 )",
     tcList: [
       {
         status: "Working",
         avatar: <Aaravsharma />,
-        name: "Aarav Sharma",
+        name: "Nishant",
         icon: <MaleteamCard />,
         gender: "Male",
-        tag: "TC",
+        tag: "RM",
+        subData: [
+          {
+            phone: "+911234567890",
+            email: "tanya.hill@example.com",
+            manages: " 2 RM & 3 FE",
+            totalSalons: 1100,
+            dotclass: "bg-red-500",
+            tagclass: "border-[#FFAB47] bg-[#F]",
+            ganderclass: "bg-[#E4E7EB] border-[#808188]",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    heading: "FE List ( 1 )",
+    tcList: [
+      {
+        status: "Working",
+        avatar: <Aaravsharma />,
+        name: "Prashant",
+        icon: <MaleteamCard />,
+        gender: "Male",
+        tag: "FE",
         subData: [
           {
             phone: "+919876500101",
@@ -1647,12 +1595,12 @@ export const someData = [
         ],
       },
       {
-        status: "Not Working",
-        avatar: <Priyasingh />,
-        name: "Priya Singh",
+        status: "Working",
+        avatar: <Aaravsharma />,
+        name: "Prashant",
         icon: <MaleteamCard />,
-        gender: "Female",
-        tag: "RM",
+        gender: "Male",
+        tag: "FE",
         subData: [
           {
             phone: "+919876500101",

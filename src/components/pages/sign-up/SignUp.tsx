@@ -157,7 +157,7 @@ function SignUp() {
                   width={559}
                   height={572}
                   alt="dashboard img"
-                  className="mx-auto mt-6 md:mt-8 xl:mt-10"
+                  className=" mt-6 md:mt-8 xl:mt-10 h-[55vh] w-auto"
                 />
               </div>
             </div>

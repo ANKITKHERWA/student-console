@@ -33,7 +33,7 @@ function Login() {
   };
   const { data: session, status } = useSession();
 
-  if (status === "loading") return <p>Loading...</p>;
+  // if (status === "loading") return <p>Loading...</p>;
 
   if (session) {
     return (
@@ -129,7 +129,7 @@ function Login() {
                 </Link>
               </div>
             </div>
-            <div className="text-[#fff] md:w-1/2 lg:mt-10 md:mt-8 xl:mt-[82px] lg:ps-8 xl:ps-10 lg:pr-8 md:px-6 sm:px-5 px-4 lg:flex flex-col justify-center hidden mt-auto min-h-fit">
+            <div className="text-[#fff] md:w-1/2 lg:mt-10 md:mt-8 xl:mt-20.5   xl:px-10 lg:px-8 md:px-6 sm:px-5 px-4 lg:flex flex-col justify-center hidden mt-auto min-h-fit">
               <Link
                 href={"/"}
                 className="md:py-6 sm:py-5 py-4 md:hidden block max-w-[120px] "
@@ -144,11 +144,11 @@ function Login() {
               </Link>
               <Heading
                 title="Now monitoring all activities is very easy to do"
-                className="!text-[#fff] md:-!text-3xl !text-2xl lg:!text-[36px] -tracking-[0.72px] !leading-[140%] max-w-[640px] md:text-start text-center"
+                className="!text-[#fff] md:-!text-3xl !text-2xl lg:!text-[36px] -tracking-[0.72px] !leading-[140%] max-w-[640px] md:text-start text-center "
               />
               <Pera
                 title="Qorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-                className="!text-[rgba(255,255,255,0.8)] lg:!text-lg md:!text-base !text-sm xl:!text-xl font-medium mt-3 !leading-[140%] !-tracking-[0.4px] md:text-start text-center"
+                className="!text-[rgba(255,255,255,0.8)] lg:!text-lg md:!text-base !text-sm xl:!text-xl font-medium mt-3 !leading-[140%] !-tracking-[0.4px] md:text-start text-center max-w-[640px]"
               />
 
               <div>
@@ -157,7 +157,7 @@ function Login() {
                   width={559}
                   height={572}
                   alt="dashboard img"
-                  className="mx-auto mt-6 md:mt-8 xl:mt-10 h-[60vh]"
+                  className=" mt-6 md:mt-8 xl:mt-10 h-[55vh] w-auto"
                 />
               </div>
             </div>

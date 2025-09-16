@@ -1,9 +1,9 @@
-import TopCommon from '@/components/common/TopCommon'
-import React from 'react'
-import Card from './Card'
-import Pera from '@/components/common/Pera'
-import Search from '@/components/common/Search'
-import { Fluentcard, Tablericon } from '@/components/helper/Icon1'
+import TopCommon from "@/components/common/TopCommon";
+import React from "react";
+import Card from "./Card";
+import Pera from "@/components/common/Pera";
+import Search from "@/components/common/Search";
+import { Fluentcard, Tablericon } from "@/components/helper/Icon1";
 
 function Team() {
   return (
@@ -20,12 +20,10 @@ function Team() {
             <Tablericon />
           </div>
         </div>
-        <div className="px-6 mt-7">
-          <Card />
-        </div>
+        <div className="px-6 mt-7">{/* <Card /> */}</div>
       </div>
     </>
-  )
+  );
 }
 
-export default Team
+export default Team;

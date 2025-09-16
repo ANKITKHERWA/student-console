@@ -12,8 +12,26 @@ import { Button } from "@/components/ui/button";
 
 function Filter() {
   const [selectedFilter, setSelectedFilter] = React.useState("All");
+
+  // Temporary calendar selection
   const [date, setDate] = React.useState<Date | undefined>(new Date());
-  const [open, setOpen] = React.useState(false); // ← add this state
+
+  // Final applied date (sirf Apply ke baad update hoga)
+  const [appliedDate, setAppliedDate] = React.useState<Date | undefined>(
+    undefined
+  );
+
+  const [open, setOpen] = React.useState(false);
+
+  // format date
+  const formatDate = (d: Date | undefined) => {
+    if (!d) return "Filter by date";
+    return d.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
 
   return (
     <div>
@@ -21,10 +39,11 @@ function Filter() {
         <DropdownMenuTrigger asChild className="!ring-0 !w-full">
           <button
             className="flex items-center gap-1.5 text-[#A8A9AE] text-sm font-medium leading-[142%] tracking-[0.28px] py-1.5 px-3 rounded-[6px] border !ring-0 hover:bg-[#F3F4F6] w-full text-nowrap"
-            onClick={() => setOpen(true)} // ← open dropdown on trigger click
+            onClick={() => setOpen(true)}
           >
             <FilterIcon />
-            Filter by date
+            {/* Ab sirf appliedDate dikhayenge */}
+            {appliedDate ? formatDate(appliedDate) : "Filter by date"}
           </button>
         </DropdownMenuTrigger>
 
@@ -42,7 +61,7 @@ function Filter() {
                   className={`flex items-center gap-1 ps-4  p-[5.5px] hover:bg-[#F1DCFF] transition-all duration-200`}
                 >
                   {selectedFilter === filter.id && <SelectRightIcon />}
-                  <span>{filter.title}</span>
+                  <span className="cursor-pointer">{filter.title}</span>
                 </div>
               ))}
             </div>
@@ -64,9 +83,10 @@ function Filter() {
                 </Button>
                 <Button
                   onClick={() => {
+                    setAppliedDate(date); // ✅ sirf Apply pe update
                     console.log("Selected Filter:", selectedFilter);
                     console.log("Selected Date:", date);
-                    setOpen(false); // optionally close on apply
+                    setOpen(false);
                   }}
                 >
                   Apply
