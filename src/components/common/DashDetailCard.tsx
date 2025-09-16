@@ -1,14 +1,18 @@
+'use client'
 import React from 'react'
 import Pera from './Pera'
 
 import { cardsDetail } from '../helper/Helper1'
+import { useRouter } from 'next/navigation'
 
 function DashDetailCard() {
+  const router = useRouter()
   return (
     <>
       <div className="w-full flex justify-between flex-wrap  mt-6 px-6">
         {cardsDetail.map((card, index) => (
           <div
+            onClick={() => router.push(card.Route)}
             key={index}
             className="border-2 border-[#E4E7EB] bg-white rounded-[8px] p-4 mb-4 lg:w-[32%] md:w-[49%] w-full cursor-pointer hover:bg-[#EAEEF5] transition-all duration-300">
             <p className="text-[#030712] text-base font-semibold leading-[150%] tracking-[-0.32px] flex items-center gap-3">

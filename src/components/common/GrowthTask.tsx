@@ -1,16 +1,20 @@
+'use client'
 import React from 'react'
 
 import { TaskDetail } from '../helper/Helper1'
 import Heading from './Heading'
 import Pera from './Pera'
+import { useRouter } from 'next/navigation'
 
 function GrowthTask() {
   console.log(TaskDetail)
+  const router = useRouter()
 
   return (
     <div className="w-full md:grid grid-cols-2  gap-5 md:pt-5 pt-0">
       {TaskDetail.map((card, index) => (
         <div
+          onClick={() => router.push(card.Route)}
           key={index}
           className="border border-gray-200 rounded-lg  bg-white shadow-md hover:shadow-lg transition-shadow mt-5 md:mt-0">
           <div className="flex gap-4 py-2.5 px-2 h-[72px]">
