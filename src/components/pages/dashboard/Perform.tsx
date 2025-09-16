@@ -8,10 +8,10 @@ function Perform() {
     <>
       <div className="flex flex-row flex-wrap xl:flex-nowrap justify-between gap-5 px-6">
         <div className=" xl:w-[55%] w-full">
-          <div className="bg-white  border border-[#E4E7EB] rounded-[8px]  pt-6 pb-7 px-6">
+          <div className="bg-white  border border-[#E4E7EB] rounded-[8px]  md:pt-6 pt-3 md:pb-7 pb-3 md:px-6 px-3">
             <div>
               <Heading
-                className="sm:text-xl! text-base! text-[#030712] font-semibold leading-[120%] tracking-[-0.4px] py-5"
+                className="sm:text-xl! text-base! text-[#030712] font-semibold leading-[120%] tracking-[-0.4px] py-2 sm:py-5"
                 title="Performance Overview"
               />
             </div>

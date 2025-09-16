@@ -8,7 +8,7 @@ function GrowthTask() {
   console.log(TaskDetail)
 
   return (
-    <div className="w-full md:grid grid-cols-2  gap-5 pt-5">
+    <div className="w-full md:grid grid-cols-2  gap-5 md:pt-5 pt-0">
       {TaskDetail.map((card, index) => (
         <div
           key={index}

@@ -8,7 +8,7 @@ function CriticalTask() {
   console.log(TaskDetail)
 
   return (
-    <div className="w-full md:grid grid-cols-3 gap-4 pt-5">
+    <div className="w-full md:grid grid-cols-3 gap-4 md:pt-5 pt-0">
       {CriticalDetail.map((card, index) => (
         <div
           key={index}

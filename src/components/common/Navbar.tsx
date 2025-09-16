@@ -22,13 +22,13 @@ export default function Navbar() {
       {/* Sidebar */}
       <div
         className={cn(
-          'fixed top-0 left-0 h-screen w-[170px] md:w-17 overflow-y-auto  bg-accent shadow-lg z-[49] transition-transform duration-300',
+          'fixed top-0 left-0 h-screen w-[170px] md:w-17 overflow-y-auto scrollbarNone  bg-accent shadow-lg z-[49] transition-transform duration-300',
           isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         )}>
-        <div className="flex flex-col justify-between gap-5 h-screen">
+        <div className="flex flex-col justify-between gap-5 h-screen w-full">
           <div>
-            <div className="flex flex-col items-center py-3 gap-4">
-              <div className="border-b border-[#DCE0E5] flex justify-center items-center py-4">
+            <div className="flex flex-col items-center py-3 ">
+              <div className="border-b border-[#DCE0E5] flex justify-center items-center py-4 ">
                 <Link href="/dashboard">
                   <Icon1stimg />
                 </Link>
@@ -58,7 +58,7 @@ export default function Navbar() {
                         )}
                         <item.icon
                           className={cn(
-                            'h-5 w-5',
+                            'h-5 w-5 ml-2',
                             isActive
                               ? 'text-purple-600'
                               : 'group-hover:text-purple-500'
@@ -75,7 +75,7 @@ export default function Navbar() {
               })}
             </nav>
           </div>
-          <div className="flex justify-center items-center pb-10">
+          <div className="flex justify-center items-center pb-10 sticky bottom-0">
             <Link href="/settings/user-profile">
               <Icon13thimg />
             </Link>

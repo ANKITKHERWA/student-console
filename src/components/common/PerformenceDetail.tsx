@@ -6,7 +6,7 @@ function PerformenceDetail() {
   return (
     <>
       {performDetail.map((card, index) => (
-        <div key={index}>
+        <div key={index} className="pb-4 xl:pb-0">
           <div className="flex justify-between gap-2 items-center w-full">
             <div className="flex items-center gap-2">
               <span>{card.Icon}</span>

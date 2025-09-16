@@ -46,9 +46,9 @@ const CustomTooltip: React.FC<any> = ({ active, payload, label }) => {
 
 export default function ActiveTrend() {
   return (
-    <div className="w-full px-6 mt-6 flex flex-row flex-wrap xl:flex-nowrap justify-between gap-4">
+    <div className="w-full px-6 mt-6 flex flex-row flex-wrap xl:flex-nowrap justify-between gap-4 pb-4">
       <div className="xl:w-[55%] w-full flex flex-col gap-4">
-        <div className="border border-[#E4E7EB] rounded-[8px] bg-white pt-6 pb-7 px-6 w-full ">
+        <div className="border border-[#E4E7EB] rounded-[8px] bg-white xl:pt-6 pt-4 xl:pb-7 pb-0 xl:px-6 px-2 w-full">
           <div className="flex  justify-between items-center pt-1 gap-5">
             <Heading
               title="Active vs Registered Trend"
@@ -60,7 +60,7 @@ export default function ActiveTrend() {
             </div>
           </div>
           {/* Chart area */}
-          <div className="mt-6 h-[300px]">
+          <div className="mt-6 xl:h-[300px] h-[200px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
                 data={ActiveData}
@@ -107,7 +107,12 @@ export default function ActiveTrend() {
                   tickLine={false}
                   padding={{ left: 8, right: 8 }}
                 />
-                <YAxis axisLine={false} tickLine={false} tickCount={5} />
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tickCount={5}
+                  className="xl:text-base text-sm"
+                />
                 <Tooltip
                   content={<CustomTooltip />}
                   wrapperStyle={{ outline: 'none' }}
@@ -138,7 +143,7 @@ export default function ActiveTrend() {
             </ResponsiveContainer>
           </div>
         </div>
-        <div className="border border-[#E4E7EB] rounded-[8px] bg-white w-full p-6">
+        <div className="border border-[#E4E7EB] rounded-[8px] bg-white w-full xl:p-6 p-4">
           <div className="flex justify-between gap-4">
             <Heading
               title="Critical tasks"
@@ -149,7 +154,7 @@ export default function ActiveTrend() {
           <CriticalTask />
         </div>
       </div>
-      <div className="border border-[#E4E7EB] rounded-[8px] bg-white w-full xl:w-[45%] p-6">
+      <div className="border border-[#E4E7EB] rounded-[8px] bg-white w-full xl:w-[45%] xl:p-6 p-4">
         <div className="flex justify-between gap-4">
           <Heading
             title="Growth Task"
