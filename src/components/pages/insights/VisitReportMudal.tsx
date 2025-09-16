@@ -44,10 +44,126 @@ function VisitReportMudal() {
   const [tabValue, SetTabValue] = useState<string>("lastVisit");
   const handleNext = () => {
     const currentIndex = tabOrder.indexOf(tabValue);
-    if (currentIndex < tabOrder.length - 1) {
+    if (currentIndex > -1 && currentIndex < tabOrder.length - 1) {
       SetTabValue(tabOrder[currentIndex + 1]);
     }
   };
+  const isLastTab = tabOrder.indexOf(tabValue) === tabOrder.length - 1;
+
+  // --------- Type-safe data collection (no `any`) ----------
+  type DataValue = string | File | boolean | string[] | string[] | null;
+  type DataObject = Record<string, unknown>;
+
+  const collectAllDataFromDialog = (rootEl: HTMLElement) => {
+    const dataObj: DataObject = {};
+    const entriesList: Array<{
+      name: string;
+      value: string | File | boolean | string[];
+    }> = [];
+
+    const appendEntry = (
+      name: string,
+      value: string | File | boolean | string[]
+    ) => {
+      const prev = dataObj[name];
+      if (Array.isArray(prev)) {
+        const merged = [...prev, value] as unknown[];
+        dataObj[name] = merged;
+      } else if (typeof prev !== "undefined") {
+        dataObj[name] = [prev, value];
+      } else {
+        dataObj[name] = value;
+      }
+      entriesList.push({ name, value });
+    };
+
+    // 1) Merge FormData from all forms
+    const forms = rootEl.querySelectorAll("form");
+    forms.forEach((form) => {
+      const fd = new FormData(form as HTMLFormElement);
+      for (const [name, value] of fd.entries()) {
+        if (typeof value === "string") {
+          appendEntry(name, value);
+        } else {
+          appendEntry(name, value);
+        }
+      }
+    });
+
+    // 2) Sweep standalone inputs/selects/textareas
+    const fieldNodes = rootEl.querySelectorAll("input, select, textarea");
+    fieldNodes.forEach((el) => {
+      const element = el as
+        | HTMLInputElement
+        | HTMLSelectElement
+        | HTMLTextAreaElement;
+      const key = element.getAttribute("name") || element.getAttribute("id");
+      if (!key) return;
+
+      if (element instanceof HTMLInputElement) {
+        const type = element.type.toLowerCase();
+
+        if (type === "checkbox") {
+          if (element.checked) {
+            appendEntry(key, element.value !== "" ? element.value : true);
+          }
+          return;
+        }
+
+        if (type === "radio") {
+          if (element.checked) {
+            appendEntry(key, element.value);
+          }
+          return;
+        }
+
+        if (type === "file") {
+          const files = element.files ? Array.from(element.files) : [];
+          if (files.length > 0) {
+            // store file names for logging
+            appendEntry(
+              key,
+              files.map((f) => f.name)
+            );
+          }
+          return;
+        }
+
+        appendEntry(key, element.value);
+        return;
+      }
+
+      if (element instanceof HTMLSelectElement) {
+        if (element.multiple) {
+          const selected = Array.from(element.selectedOptions).map(
+            (o) => o.value
+          );
+          appendEntry(key, selected);
+        } else {
+          appendEntry(key, element.value);
+        }
+        return;
+      }
+
+      if (element instanceof HTMLTextAreaElement) {
+        appendEntry(key, element.value);
+      }
+    });
+
+    return { dataObj, entriesList };
+  };
+
+  const handleSubmitAllData = () => {
+    const content = document.querySelector(
+      "[data-state='open'] [role='dialog'], [data-state='open'][role='dialog']"
+    ) as HTMLElement | null;
+    const root = content ?? document.body;
+    const { dataObj, entriesList } = collectAllDataFromDialog(root);
+    console.log("All data (object):", dataObj); // explicit object for console [4][5]
+    console.log("All data (entries):", entriesList); // linearized entries [10][5]
+  };
+  // --------------------------------------------------------
+
   return (
     <div>
       {" "}
@@ -66,7 +182,11 @@ function VisitReportMudal() {
                 <DialogTitle>Visit Report</DialogTitle>
               </DialogHeader>
               <div className="border-t">
-                <Tabs className="w-full !bg-[transparent] ">
+                <Tabs
+                  className="w-full !bg-[transparent] "
+                  value={tabValue}
+                  onValueChange={SetTabValue}
+                >
                   <div>
                     <div className="flex w-full overflow-auto lg:flex-row flex-col">
                       <div className="bg-[#F9FAFB] border-r min-w-[300px]">
@@ -122,8 +242,8 @@ function VisitReportMudal() {
                         <div>
                           <TabsList className="flex !items-start !h-max  !flex-col !bg-transparent w-full !p-0">
                             <TabsTrigger
-                              value={"lastVisit"}
-                              className={` items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
+                              value="lastVisit"
+                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
                                 tabValue === "lastVisit" ? "" : ""
                               }`}
                               onClick={() => SetTabValue("lastVisit")}
@@ -132,60 +252,60 @@ function VisitReportMudal() {
                               Last Visit Summary
                             </TabsTrigger>
                             <TabsTrigger
-                              value={"catalogStaff"}
-                              className={`${
+                              value="catalogStaff"
+                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
                                 tabValue === "catalogStaff" ? "" : ""
-                              } flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start`}
+                              }`}
                               onClick={() => SetTabValue("catalogStaff")}
                             >
                               <CataLogStaff />
                               Catalog & Staff
                             </TabsTrigger>
                             <TabsTrigger
-                              value={"offers"}
-                              className={`${
+                              value="offers"
+                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
                                 tabValue === "offers" ? "" : ""
-                              } flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start`}
+                              }`}
                               onClick={() => SetTabValue("offers")}
                             >
                               <OfferTockenIcon />
                               Offer
                             </TabsTrigger>
                             <TabsTrigger
-                              value={"promoteUse"}
-                              className={`${
+                              value="promoteUse"
+                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
                                 tabValue === "promoteUse" ? "" : ""
-                              } flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start`}
+                              }`}
                               onClick={() => SetTabValue("promoteUse")}
                             >
                               <PromoteIcon />
                               Promote Usage
                             </TabsTrigger>
                             <TabsTrigger
-                              value={"clientEngagement"}
-                              className={`${
+                              value="clientEngagement"
+                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
                                 tabValue === "clientEngagement" ? "" : ""
-                              } flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start`}
+                              }`}
                               onClick={() => SetTabValue("clientEngagement")}
                             >
                               <ClientIcon />
                               Client Enagagement
                             </TabsTrigger>
                             <TabsTrigger
-                              value={"setUp"}
-                              className={`${
+                              value="setUp"
+                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
                                 tabValue === "setUp" ? "" : ""
-                              } flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start`}
+                              }`}
                               onClick={() => SetTabValue("setUp")}
                             >
                               <SetUpIcon />
                               Set Up
                             </TabsTrigger>
                             <TabsTrigger
-                              value={"submit"}
-                              className={`${
+                              value="submit"
+                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
                                 tabValue === "submit" ? "" : ""
-                              } flex items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start`}
+                              }`}
                               onClick={() => SetTabValue("submit")}
                             >
                               <SubmitIcon />
@@ -194,7 +314,6 @@ function VisitReportMudal() {
                           </TabsList>
                         </div>
                       </div>
-
                       <div className="w-full overflow-auto">
                         {item.lastVisitCotent.map((visit, visitInde) => (
                           <TabsContent
@@ -326,8 +445,7 @@ function VisitReportMudal() {
                                       <tbody className="text-[#030712] leading-[142%] -tracking-[0.28px]">
                                         {(() => {
                                           const lastRowIndex =
-                                            itm.tdRow.length - 1; // 👈 yaha define karein
-
+                                            itm.tdRow.length - 1;
                                           return itm.tdRow.map(
                                             (tdItm, tdRowIndex) => (
                                               <tr
@@ -343,9 +461,9 @@ function VisitReportMudal() {
                                                           ? tdRowIndex === 0 ||
                                                             tdRowIndex ===
                                                               lastRowIndex
-                                                            ? "text-[#f00]" // red for first & last row in column 2
-                                                            : "text-[#31A553]" // green for other rows in column 2
-                                                          : "text-black" // black for all other columns
+                                                            ? "text-[#f00]"
+                                                            : "text-[#31A553]"
+                                                          : "text-black"
                                                       }`}
                                                     >
                                                       {tdItem.td}
@@ -434,9 +552,9 @@ function VisitReportMudal() {
                                                       className={`lg:px-6 md:px-5 sm:px-4 px-3 lg:py-4 sm:py-3 py-2 ${
                                                         tdindex === 2
                                                           ? tdRowIndex === 0
-                                                            ? "text-[#f00]" // red for first & last row in column 2
-                                                            : "text-[#31A553]" // green for other rows in column 2
-                                                          : "text-black" // black for all other columns
+                                                            ? "text-[#f00]"
+                                                            : "text-[#31A553]"
+                                                          : "text-black"
                                                       }`}
                                                     >
                                                       {tdItem.td}
@@ -515,8 +633,7 @@ function VisitReportMudal() {
                                       <tbody className="text-[#030712]  leading-[142%] -tracking-[0.28px]">
                                         {(() => {
                                           const lastRowIndex =
-                                            itm.tdRow.length - 2; // 👈 yaha define karein
-
+                                            itm.tdRow.length - 2;
                                           return itm.tdRow.map(
                                             (tdItm, tdRowIndex) => (
                                               <tr
@@ -532,9 +649,9 @@ function VisitReportMudal() {
                                                           ? tdRowIndex === 0 ||
                                                             tdRowIndex ===
                                                               lastRowIndex
-                                                            ? "text-[#f00]" // red for first & last row in column 2
-                                                            : "text-[#31A553]" // green for other rows in column 2
-                                                          : "text-black" // black for all other columns
+                                                            ? "text-[#f00]"
+                                                            : "text-[#31A553]"
+                                                          : "text-black"
                                                       }`}
                                                     >
                                                       {tdItem.td}
@@ -614,9 +731,9 @@ function VisitReportMudal() {
                                         <tbody className="text-[#030712] leading-[142%] -tracking-[0.28px]">
                                           {(() => {
                                             const lastRowIndex =
-                                              itm.tdRow.length - 1; // 👈 yaha define karein
+                                              itm.tdRow.length - 1;
                                             const lastFourth =
-                                              itm.tdRow.length - 4; // 👈 yaha define karein
+                                              itm.tdRow.length - 4;
 
                                             return itm.tdRow.map(
                                               (tdItm, tdRowIndex) => (
@@ -634,17 +751,17 @@ function VisitReportMudal() {
                                                                 0 ||
                                                               tdRowIndex ===
                                                                 lastRowIndex
-                                                              ? "text-[#f00]" // red for first & last row in column 2
-                                                              : "text-[#31A553]" // green for other rows in column 2
-                                                            : "text-black" // black for all other columns
+                                                              ? "text-[#f00]"
+                                                              : "text-[#31A553]"
+                                                            : "text-black"
                                                         } ${
                                                           tdindex === 2
                                                             ? tdRowIndex ===
                                                                 0 ||
                                                               tdRowIndex ===
                                                                 lastFourth
-                                                              ? "text-[#f00]" // red for first & last row in column 2
-                                                              : "text-[#31A553]" // green for other rows in column 2
+                                                              ? "text-[#f00]"
+                                                              : "text-[#31A553]"
                                                             : "text-black"
                                                         }`}
                                                       >
@@ -726,7 +843,6 @@ function VisitReportMudal() {
                                             itm.tdRow.length - 1;
                                           const lastFourth =
                                             itm.tdRow.length - 4;
-
                                           return itm.tdRow.map(
                                             (tdItm, tdRowIndex) => (
                                               <tr
@@ -742,16 +858,16 @@ function VisitReportMudal() {
                                                           ? tdRowIndex === 0 ||
                                                             tdRowIndex ===
                                                               lastRowIndex
-                                                            ? "text-[#f00]" // red for first & last row in column 2
-                                                            : "text-[#31A553]" // green for other rows in column 2
-                                                          : "text-black" // black for all other columns
+                                                            ? "text-[#f00]"
+                                                            : "text-[#31A553]"
+                                                          : "text-black"
                                                       } ${
                                                         tdindex === 2
                                                           ? tdRowIndex === 0 ||
                                                             tdRowIndex ===
                                                               lastFourth
-                                                            ? "text-[#f00]" // red for first & last row in column 2
-                                                            : "text-[#31A553]" // green for other rows in column 2
+                                                            ? "text-[#f00]"
+                                                            : "text-[#31A553]"
                                                           : "text-black"
                                                       }`}
                                                     >
@@ -825,7 +941,6 @@ function VisitReportMudal() {
                                           type="date"
                                           id={"dateItem.id"}
                                           ref={submitNextFollowRef}
-                                          value={"Pick a date"}
                                           placeholder="Pick a date"
                                           className="outline-none"
                                         />
@@ -849,7 +964,6 @@ function VisitReportMudal() {
                                           type="date"
                                           id={"dateItem.id"}
                                           ref={submitNextVisitRef}
-                                          value={"Pick a date"}
                                           placeholder="Pick a date"
                                           className="outline-none"
                                         />
@@ -872,23 +986,21 @@ function VisitReportMudal() {
                         ))}
                       </div>
                     </div>
-                    <DialogFooter className="sticky bottom-0 bg-white">
-                      <div className="flex justify-end gap-3 lg:p-6 md:p-5 p-4">
-                        <DialogClose asChild>
-                          <Button variant="outline">Cancel</Button>
-                        </DialogClose>
-                        {tabValue !== "Outcome" && (
-                          <Button onClick={handleNext}>Next</Button>
-                        )}
-                        {tabValue === "Outcome" && (
-                          <Button type="submit">Submit</Button>
-                        )}
-                      </div>
-                    </DialogFooter>
                   </div>
                 </Tabs>
               </div>
             </div>
+            <DialogFooter className="sticky bottom-0 bg-white">
+              <div className="flex justify-end gap-3 lg:p-6 md:p-5 p-4">
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                {!isLastTab && <Button onClick={handleNext}>Next</Button>}
+                {isLastTab && (
+                  <Button onClick={handleSubmitAllData}>Submit</Button>
+                )}
+              </div>
+            </DialogFooter>
           </DialogContent>
         ))}
       </Dialog>

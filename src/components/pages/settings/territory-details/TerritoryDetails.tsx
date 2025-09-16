@@ -1,7 +1,6 @@
 "use client";
 import Heading from "@/components/common/Heading";
 import Pera from "@/components/common/Pera";
-import PrimaryBtn from "@/components/common/PrimaryBtn";
 import Search from "@/components/common/Search";
 import Selecte from "@/components/common/Selecte";
 import TableCommon from "@/components/common/TableCommon";
@@ -11,10 +10,12 @@ import {
   territoryCardDetails,
   territoryTableData,
 } from "@/components/helper/Helper2";
-import { PlusIcon } from "@/components/helper/Icon2";
 import React from "react";
-
+import { Businessdetails } from "../bank-details/Businessdetails";
+import { useRouter } from "next/navigation";
 function TerritoryDetails() {
+  const router = useRouter();
+
   return (
     <div>
       <TopCommon title="Setting" />
@@ -23,11 +24,8 @@ function TerritoryDetails() {
           title="Territory Details"
           className="lg:!text-xl md:!text-lg !text-base"
         />
-        <PrimaryBtn
-          title="Add Account"
-          icon={<PlusIcon className="fill-[white]" />}
-          className="w-max"
-        />
+
+        <Businessdetails />
       </div>
       <div className="lg:px-6 md:px-5 px-4 lg:pt-6 md:pt-5 pt-4 pb-6">
         <Pera
@@ -37,6 +35,7 @@ function TerritoryDetails() {
         <div className="grid min-[1150px]:grid-cols-3 min-[635px]:grid-cols-2 grid-cols-1 md:gap-5 sm:gap-4 gap-3 lg:gap-6 mt-[15px]">
           {territoryCardDetails.map((item, index) => (
             <div
+              onClick={() => router.push(item.route)}
               key={index}
               className="border-2 border-[#E4E7EB] bg-white rounded-[8px] p-4 w-full cursor-pointer hover:bg-[#EAEEF5] transition-all duration-300"
             >

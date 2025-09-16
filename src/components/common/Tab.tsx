@@ -37,7 +37,7 @@ export default function Tab({
                   key={tab.id}
                   id={tab.id}
                   value={tab.value}
-                  className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=active]:!border-b-[#B751FB] data-[state=inactive]:fill-[#808188] !shadow-none px-2"
+                  className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=active]:!border-b-[#B751FB] data-[state=inactive]:fill-[#808188] !shadow-none px-2 cursor-pointer"
                 >
                   {tab.icon}
                   {tab.title}

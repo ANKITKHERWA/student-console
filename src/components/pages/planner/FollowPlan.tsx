@@ -151,11 +151,11 @@ function FollowPlan() {
               <TabsTrigger value="new">New</TabsTrigger>
               <TabsTrigger value="past">Past</TabsTrigger>
             </TabsList>
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
               <Filter />
               <div className="flex gap-2 items-center">
                 <button type="button" onClick={() => setOpen(!open)}>
-                  <Fluentcard className="" />
+                  <Fluentcard />
                 </button>
                 <button type="button" onClick={() => setOpen(!open)}>
                   <Tablericon />

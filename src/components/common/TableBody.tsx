@@ -92,8 +92,10 @@ const TableBody: React.FC<TableData> = ({
         <tr
           key={bodyitems.id}
           className={`hover:bg-[#F1DCFF] border-y border-[#D9DDE3] text-[#030712] ${
-            selectedUser?.id === bodyitems.id ? "bg-[#F1DCFF]" : ""
-          }`}
+            selectedUser?.id === bodyitems.id
+              ? "bg-[#F1DCFF]"
+              : "bg-transparent"
+          } `}
         >
           {bodyitems.td.map((tdItem, tdIndex) => (
             <td

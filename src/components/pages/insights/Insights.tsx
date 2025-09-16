@@ -49,6 +49,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SheetClose } from "@/components/ui/sheet";
+import { useRouter, useSearchParams } from "next/navigation";
 function Insights() {
   // const [selectedUser, setSelectedUser] = useState<null>(null);
   // const [open, setOpen] = useState(false);
@@ -89,11 +90,27 @@ function Insights() {
     }
     return `${selected.length} selected`;
   };
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // agar query param na ho to by default growth-task
+  const activeTab = searchParams.get("tab") || "growth-task" || "critical-task";
+
+  const changeTab = (tab: string) => {
+    router.push(`/insights?tab=${tab}`);
+  };
+
   return (
     <div className="pb-10">
       <TopCommon title="Insights - Registered Partners" />
       <div>
-        <Tabs defaultValue="critical-task" className="w-full">
+        <Tabs
+          // defaultValue="critical-task"
+          className="w-full"
+          value={activeTab}
+          onValueChange={changeTab}
+        >
           <div className="border-b border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
             <TabsList className="rounded-none bg-transparent !w-full flex !justify-start ">
               <div className="flex gap-3 items-center">
@@ -105,6 +122,7 @@ function Insights() {
                   <CriticalTask />
                   Critical Task
                 </TabsTrigger>
+
                 <TabsTrigger
                   id="growth-task"
                   value="growth-task"
