@@ -72,10 +72,25 @@ interface props {
 function Member() {
   const [selectedMember, setSelectedMember] = useState<props | null>(null);
   const [open, setOpen] = useState(false);
+
+  const totalCards = someData.reduce(
+    (acc, curr) => acc + curr.tcList.length,
+    0
+  );
+
   return (
     <div>
       <div className="flex justify-between sm:items-center lg:mt-7 md:mt-8 sm:mt-5 mt-4 gap-1">
-        <Pera className="text-lg font-semibold" title="Total Members:16" />
+        {/* <Pera
+          className="text-lg font-semibold"
+          title={` ${someData.reduce(
+            (acc, curr) => acc + curr.tcList.length,
+            0
+          )}`}
+        /> */}
+        <p className="flex items-center gap-1 font-semibold">
+          Total Members : <span className="-mb-0.5"> {totalCards}</span>
+        </p>
         <div className="flex sm:gap-2 gap-1 sm:flex-row flex-col-reverse justify-end items-end">
           <Search />
           <div className="flex sm:gap-2 gap-1">
@@ -136,7 +151,7 @@ function Member() {
                             Items.tag === "TC"
                               ? "border-[#FFAB47] bg-[#FFEFDB]"
                               : Items.tag === "RM"
-                              ? "border-[#8EBAF6] bg-[rgba(207,226,252,0.20] bg-[rgba(207,226,252,0.20)]"
+                              ? "border-[#8EBAF6] bg-[rgba(207,226,252,0.20)]"
                               : Items.tag === "FE"
                               ? "border-[#31A553] bg-[#E3F7E9]"
                               : ""
@@ -416,7 +431,7 @@ function Member() {
                       defaultValue="item-1"
                     >
                       <AccordionItem value="item-1">
-                        <AccordionTrigger className="md:px-5 px-4 md:!py-4 !py-3 hover:!underline-none text-[#030712] sm:text-sm text-xs font-semibold">
+                        <AccordionTrigger className="md:px-5 px-4 md:!py-4 !py-3 underline-none text-[#030712] sm:text-sm text-xs font-semibold">
                           <div className="flex items-center gap-2">
                             <CurrentPerformanceIcon />
                             Current Performance
@@ -450,7 +465,7 @@ function Member() {
                         </AccordionContent>
                       </AccordionItem>
                       <AccordionItem value="item-2">
-                        <AccordionTrigger className="md:px-5 px-4 md:!py-4 !py-3 hover:!underline-none text-[#030712] text-sm font-semibold">
+                        <AccordionTrigger className="md:px-5 px-4 md:!py-4 !py-3 underline-none  text-[#030712] text-sm font-semibold">
                           <div className="flex items-center gap-2">
                             <PastPerformanceIcon />
                             Past Performance

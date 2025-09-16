@@ -16,6 +16,7 @@ export default function Remark() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -26,10 +27,12 @@ export default function Remark() {
 
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted:", data);
+    // 👇 Agar aap chaho to submit ke baad field clear karne ke liye:
+    // reset();
   };
 
   return (
-    <div
+    <form
       onSubmit={handleSubmit(onSubmit)}
       className="w-full md:mt-6 sm:mt-5 mt-4 space-y-2.5"
     >
@@ -39,12 +42,13 @@ export default function Remark() {
       <textarea
         {...register("remarks")}
         placeholder="Enter remarks for Catalog & Staff performance....."
-        className="w-full border text-[#030712] placeholder:text-[#030712] border-[#E4E4E7] rounded-[6px] p-3  focus:ring-purple-500"
+        className="w-full border text-[#030712] placeholder:text-[#030712] border-[#E4E4E7] rounded-[6px] p-3 focus:ring-purple-500"
         rows={3}
       ></textarea>
+
       {errors.remarks && (
         <p className="text-red-500 text-sm">{errors.remarks.message}</p>
       )}
-    </div>
+    </form>
   );
 }

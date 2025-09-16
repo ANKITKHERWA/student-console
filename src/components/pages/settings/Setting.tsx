@@ -7,9 +7,9 @@ import React from "react";
 
 function Setting() {
   return (
-    <div>
+    <div className="h-screen">
       <TopCommon title="Setting" />
-      <div className="h-screen flex items-center md:px-5 px-4 lg:px-6 py-10">
+      <div className="sm:h-[80%] flex items-center md:px-5 px-4 lg:px-6 !py-10">
         <div className="xl:gap-[50px] lg:gap-8 gap-4 sm:gap-5 md:gap-6 flex flex-wrap justify-center max-w-[1000px] m-auto">
           {settingCard.map((item, index) => (
             <Link

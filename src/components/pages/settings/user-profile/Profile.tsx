@@ -121,18 +121,18 @@ function Profile() {
   };
 
   return (
-    <div>
+    <div className="h-screen">
       <TopCommon title="Setting" />
-      <div className="md:px-5 px-4 lg:px-6 flex justify-center py-5 h-screen">
+      <div className="md:px-5 px-4 lg:px-6 flex justify-center py-5 h-[80%]">
         <div className="w-full max-w-[545px] my-auto">
           <h3 className="flex items-center gap-1 text-[#030712] text-base font-medium leading-[150%] -tracking-[0.32px]">
-            <span className="text-[#808188]">Settings</span>
+            <Link href={"/settings"} className="text-[#808188]">
+              Settings
+            </Link>
             <span className="mt-1">
               <RightArrowIcon />
             </span>
-            <Link href={"/"} className="text-[#030712]">
-              User Profiles
-            </Link>
+            <span className="text-[#030712]">User Profiles</span>
           </h3>
           {userProfileData.map((item, index) => (
             <div key={index} className="mt-5 md:mt-6 lg:mt-8">
