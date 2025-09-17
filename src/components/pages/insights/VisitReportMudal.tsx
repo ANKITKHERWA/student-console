@@ -170,7 +170,7 @@ function VisitReportMudal() {
       <Dialog open={open} onOpenChange={Setopen}>
         <DialogTitle></DialogTitle>
         <DialogTrigger className="bg-[#B751FB] sm:px-3 px-2  lg:px-4 md:py-2 py-1 lg:py-2.5 text-center cursor-pointer rounded md:rounded-[6px] shadow-[0_1px_4px_0_rgba(3,7,18,0.08)] border border-[#B751FB] text-[#fff] text-xs sm:text-sm font-semibold leading-[142.857%] -tracking-[0.28px]">
-          Open Modal
+          Add Visit Report
         </DialogTrigger>
         {mudalData.map((item, index) => (
           <DialogContent
@@ -243,7 +243,7 @@ function VisitReportMudal() {
                           <TabsList className="flex !items-start !h-max  !flex-col !bg-transparent w-full !p-0">
                             <TabsTrigger
                               value="lastVisit"
-                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start ${
+                              className={`items-center gap-3 px-t py-3.5 data-[state=active]:bg-[#F1DCFF] !shadow-none !w-full data-[state=active]:text-[] data-[state=active]:font-medium hover:bg-[#F1DCFF] rounded-none justify-start  ${
                                 tabValue === "lastVisit" ? "" : ""
                               }`}
                               onClick={() => SetTabValue("lastVisit")}

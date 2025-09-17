@@ -34,6 +34,7 @@ import {
   Priyasingh,
 } from "./Icon1";
 import ScheduleFollowUp from "../pages/insights/ScheduleFollowUp";
+import ScheduleVisit from "../pages/insights/ScheduleVisit";
 
 export const loginFormData = [
   {
@@ -188,7 +189,7 @@ export const sidebarData = [
     img: "/assest/png/salone-small-img.png",
     name: "Glamour Glow Studio",
     nextVisit: "",
-    addvisit: <ScheduleFollowUp />,
+    addvisit: <ScheduleVisit />,
     nextFollowUp: "",
     addFollowUp: <ScheduleFollowUp />,
     contacte: [
@@ -1330,7 +1331,7 @@ export const territoryCardDetails = [
     righticon: <Iconright />,
     para: "+9%",
     percentage: "+12%",
-    route: "/",
+    route: "/insights?critical-task=&tab=critical-task",
   },
   {
     icon: <DollerIcon />,

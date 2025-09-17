@@ -71,9 +71,9 @@ const ScheduleFollowUp: React.FC<props> = ({ content, icon }) => {
   return (
     <>
       {/* <Button className="bg-[#B751FB] cursor-pointer"></Button> */}
-      <div onClick={() => setOpen(true)}>
+      <button onClick={() => setOpen(true)} className="cursor-pointer">
         <ClenderIcon />
-      </div>
+      </button>
       <button>
         <span>{icon}</span>
         {content}

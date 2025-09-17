@@ -87,10 +87,7 @@ const TableCommon: React.FC<TableCommonProps> = ({ data, sidebarContent }) => {
             <TableBody
               body={items.body}
               selectedUser={selectedUser}
-              setSelectedUser={(user) => {
-                setSelectedUser(user);
-                setOpen(true);
-              }}
+              setSelectedUser={setSelectedUser}
               setOpen={setOpen}
             />
           </table>
@@ -98,12 +95,20 @@ const TableCommon: React.FC<TableCommonProps> = ({ data, sidebarContent }) => {
       </div>
 
       {/* sidebar */}
-      <Sheet open={open} onOpenChange={setOpen}>
+      <Sheet
+        open={open}
+        onOpenChange={(val) => {
+          setOpen(val);
+          if (!val) {
+            setSelectedUser(null); // sidebar band → highlight hatao
+          }
+        }}
+      >
         <SheetContent
           side="right"
           className="w-full sm:w-[400px] overflow-auto !pb-3 !max-w-none"
         >
-          {selectedUser && sidebarContent}
+          {selectedUser ? sidebarContent : null}
         </SheetContent>
       </Sheet>
     </>

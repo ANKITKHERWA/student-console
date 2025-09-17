@@ -65,9 +65,9 @@ export default function ScheduleVisit() {
   return (
     <>
       {/* <Button className="bg-[#B751FB] cursor-pointer"></Button> */}
-      <div onClick={() => setOpen(true)}>
+      <button onClick={() => setOpen(true)} className="cursor-pointer">
         <ClenderIcon />
-      </div>
+      </button>
 
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent

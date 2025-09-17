@@ -16,8 +16,7 @@ import {
   SmallEyeIcon,
   ViewReportIcon,
 } from "@/components/helper/Icon2";
-import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Tabs } from "@radix-ui/react-tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React, { useState } from "react";
 
 import { Input } from "@/components/ui/input";
@@ -49,7 +48,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SheetClose } from "@/components/ui/sheet";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 function Insights() {
   // const [selectedUser, setSelectedUser] = useState<null>(null);
   // const [open, setOpen] = useState(false);
@@ -85,32 +85,32 @@ function Insights() {
     if (selected.length === 0) return placeholder;
     if (selected.length === 1) {
       const option = optionsList.find((opt) => opt.id === optionId);
-      const item = option?.item.find((item) => item.value === selected[0]);
-      return item?.title || selected[0];
+      const item = option?.item.find((item) => "");
+      return item?.title || selected;
     }
     return `${selected.length} selected`;
   };
 
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // agar query param na ho to by default growth-task
-  const activeTab = searchParams.get("tab") || "growth-task" || "critical-task";
+  // Control this Tabs with a single query param
+  const activeTab =
+    (searchParams.get("tab") && "critical-task") || "growth-task";
 
   const changeTab = (tab: string) => {
-    router.push(`/insights?tab=${tab}`);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("tab", tab);
+    const qs = params.toString();
+    router.push(`${pathname}${qs ? `?${qs}` : ""}`);
   };
 
   return (
     <div className="pb-10">
       <TopCommon title="Insights - Registered Partners" />
       <div>
-        <Tabs
-          // defaultValue="critical-task"
-          className="w-full"
-          value={activeTab}
-          onValueChange={changeTab}
-        >
+        <Tabs className="w-full" value={activeTab} onValueChange={changeTab}>
           <div className="border-b border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
             <TabsList className="rounded-none bg-transparent !w-full flex !justify-start ">
               <div className="flex gap-3 items-center">
@@ -267,38 +267,33 @@ function Insights() {
                                 {
                                   label: "View as partner",
                                   extra: <SmallEyeIcon className="w-4 h-4" />,
-                                  // onClick: () => console.log("Edit clicked"),
                                 },
                                 {
                                   label: "View Report",
                                   extra: <ViewReportIcon className="w-4 h-4" />,
-                                  // onClick: () => console.log("Delete clicked"),
                                 },
                                 {
                                   label: "Add Visit",
                                   extra: (
                                     <CalenderBlackSmallIocn className="w-4 h-4" />
                                   ),
-                                  // onClick: () => console.log("Share clicked"),
                                 },
                                 {
                                   label: "Add Follow Up",
                                   extra: <FollowUpIcon className="w-4 h-4" />,
-                                  // onClick: () => console.log("Share clicked"),
                                 },
                                 {
                                   label: "Add Visit Report",
                                   extra: <PlusIcon className="w-4 h-4" />,
-                                  // onClick: () => console.log("Share clicked"),
                                 },
                                 {
                                   label: "Assign Partner",
                                   extra: <PartnerIcon className="w-4 h-4" />,
-                                  // onClick: () => console.log("Share clicked"),
                                 },
                               ]}
                             />
                           </div>
+
                           <div className="flex justify-between gap-2 mt-4 xl:pr-10">
                             <div className="px-1.5 py-[3px] border-[0.5px] w-max  rounded border-[#E4E7EB] flex gap-1 items-center text-[#030712] text-xs font-semibold leading-[166%] -tracking-[0.24px]">
                               {itm.nextVisit ? (
@@ -417,7 +412,7 @@ function Insights() {
                               <TabsList className="flex justify-between w-full bg-transparent mt-3">
                                 <TabsTrigger
                                   value="critical"
-                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
+                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188] cursor-pointer"
                                 >
                                   <SmallCriticalIcon className=" data-[state=active]:fill-[#B751FB]" />
                                   Critical
@@ -425,7 +420,7 @@ function Insights() {
 
                                 <TabsTrigger
                                   value="growth"
-                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188]"
+                                  className="flex items-center gap-1 !border-b !border-t-0 !rounded-none !border-x-0 border-transparent data-[state=active]:border-[#B751FB] !shadow-none !py-2.5 data-[state=active]:text-[#B751FB] text-[#808188] cursor-pointer"
                                 >
                                   <GrothTask className="h-[16px] w-[16px]  data-[state=active]:fill-[#B751FB]" />
                                   Growth
