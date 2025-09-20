@@ -125,7 +125,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+9%',
     percentage: '+12%',
-    Route: '/insights',
+    Route: '/insights?critical-task=&tab=critical-task',
   },
   {
     icon: <Iconactive />,
@@ -134,7 +134,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+2',
     percentage: '+8%',
-    Route: '/insights',
+    Route: '/insights?critical-task=&tab=critical-task',
   },
   {
     icon: <Iconvisits />,
@@ -170,7 +170,7 @@ export const cardsDetail = [
     righticon: <Iconright />,
     para: '+2%',
     percentage: '+2%',
-    Route: '/insights',
+    Route: '/insights?critical-task=&tab=critical-task',
   },
 ]
 export const performDetail = [

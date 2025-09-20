@@ -6,7 +6,7 @@ import Health from './Health'
 function Perform() {
   return (
     <>
-      <div className="flex flex-row flex-wrap xl:flex-nowrap justify-between gap-5 px-6">
+      <div className="flex flex-row flex-wrap xl:flex-nowrap justify-between gap-6 px-6">
         <div className=" xl:w-[55%] w-full">
           <div className="bg-white  border border-[#E4E7EB] rounded-[8px]  md:pt-6 pt-3 md:pb-7 pb-3 md:px-6 px-3">
             <div>

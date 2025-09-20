@@ -14,7 +14,7 @@ function DashDetailCard() {
           <div
             onClick={() => router.push(card.Route)}
             key={index}
-            className="border-2 border-[#E4E7EB] bg-white rounded-[8px] p-4 mb-4 lg:w-[32%] md:w-[49%] w-full cursor-pointer hover:bg-[#EAEEF5] transition-all duration-300">
+            className="border-2 border-[#E4E7EB] bg-white rounded-[8px] p-4 mb-6 lg:w-[32%] md:w-[49%] w-full cursor-pointer hover:bg-[#EAEEF5] transition-all duration-300">
             <p className="text-[#030712] text-base font-semibold leading-[150%] tracking-[-0.32px] flex items-center gap-3">
               <span>{card.icon}</span>
               {card.title}
