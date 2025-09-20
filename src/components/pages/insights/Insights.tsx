@@ -17,7 +17,7 @@ import {
   ViewReportIcon,
 } from "@/components/helper/Icon2";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import Filter from "./Filter";
@@ -49,6 +49,8 @@ import {
 } from "@/components/ui/select";
 import { SheetClose } from "@/components/ui/sheet";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { useSheet } from "@/provider/SheetProvider";
 
 function Insights() {
   // const [selectedUser, setSelectedUser] = useState<null>(null);
@@ -80,43 +82,67 @@ function Insights() {
     });
   };
 
-  const getDisplayText = (optionId: string, placeholder: string) => {
-    const selected = selectedValues[optionId] || [];
-    if (selected.length === 0) return placeholder;
-    if (selected.length === 1) {
-      const option = optionsList.find((opt) => opt.id === optionId);
-      const item = option?.item.find((item) => "");
-      return item?.title || selected;
-    }
-    return `${selected.length} selected`;
-  };
+  // const getDisplayText = (optionId: string, placeholder: string) => {
+  //   const selected = selectedValues[optionId] || [];
+  //   if (selected.length === 0) return placeholder;
+  //   if (selected.length === 1) {
+  //     const option = optionsList.find((opt) => opt.id === optionId);
+  //     const item = option?.item.find((item) => "");
+  //     return item?.title || selected;
+  //   }
+  //   return `${selected.length} selected`;
+  // };
+
+  // const router = useRouter();
+  // const pathname = usePathname();
+  // const searchParams = useSearchParams();
+
+  // // Control this Tabs with a single query param
+  // const activeTab =
+  //   (searchParams.get("tab") && "critical-task") || "growth-task";
+
+  // const changeTab = (tab: string) => {
+  //   const params = new URLSearchParams(searchParams.toString());
+  //   params.set("tab", tab);
+  //   const qs = params.toString();
+  //   router.push(`${pathname}${qs ? `?${qs}` : ""}`);
+  // };
 
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // Control this Tabs with a single query param
-  const activeTab =
-    (searchParams.get("tab") && "critical-task") || "growth-task";
+  // URL se tab read karo
+  const tabFromUrl = searchParams.get("tab") || "1";
 
-  const changeTab = (tab: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("tab", tab);
-    const qs = params.toString();
-    router.push(`${pathname}${qs ? `?${qs}` : ""}`);
+  const [tab, setTab] = useState(tabFromUrl);
+
+  // URL change hone par tab bhi update ho
+  useEffect(() => {
+    setTab(tabFromUrl);
+  }, [tabFromUrl]);
+
+  // jab tab change ho to URL bhi update karo
+  const handleTabChange = (value: string) => {
+    setTab(value);
+    router.push(`/insights/?tab=${value}`, { scroll: false }); // scroll false taaki page upar jump na kare
   };
-
+  const { openSheet } = useSheet();
   return (
     <div className="pb-10">
       <TopCommon title="Insights - Registered Partners" />
       <div>
-        <Tabs className="w-full" value={activeTab} onValueChange={changeTab}>
+        <Tabs
+          className="w-full"
+          defaultValue="critical-task"
+          value={tab}
+          onValueChange={handleTabChange}
+        >
           <div className="border-b border-[#E4E7EB] h-[40px] md:h-[56px] lg:h-[62px] flex md:px-5 px-4 lg:px-6 items-center">
             <TabsList className="rounded-none bg-transparent !w-full flex !justify-start ">
               <div className="flex gap-3 items-center">
                 <TabsTrigger
+                  value="1"
                   id="critical-task"
-                  value="critical-task"
                   className="p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] data-[state=inactive]:!border-b-transparent data-[state=inactive]:fill-[#808188] !shadow-none px-2 cursor-pointer"
                 >
                   <CriticalTask />
@@ -124,8 +150,8 @@ function Insights() {
                 </TabsTrigger>
 
                 <TabsTrigger
+                  value="2"
                   id="growth-task"
-                  value="growth-task"
                   className="cursor-pointer p-0 flex !items-center text-sm font-medium leading-[142%] !border-b-[3px] !border-t-none !rounded-none -tracking-[0.28px] !text-[#B751FB] lg:h-[62px] md:h-[56px] h-[40px] fill-[#B751FB] data-[state=inactive]:!text-[#808188] !border data-[state=inactive]:!border-b-transparent data-[state=inactive]:fill-[#808188] !shadow-none px-2"
                 >
                   <GrothTask />
@@ -138,7 +164,7 @@ function Insights() {
               <DotColor title="Growth" className="bg-[#F5640A]" />
             </div>
           </div>
-          <TabsContent value="critical-task" className="md:px-5 px-4 lg:px-6 ">
+          <TabsContent value="1" className="md:px-5 px-4 lg:px-6 ">
             <form className="md:py-5 py-3 sm:py-4 lg:py-6">
               <div className="flex justify-between items-center gap-2 flex-wrap-reverse sm:flex-nowrap">
                 <SelecteStatus />
@@ -160,13 +186,7 @@ function Insights() {
                       }
                     >
                       <SelectTrigger className="text-[#030712] !font-semibold !border-[#E4E7EB] rounded md:!rounded-[6px] md:py-2 py-1 px-1.5 md:px-3 flex !gap-0">
-                        <SelectValue
-                          placeholder={getDisplayText(
-                            option.id,
-                            option.placeholder
-                          )}
-                          className="placeholder:!text-[#030712] !font-semibold placeholder:!text-xs md:!text-sm"
-                        />
+                        <SelectValue className="placeholder:!text-[#030712] !font-semibold placeholder:!text-xs md:!text-sm" />
                       </SelectTrigger>
                       <SelectContent className="!p-0 !m-0">
                         <SelectGroup className="!p-0 !m-0">
@@ -529,13 +549,67 @@ function Insights() {
             />
           </TabsContent>
 
-          <TabsContent value="growth-task" className="md:px-5 px-4 lg:px-6 ">
+          <TabsContent value="2" className="md:px-5 px-4 lg:px-6 ">
             <Growth />
           </TabsContent>
         </Tabs>
+        <Button
+          onClick={() =>
+            openSheet(
+              <div>
+                <p>Ye global sheet hai ✅</p>
+                <p>Har jagah se access kar sakte ho!</p>
+              </div>,
+              "Demo Sheet"
+            )
+          }
+        >
+          Open Global Sheet
+        </Button>
       </div>
     </div>
   );
 }
 
 export default Insights;
+
+// "use client";
+
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import { useRouter, useSearchParams } from "next/navigation";
+// import { useEffect, useState } from "react";
+
+// export default function TabExample() {
+//   const router = useRouter();
+//   const searchParams = useSearchParams();
+
+//   // URL se tab read karo
+//   const tabFromUrl = searchParams.get("tab") || "1";
+
+//   const [tab, setTab] = useState(tabFromUrl);
+
+//   // URL change hone par tab bhi update ho
+//   useEffect(() => {
+//     setTab(tabFromUrl);
+//   }, [tabFromUrl]);
+
+//   // jab tab change ho to URL bhi update karo
+//   const handleTabChange = (value: string) => {
+//     setTab(value);
+//     router.push(`/insights/?tab=${value}`, { scroll: false }); // scroll false taaki page upar jump na kare
+//   };
+
+//   return (
+//     <Tabs value={tab} onValueChange={handleTabChange}>
+//       <TabsList>
+//         <TabsTrigger value="1">Tab 1</TabsTrigger>
+//         <TabsTrigger value="2">Tab 2</TabsTrigger>
+//         <TabsTrigger value="3">Tab 3</TabsTrigger>
+//       </TabsList>
+
+//       <TabsContent value="1">Tab 1 Content</TabsContent>
+//       <TabsContent value="2">Tab 2 Content</TabsContent>
+//       <TabsContent value="3">Tab 3 Content</TabsContent>
+//     </Tabs>
+//   );
+// }

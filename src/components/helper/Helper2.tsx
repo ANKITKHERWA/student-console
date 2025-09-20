@@ -1322,7 +1322,7 @@ export const territoryCardDetails = [
     righticon: <Iconright />,
     para: "+9%",
     percentage: "+12%",
-    route: "/insights?growth-task",
+    route: "/insights?tab=1",
   },
   {
     icon: <Iconactive />,
@@ -1331,7 +1331,7 @@ export const territoryCardDetails = [
     righticon: <Iconright />,
     para: "+9%",
     percentage: "+12%",
-    route: "/insights?critical-task=&tab=critical-task",
+    route: "/insights?tab=2",
   },
   {
     icon: <DollerIcon />,
