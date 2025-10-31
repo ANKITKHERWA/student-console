@@ -12,7 +12,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
-import PrimaryBtn from '@/components/common/PrimaryBtn'
 import GrowthTask from '@/components/common/GrowthTask'
 import CriticalTask from '@/components/common/CriticalTask'
 import { ActiveData } from '@/components/helper/Helper1'
@@ -50,12 +49,12 @@ export default function ActiveTrend() {
     <div className="w-full px-6 mt-6 flex flex-row flex-wrap xl:flex-nowrap justify-between gap-6 pb-4">
       <div className="xl:w-[55%] w-full flex flex-col gap-6">
         <div className="border border-[#E4E7EB] rounded-[8px] bg-white xl:pt-6 pt-4 xl:pb-7 pb-0 xl:px-6 px-2 w-full">
-          <div className="flex  justify-between items-center pt-1 gap-5">
+          <div className="flex  justify-between items-center  gap-5">
             <Heading
               title="Active vs Registered Trend"
               className="sm:text-xl! text-base! text-[#030712] font-semibold leading-[120%] tracking-[-0.4px]"
             />
-            <div className="flex flex-wrap items-center gap-5 ml-auto">
+            <div className="flex flex-wrap items-center xl:gap-5 gap-2 ml-auto">
               <DotColor title="Registered" className="bg-[#CCC]" />
               <DotColor title="Active" className="bg-[#B751FB]" />
             </div>
@@ -160,7 +159,7 @@ export default function ActiveTrend() {
           <CriticalTask />
         </div>
       </div>
-      <div className="border border-[#E4E7EB] rounded-[8px] bg-white w-full xl:w-[45%] xl:p-6 p-4">
+      <div className="border border-[#E4E7EB] rounded-[8px] bg-white w-full xl:w-[45%] xl:p-5 p-4">
         <div className="flex justify-between gap-4">
           <Heading
             title="Growth Task"
